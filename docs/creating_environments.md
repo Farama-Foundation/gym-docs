@@ -4,7 +4,7 @@ This documentation overviews creating new environments and relevant useful wrapp
 
 ## Example Custom Environment
 
-Here is a simple skeleton of the repository structure for a custom environment, which we will aim to publish as a package on PyPI. For a more complete example, please refer to: https://github.com/openai/gym-soccer.
+Here is a simple skeleton of the repository structure for a Python Package containing a custom environment. For a more complete example, please refer to: https://github.com/openai/gym-soccer.
 
 ```sh
   gym-foo/
@@ -91,9 +91,6 @@ In order for the custom environments to be detected by OpenAI gym, they must be 
 
 After registration, our custom `FooEnv` environment can be created with `env = gym.make('foo-v0')`. 
 
-
-
-
 `gym-foo/gym_foo/envs/__init__.py` should have:
   ```python
   from gym_foo.envs.foo_env import FooEnv
@@ -112,5 +109,5 @@ The last step is to structure our code as a Python package. This involves config
         install_requires=['gym']  # And any other dependencies foo needs
   )
   ```
-
+  
 After you have installed your package locally with `pip install -e gym-foo`, you can create an instance of the environment with `gym.make('gym_foo:foo-v0')`
