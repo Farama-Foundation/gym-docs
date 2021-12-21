@@ -1,11 +1,12 @@
 # How to create new environments for Gym
 
-* Create a new repo called gym-foo, which should also be a PIP package.
+This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in OpenAI Gym designed for the creation of new environments.
 
-* A good example is https://github.com/openai/gym-soccer.
+## Example Custom Environment
 
-* It should have at least the following files:
-  ```sh
+Here is a simple skeleton of the repository structure for a custom environment, which we will aim to publish as a package on PyPI. For a more complete example, please refer to: https://github.com/openai/gym-soccer.
+
+```sh
   gym-foo/
     README.md
     setup.py
@@ -17,18 +18,64 @@
         foo_extrahard_env.py
   ```
 
-* `gym-foo/setup.py` should have:
+### Subclassing gym.Env
+
+We will first write the code for our custom environment in `gym-foo/gym_foo/envs/foo_env.py` - let's call it `FooEnv`. All custom environments should subclass `gym.Env` and override the `step`, `reset`, `render`, `close`  methods like so:
 
   ```python
-  from setuptools import setup
+  import gym
+  from gym import error, spaces, utils
+  from gym.utils import seeding
 
-  setup(name='gym_foo',
-        version='0.0.1',
-        install_requires=['gym']  # And any other dependencies foo needs
-  )
+  class FooEnv(gym.Env):
+    metadata = {'render.modes': ['human']}
+
+    def __init__(self):
+      # TODO
+      ...
+    def step(self, action):
+      # TODO
+      ...
+    def reset(self):
+      # TODO
+      ...
+    def render(self, mode='human'):
+      # TODO
+      ...
+    def close(self):
+      # TODO
+      ...
   ```
 
-* `gym-foo/gym_foo/__init__.py` should have:
+We will also create a more difficult version, `FooExtraHardEnv`, in `gym-foo/gym_foo/envs/foo_extrahard_env.py`, following the same template as above: 
+  ```python
+  import gym
+  from gym import error, spaces, utils
+  from gym.utils import seeding
+
+  class FooExtraHardEnv(gym.Env):
+    metadata = {'render.modes': ['human']}
+
+    def __init__(self):
+      # TODO
+      ...
+    def step(self, action):
+      # TODO
+      ...
+    def reset(self):
+      # TODO
+      ...
+    def render(self, mode='human'):
+      # TODO
+      ...
+    def close(self):
+      # TODO
+      ...
+  ```
+
+### Registering Envs
+
+In order for the custom environments to be detected by OpenAI gym, they must be registered as follows. We will choose to put this code in `gym-foo/gym_foo/__init__.py`. 
   ```python
   from gym.envs.registration import register
 
@@ -42,33 +89,28 @@
   )
   ```
 
-* `gym-foo/gym_foo/envs/__init__.py` should have:
+After registration, our custom `FooEnv` environment can be created with `env = gym.make('foo-v0')`. 
+
+
+
+
+`gym-foo/gym_foo/envs/__init__.py` should have:
   ```python
   from gym_foo.envs.foo_env import FooEnv
   from gym_foo.envs.foo_extrahard_env import FooExtraHardEnv
   ```
 
-* `gym-foo/gym_foo/envs/foo_env.py` should look something like:
+### Creating a Package
+
+The last step is to structure our code as a Python package. This involves configuring `gym-foo/setup.py`. A minimal example of how to do so is as follows: 
+
   ```python
-  from typing import Optional
-  import gym
-  from gym import error, spaces, utils
-  from gym.utils import seeding
+  from setuptools import setup
 
-  class FooEnv(gym.Env):
-    metadata = {'render.modes': ['human']}
-
-    def __init__(self):
-      ...
-    def step(self, action):
-      ...
-    def reset(self, seed: Optional[int] = None):
-      super().reset(seed=seed)
-      ...
-    def render(self, mode='human'):
-      ...
-    def close(self):
-      ...
+  setup(name='gym_foo',
+        version='0.0.1',
+        install_requires=['gym']  # And any other dependencies foo needs
+  )
   ```
 
-* After you have installed your package with `pip install -e gym-foo`, you can create an instance of the environment with `gym.make('gym_foo:foo-v0')`
+After you have installed your package locally with `pip install -e gym-foo`, you can create an instance of the environment with `gym.make('gym_foo:foo-v0')`
