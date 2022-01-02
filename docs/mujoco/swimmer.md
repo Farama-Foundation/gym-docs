@@ -7,7 +7,7 @@ Swimmers-v2
 
 ### Description
 
-This environment corresponds to the Swimmer environment described in Rémi Coulom's PhD thesis ["Reinforcement Learning Using Neural Networks, with Applications to Motor Control"](https://tel.archives-ouvertes.fr/tel-00003985/document). The environment aims to increase the number of indepedent state and control variables as compared to the classic control environments. The swimmers consist of three or more segments ('links') and one less articulation joints ('rotors') - one rotor joint connecting exactly two links to form a linear chain. The swimmer is suspended in a two dimensional pool and always starts in the same position (subject to some deviation drrawn from a normal distribution), and the goal is to move as fast as possible towards the right by applying torque on the rotors and using the fluids friction.
+This environment corresponds to the Swimmer environment described in Rémi Coulom's PhD thesis ["Reinforcement Learning Using Neural Networks, with Applications to Motor Control"](https://tel.archives-ouvertes.fr/tel-00003985/document). The environment aims to increase the number of indepedent state and control variables as compared to the classic control environments. The swimmers consist of three or more segments ('links') and one less articulation joints ('rotors') - one rotor joint connecting exactly two links to form a linear chain. The swimmer is suspended in a two dimensional pool and always starts in the same position (subject to some deviation drrawn from a normal distribution), and the goal is to move as fast as possible towards the right by applying torque on the rotors and using the fluids friction.
 
 ### Notes
 
@@ -15,7 +15,7 @@ The problem parameters are:
 Problem parameters:
 * *n*: number of body parts
 * *m_i*: mass of part i (i ∈ {1...n}) 
-* *l_i*: length of part i (i ∈ {1...n}) 
+* *l<sub>i*: length of part i (i ∈ {1...n}) 
 * *k*: viscous-friction coefficient
 
 While the default environment has n = 3, mi = , li =, and k = . It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
