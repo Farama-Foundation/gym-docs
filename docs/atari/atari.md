@@ -29,11 +29,11 @@ The action space a subset of the following discrete set of legal actions:
 | 16   | DOWNRIGHTFIRE |
 | 17   | DOWNLEFTFIRE |
 
-If the environment is initialized via `make`, the action space will usually be much smaller since most legal actions don't have
+If you use v0 or v4 and the environment is initialized via `make`, the action space will usually be much smaller since most legal actions don't have
 any effect. Thus, the enumeration of the actions will differ. The action space can be expanded to the full 
 legal space by passing the keyword argument `full_action_space=True` to `make`.
 
-The action space of an Atari environment may depend on the flavor of the game. You can specify the flavor by providing 
+The reduced action space of an Atari environment may depend on the flavor of the game. You can specify the flavor by providing 
 the arguments `difficulty` and `mode` when constructing the environment. This documentation only provides details on the
 action spaces of default flavors. 
 
@@ -95,7 +95,43 @@ action space will be reduced to a subset.
 `render_mode`: `str`. Specifies the rendering mode:
 - "human": We'll interactively display the screen and enable game sounds. This will lock emulation to the ROMs specified FPS
 - "rgb_array": we'll return the `rgb` key in step metadata with the current environment RGB frame.
+> It is highly recommended to specify `render_mode` during construction instead of calling `env.render()`. 
+> This will guarantee proper scaling, audio support, and proper framerates
 
+
+### Version History and Naming Schemes
+All Atari games are available in three versions. They differ in the default settings of the arguments above.
+The differences are listed in the following table:
+
+|Version|`frameskip=`|`repeat_action_probability=`|`full_action_space=`|
+| ----- | --------- | ------------------------- | ---------|
+|v0     |`(2, 5,)`  |`0.25`                     |`False`     |
+|v4     |`(2, 5,)`  |`0.0`                      |`False`     |
+|v5     |`5`        |`0.25`                     |`True`      |
+
+> Version v5 follows the best practices outlined in [[2]](#2). Thus, it is recommended to transition to v5 and
+> customize the environment using the arguments above, if necessary.
+
+For each Atari game, several different configurations are registered in OpenAI Gym. The naming schemes are analgous for
+v0 and v4. Let us take a look at all variations of Amidar-v0 that are registered with OpenAI gym:
+
+|Name                          |`obs_type=`|`frameskip=`|`repeat_action_probability=`|`full_action_space=`|
+| ---------------------------- | -------- | --------- | ------------------------- | ----------------- |
+|Amidar-v0                     |`"rgb"`   |`(2, 5,)`  |`0.25`                     |`False`            |
+|AmidarDeterministic-v0        |`"rgb"`   |`4`        |`0.0`                      |`False`            |
+|AmidarNoframeskip-v0          |`"rgb"`   |`1`        |`0.25`                     |`False`            |
+|Amidar-ram-v0                 |`"ram"`   |`(2, 5,)`  |`0.25`                     |`False`            |
+|Amidar-ramDeterministic-v0    |`"ram"`   |`4`        |`0.0`                      |`False`            |
+|Amidar-ramNoframeskip-v0      |`"ram"`   |`1`        |`0.25`                     |`False`            |
+
+Things change in v5: The suffixes "Deterministic" and "Noframeskip" are no longer available. Instead, you must specify the
+environment configuration via arguments passed to `gym.make`. Moreover, the v5 environments
+are in the "ALE" namespace. The suffix "-ram" is still available. Thus, we get the following table:
+
+|Name                          |`obs_type=`|`frameskip=`|`repeat_action_probability=`|`full_action_space=`|
+| ---------------------------- | -------- | --------- | ------------------------- | ----------------- |
+|ALE/Amidar-v5                 |`"rgb"`   |`5`        |`0.25`                     |`True`             |
+|ALE/Amidar-ram-v5             |`"ram"`   |`5`        |`0.25`                     |`True`             |
 
 ### References
 <a id="1">[1]</a> 
