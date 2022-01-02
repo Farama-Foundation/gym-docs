@@ -15,7 +15,7 @@ The problem parameters are:
 Problem parameters:
 * *n*: number of body parts
 * *m_i*: mass of part i (i ∈ {1...n}) 
-* *$l_i$*: length of part i (i ∈ {1...n}) 
+* $l_{i}$: length of part i (i ∈ {1...n}) 
 * *k*: viscous-friction coefficient
 
 While the default environment has n = 3, mi = , li =, and k = . It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
