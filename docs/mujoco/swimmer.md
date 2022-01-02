@@ -72,7 +72,7 @@ The reward consists of two parts:
 The total reward returned is ***reward*** *=* *reward_front + reward_control*
 
 ### Starting State
-All observations start in state (0,0,0,0,0,0,0,0) with a Gausssian noise with mean of 0 and standard deviation of 0.1 (default) added to the initial state for stochasticity.
+All observations start in state (0,0,0,0,0,0,0,0) with a Uniform noise in the range of [-0.1, 0.1] is added to the initial state for stochasticity.
 
 ### Episode Termination
 The episode terminates when the episode length is greater than 1000.
