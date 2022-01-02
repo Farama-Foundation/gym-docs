@@ -2,12 +2,23 @@ Swimmers-v2
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
-|Swimmer-v2|Continuous|(2,)|[-1,1], [-1,1]| Box |(4,)|[(-4.8,4.8),(-inf,inf), (~ -0.2095, ~ 0.2095), (-inf, inf)]| |`from gym.envs.classic_control import cartpole`|
+|Swimmer-v2|Continuous|(2,)|[-1,1], [-1,1]| Box |(4,)|[(-4.8,4.8),(-inf,inf), (~ -0.2095, ~ 0.2095), (-inf, inf)]| |`from gym.envs.mujoco import swimmer`|
 ---
 
 ### Description
 
 This environment corresponds to the Swimmer environment described in Rémi Coulom's PhD thesis ["Reinforcement Learning Using Neural Networks, with Applications to Motor Control"](https://tel.archives-ouvertes.fr/tel-00003985/document). The environment aims to increase the number of indepedent state and control variables as compared to the classic control environments. The swimmers consist of three or more segments ('links') and one less articulation joints ('rotors') - one rotor joint connecting exactly two links to form a linear chain. The swimmer is suspended in a two dimensional pool and always starts in the same position (subject to some deviation drrawn from a normal distribution), and the goal is to move as fast as possible towards the right by applying torque on the rotors and using the fluids friction.
+
+### Notes
+
+The problem parameters are:
+Problem parameters:
+* n: number of body parts
+* mi: mass of part i (i ∈ {1...n}) 
+* li: length of part i (i ∈ {1...n}) 
+* k: viscous-friction coefficient
+
+While the default environment has n = 3, mi = , li =, and k = . It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
 
 ### Action Space
 The agent take a 4-element vector for actions.
@@ -39,7 +50,8 @@ range of possible values in an un-terminated episode:
 terminated if the pole angle is outside the `(-.2095, .2095)` range or precisely **±12°**
 
 ### Rewards
-Reward is 1 for every step taken, including the termination step. The threshold is 475 for v1.
+The reward consists of two parts:
+- A reward of moviing forward which is measured as 
 
 ### Starting State
 All observations are assigned a uniform random value between (-0.05, 0.05)
