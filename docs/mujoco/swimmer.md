@@ -66,7 +66,7 @@ In practice (and Gym implementation), the first two positional elements are omit
 
 ### Rewards
 The reward consists of two parts:
-- *reward_front*: A reward of moving forward which is measured as *(x-coordinate before action - x-coordinate after action)/dt*. *dt* is the time between actions and is dependeent on tthe frame_skip parameter (default is 4), where the *dt* for one frame is 0.02 - making the default *dt = 4*0.02 = 0.08*. This reward would be positive if the swimmer swims right as desired.
+- *reward_front*: A reward of moving forward which is measured as *(x-coordinate before action - x-coordinate after action)/dt*. *dt* is the time between actions and is dependeent on tthe frame_skip parameter (default is 4), where the *dt* for one frame is 0.01 - making the default *dt = 4*0.01 = 0.04*. This reward would be positive if the swimmer swims right as desired.
 - *reward_control*: A negative reward for penalising the swimmer if it takes actions that are too large. It is measured as *-coefficient x sum(action<sup>2</sup>)* where *coefficient* is a parameter set for the control and has a default value of 0.0001
 
 The total reward returned is ***reward*** *=* *reward_front + reward_control*
