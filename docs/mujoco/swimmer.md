@@ -18,7 +18,7 @@ Problem parameters:
 * *l<sub>i*: length of part *i* (*i* ∈ {1...n}) 
 * *k*: viscous-friction coefficient
 
-While the default environment has *n* = 3, *m<sub>i* = , *l<sub>i* = 0.1, and *k* = 0.1. It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
+While the default environment has *n* = 3, *l<sub>i* = 0.1, and *k* = 0.1. It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
 
 ### Action Space
 The agent take a 4-element vector for actions.
@@ -49,7 +49,7 @@ The observation is a `ndarray` with shape `(8,)` where the elements correspond t
 | 6   | velocity of the tip along the y-axis    | -Inf                 | Inf                | slider2 | slide | velocity (m/s) |
 | 7   | angular velocity of front tip               | -Inf                 | Inf                | rot | hinge | angular velocity (rad/s) |
 | 8   | angular velocity of second rotor       | -Inf                 | Inf                | rot2 | hinge | angular velocity (rad/s) |
-| 9   |  angular velocity of third rotor           | -Inf                 | Inf                | rot3 | hinge | angular velocity (rad/s) |
+| 9   | angular velocity of third rotor            | -Inf                 | Inf                | rot3 | hinge | angular velocity (rad/s) |
 
 **Note:**
 In practice (and Gym implementation), the first two positional elements are omitted from the state space since the reward function is calculated based on those values. Therefore, observation space has shape `(8,)` and looks like:
@@ -62,24 +62,20 @@ In practice (and Gym implementation), the first two positional elements are omit
 | 4   | velocity of the tip along the y-axis    | -Inf                 | Inf                | slider2 | slide | velocity (m/s) |
 | 5   | angular velocity of front tip               | -Inf                 | Inf                | rot | hinge | angular velocity (rad/s) |
 | 6   | angular velocity of second rotor       | -Inf                 | Inf                | rot2 | hinge | angular velocity (rad/s) |
-| 7   |  angular velocity of third rotor           | -Inf                 | Inf                | rot3 | hinge | angular velocity (rad/s) |
+| 7   | angular velocity of third rotor            | -Inf                 | Inf                | rot3 | hinge | angular velocity (rad/s) |
 
 ### Rewards
 The reward consists of two parts:
 - *reward_front*: A reward of moving forward which is measured as *(x-coordinate before action - x-coordinate after action)/dt*. *dt* is the time between actions and is dependeent on tthe frame_skip parameter (default is 4), where the *dt* for one frame is 0.02 - making the default *dt = 4*0.02 = 0.08*. This reward would be positive if the swimmer swims right as desired.
-- *reward_control*: A negative reward for penalising the swimmer if it takes actions that are too large. It is measured as *-coefficient <times> sum(action<sup>2</sup>)*
+- *reward_control*: A negative reward for penalising the swimmer if it takes actions that are too large. It is measured as *-coefficient x sum(action<sup>2</sup>)* where *coefficient* is a parameter set for the control and has a default value of 0.0001
 
 The total reward returned is ***reward*** *=* *reward_front + reward_control*
 
 ### Starting State
-All observations are assigned a uniform random value between (-0.05, 0.05)
+All observations start in state (0,0,0,0,0,0,0,0) with a Gausssian noise with mean of 0 and standard deviation of 0.1 (default) added to the initial state for stochasticity.
 
 ### Episode Termination
-The episode terminates of one of the following occurs:
-
-1. Pole Angle is more than ±12°
-2. Cart Position is more than ±2.4 (center of the cart reaches the edge of the display)
-3. Episode length is greater than 500 (200 for v0)
+The episode terminates when the episode length is greater than 1000.
 
 ### Arguments
 
@@ -91,5 +87,5 @@ gym.make('Swimmer-v2')
 
 ### Version History
 
-* v1: Maximum episode length increased from 200 to 500 steps, reward threshold increased from 195 to 475.
-* v0: Initial versions release (1.0.0)
+* v1: 
+* v0:
