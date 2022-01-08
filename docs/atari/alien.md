@@ -8,8 +8,8 @@ ALE/Alien-v5
 ### Description
 You are stuck in a maze-like space ship with three aliens. You goal is to destroy their eggs that are scattered
 all over the ship while simultaneously avoiding the aliens (they are trying to kill you). You have a flamethrower that can help you turn 
-them away in tricky situations. Moreover, you can occasionally collect a power-up that gives you the temporary ability to kill aliens.
-
+them away in tricky situations. Moreover, you can occasionally collect a power-up (pulsar) that gives you the temporary ability to kill aliens.
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=815).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -35,6 +35,11 @@ instead. The respective observation spaces are
 respectively. The general article on Atari environments outlines different ways to instantiate corresponding environments
 via `gym.make`.
 
+
+### Rewards
+You score points by destroying eggs, killing aliens, using pulsars, and collecting special prizes. When you are caught
+by an alien, you will lose one of your lives. The number of lives you have depends on the game flavor. For a
+table of scores corresponding to the different achievements, consult [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=815).
 
 ### Arguments
 

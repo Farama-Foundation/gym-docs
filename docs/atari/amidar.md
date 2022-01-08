@@ -7,7 +7,8 @@ ALE/Amidar-v5
 
 ### Description
 This game is similar to Pac-Man: You are trying to visit all places on a 2-dimensional grid while simultaneously avoiding
-your enemies.
+your enemies. You can turn the tables at one point in the game: Your enemies turn into chickens and you can
+catch them. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=817).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -48,6 +49,10 @@ instead. The respective observation spaces are
 respectively. The general article on Atari environments outlines different ways to instantiate corresponding environments
 via `gym.make`.
 
+
+### Rewards
+You score points by traversing new parts of the grid. Coloring an entire box in the maze or catching chickens gives extra points.
+For a more detailed documentation, see [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=817).
 
 ### Arguments
 

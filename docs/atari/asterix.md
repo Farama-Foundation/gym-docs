@@ -6,9 +6,12 @@ ALE/Asterix-v5
 ---
 
 ### Description
-You are Asterix and can move horizontally (continuously) and vertically (discretely). Two types of objects
-move horizontally across the screen: lyres and bowls (presumably filled with the magic potion!). Your goal is to guide 
-Asterix in such a way as to avoid lyres and collect as much magic potion as possible.
+You are Asterix and can move horizontally (continuously) and vertically (discretely). Objects
+move horizontally across the screen: lyres and other (more useful) objects. Your goal is to guide 
+Asterix in such a way as to avoid lyres and collect as many other objects as possible. You score points by collecting
+objects and lose a life whenever you collect a lyre. You have three lives available at the beginning. If you score sufficiently
+many points, you will be awarded additional points.
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=3325).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -46,6 +49,9 @@ instead. The respective observation spaces are
 
 respectively. The general article on Atari environments outlines different ways to instantiate corresponding environments
 via `gym.make`.
+
+### Rewards
+A table of scores awarded for collecting the different objects is provided on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=3325).
 
 ### Arguments
 

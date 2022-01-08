@@ -43,6 +43,10 @@ The observation issued by an Atari environment may be:
 - a grayscale version of that image or
 - the state of the 128 Bytes of RAM of the console.
 
+### Rewards
+The exact reward dynamics depend on the environment and are usually documented in the game's manual. You can
+find these manuals on [AtariAge](https://atariage.com/).
+
 ### Stochasticity
 It was pointed out in [[1]](#1) that Atari games are entirely deterministic. Thus, agents could achieve 
 state of the art performance by simply memorizing an optimal sequence of actions while completely ignoring observations from the environment.

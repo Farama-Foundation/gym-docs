@@ -7,7 +7,7 @@ ALE/Assault-v5
 
 ### Description
 You control a vehicle that can move sideways. A big mother ship circles overhead and continually deploys smaller drones.
-You must destroy these enemies and dodge their attacks.
+You must destroy these enemies and dodge their attacks. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=827).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
