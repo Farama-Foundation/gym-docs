@@ -1,6 +1,4 @@
----
-layout: env_selection
-title: Classic Control Environments
+title: Mujoco Environments
 ---
 <div class="selection-content" markdown="1">
 
