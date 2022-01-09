@@ -1,4 +1,4 @@
-Hopper-v2
+Hopper
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
@@ -61,13 +61,13 @@ In practice (and Gym implementation), the first positional element is omitted fr
 ### Rewards
 The reward consists of three parts:
 - *alive bonus*: Every timestep that the hopper is alive, it gets a reward of 1,
-- *reward_forward*: A reward of hopping forward which is measured as *(x-coordinate before action - x-coordinate after action)/dt*. *dt* is the time between actions and is dependeent on the frame_skip parameter (default is 4), where the *dt* for one frame is 0.002 - making the default *dt = 4*0.002 = 0.0008*. This reward would be positive if the hopper hops forward (right) desired.
+- *reward_forward*: A reward of hopping forward which is measured as *(x-coordinate before action - x-coordinate after action)/dt*. *dt* is the time between actions and is dependeent on the frame_skip parameter (default is 4), where the *dt* for one frame is 0.002 - making the default *dt = 4*0.002 = 0.008*. This reward would be positive if the hopper hops forward (right) desired.
 - *reward_control*: A negative reward for penalising the hopper if it takes actions that are too large. It is measured as *-coefficient **x** sum(action<sup>2</sup>)* where *coefficient* is a parameter set for the control and has a default value of 0.001
 
 The total reward returned is ***reward*** *=* *alive bonus + reward_forward + reward_control*
 
 ### Starting State
-All observations start in state (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) with a uniform noise in the range of [-0.1, 0.1] added to the values for stochasticity.
+All observations start in state (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) with a uniform noise in the range of [-0.005, 0.005] added to the values for stochasticity.
 
 ### Episode Termination
 The episode terminates when any of the following happens:
@@ -80,13 +80,21 @@ The episode terminates when any of the following happens:
 
 ### Arguments
 
-No additional arguments are currently supported, but modifications can be made to the XML file in `gym/envs/mujoco/assets/hopper.xml`.
+No additional arguments are currently supported (in v2 and lower), but modifications can be made to the XML file in the assets folder (or by changing the path to a modified XML file in another folder)..
 
 ```
 env = gym.make('Hopper-v2')
 ```
 
+v3 and beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.
+
+```
+env = gym.make('Hopper-v3', ctrl_cost_weight=0.1, ....)
+```
+
 ### Version History
 
-* v1: 
-* v0:
+* v3: support for gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc. rgb rendering comes from tracking camera (so agent does not run away from screen)
+* v2: All continuous control environments now use mujoco_py >= 1.50
+* v1: max_time_steps raised to 1000 for robot based tasks. Added reward_threshold to environments.
+* v0: Initial versions release (1.0.0)
