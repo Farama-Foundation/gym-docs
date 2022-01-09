@@ -1,4 +1,4 @@
-title: Mujoco Environments
+Mujoco Environments
 ---
 <div class="selection-content" markdown="1">
 
