@@ -25,7 +25,7 @@ The agent take a 4-element vector for actions.
 The action space is a continuous `(action, action)` in `[-1, 1]`, where `action` represents the numerical torques applied between *links*
 
 | Num | Action                 | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit |
-|-----|------------------------|-----|-----|------|-----|
+|-----|------------------------|-----|-----|------|-----|-----|
 | 0   | Torque applied on the first rotor  | -1 | 1 | rot2 | hinge | torque (N m) |
 | 1   | Torque applied on the second rotor  | -1 | 1 | rot3 | hinge | torque (N m) |
 
