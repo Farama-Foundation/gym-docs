@@ -14,11 +14,11 @@ This environment corresponds to the Swimmer environment described in Rémi Coulo
 The problem parameters are:
 Problem parameters:
 * *n*: number of body parts
-* *m<sub>i*: mass of part *i* (*i* ∈ {1...n}) 
-* *l<sub>i*: length of part *i* (*i* ∈ {1...n}) 
+* *m<sub>i</sub>*: mass of part *i* (*i* ∈ {1...n}) 
+* *l<sub>i</sub>*: length of part *i* (*i* ∈ {1...n}) 
 * *k*: viscous-friction coefficient
 
-While the default environment has *n* = 3, *l<sub>i* = 0.1, and *k* = 0.1. It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
+While the default environment has *n* = 3, *l<sub>i</sub>* = 0.1, and *k* = 0.1. It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
 
 ### Action Space
 The agent take a 4-element vector for actions.
@@ -32,9 +32,9 @@ The action space is a continuous `(action, action)` in `[-1, 1]`, where `action`
 ### Observation Space
 
 The state space consists of:
-* A<sub>0: position of first point
-* θ<sub>i: angle of part *i* with respect to the *x* axis
-* A<sub>0, θ<sub>i: their derivatives with respect to time (velocity and angular velocity)
+* A<sub>0</sub>: position of first point
+* θ<sub>i</sub>: angle of part *i* with respect to the *x* axis
+* A<sub>0</sub>, θ<sub>i</sub>: their derivatives with respect to time (velocity and angular velocity)
 
 The observation is a `ndarray` with shape `(8,)` where the elements correspond to the following:
 
@@ -88,7 +88,7 @@ gym.make('Swimmer-v2')
 v3 and beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.
 
 ```
-env = gym.make('Swimmer-v3', ctrl_cost_weight=2, ....)
+env = gym.make('Swimmer-v3', ctrl_cost_weight=0.1, ....)
 ```
 
 ### Version History

@@ -18,6 +18,6 @@ There are ten Mujoco environments: Ant, HalfCheetah, Hopper, Humanoid, HumanoidS
 
 Among Gym environments, this set of environments can be considered as more difficult ones to solve by a policy.
 
-Eenvironments can be configured by changing the XML files or by tweaking the parameters of their classes.
+Environments can be configured by changing the XML files or by tweaking the parameters of their classes.
 
 </div>
