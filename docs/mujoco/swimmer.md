@@ -1,4 +1,4 @@
-Swimmers-v2
+Swimmer
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
@@ -79,13 +79,21 @@ The episode terminates when the episode length is greater than 1000.
 
 ### Arguments
 
-No additional arguments are currently supported, but modifications can be made to the XML file.
+No additional arguments are currently supported (in v2 and lower), but modifications can be made to the XML file in the assets folder (or by changing the path to a modified XML file in another folder)..
 
 ```
 gym.make('Swimmer-v2')
 ```
 
+v3 and beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.
+
+```
+env = gym.make('Swimmer-v3', ctrl_cost_weight=2, ....)
+```
+
 ### Version History
 
-* v1: 
-* v0:
+* v3: support for gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc. rgb rendering comes from tracking camera (so agent does not run away from screen)
+* v2: All continuous control environments now use mujoco_py >= 1.50
+* v1: max_time_steps raised to 1000 for robot based tasks. Added reward_threshold to environments.
+* v0: Initial versions release (1.0.0)
