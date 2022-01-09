@@ -2,12 +2,12 @@ Swimmer
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
-|Swimmer-v2|Continuous|(2,)|[-1,1], [-1,1]| Box |(8,)|[(-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf)]| |`from gym.envs.mujoco import swimmer`|
+|Swimmer-v3, Swimmer-v2|Continuous|(2,)|[-1,1], [-1,1]| Box |(8,)|[(-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf)]| |`from gym.envs.mujoco import swimmer`|
 ---
 
 ### Description
 
-This environment corresponds to the Swimmer environment described in Rémi Coulom's PhD thesis ["Reinforcement Learning Using Neural Networks, with Applications to Motor Control"](https://tel.archives-ouvertes.fr/tel-00003985/document). The environment aims to increase the number of indepedent state and control variables as compared to the classic control environments. The swimmers consist of three or more segments ('***links***') and one less articulation joints ('***rotors***') - one rotor joint connecting exactly two links to form a linear chain. The swimmer is suspended in a two dimensional pool and always starts in the same position (subject to some deviation drrawn from a normal distribution), and the goal is to move as fast as possible towards the right by applying torque on the rotors and using the fluids friction.
+This environment corresponds to the Swimmer environment described in Rémi Coulom's PhD thesis ["Reinforcement Learning Using Neural Networks, with Applications to Motor Control"](https://tel.archives-ouvertes.fr/tel-00003985/document). The environment aims to increase the number of indepedent state and control variables as compared to the classic control environments. The swimmers consist of three or more segments ('***links***') and one less articulation joints ('***rotors***') - one rotor joint connecting exactly two links to form a linear chain. The swimmer is suspended in a two dimensional pool and always starts in the same position (subject to some deviation drawn from an uniform distribution), and the goal is to move as fast as possible towards the right by applying torque on the rotors and using the fluids friction.
 
 ### Notes
 
@@ -21,7 +21,7 @@ Problem parameters:
 While the default environment has *n* = 3, *l<sub>i</sub>* = 0.1, and *k* = 0.1. It is possible to tweak the MuJoCo XML files to increase the number of links, or to tweak any of the parameters.
 
 ### Action Space
-The agent take a 4-element vector for actions.
+The agent take a 2-element vector for actions.
 The action space is a continuous `(action, action)` in `[-1, 1]`, where `action` represents the numerical torques applied between *links*
 
 | Num | Action                 | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit |
