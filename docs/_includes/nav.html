@@ -40,7 +40,7 @@
                 {%- if link.title == "Environments" -%}
                   <li class="nav-subitem-4 nav-item">
                 {%- endif -%}
-                    <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/{{ sublink.url }}">{{ sublink.title }}</a>
+                    <a class="nav-link js-scroll-trigger" href="{{site.url}}/{{ sublink.url }}">{{ sublink.title }}</a>
                     {%- if sublink.subsublinks -%}
                       <img class="navbar-arrow" height="20px" src="{{ site.data.img.nav.arrow }}"/>
                     {%- endif -%}
@@ -51,9 +51,9 @@
                         <!-- currently dont have icons for each gym, so this is commented out -->
                         <!-- <a class="icon-anchor" href="{{ subsublink.url }}"><img class="icon" src="{{ img_link }}"></a> -->
                         {%- if subsublink.alt_title -%}
-                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{site.baseurl}}/{{ subsublink.url }}">{{ subsublink.alt_title }}</a>
+                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{site.url}}/{{ subsublink.url }}">{{ subsublink.alt_title }}</a>
                         {%- else -%}
-                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{site.baseurl}}/{{ subsublink.url }}">{{ subsublink.title }}</a>
+                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{site.url}}/{{ subsublink.url }}">{{ subsublink.title }}</a>
                         {%- endif -%}
                       </li>
                     {%- endfor -%}
@@ -62,7 +62,7 @@
                 {%- endfor -%}
             </ul>
           {%- else if link.section -%}
-            <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/#{{ link.section }}">{{ link.title }}</a>
+            <a class="nav-link js-scroll-trigger" href="{{ site.url }}/#{{ link.section }}">{{ link.title }}</a>
           {%- else -%}
             <a class="nav-link js-scroll-trigger" href="#">{{ link.title }}</a>
           {%- endif -%}
