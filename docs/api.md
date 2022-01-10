@@ -1,3 +1,7 @@
+---
+layout: "contents"
+title: API
+---
 # API
 ## Initializing Environments
 Initializing environment is very easy in Gym and can be done via: 

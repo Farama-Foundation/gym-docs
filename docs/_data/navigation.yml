@@ -1,0 +1,129 @@
+nav:
+  - title: "GitHub"
+    url: "https://github.com/Farama-Foundation/PettingZoo"
+
+  - title: "API"
+    url: "/api"
+    sublinks:
+      - title: "Initializing Environments"
+        url: "/api#initializing-environments"
+
+      - title: "Interacting With Environments"
+        url: "/api#interacting-with-environments"
+
+      - title: "Additional Environment API"
+        url: "/api#additional-environment-api"
+
+      - title: "Notable Idioms"
+        url: "/api#notable-idioms"
+
+      - title: "Raw Environments"
+        url: "/api#raw-environments"
+
+      - title: "Parallel API"
+        url: "/api#parallel-api"
+
+      - title: "SuperSuit"
+        url: "/api#supersuit"
+
+      - title: "Utils"
+        url: "/api#utils"
+
+  - title: "Environment Creation"
+    url: "/environment_creation"
+    sublinks:
+      - title: "Example Custom Environment"
+        url: "/environment_creation#example-custom-environment"
+
+      - title: "Example Custom Parallel Environment"
+        url: "/environment_creation#example-custom-parallel-environment"
+
+      - title: "Wrappers"
+        url: "/environment_creation#wrappers"
+
+      - title: "Developer Utils"
+        url: "/environment_creation#developer-utils"
+
+      - title: "Tests"
+        url: "/environment_creation#tests"
+
+  - title: "Wrappers"
+    url: "/Wrappers"
+    sublinks:
+      - title: "Included Functions"
+        url: "/Wrappers#included-functions"
+
+      - title: "Included Multi-Agent Only Functions"
+        url: "/Wrappers#included-multi-agent-only-functions"
+
+      - title: "Environment Vectorization"
+        url: "/vectors/"
+
+      - title: "Lambda Functions"
+        url: "/Wrappers#lambda-functions"
+
+  - title: "Environments"
+    url: "/envs"
+    sublinks:
+      - title: "Box2D"
+        url: "/environments/box2d/index"
+        subsublinks:
+          - title: "Bipedal Walker"
+            url: "/environments/box2d/bipedal_walker"
+          - title: "Car Racing"
+            url: "/environments/box2d/car_racing"
+          - title: "Lunar Lander"
+            url: "/environments/box2d/lunar_lander"
+      - title: "Classic Control"
+        url: "/environments/classic_control/index"
+      - title: "Mujoco"
+        url: "/environments/mujoco/index"
+      - title: "Toy Text"
+        url: "/environments/toy_text/index"
+  - title: "Tutorials"
+    url: "/tutorials"
+
+  - title: "Third Party Environments"
+    url: "/third_party_envs"
+
+API:
+  - title: "Initializing Environments"
+    url: "/api#initializing-environments"
+
+  - title: "Interacting With Environments"
+    url: "/api#interacting-with-environments"
+
+  - title: "Additional Environment API"
+    url: "/api#additional-environment-api"
+
+  - title: "Vectorizing Environments"
+    url: "/vector"
+
+Environment Creation:
+      - title: "Example Custom Environment"
+        url: "/environment_creation#example-custom-environment"
+
+      - title: "Example Custom Parallel Environment"
+        url: "/environment_creation#example-custom-parallel-environment"
+
+      # - title: "Vectorization"
+      #   url: "/environment_creation#wrappers"
+
+      # - title: "Developer Utils"
+      #   url: "/environment_creation#developer-utils"
+
+      # - title: "Tests"
+      #   url: "/environment_creation#tests"
+
+# Wrappers:
+#     - title: "Included Functions"
+#       url: "/Wrappers#included-functions"
+
+#     - title: "Included Multi-Agent Only Functions"
+#       url: "/Wrappers#included-multi-agent-only-functions"
+
+#     - title: "Environment Vectorization"
+#       url: "/Wrappers#environment-vectorization"
+
+#     - title: "Lambda Functions"
+#       url: "/Wrappers#lambda-functions"

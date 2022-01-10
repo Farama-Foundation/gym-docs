@@ -1,3 +1,7 @@
+---
+layout: "contents"
+title: Wrappers
+---
 Gym includes numerous wrappers for environments that include preprocessing and various other functions. The following categories are included:
 
 ## Observation Wrappers
