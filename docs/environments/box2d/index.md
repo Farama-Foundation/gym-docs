@@ -15,3 +15,9 @@ There are five classic control environments: BipedalWalker, BipedalWalkerHardcor
 All environments are highly configurable via arguments specified in each environment's documentation.
 
 </div>
+
+<div class="selection-table-container" markdown="1">
+## Box2D
+
+{% include bigtable.html group="box2d/" cols=3 %}
+</div>
