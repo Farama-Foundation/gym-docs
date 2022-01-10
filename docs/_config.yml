@@ -20,7 +20,7 @@ description: "AI Gym"
 author     : Your Name
 copyright  : Farama Foundation
 logo:     #optional, defaults to site title
-  path: /assets/img/gym.svg
+  path: assets/img/gym.svg
   height: 100 #height in px, defaults to 52px
 
 analytics:
