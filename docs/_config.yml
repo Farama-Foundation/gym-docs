@@ -12,7 +12,7 @@
 # in the templates via {{ site.myvariable }}.
 
 url    : "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "gym-docs" # the subpath of your site, e.g. /blog
+baseurl: "/gym-docs" # the subpath of your site, e.g. /blog
 
 title      : Gym
 email      : jkterry@gmail.com #this is also the email contact forms will go to

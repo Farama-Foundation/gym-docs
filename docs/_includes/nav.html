@@ -5,7 +5,7 @@
     <a class="navbar-brand" href="{{ site.baseurl }}/#">
         {%- if site.logo -%}
           <!-- <img height="{{ site.logo.height | default: 52 }}" src="{{ site.logo.path }}"/> -->
-          <img class="navbar-brand-img" src="{{site.url}}/{{ site.logo.path }}"/>
+          <img class="navbar-brand-img" src="{{site.baseurl}}/{{ site.logo.path }}"/>
         {%- else -%}
           {{ site.title }}
         {%- endif -%}
@@ -16,15 +16,15 @@
     </div>
     <div class="spacer"></div>
     <div class="menu-btn">
-      <img class="menu-icon" src="{{site.url}}/{{ site.data.img.nav.menu }}"/>
+      <img class="menu-icon" src="{{site.baseurl}}/{{ site.data.img.nav.menu }}"/>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
         {%- for link in site.data.navigation.nav -%}
           <li class="nav-item nav-first-item">
           {%- if link.url -%}
-            <a class="nav-link js-scroll-trigger" href="{{site.url}}/{{ link.url }}">{{ link.title }}</a>
+            <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/{{ link.url }}">{{ link.title }}</a>
             {%- if link.sublinks -%}
-              <img class="navbar-arrow" src="{{site.url}}/{{ site.data.img.nav.arrow }}"/>
+              <img class="navbar-arrow" src="{{site.baseurl}}/{{ site.data.img.nav.arrow }}"/>
             {%- endif -%}
             <ul class="nav-submenu">
               {%- for sublink in link.sublinks -%}
@@ -42,7 +42,7 @@
                 {%- endif -%}
                     <a class="nav-link js-scroll-trigger" href="{{ sublink.url }}">{{ sublink.title }}</a>
                     {%- if sublink.subsublinks -%}
-                      <img class="navbar-arrow" height="20px" src="{{site.url}}/{{ site.data.img.nav.arrow }}"/>
+                      <img class="navbar-arrow" height="20px" src="{{site.baseurl}}/{{ site.data.img.nav.arrow }}"/>
                     {%- endif -%}
                     <ul class="nav-subsubmenu">
                     {%- for subsublink in sublink.subsublinks -%}
