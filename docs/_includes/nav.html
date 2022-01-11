@@ -22,7 +22,7 @@
         {%- for link in site.data.navigation.nav -%}
           <li class="nav-item nav-first-item">
           {%- if link.url -%}
-            <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/{{ link.url }}">{{ link.title }}</a>
+            <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/{{ link.url }}/index">{{ link.title }}</a>
             {%- if link.sublinks -%}
               <img class="navbar-arrow" src="{{site.baseurl}}/{{ site.data.img.nav.arrow }}"/>
             {%- endif -%}
@@ -40,7 +40,7 @@
                 {%- if link.title == "Environments" -%}
                   <li class="nav-subitem-4 nav-item">
                 {%- endif -%}
-                    <a class="nav-link js-scroll-trigger" href="{{ sublink.url }}">{{ sublink.title }}</a>
+                    <a class="nav-link js-scroll-trigger" href="{{site.baseurl}}/{{ link.url }}{{ sublink.url }}">{{ sublink.title }}</a>
                     {%- if sublink.subsublinks -%}
                       <img class="navbar-arrow" height="20px" src="{{site.baseurl}}/{{ site.data.img.nav.arrow }}"/>
                     {%- endif -%}
@@ -51,9 +51,9 @@
                         <!-- currently dont have icons for each gym, so this is commented out -->
                         <!-- <a class="icon-anchor" href="{{ subsublink.url }}"><img class="icon" src="{{ img_link }}"></a> -->
                         {%- if subsublink.alt_title -%}
-                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{ subsublink.url }}">{{ subsublink.alt_title }}</a>
+                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{site.baseurl}}/{{ link.url }}{{ sublink.url }}{{ subsublink.url }}">{{ subsublink.alt_title }}</a>
                         {%- else -%}
-                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{ subsublink.url }}">{{ subsublink.title }}</a>
+                          <a class="nav-link-icon nav-link js-scroll-trigger env-link" href="{{site.baseurl}}/{{ link.url }}{{ sublink.url }}{{ subsublink.url }}">{{ subsublink.title }}</a>
                         {%- endif -%}
                       </li>
                     {%- endfor -%}

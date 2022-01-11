@@ -34,19 +34,14 @@ timeline:
           image: environments/Box2D/bipedal_walker.jpg
           alt:
           align: left
-          link: environments/box2d
+          link: /environments/box2d
         - title: "Classic Control"
           desc: "Classic"
           image: environments/classic_control.gif
           alt:
           align: left
-          link: environments/classic_control
-        - title: "Classic"
-          desc: "Classical games including card games, board games, etc."
-          image: classic/classic_chess.gif
-          alt:
-          align: left
-          link: classic
+          link: /environments/classic_control
+
    
 
 about:

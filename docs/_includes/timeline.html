@@ -13,8 +13,8 @@
       <div class="env_row">
         {%- for event in row -%}
         <div class="img_entry gallery_entry env_entry">
-            <a href="{{ event.link }}">
-            <img  src="{{ event.image }}" alt="Card image">
+            <a href="{{site.baseurl}}{{ event.link }}">
+            <img src="{{ event.image }}" alt="Card image">
             </a>
         </div>
         {% endfor %}
