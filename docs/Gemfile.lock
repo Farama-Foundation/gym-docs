@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jekyll-agency (1.1.0)
+    gym (1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -287,7 +287,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   github-pages
-  jekyll-agency!
+  gym!
   rake (~> 13.0)
   webrick (~> 1.7)
 

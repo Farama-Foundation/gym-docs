@@ -1,70 +1,67 @@
-
-
-{% assign page_infos = '' | split: '' %}
-{% for page in site.pages %}
-  {% if page.url contains include.group %}
-  {% assign url_arr = page.url | split: "/" %}
-    {% if url_arr.size > 2 %}
-      {% assign underscore_name = url_arr[2] | split: "." %}
-      {% assign page_info = url_arr[1] | append:  "1" | append: underscore_name[0] | append:  "1" | append: page.title %}
-
-      {% assign page_info_arr = page_info | split: '12345'%}
-
-       {% assign page_infos = page_infos | concat: page_info_arr %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
-
-{% if include.cols %}
-{% assign cols = include.cols %}
-{% else %}
+<!-- number of columns -->
 {% assign cols = 3 %}
-{% endif %}
-
-<div class="selection-table">
 {% assign cur_idx = 0 %}
 {% assign max_idx = page_infos | size %}
 
-{% for page_info in page_infos %}
-  {% if cur_idx < max_idx %} <div class="env_row"> {% endif %}
-  {% for page_info in (1..cols) %}
+<!-- this splotch of liquid iterates through the array of environment
+types and forms them into a 2d array, where each row contains at most
+3 env types-->
 
-    {% if cur_idx < max_idx %}
-    {% assign item_arr = page_infos[cur_idx] | split: "1" %}
-    {% assign gif_url = "/" | append: item_arr[0] | append: "/" | append: item_arr[0] | append: "_" | append: item_arr[1] | append: ".gif" %}
-    {% assign link =   "/" | append: item_arr[0] | append: "/" |  append: item_arr[1] %}
-      <div class="img_entry gallery_entry env_entry">
-          <a href="{{ link }}">
-          <img  src="{{ gif_url }}" alt="Env image">
-          </a>
-      </div>
-    {% endif %}
-    {% assign cur_idx = cur_idx | plus: 1 %}
-  {% endfor %}
+<!-- instantiate two arrays -->
+{% assign rows = '' | split: '' %}
+{% assign cur_row = '' | split: '' %}
+{% assign pages = '' | split: '' %}
 
-  {% assign cur_idx = cur_idx | minus: cols %}
-  {% if cur_idx < max_idx %}   </div> <div class="env_row"> {% endif %}
-
-  {% for page_info in (1..cols) %}
-    {% if cur_idx < max_idx %}
-    {% assign item_arr = page_infos[cur_idx] | split: "1" %}
-      <div class="descrip_entry gallery_entry">
-        <div><h3 class="card-title horizontal_center"> {{ item_arr[2] }} </h3></div>
-      </div>
-    {% endif %}
-    {% assign cur_idx = cur_idx | plus: 1 %}
-    {% if cur_idx == max_idx %} </div> {% endif %}
-  {% endfor %}
-  {% if cur_idx < max_idx %} </div> {% endif %}
+{% for page in site.pages %}
+  {% if page.path contains include.group %}
+    {% unless page.path contains "index" %}
+      {% assign pages = pages | push: page %}
+    {% endunless %}
+  {% endif %}
 {% endfor %}
 
+<!-- iterate through environment types -->
+{% for page in pages %}
+  <!-- push current env class to cur_row-->
+  {% assign cur_row = cur_row | push: page %}
+  <!-- if there are 3 env types in cur_row, 
+  append this array to rows and clear it -->
+  {% if cur_row.size > 2 %}
+  <!-- append it -->
+    {% assign rows = rows | push: cur_row %}
+  <!-- clear it -->
+    {% assign cur_row = '' | split: '' %}
+  {% endif %}
+{% endfor %}
+<!-- push remaining row if it exists -->
+{% assign rows = rows | push: cur_row %}
+
+<div class="selection-table">
+<!-- displays multiple environment gifs together -->
+{% for row in rows %}
+  <div class="env_row">
+  {% for page in row %}
+    <!-- get file extension -->
+    {% assign file_extension = page.path | split: "." | last %}
+    {% assign link = page.path | split: "." | first %}
+    <!-- get gif path -->
+    {% assign gif_path = page.path | replace: file_extension, "jpg" %}
+    <div class="img_entry gallery_entry env_entry">
+        <a href="{{ link | relative_url}}">
+        <img src="{{ gif_path | relative_url}}" alt="Env image">
+        </a>
+    </div>
+  {% endfor %}
+  </div> 
+  <div class="env_row"> 
+  {% for page in row %}
+    <div class="descrip_entry gallery_entry">
+      <div><h3 class="card-title horizontal_center"> {{ page.title }} </h3></div>
+    </div>
+  {% endfor %}
+  </div>
+{% endfor %}
 </div>
 
-<!--
-<div class="bigtable" markdown="1">
-| Environment                                         | Actions  | Agents | Manual Control | Action Shape | Action Values | Observation Shape | Observation Values | {%if include.avg_rew %} Average Total Reward|{% endif %}
-|-----------------------------------------------------|----------|--------|----------------|--------------|---------------|-------------------|--------------------|{%if include.avg_rew %}---|{% endif %}
-{% for page in site.pages %}{% if page.url contains include.group %}{% assign url_arr = page.url | split: "/" %}{% if url_arr.size > 2 %}{% assign underscore_name = url_arr[2] | split: "." %}[{{page.title}}](/{{include.group}}{{underscore_name[0]}}) | {{page.actions}} | {{page.agents}} | {{page.manual-control}} | {{ page.action-shape }} | {{page.action-values}} | {{page.observation-shape}} | {{page.observation-values}} {%if include.avg_rew %}| {{ page.average-total-reward }}{% endif %}
-{% endif %}{% endif %}{% endfor %}
-</div>
--->
+
+

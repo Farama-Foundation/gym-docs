@@ -1,0 +1,94 @@
+- title: "GitHub"
+  path: ""
+
+- title: "API"
+  path: "/api"
+  sublinks:
+    - title: "Initializing Environments"
+      path: "#initializing-environments"
+
+    - title: "Interacting With Environments"
+      path: "#interacting-with-environments"
+
+    - title: "Additional Environment API"
+      path: "#additional-environment-api"
+
+    - title: "Vectorizing Environments"
+      path: "/vector"
+
+- title: "Environment Creation"
+  path: "/environment_creation"
+  sublinks:
+    - title: "Example Custom Environment"
+      path: "#example-custom-environment"
+
+    - title: "Example Custom Parallel Environment"
+      path: "#example-custom-parallel-environment"
+
+    - title: "Wrappers"
+      path: "#wrappers"
+
+    - title: "Developer Utils"
+      path: "#developer-utils"
+
+    - title: "Tests"
+      path: "#tests"
+
+- title: "Wrappers"
+  path: "/Wrappers"
+  sublinks:
+    - title: "Included Functions"
+      path: "#included-functions"
+
+    - title: "Included Multi-Agent Only Functions"
+      path: "#included-multi-agent-only-functions"
+
+    - title: "Environment Vectorization"
+      path: "/vectors/"
+
+    - title: "Lambda Functions"
+      path: "/Wrappers#lambda-functions"
+
+- title: "Environments"
+  path: "/environments"
+  sublinks:
+    - title: "Box2D"
+      desc: "Continuous control tasks in the Box2D simulator."
+      path: /box2d
+      image: ../environments/box2d/bipedal_walker.jpg
+      subsublinks:
+        - title: "Bipedal Walker"
+          path: "/bipedal_walker"
+        - title: "Car Racing"
+          path: "/car_racing"
+        - title: "Lunar Lander"
+          path: "/lunar_lander"
+    - title: "Classic Control"
+      desc: "Control theory problems from the classic RL literature."
+      path: /classic_control
+      subsublinks:
+        - title: "Acrobot"
+          path: "/acrobot"
+        - title: "Cartpole"
+          path: "/cartpole"
+      image: ../assets/img/aec/atari_basketball_pong_aec.svg
+    - title: "Atari"
+      desc: "Reach high scores in Atari 2600 games."
+      path: /atari
+      image: NONE
+    - title: "Mujoco"
+      desc: "Continuous control tasks, running in a fast physics simulator."
+      image: NONE
+      path: /mujoco
+    - title: "Toy Text"
+      desc: "Simple text environments to get you started."
+      path: /toy_text
+      image: NONE
+      
+- title: "Tutorials"
+  path: "/tutorials"
+
+- title: "Third Party Environments"
+  path: "/third_party_envs"
+
+

@@ -1,3 +1,31 @@
 ---
-layout: home
+layout: default
 ---
+{% include nav.html %}
+
+<section class="page-section home-container">
+    <div class="container">
+        <div class="row">
+            <div class="home-img">
+                <img class="home-img-style" src="{{site.data.general.header.gif}}"></img>
+            </div>
+        </div>
+        <div class="purple_rectangle">
+            <div class="row">
+                <div class="col-lg-12 text-center usage">
+                    <h2 class="section-heading">{{ site.data.general.header.title }}</h2>
+                    <h6 class="section-subheading mx-5 mb-3">{{ site.data.general.header.text }}</h6>
+                </div>
+            </div>
+            <div class="service-code">
+                <pre>
+                    <code>
+                        {{site.data.general.header.code}}
+                    </code> 
+                </pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+

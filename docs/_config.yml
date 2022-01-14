@@ -17,11 +17,12 @@ baseurl: "/gym-docs" # the subpath of your site, e.g. /blog
 title      : Gym
 email      : jkterry@gmail.com #this is also the email contact forms will go to
 description: "AI Gym"
-author     : Your Name
+author     : Jordan Terry
 copyright  : Farama Foundation
 logo:     #optional, defaults to site title
   path: assets/img/gym_logo_black.svg
   height: 100 #height in px, defaults to 52px
+github: https://github.com/Farama-Foundation/gym-docs
 
 analytics:
   google: #Google Analytics tracking code here
