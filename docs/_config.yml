@@ -28,9 +28,6 @@ github: https://github.com/Farama-Foundation/gym-docs
 analytics:
   google: #Google Analytics tracking code here
 
-collections:
-  portfolio:
-
 markdown: kramdown
 
 defaults:
