@@ -7,47 +7,17 @@
     - title: "Initializing Environments"
       path: "#initializing-environments"
 
-    - title: "Interacting With Environments"
-      path: "#interacting-with-environments"
-
     - title: "Additional Environment API"
       path: "#additional-environment-api"
 
     - title: "Vectorizing Environments"
-      path: "/vector"
+      path: "/vector/fuck"
 
-- title: "Environment Creation"
-  path: "/environment_creation"
-  sublinks:
-    - title: "Example Custom Environment"
-      path: "#example-custom-environment"
-
-    - title: "Example Custom Parallel Environment"
-      path: "#example-custom-parallel-environment"
-
-    - title: "Wrappers"
-      path: "#wrappers"
-
-    - title: "Developer Utils"
-      path: "#developer-utils"
-
-    - title: "Tests"
-      path: "#tests"
+- title: "Custom Environments"
+  path: "/custom_environments"
 
 - title: "Wrappers"
   path: "/Wrappers"
-  sublinks:
-    - title: "Included Functions"
-      path: "#included-functions"
-
-    - title: "Included Multi-Agent Only Functions"
-      path: "#included-multi-agent-only-functions"
-
-    - title: "Environment Vectorization"
-      path: "/vectors/"
-
-    - title: "Lambda Functions"
-      path: "/Wrappers#lambda-functions"
 
 - title: "Environments"
   path: "/environments"
