@@ -1,4 +1,5 @@
 - title: "GitHub"
+  # dont worry ab this, the path is in config :)
   path: ""
 
 - title: "API"
@@ -6,9 +7,18 @@
   sublinks:
     - title: "Initializing Environments"
       path: "#initializing-environments"
+    
+    - title: "Interacting with the Environment"
+      path: "#interacting-with-the-environment"
 
     - title: "Additional Environment API"
       path: "#additional-environment-api"
+
+    - title: "Unwrapping an Environment"
+      path: "#unwrapping-an-environment"
+
+    - title: "Vectorized Environment"
+      path: "#vectorized-environment"
 
     - title: "Vectorizing Environments"
       path: "/vector/fuck"
@@ -18,6 +28,17 @@
 
 - title: "Wrappers"
   path: "/wrappers"
+  sublinks:
+    - title: "Observation Wrappers"
+      path: "#observation-wrappers"
+    - title: "Action Wrappers"
+      path: "#action-wrappers"
+    - title: "Reward Wrappers"
+      path: "#reward-wrappers"
+    - title: "Lambda Wrappers"
+      path: "#lambda-wrappers"
+    - title: "Other"
+      path: "#other"
 
 - title: "Environments"
   path: "/environments"

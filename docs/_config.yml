@@ -16,12 +16,13 @@ baseurl: "/gym-docs" # the subpath of your site, e.g. /blog
 
 title      : Gym
 email      : jkterry@gmail.com #this is also the email contact forms will go to
-description: "AI Gym"
+description: "Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments"
 author     : Jordan Terry
 copyright  : Farama Foundation
 logo:     #optional, defaults to site title
-  path: assets/img/gym_logo_black.svg
+  path: assets/img/gym_logo_white.svg
   height: 100 #height in px, defaults to 52px
+favicon: /assets/img/favicon.png
 github: https://github.com/Farama-Foundation/gym-docs
 
 analytics:
@@ -36,7 +37,7 @@ defaults:
   - scope:
       path: ""
     values:
-      layout: docu
+      layout: default
       is_parallel: "True"
   -
     scope:

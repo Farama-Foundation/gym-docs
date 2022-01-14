@@ -2,72 +2,19 @@
 
 # central content on main page
 header:
-    title: Gym
-    text: Gym is a toolkit for developing and comparing reinforcement learning algorithms. It supports teaching agents everything from walking to playing games like Pong or Pinball
     # big image on front page
-    gif: pages/environments/box2d/bipedal_walker.jpg
+    gif: pages/environments/box2d/lunar_lander.jpg
     # example code snippet
-    code: code
+    code: | 
 
-timeline:
-    title: "Environments"
-    section: timeline
-    rows:
-      - - title: "Box2D"
-          desc: "Continuous control tasks in the Box2D simulator."
-          image: environments/Box2D/bipedal_walker.jpg
-          alt:
-          align: left
-          link: /environments/box2d
-        - title: "Control theory problems from the classic RL literature."
-          desc: "Classic"
-          image: environments/classic_control.gif
-          alt:
-          align: left
-          link: /environments/classic_control
-        - title: "Atari"
-          desc: "Reach high scores in Atari 2600 games."
-          image: environments/atari.gif
-          alt:
-          align: left
-          link: /environments/atari
-      - - title: "Mujoco"
-          desc: "Continuous control tasks, running in a fast physics simulator."
-          image: environments/Box2D/bipedal_walker.jpg
-          alt:
-          align: left
-          link: /environments/mujoco
-        - title: "Toy Text"
-          desc: "Simple text environments to get you started."
-          image: environments/Box2D/bipedal_walker.jpg
-          alt:
-          align: left
-          link: /environments/toy_text
+      import gym
+      env = gym.make("LunarLander-v2")
+      observation = env.reset()
+      for _ in range(1000)
+        env.render()
+        action = policy(observation)
+        observation, reward, done, info = env.step(action)
 
-   
-
-team:
-    title: "Get Started"
-    text: ""
-    subtext: ""
-    section: team
-    people:
-      - name: "Docs"
-        image: assets/img/doc_icon.svg
-        imglink: documentation
-      - name: "Github"
-        image: assets/img/github_icon.svg
-        imglink: https://github.com/Farama-Foundation/PettingZoo
-      - name: "Environments"
-        image: assets/img/environment_icon.svg
-        imglink: atari
-
-contact:
-    title: "Contact Us"
-    text: "Lorem ipsum or call 123456789"
-    section: contact
-
-footer:
-    easter_egg: "boo"
-
-# {{ site.data.sitetext.ex.ex | markdownify | default: example }}
+        if done
+          observation = env.reset()
+      env.close()

@@ -1,30 +1,14 @@
+<!-- the default layout throughout the site -->
 <!DOCTYPE html>
 <html>
-  <link rel="icon" href="favicon.png">
-  
-  <link rel="stylesheet" href="{{site.baseurl}}/assets/css/website.css">
-  {% include head.html %}
+<link rel="icon" href="{{site.favicon | relative_url}}">
 
-  <body class="zoom" id="page-top">
+{% include head.html %}
 
-      {{ content }}
-BASE
-{{site.baseurl}}
-BASE
-	  <!-- Bootstrap core JavaScript -->
-	  <script src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
-	  <script src="{{site.baseurl}}/assets/js/bootstrap.bundle.min.js"></script>
+{% include nav.html %}
 
-	  <!-- Plugin JavaScript -->
-	  <script src="{{site.baseurl}}/assets/js/jquery.easing.min.js"></script>
+<body class="zoom" id="page-top">
+	{{ content }}
+</body>
 
-	  <!-- Contact form JavaScript -->
-	  <script src="{{site.baseurl}}/assets/js/jqBootstrapValidation.js"></script>
-	  <script src="{{site.baseurl}}/assets/js/contact_me.js"></script>
-
-	  <!-- Custom scripts for this template -->
-	  <script src="{{site.baseurl}}/assets/js/agency.min.js"></script>
-	  <script src="{{site.baseurl}}/assets/js/app.js"></script>
-
-  </body>
 </html>

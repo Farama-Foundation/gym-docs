@@ -3,6 +3,10 @@
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
 .fa, .fab, .fad, .fal, .far, .fas {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -5776,7 +5780,7 @@
 }
 
 @font-face {
-    font-family: "Font Awesome 5 Brands";
+    /* font-family: "Font Awesome 5 Brands"; */
     font-style: normal;
     font-weight: normal;
     font-display: auto;
@@ -5785,11 +5789,11 @@
 }
 
 .fab {
-    font-family: "Font Awesome 5 Brands"
+    /* font-family: "Font Awesome 5 Brands" */
 }
 
 @font-face {
-    font-family: "Font Awesome 5 Free";
+    /* font-family: "Font Awesome 5 Free"; */
     font-style: normal;
     font-weight: 400;
     font-display: auto;
@@ -5802,7 +5806,7 @@
 }
 
 @font-face {
-    font-family: "Font Awesome 5 Free";
+    /* font-family: "Font Awesome 5 Free"; */
     font-style: normal;
     font-weight: 900;
     font-display: auto;
@@ -5811,7 +5815,7 @@
 }
 
 .fa, .far, .fas {
-    font-family: "Font Awesome 5 Free"
+    /* font-family: "Font Awesome 5 Free" */
 }
 
 .fa, .fas {

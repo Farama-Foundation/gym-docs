@@ -1,31 +1,54 @@
 ---
 layout: default
 ---
-{% include nav.html %}
 
-<section class="page-section home-container">
-    <div class="container">
-        <div class="row">
-            <div class="home-img">
-                <img class="home-img-style" src="{{site.data.general.header.gif}}"></img>
-            </div>
-        </div>
-        <div class="purple_rectangle">
+<section class="page-section home-container my-0 py-0 mb-3 ">
+    <div class="container-fluid my-0">
+        <div class="pt-4 mt-2 shadow" style="background: rgb(84, 70, 189);border-radius: 20px;">
             <div class="row">
-                <div class="col-lg-12 text-center usage">
-                    <h2 class="section-heading">{{ site.data.general.header.title }}</h2>
-                    <h6 class="section-subheading mx-5 mb-3">{{ site.data.general.header.text }}</h6>
+                <div class="col-6">
+                    <h1 class="mb-3 mx-5 text-left" style="color: white;font-weight: normal;">
+                    Gym is
+                    </h1>
+                    <h2 class="mb-3 mx-5 text-left" style="color: white;font-weight: normal;">
+                        <ul style="list-style-type:none;">
+                            <li class="mb-4">A standard API for reinforcement learning</li>
+                            <li class="mb-4">A communication protocol for policies and environments</li>
+                            <li class="mb-3">A diverse set of reference environments</li>
+                        </ul>
+                    </h2>
+                </div>
+                <div class="col-6">
+                    <div class="home-img">
+                        <img class="img-fluid" style="border-radius: 2%;border: 2px white solid;max-width: 90%;" src="{{site.data.general.header.gif}}"></img>
+                    </div>
                 </div>
             </div>
-            <div class="service-code">
-                <pre>
-                    <code>
-                        {{site.data.general.header.code}}
-                    </code> 
-                </pre>
+        </div>
+        
+    </div>
+</section>
+
+<section class="page-section home-container mt-5 mb-0 pt-0 pb-0">
+    <div class="container-fluid mx-2 px-5">
+        <div class="row">
+            <div class="col-6">
+                <div class="mt-0 mb-0 pl-4 shadow" style="background-color: #f6f8fa;">
+                        {% highlight python %}
+                            {{site.data.general.header.code}}
+                        {% endhighlight %}
+                </div>
+            </div>
+            <div class="col-5 offset-1 d-flex flex-column">
+                <h3 class="mb-auto">    
+                    The Gym interface is both robust and easy for beginners to understand
+                </h3>
+                <h3 class="mt-auto mb-3">
+                    100+ environments supported
+                </h3>
             </div>
         </div>
     </div>
 </section>
 
-
+{% include footer.html %}

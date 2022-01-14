@@ -47,7 +47,7 @@ background: grey
             <div class="env_row">
                 {%- for env_type in row -%}
                 <div class="img_entry gallery_entry env_entry">
-                    <a href="{{'environments' | append: env_type.path | relative_url}}">
+                    <a href="{{'pages/environments' | append: env_type.path | relative_url}}">
                         <img src="{{ env_type.image }}" alt="{{env_type.title}}">
                     </a>
                 </div>

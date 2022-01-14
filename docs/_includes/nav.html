@@ -20,10 +20,10 @@
           <li class="nav-item nav-first-item">
             {%- if page.path -%}
               {%- if page.title == "GitHub" -%}
-                <a class="nav-link js-scroll-trigger" href="{{site.github}}">Github</a>
+                <a class="nav-link js-scroll-trigger" style="font-weight: normal;" href="{{site.github}}">Github</a>
                 {% continue %}
               {%- endif -%}
-            <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/pages{{ page.path }}/index">{{ page.title }}</a>
+            <a class="nav-link js-scroll-trigger" style="font-weight: normal;" href="{{ site.baseurl }}/pages{{ page.path }}/index">{{ page.title }}</a>
             
             {%- if page.sublinks -%}
             <img class="navbar-arrow" src="{{ site.data.img.nav.arrow | relative_url}}" />
