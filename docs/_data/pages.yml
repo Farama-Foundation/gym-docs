@@ -17,7 +17,7 @@
   path: "/custom_environments"
 
 - title: "Wrappers"
-  path: "/Wrappers"
+  path: "/wrappers"
 
 - title: "Environments"
   path: "/environments"
