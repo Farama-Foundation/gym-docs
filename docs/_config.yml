@@ -18,7 +18,7 @@ title      : Gym
 email      : jkterry@gmail.com #this is also the email contact forms will go to
 description: "Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments"
 author     : Jordan Terry
-copyright  : Farama Foundation
+# copyright  : Farama Foundation
 logo:     #optional, defaults to site title
   path: assets/img/gym_logo_white.svg
   height: 100 #height in px, defaults to 52px

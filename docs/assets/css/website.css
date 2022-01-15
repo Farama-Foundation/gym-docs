@@ -443,7 +443,12 @@
         margin-left: 19vw;
     }
 }
-
+.copyright {
+    position: fixed;
+    bottom: 0;
+    z-index: 1030;
+    color: white;
+}
 @media (min-width:1440px) {
     .nav-first-item {
         width: 267px;
@@ -542,9 +547,9 @@
 }
 
 @media screen and (max-height: 600px) and (min-width: 860px) {
-    .copyright {
+    /* .copyright {
         visibility: hidden;
-    }
+    } */
     .navbar-nav {
         overflow-y: auto;
         overflow-x: hidden;
@@ -558,9 +563,9 @@
     .navbar-collapse li li li{
         left: 12vw;
     }
-    .copyright {
+    /* .copyright {
         visibility: hidden;
-    }
+    } */
     .zoom {
         zoom: .8;
     }
