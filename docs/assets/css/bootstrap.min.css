@@ -1818,7 +1818,7 @@ pre code {
 }
 
 select.form-control:focus::-ms-value {
-    color: #495057;
+    color: #1a538c;
     background-color: #fff
 }
 
@@ -1997,14 +1997,14 @@ textarea.form-control {
 }
 
 .custom-select.is-valid, .was-validated .custom-select:valid {
-    border-color: #28a745;
+    /* border-color: #28a745; */
     padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
     background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem)
 }
 
 .custom-select.is-valid:focus, .was-validated .custom-select:valid:focus {
-    border-color: #28a745;
-    box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
+    /* border-color: #28a745; */
+    /* box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25) */
 }
 
 .custom-select.is-valid~.valid-feedback, .custom-select.is-valid~.valid-tooltip, .was-validated .custom-select:valid~.valid-feedback, .was-validated .custom-select:valid~.valid-tooltip {
@@ -2016,7 +2016,7 @@ textarea.form-control {
 }
 
 .form-check-input.is-valid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label {
-    color: #28a745
+    /* color: #28a745 */
 }
 
 .form-check-input.is-valid~.valid-feedback, .form-check-input.is-valid~.valid-tooltip, .was-validated .form-check-input:valid~.valid-feedback, .was-validated .form-check-input:valid~.valid-tooltip {
@@ -2377,12 +2377,12 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
     color: #fff;
-    background-color: #1e7e34;
-    border-color: #1c7430
+    /* background-color: #1e7e34;
+    border-color: #1c7430 */
 }
 
 .btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .2rem rgba(72, 180, 97, .5)
+    /* box-shadow: 0 0 0 .2rem rgba(72, 180, 97, .5) */
 }
 
 .btn-info {

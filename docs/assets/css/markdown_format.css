@@ -400,7 +400,7 @@
 }
 
 .markdown-body .pl-ent {
-  color: #22863a;
+  /* color: #22863a; */
 }
 
 .markdown-body .pl-k {
@@ -442,7 +442,7 @@
 
 .markdown-body .pl-sr .pl-cce {
   font-weight: 700;
-  color: #22863a;
+  /* color: #22863a; */
 }
 
 .markdown-body .pl-ml {
@@ -472,7 +472,7 @@
 }
 
 .markdown-body .pl-mi1 {
-  color: #22863a;
+  /* color: #22863a; */
   background-color: #f0fff4;
 }
 
