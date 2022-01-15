@@ -1,5 +1,5 @@
 ---
-layout: "docu"
+layout: "env_side_display"
 title: "BipedalWalker-v2"
 actions: "Discrete"
 agents: "2"
