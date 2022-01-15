@@ -67,6 +67,11 @@
       desc: "Reach high scores in Atari 2600 games."
       path: /atari
       image: NONE
+      subsublinks:
+        - title: "Air Raid"
+          path: "/air_raid"
+        - title: "Alien"
+          path: "/alien"
     - title: "Mujoco"
       desc: "Continuous control tasks, running in a fast physics simulator."
       image: NONE
@@ -75,6 +80,9 @@
       desc: "Simple text environments to get you started."
       path: /toy_text
       image: NONE
+
+      
+    
       
 - title: "Tutorials"
   path: "/tutorials"
