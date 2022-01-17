@@ -1,9 +1,25 @@
-Pendulum-v1
 ---
-|Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
-| ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
-|Pendulum-v1|Box|(1,)|(-2.0,2.0)| Box |(3,)|[(-1.0,1.0), (-1.0,1.0), (-8.0,8.0)]||`from gym.envs.classic_control.pendulum import PendulumEnv`|
+layout: "env_side_display"
+title: "Pendulum-v1"
+action-type: "Box"
+action-shape: "(1,)"
+action-values: "(-2.0,2.0)"
+observation-type: "Box"
+observation-shape: "(3,)"
+observation-values: "[(-1.0,1.0), (-1.0,1.0), (-8.0,8.0)]"
+import: "from gym.envs.classic_control.pendulum import PendulumEnv"
 ---
+
+<div class="docu-info" markdown="1">
+{% include info_box.md %}
+</div>
+
+<div class="docu-content" markdown="1">
+<div class="appear_big env-title" markdown="1">
+{% include env_icon.md %}
+## {{page.title}}
+
+</div>
 
 ### Description
 
