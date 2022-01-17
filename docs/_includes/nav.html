@@ -1,0 +1,77 @@
+<!-- side nav bar -->
+<nav class="navbar navbar-expand-lg fixed-left" id="mainNav">
+  <div class="container shorten">
+    <div class="navbar-site-title">
+      <a class="navbar-brand" href="{{ site.baseurl }}/#">
+        <!-- big gym logo at top left -->
+        <img class="navbar-brand-img" src="{{ site.logo.path | relative_url }}" />
+      </a>
+      <!-- gym title right below -->
+      <div class="navbar-text">
+        <p>{{site.title}}</p>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="menu-btn">
+      <img class="menu-icon" src="{{ site.data.img.nav.menu | relative_url}}" />
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          {%- for page in site.data.pages -%}
+          <li class="nav-item nav-first-item">
+            {%- if page.path -%}
+              {%- if page.title == "GitHub" -%}
+                <a class="nav-link js-scroll-trigger" style="font-weight: normal;" href="{{site.github}}">Github</a>
+                {% continue %}
+              {%- endif -%}
+            <a class="nav-link js-scroll-trigger" style="font-weight: normal;" href="{{ site.baseurl }}/pages{{ page.path }}/index">{{ page.title }}</a>
+            
+            {%- if page.sublinks -%}
+            <img class="navbar-arrow" src="{{ site.data.img.nav.arrow | relative_url}}" />
+            {%- endif -%}
+            <ul class="nav-submenu">
+              {%- for sublink in page.sublinks -%}
+              <li class="nav-subitem-1 nav-item">
+                <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/pages{{ page.path }}{{ sublink.path }}">{{
+                  sublink.title }}</a>
+                {%- if sublink.subsublinks -%}
+                <img class="navbar-arrow" height="20px" src="{{ site.data.img.nav.arrow | relative_url }}" />
+                {%- endif -%}
+                <ul class="nav-subsubmenu">
+                  {%- for subsublink in sublink.subsublinks -%}
+                  <li class="nav-subsubitem nav-item">
+                    {% assign img_link = "/assets/img/icons/" | append: sublink.title | append: "/" | | append:
+                    subsublink.title | replace: " ", "" | replace: ":", "" | append: ".png" %}
+                    <!-- currently dont have icons for each gym, so this is commented out -->
+                    <!-- <a class="icon-anchor" href="{{ subsublink.url }}"><img class="icon" src="{{ img_link }}"></a> -->
+                    <a class="nav-link-icon nav-link js-scroll-trigger env-link"
+                      href="{{ site.baseurl }}/pages{{ page.path }}{{ sublink.path }}{{ subsublink.path }}">{{ subsublink.title
+                      }}</a>
+                  </li>
+                  {%- endfor -%}
+                </ul>
+              </li>
+              {%- endfor -%}
+            </ul>
+            {%- else if page.section -%}
+            <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/#{{ page.section }}">{{ page.title }}</a>
+            {%- else -%}
+            <a class="nav-link js-scroll-trigger" href="#">{{ page.title }}</a>
+            {%- endif -%}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ul class="navbar-nav mt-5">
+    <li class="nav-item nav-first-item text-center" style="position: fixed; border:none;
+    bottom: 5px;
+    z-index: 1030;
+    color: white;">Copyright &copy; {{ site.copyright }} {{ 'now' | date: "%Y" }}</li>
+  </ul>
+  <!-- <p class="mb-1 mx-auto d-none d-md-block nav-link" style="font-size: 0.75em;position: fixed;
+  bottom: 0;
+  z-index: 1030;
+  color: white;">Copyright &copy; {{ site.copyright }} {{ 'now' | date: "%Y" }}</p> -->
+</nav>

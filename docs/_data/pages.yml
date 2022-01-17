@@ -1,0 +1,93 @@
+- title: "GitHub"
+  # dont worry ab this, the path is in config :)
+  path: ""
+
+- title: "API"
+  path: "/api"
+  sublinks:
+    - title: "Initializing Environments"
+      path: "#initializing-environments"
+    
+    - title: "Interacting with the Environment"
+      path: "#interacting-with-the-environment"
+
+    - title: "Additional Environment API"
+      path: "#additional-environment-api"
+
+    - title: "Unwrapping an Environment"
+      path: "#unwrapping-an-environment"
+
+    - title: "Vectorized Environment"
+      path: "#vectorized-environment"
+
+    - title: "Vectorizing Environments"
+      path: "/vector/fuck"
+
+- title: "Custom Environments"
+  path: "/custom_environments"
+
+- title: "Wrappers"
+  path: "/wrappers"
+  sublinks:
+    - title: "Observation Wrappers"
+      path: "#observation-wrappers"
+    - title: "Action Wrappers"
+      path: "#action-wrappers"
+    - title: "Reward Wrappers"
+      path: "#reward-wrappers"
+    - title: "Lambda Wrappers"
+      path: "#lambda-wrappers"
+    - title: "Other"
+      path: "#other"
+
+- title: "Environments"
+  path: "/environments"
+  sublinks:
+    - title: "Box2D"
+      desc: "Continuous control tasks in the Box2D simulator."
+      path: /box2d
+      image: ../environments/box2d/bipedal_walker.jpg
+      subsublinks:
+        - title: "Bipedal Walker"
+          path: "/bipedal_walker"
+        - title: "Car Racing"
+          path: "/car_racing"
+        - title: "Lunar Lander"
+          path: "/lunar_lander"
+    - title: "Classic Control"
+      desc: "Control theory problems from the classic RL literature."
+      path: /classic_control
+      subsublinks:
+        - title: "Acrobot"
+          path: "/acrobot"
+        - title: "Cartpole"
+          path: "/cartpole"
+      image: ../assets/img/aec/atari_basketball_pong_aec.svg
+    - title: "Atari"
+      desc: "Reach high scores in Atari 2600 games."
+      path: /atari
+      image: NONE
+      subsublinks:
+        - title: "Air Raid"
+          path: "/air_raid"
+        - title: "Alien"
+          path: "/alien"
+    - title: "Mujoco"
+      desc: "Continuous control tasks, running in a fast physics simulator."
+      image: NONE
+      path: /mujoco
+    - title: "Toy Text"
+      desc: "Simple text environments to get you started."
+      path: /toy_text
+      image: NONE
+
+      
+    
+      
+- title: "Tutorials"
+  path: "/tutorials"
+
+- title: "Third Party Environments"
+  path: "/third_party_envs"
+
+

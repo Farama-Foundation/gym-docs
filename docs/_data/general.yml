@@ -1,0 +1,20 @@
+# contains general data that shouldnt be in config
+
+# central content on main page
+header:
+    # big image on front page
+    gif: pages/environments/box2d/lunar_lander.jpg
+    # example code snippet
+    code: | 
+
+      import gym
+      env = gym.make("LunarLander-v2")
+      observation = env.reset()
+      for _ in range(1000)
+        env.render()
+        action = policy(observation)
+        observation, reward, done, info = env.step(action)
+
+        if done
+          observation = env.reset()
+      env.close()
