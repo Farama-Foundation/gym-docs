@@ -2,7 +2,6 @@
 layout: env_selection
 title: Classic Control Environments
 ---
-<div class="selection-content" markdown="1">
 
 The unique dependencies for this set of environments can be installed via:
 
@@ -15,11 +14,3 @@ There are five classic control environments: Acrobot, CartPole, Mountain Car, Co
 Among Gym environments, this set of environments can be considered as easier ones to solve by a policy.
 
 All environments are highly configurable via arguments specified in each environment's documentation.
-
-</div>
-
-<div class="selection-table-container" markdown="1">
-## Classic Control
-
-{% include bigtable.html group="classic_control/" cols=3 %}
-</div>

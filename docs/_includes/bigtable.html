@@ -1,3 +1,5 @@
+<!-- display multiple environments in columns -->
+
 <!-- number of columns -->
 {% assign cols = 3 %}
 {% assign cur_idx = 0 %}
@@ -36,16 +38,26 @@ types and forms them into a 2d array, where each row contains at most
 <!-- push remaining row if it exists -->
 {% assign rows = rows | push: cur_row %}
 
-<div class="selection-table">
+<div class="selection-table mt-2">
 <!-- displays multiple environment gifs together -->
 {% for row in rows %}
   <div class="env_row">
   {% for page in row %}
+    
     <!-- get file extension -->
     {% assign file_extension = page.path | split: "." | last %}
     {% assign link = page.path | split: "." | first %}
+
     <!-- get gif path -->
-    {% assign gif_path = page.path | replace: file_extension, "jpg" %}
+    {% assign gif_path = page.path | replace: file_extension, "gif" %}
+
+    {% assign env_base_name = page.url | split: "/" %}
+    {% assign env_base_name = env_base_name[3] %}
+    
+    {% assign repl = env_base_name | append: "/videos" %}
+    
+    {% assign gif_path = gif_path | replace: env_base_name, repl %}
+    
     <div class="img_entry gallery_entry env_entry">
         <a href="{{ link | relative_url}}">
         <img src="{{ gif_path | relative_url}}" alt="Env image">
