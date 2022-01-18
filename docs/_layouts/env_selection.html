@@ -11,13 +11,15 @@ layout: default
 <div class="doccontainer selection-container" id="pagecontainer">
   <div class="markdown-body">
     <!-- display page text -->
-    <div class="selection-content" markdown="1">
+    <div class="selection-content mt-0 pt-0" markdown="1">
       <h1>{{page.title}}</h1>
       {{ content }}
     </div>
+    
     <!-- display environment gifs -->
     <div class="selection-table-container" markdown="1">
-      {% assign path = page.title | append: "/" | downcase %}
+      <h2>Environments</h2>
+      {% assign path = page.title | append: "/" | downcase | replace: " ", "_" %}
       {% include bigtable.html group=path cols=3 %}
     </div>
   </div>
