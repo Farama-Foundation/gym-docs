@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gym (1.0)
+    fantasia (1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -286,8 +286,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
+  fantasia!
   github-pages
-  gym!
   rake (~> 13.0)
   webrick (~> 1.7)
 
