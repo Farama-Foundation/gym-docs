@@ -72,6 +72,11 @@ the number of available modes and difficulty levels for different Atari games:
 |Amidar|1|2|
 |Assault|1|1|
 |Asterix|1|1|
+|Asteroids|32|1|
+|Atlantis|4|1|
+| BankHeist | 1       | 4              |
+
+
 
 
 ### Common Arguments
