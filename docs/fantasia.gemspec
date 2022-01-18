@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.name     = "gym"
+  spec.name     = "fantasia"
   spec.version  = "1.0"
   
   spec.authors  = ["Sander Schulhoff, Others..."]
