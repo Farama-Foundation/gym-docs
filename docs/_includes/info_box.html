@@ -1,0 +1,51 @@
+<!-- table of items for the env -->
+{% assign url_arr = page.url | split: "/" %}
+{% assign env_type = url_arr[3] %}
+
+<div class="floatright">
+
+    <a href="{{category_name}}_{{underscore_name}}.gif">
+        <img src="{{category_name}}_{{underscore_name}}.gif" alt="environment gif" />
+    </a>
+
+    This environment is part of the <a href="../{{env_type}}">{{env_type}} environments</a>.
+    Please read that page first for general information.
+
+    <table>
+        <tbody>
+            <tr>
+                <td>Import</td>
+                <td>
+                    <code>
+                        {{ page.import }}
+                    </code>
+                </td>
+            </tr>
+            <tr>
+                <td>Action Type</td>
+                <td>{{ page.action-type }}</td>
+            </tr>
+            <tr>
+                <td>Action Shape</td>
+                <td>{{ page.action-shape }}</td>
+            </tr>
+            <tr>
+                <td>Action Values</td>
+                <td>{{ page.action-values }}</td>
+            </tr>
+            <tr>
+                <td>Observation Type</td>
+                <td>{{ page.observation-type }}</td>
+            </tr>
+            <tr>
+                <td>Observation Shape</td>
+                <td>{{ page.observation-shape }}</td>
+            </tr>
+            <tr>
+                <td>Observation Values</td>
+                <td>{{ page.observation-values }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

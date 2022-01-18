@@ -1,5 +1,5 @@
 ---
-layout: "contents"
+layout: "env"
 title: Acrobot-v1
 ---
 

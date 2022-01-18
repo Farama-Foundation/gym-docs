@@ -1,5 +1,5 @@
 ---
-layout: "links"
+layout: "env"
 title: CarRacing-v0
 ---
 
