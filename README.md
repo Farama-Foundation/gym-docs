@@ -1,11 +1,10 @@
 # gym-docs
 Code for Gym documentation website
 
-# TODO 
-fix CNAME
-
-Follow md formatting of bipedal_walker.md
+Follow md formatting of pendulum.md
 
 environment files are in pages/environments/
 
+# TODO 
 Note that gifs have not yet been generated
+fix CNAME
