@@ -1,4 +1,3 @@
-<div class="selection-content" markdown="1">
 
 All toy text environments were created by us using native Python libraries such as StringIO. 
 
@@ -6,4 +5,3 @@ These environments are designed to be extremely simple, with small discrete stat
 
 All environments are configurable via arguments specified in each environment's documentation.
 
-</div>

@@ -1,8 +1,7 @@
 ---
 layout: env_selection
-title: Box2D Environments
+title: Box2D
 ---
-<div class="selection-content" markdown="1">
 
 The unique dependencies for this set of environments can be installed via:
 
@@ -14,10 +13,4 @@ There are five classic control environments: BipedalWalker, BipedalWalkerHardcor
 
 All environments are highly configurable via arguments specified in each environment's documentation.
 
-</div>
 
-<div class="selection-table-container" markdown="1">
-## Box2D
-
-{% include bigtable.html group="box2d/" cols=3 %}
-</div>

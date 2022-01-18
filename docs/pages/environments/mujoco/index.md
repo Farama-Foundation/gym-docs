@@ -2,7 +2,6 @@
 layout: env_selection
 title: Mujoco Environments
 ---
-<div class="selection-content" markdown="1">
 
 MuJoCo stands for Multi-Joint dynamics with Contact. It is a physics engine for faciliatating research and development in robotics, biomechanics, graphics and animation, and other areas where fast and accurate simulation is needed.
 
@@ -20,4 +19,3 @@ Among Gym environments, this set of environments can be considered as more diffi
 
 Environments can be configured by changing the XML files or by tweaking the parameters of their classes.
 
-</div>
