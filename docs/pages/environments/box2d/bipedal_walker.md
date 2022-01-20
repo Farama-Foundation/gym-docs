@@ -1,7 +1,7 @@
 ---
-layout: env
-title: BipedalWalker-v2
-action-type: Discrete
+layout: "env"
+title: "BipedalWalker-v3"
+action-type: "Discrete"
 agents: "2"
 manual-control: "No"
 action-shape: "(1,)"
@@ -41,7 +41,16 @@ Reward is given for moving forward, total 300+ points up to the far end. If the 
 ### Episode Termination
 
 ### Arguments
+To use to the _hardcore_ environment, you need to specify the `hardcore=True` argument like below:
+```python
+import gym
+env = gym.make("BipedalWalker-v3", hardcore=True)
+```
 
 ### Version History
+- v3:
+- v2:
+- v1:
+- v0:
 
-### References
+<!-- ### References -->
