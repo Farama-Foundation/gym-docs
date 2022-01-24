@@ -75,6 +75,9 @@ the number of available modes and difficulty levels for different Atari games:
 |Asteroids|32|1|
 |Atlantis|4|1|
 | BankHeist | 1       | 4              |
+| BattleZone | 4       |1|
+| BeamRider | 1       | 2              |
+| Berzerk | 10      |1|
 
 
 
