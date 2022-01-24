@@ -1,3 +1,8 @@
+---
+layout: "contents"
+title: Spaces
+---
+
 # Spaces
 
 Spaces define the valid format of observation and action spaces for an environment. The following spaces are provided:
