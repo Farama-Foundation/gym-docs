@@ -31,7 +31,7 @@
             <ul class="nav-submenu">
               {%- for sublink in page.sublinks -%}
               <li class="nav-subitem-1 nav-item">
-                <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/pages{{ page.path }}{{ sublink.path }}">{{
+                <a style="font-weight: normal;" class="nav-link js-scroll-trigger" href="{{ site.baseurl }}/pages{{ page.path }}{{ sublink.path }}">{{
                   sublink.title }}</a>
                 {%- if sublink.subsublinks -%}
                 <img class="navbar-arrow" height="20px" src="{{ site.data.img.nav.arrow | relative_url }}" />
@@ -43,7 +43,7 @@
                     subsublink.title | replace: " ", "" | replace: ":", "" | append: ".png" %}
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href="{{ subsublink.url }}"><img class="icon" src="{{ img_link }}"></a> -->
-                    <a class="nav-link-icon nav-link js-scroll-trigger env-link"
+                    <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
                       href="{{ site.baseurl }}/pages{{ page.path }}{{ sublink.path }}{{ subsublink.path }}">{{ subsublink.title
                       }}</a>
                   </li>

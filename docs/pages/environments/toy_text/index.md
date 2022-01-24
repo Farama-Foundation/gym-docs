@@ -1,3 +1,7 @@
+---
+layout: env_selection
+title: Mujoco Environments
+---
 
 All toy text environments were created by us using native Python libraries such as StringIO. 
 

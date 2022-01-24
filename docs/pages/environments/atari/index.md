@@ -2,7 +2,6 @@
 layout: env_selection
 title: Atari Environments
 ---
-<div class="selection-content" markdown="1">
 
 Atari environments are simulated via the Arcade Learning Environment (ALE) [[1]](#1). 
 ### Action Space
@@ -149,4 +148,3 @@ Machado et al.
 and Open Problems for General Agents"  
 Journal of Artificial Intelligence Research (2018)  
 URL: https://jair.org/index.php/jair/article/view/11182  
-</div>
