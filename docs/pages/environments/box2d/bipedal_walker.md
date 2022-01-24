@@ -1,7 +1,7 @@
 ---
-layout: "env"
-title: "BipedalWalker-v2"
-action-type: "Discrete"
+layout: env
+title: BipedalWalker-v2
+action-type: Discrete
 agents: "2"
 manual-control: "No"
 action-shape: "(1,)"
