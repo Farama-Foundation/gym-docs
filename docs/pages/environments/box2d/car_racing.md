@@ -1,6 +1,14 @@
 ---
 layout: "env"
-title: CarRacing-v0
+title: "CarRacing-v0"
+action-type: "Discrete"
+agents: "2"
+manual-control: "No"
+action-shape: "(4,)"
+action-values: "[-1, 1]"
+observation-shape: "(24,)"
+observation-values: "[-1, 1]"
+import: "from gym.envs.box2d.bipedal_walker import BipedalWalker"
 ---
 
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
