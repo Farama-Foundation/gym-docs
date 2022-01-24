@@ -1,0 +1,18 @@
+<!-- split by sublink -->
+{% assign headers = "" | split: "" %}
+{% assign links = "" | split: "" %}
+{% assign sub_split = include.target_page | split: "##" %}
+{% assign lim = sub_split.size | minus: 2 %}
+{% for item in sub_split limit:lim offset:1 %}
+    {% assign header = item | split: "\n" | first | lstrip %}
+    {% assign link = header | downcase | replace: " ", "_" %}
+    {% assign headers = headers | push: header %}
+    {% assign links = links | push: link %}
+{% endfor %}
+
+  <!-- split by sublink -->
+  {% for page in site.pages %}
+  {% if page.title == "Environments" %}
+  {{page}}
+  {% endif %}
+{% endfor %}
