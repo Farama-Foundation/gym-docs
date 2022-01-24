@@ -3,7 +3,7 @@
 # central content on main page
 header:
     # big image on front page
-    gif: pages/environments/box2d/lunar_lander.jpg
+    gif: pages/environments/box2d/videos/lunar_lander.gif
     # example code snippet
     code: | 
 
