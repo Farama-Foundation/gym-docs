@@ -37,15 +37,15 @@ for env_spec in gym.envs.registry.all():
 
         front_matter+= "grid:\n"
 
-        front_matter+= f"   - Action Space={env.action_space}\n"
+        front_matter+= f"   - Action Space: {env.action_space}\n"
 
-        front_matter+= f"   - Observation Shape={env.observation_space.shape}\n"
+        front_matter+= f"   - Observation Shape: {env.observation_space.shape}\n"
 
-        front_matter+= f"   - Observation High={np.round(env.observation_space.high, 2)}\n"
+        front_matter+= f"   - Observation High: {np.round(env.observation_space.high, 2)}\n"
 
-        front_matter+= f"   - Observation Low={np.round(env.observation_space.low, 2)}\n"
+        front_matter+= f"   - Observation Low: {np.round(env.observation_space.low, 2)}\n"
 
-        front_matter+= f"   - Import=gym.make(\"{env_spec.id}\")\n"
+        front_matter+= f"   - Import: gym.make(\"{env_spec.id}\")\n"
         # from gym.envs.box2d.bipedal_walker import BipedalWalker
 
         print(front_matter)
