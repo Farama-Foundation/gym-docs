@@ -61,6 +61,5 @@ env = gym.make("LunarLander-v2", continuous=True)
 ### Version History
 - v2:
 - v1:
-- v0:
 
 <!-- ### References -->

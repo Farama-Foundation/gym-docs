@@ -3,18 +3,13 @@ layout: "env"
 title: "CarRacing-v0"
 action-type: "Discrete"
 agents: "2"
-manual-control: "No"
-action-shape: "(4,)"
+manual-control: "Yes"
+action-shape: "(3,)"
 action-values: "[-1, 1]"
-observation-shape: "(24,)"
-observation-values: "[-1, 1]"
-import: "from gym.envs.box2d.bipedal_walker import BipedalWalker"
+observation-shape: "(96, 96, 3)"
+observation-values: "[0, 255]"
+import: "from gym.envs.box2d.car_racing import CarRacing"
 ---
-
-|Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
-| ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
-|CarRacing-v0||| |||| |`from gym.envs.box2d.car_racing import CarRacing`|
-
 
 ### Description
 Easiest continuous control task to learn from pixels, a top-down racing environment.
@@ -32,21 +27,25 @@ Remember it's a powerful rear-wheel drive car - don't press the accelerator and 
 ![CarRacing Episode Example](./car_racing.jpg)
 
 ### Action Space
+There are 3 actions: steering (-1 is full left, +1 is full right), gas, and breaking.
 
 ### Observation Space
 State consists of 96x96 pixels.
 
 ### Rewards
-The reward is -0.1 every frame and +1000/N for every track tile visited, where N is the total number of tiles visited in the track. For example, if you have finished in 732 frames, your reward is 1000 - 0.1*732 = 926.8 points. 
+The reward is -0.1 every frame and +1000/N for every track tile visited, where N is the total number of tiles visited in the track. For example, if you have finished in 732 frames, your reward is 1000 - 0.1*732 = 926.8 points.
 
 ### Starting State
+The car starts stopped at the center of the road.
 
 ### Episode Termination
 The episode finishes when all the tiles are visited. The car also can go outside of the playfield - that is far off the track, then it will get -100 and die.
 
 ### Arguments
+There are no arguments supported in constructing the environment.
 
 ### Version History
+- v0: current version
 
 ### References
 - Chris Campbell (2014), http://www.iforce2d.net/b2dtut/top-down-car.
