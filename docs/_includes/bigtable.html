@@ -14,18 +14,18 @@ types and forms them into a 2d array, where each row contains at most
 {% assign cur_row = '' | split: '' %}
 {% assign pages = '' | split: '' %}
 
-{% for page in site.pages %}
-  {% if page.path contains include.group %}
-    {% unless page.path contains "index" %}
-      {% assign pages = pages | push: page %}
+{% for p in site.pages %}
+  {% if p.path contains include.group %}
+    {% unless p.path contains "index" %}
+      {% assign pages = pages | push: p %}
     {% endunless %}
   {% endif %}
 {% endfor %}
 
 <!-- iterate through environment types -->
-{% for page in pages %}
+{% for p in pages %}
   <!-- push current env class to cur_row-->
-  {% assign cur_row = cur_row | push: page %}
+  {% assign cur_row = cur_row | push: p %}
   <!-- if there are 3 env types in cur_row, 
   append this array to rows and clear it -->
   {% if cur_row.size > 2 %}
@@ -42,16 +42,16 @@ types and forms them into a 2d array, where each row contains at most
 <!-- displays multiple environment gifs together -->
 {% for row in rows %}
   <div class="env_row">
-  {% for page in row %}
+  {% for p in row %}
     
     <!-- get file extension -->
-    {% assign file_extension = page.path | split: "." | last %}
-    {% assign link = page.path | split: "." | first %}
+    {% assign file_extension = p.path | split: "." | last %}
+    {% assign link = p.path | split: "." | first %}
 
     <!-- get gif path -->
-    {% assign gif_path = page.path | replace: file_extension, "gif" %}
+    {% assign gif_path = p.path | replace: file_extension, "gif" %}
 
-    {% assign env_base_name = page.url | split: "/" %}
+    {% assign env_base_name = p.url | split: "/" %}
     {% assign env_base_name = env_base_name[3] %}
     
     {% assign repl = env_base_name | append: "/videos" %}
@@ -66,7 +66,7 @@ types and forms them into a 2d array, where each row contains at most
   {% endfor %}
   </div> 
   <div class="env_row"> 
-  {% for page in row %}
+  {% for p in row %}
     <div class="descrip_entry gallery_entry">
       <div><h3 class="card-title horizontal_center"> {{ page.title }} </h3></div>
     </div>
