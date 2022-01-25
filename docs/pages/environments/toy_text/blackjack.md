@@ -1,9 +1,10 @@
-Blackjack
+---
+layout: env
+title: Blackjack
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------| ----------- | -----------| ----------- | -----------|
 |Blackjack|Discrete|(1,)|(0,1)|(3,)|[(0,31),(0,10),(0,1)]| |`from gym.envs.toy_text import blackjack`|
----
 
 Blackjack is a card game where the goal is to obtain cards that sum to as near as possible to 21 without going over.  They're playing against a fixed dealer.
 

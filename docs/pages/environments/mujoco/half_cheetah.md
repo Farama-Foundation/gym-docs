@@ -1,9 +1,14 @@
-HalfCheetah
+---
+layout: env
+title: HalfCheetah-v3
+grid:
+    - Action Space: Continuous (6,)
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
 |HalfCheetah-v3,HalfCheetah-v2|Continuous|(6,)|[-1,1], [-1,1], [-1,1], [-1,1], [-1,1], [-1,1]| Box |(17,)|[(-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf)]| |`from gym.envs.mujoco import half_cheetah`|
----
+
+
 
 ### Description
 

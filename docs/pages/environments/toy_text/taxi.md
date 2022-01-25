@@ -1,9 +1,10 @@
-Taxi
+---
+layout: env
+title: Taxi
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------| ----------- | -----------| ----------- | -----------|
 |Taxi|Discrete|(1,)|(0,5)|(1,)|(0,499)| |from gym.envs.toy_text import taxi|
----
 
 
 The Taxi Problem
