@@ -108,24 +108,3 @@ If you have a wrapped environment, and you want to get the unwrapped environment
 ```python
 base_env = env.unwrapped
 ```
-
-### Vectorized Environment
-Vectorized Environments are a way of stacking multiple independent environments, so that instead of training on one environment, our agent can train on multiple environments at a time. Each `observation` returned from a vectorized environment is a batch of observations for each sub-environment, and `step` is also expected to receive a batch of actions for each sub-environment.
-
-**NOTE:** All sub-environments should share the identical observation and action spaces. A vector of multiple different environments is not supported
-
-Gym Vector API consists of two types of vectorized environments:
-
-- `AsyncVectorEnv` runs multiple environments in parallel. It uses `multiprocessing` processes, and pipes for communication.
-- `SyncVectorEnv`runs multiple environments serially
-
-```python
-import gym
-env = gym.vector.make('CartPole-v1', 3,asynchronous=True)  # Creates an Asynchronous env
-env.reset()
-#> array([[-0.04456399, 0.04653909, 0.01326909, -0.02099827],
-#> [ 0.03073904, 0.00145001, -0.03088818, -0.03131252],
-#> [ 0.03468829, 0.01500225, 0.01230312, 0.01825218]],
-#> dtype=float32)
-
-```

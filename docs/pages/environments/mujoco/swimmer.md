@@ -1,9 +1,10 @@
-Swimmer
+---
+layout: env
+title: Swimmer-v3
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
 |Swimmer-v3, Swimmer-v2|Continuous|(2,)|[-1,1], [-1,1]| Box |(8,)|[(-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf)]| |`from gym.envs.mujoco import swimmer`|
----
 
 ### Description
 

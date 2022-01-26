@@ -13,7 +13,6 @@ types and forms them into a 2d array, where each row contains at most
 {% assign rows = '' | split: '' %}
 {% assign cur_row = '' | split: '' %}
 {% assign pages = '' | split: '' %}
-
 {% for p in site.pages %}
   {% if p.path contains include.group %}
     {% unless p.path contains "index" %}
@@ -46,6 +45,7 @@ types and forms them into a 2d array, where each row contains at most
     
     <!-- get file extension -->
     {% assign file_extension = p.path | split: "." | last %}
+    {% assign title = p.path | replace: file_extension, "" |split: "/" | last | replace: ".", "" %}
     {% assign link = p.path | split: "." | first %}
 
     <!-- get gif path -->
@@ -68,7 +68,7 @@ types and forms them into a 2d array, where each row contains at most
   <div class="env_row"> 
   {% for p in row %}
     <div class="descrip_entry gallery_entry">
-      <div><h3 class="card-title horizontal_center"> {{ page.title }} </h3></div>
+      <div><h3 class="card-title horizontal_center"> {{ p.title }} </h3></div>
     </div>
   {% endfor %}
   </div>

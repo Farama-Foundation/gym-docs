@@ -14,22 +14,28 @@ pattern = re.compile(r'(?<!^)(?=[A-Z])')
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in gym.envs.registry.all():
-    
+    if env_spec.id != "LunarLanderContinuous-v2":
+        continue
     try:
         env = gym.make(env_spec.id)
-    
-    
+
         if not "rgb_array" in env.metadata["render.modes"]:
             continue
         
         # extract env name/type from class path
         split = str(type(env.unwrapped)).split(".")
 
-        env_name = split[3]
+        env_name = env_spec.id.split("-")[0]
+        env_name = pattern.sub('_', env_name).lower()
         env_type = split[2]
-        if env_name == "environment":
+
+        # if its an atari gym
+        if env_spec.id[0:3] == "ALE":
+            continue
             env_name = env_spec.id.split("-")[0][4:] 
             env_name = pattern.sub('_', env_name).lower()
+
+        print(env_name)
         # path for saving video
         v_path = os.path.join("..", "pages", "environments", env_type, "videos")
         if not path.isdir(v_path):

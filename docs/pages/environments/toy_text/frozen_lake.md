@@ -1,9 +1,10 @@
-Frozen Lake
+---
+layout: env
+title: Frozen Lake
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------| ----------- | -----------| ----------- | -----------|
 |Frozen Lake|Discrete|(1,)|(0,3)|(1,)|(0,nrows*ncolumns)| |from gym.envs.toy_text import frozen_lake|
----
 
 
 Frozen lake involves crossing a frozen lake from Start(S) to goal(G) without falling into any holes(H). The agent may not always move in the intended direction due to the slippery nature of the frozen lake.

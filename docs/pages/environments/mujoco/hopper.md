@@ -1,9 +1,11 @@
-Hopper
+---
+layout: env
+title: Hopper-v3
 ---
 |Title|Action Type|Action Shape|Action Values|Observation Type| Observation Shape|Observation Values|Average Total Reward|Import|
 | ----------- | -----------| ----------- | -----------|-----------| ----------- | -----------| ----------- | -----------|
 |Hopper-v3, Hopper-v2|Continuous|(3,)|[-1,1], [-1,1], [-1,1]| Box |(11,)|[(-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf), (-inf,inf), (-inf,inf), (-inf,inf), (-inf, inf)]| |`from gym.envs.mujoco import hopper`|
----
+
 
 ### Description
 

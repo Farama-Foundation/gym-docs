@@ -1,6 +1,6 @@
 ---
 layout: env_selection
-title: Atari Environments
+title: Atari
 ---
 
 Atari environments are simulated via the Arcade Learning Environment (ALE) [[1]](#1). 
