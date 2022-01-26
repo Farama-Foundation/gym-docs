@@ -80,7 +80,7 @@
        path: "/half_cheetah"
    - title: "Classic Control"
      path: "/classic_control"
-     image: ../environments/classic_control/videos/cartpole.gif
+     image: ../environments/classic_control/videos/cart_pole.gif
      subsublinks: 
      - title: "Mountain Car"
        path: "/mountain_car"

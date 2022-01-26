@@ -8,13 +8,6 @@ p {
   line-height: 1.75;
 }
 
-a {
-  color: $primary;
-  &:hover {
-    color: darken($primary, 10%);
-  }
-}
-
 .text-primary {
   color: $primary !important;
 }
