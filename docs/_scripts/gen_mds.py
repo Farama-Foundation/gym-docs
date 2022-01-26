@@ -39,7 +39,7 @@ for env_spec in gym.envs.registry.all():
         # env_name = env.unwrapped.__class__.__name__
         env_type = split[2]
         print(env_type)
-        if env_type == "atari" or env_type == "mujoco":
+        if env_type == "atari" or env_type == "mujoo":
             continue
         # print(title_env_name)
 
