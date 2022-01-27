@@ -18,8 +18,6 @@
 - title: Vector API
   path: /vector_api
   sublinks: 
-    - title: "Vectorized Environment"
-      path: "#vectorized-environment"
     - title: "Vectorized Environments"
       path: "#vectorized-environments"
     - title: "Creating a vectorized environment"
@@ -34,8 +32,20 @@
       path: "#shared-memory"
     - title: "Exception handling"
       path: "#exception-handling"
+    - title: "Advanced Usage"
+      path: "#advanced-usage"
     - title: "Custom spaces"
       path: "#custom-spaces"
+    - title: "API Reference"
+      path: "#api-reference"
+    - title: "VectorEnv"
+      path: "#vectorenv"
+    - title: "Reset"
+      path: "#reset"
+    - title: "Step"
+      path: "#step"
+    - title: "Seed"
+      path: "#seed"
 
 - title: Environments
   path: /environments
@@ -44,14 +54,28 @@
      path: "/toy_text"
      image: ../environments/toy_text/videos/blackjack.gif
      subsublinks: 
+     - title: "Roulette"
+       path: "/roulette"
      - title: "Blackjack"
        path: "/blackjack"
+     - title: "Cliff Walking"
+       path: "/cliff_walking"
+     - title: "Hotter Colder"
+       path: "/hotter_colder"
+     - title: "Kelly Coinflip Generalized"
+       path: "/kelly_coinflip_generalized"
+     - title: "Kelly Coinflip"
+       path: "/kelly_coinflip"
+     - title: "Frozen Lake8X8"
+       path: "/frozen_lake8x8"
      - title: "Frozen Lake"
        path: "/frozen_lake"
-     - title: "Cliffwalking"
-       path: "/cliffwalking"
      - title: "Taxi"
        path: "/taxi"
+     - title: "N Chain"
+       path: "/n_chain"
+     - title: "Guessing Game"
+       path: "/guessing_game"
    - title: "Atari"
      path: "/atari"
      image: ../environments/atari/videos/rix_deterministic.gif
@@ -60,8 +84,6 @@
        path: "/asterix"
      - title: "Amidar"
        path: "/amidar"
-     - title: "Yars Revenge"
-       path: "/yars_revenge"
      - title: "Assault"
        path: "/assault"
      - title: "Air Raid"
@@ -72,10 +94,28 @@
      path: "/mujoco"
      image: ../environments/mujoco/videos/hopper.gif
      subsublinks: 
+     - title: "Humanoid Standup"
+       path: "/humanoid_standup"
+     - title: "Thrower"
+       path: "/thrower"
      - title: "Hopper"
        path: "/hopper"
+     - title: "Walker2D"
+       path: "/walker2d"
      - title: "Swimmer"
        path: "/swimmer"
+     - title: "Inverted Double Pendulum"
+       path: "/inverted_double_pendulum"
+     - title: "Inverted Pendulum"
+       path: "/inverted_pendulum"
+     - title: "Humanoid"
+       path: "/humanoid"
+     - title: "Pusher"
+       path: "/pusher"
+     - title: "Ant"
+       path: "/ant"
+     - title: "Striker"
+       path: "/striker"
      - title: "Half Cheetah"
        path: "/half_cheetah"
    - title: "Classic Control"
@@ -84,14 +124,12 @@
      subsublinks: 
      - title: "Mountain Car"
        path: "/mountain_car"
-     - title: "Cartpole"
-       path: "/cartpole"
      - title: "Pendulum"
        path: "/pendulum"
      - title: "Acrobot"
        path: "/acrobot"
-     - title: "Continuous Mountain Car"
-       path: "/continuous_mountain_car"
+     - title: "Cart Pole"
+       path: "/cart_pole"
    - title: "Box2D"
      path: "/box2d"
      image: ../environments/box2d/videos/bipedal_walker.gif
@@ -299,7 +337,6 @@
       path: "#virtualtaobao"
 
 #AUTOGENERATION ENDED
-
 - title: "Tutorials"
   path: "/tutorials"
 
