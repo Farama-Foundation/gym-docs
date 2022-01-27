@@ -25,7 +25,7 @@ for env_spec in gym.envs.registry.all():
 
         # varients dont get their own pages
         e_n = str(env_spec).lower()
-        if "continuous" in e_n or "hardcore" in e_n:
+        if "hardcore" in e_n:
             continue
         
         # print(type(en))

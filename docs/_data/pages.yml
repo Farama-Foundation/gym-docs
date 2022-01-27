@@ -130,14 +130,18 @@
        path: "/acrobot"
      - title: "Cart Pole"
        path: "/cart_pole"
+     - title: "Mountain Car Continuous"
+       path: "/mountain_car_continuous"
    - title: "Box2D"
      path: "/box2d"
-     image: ../environments/box2d/videos/bipedal_walker.gif
+     image: ../environments/box2d/videos/lunar_lander_continuous.gif
      subsublinks: 
      - title: "Lunar Lander"
        path: "/lunar_lander"
      - title: "Bipedal Walker"
        path: "/bipedal_walker"
+     - title: "Lunar Lander Continuous"
+       path: "/lunar_lander_continuous"
      - title: "Car Racing"
        path: "/car_racing"
 - title: Environment Creation
@@ -154,17 +158,6 @@
 
 - title: Wrappers
   path: /wrappers
-  sublinks: 
-    - title: "Observation Wrappers"
-      path: "#observation-wrappers"
-    - title: "Action Wrappers"
-      path: "#action-wrappers"
-    - title: "Reward Wrappers"
-      path: "#reward-wrappers"
-    - title: "Lambda Wrappers"
-      path: "#lambda-wrappers"
-    - title: "Other"
-      path: "#other"
 
 - title: Spaces
   path: /spaces
@@ -337,6 +330,7 @@
       path: "#virtualtaobao"
 
 #AUTOGENERATION ENDED
+
 - title: "Tutorials"
   path: "/tutorials"
 

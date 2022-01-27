@@ -14,8 +14,7 @@ pattern = re.compile(r'(?<!^)(?=[A-Z])')
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in gym.envs.registry.all():
-    if env_spec.id != "LunarLanderContinuous-v2":
-        continue
+
     try:
         env = gym.make(env_spec.id)
 
@@ -55,7 +54,9 @@ for env_spec in gym.envs.registry.all():
                 break
 
         env.close()
-        frames[0].save(os.path.join(v_path, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
+        print(os.exists(os.path.join(v_path, env_name + ".gif")))
+        if not os.exists(os.path.join(v_path, env_name + ".gif")):
+            frames[0].save(os.path.join(v_path, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
     except:
         continue
 
