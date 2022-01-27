@@ -2,27 +2,8 @@
 layout: "contents"
 title: Vector API
 ---
-### Vectorized Environment
-Vectorized Environments are a way of stacking multiple independent environments, so that instead of training on one environment, our agent can train on multiple environments at a time. Each `observation` returned from a vectorized environment is a batch of observations for each sub-environment, and `step` is also expected to receive a batch of actions for each sub-environment.
 
-**NOTE:** All sub-environments should share the identical observation and action spaces. A vector of multiple different environments is not supported
-
-Gym Vector API consists of two types of vectorized environments:
-
-- `AsyncVectorEnv` runs multiple environments in parallel. It uses `multiprocessing` processes, and pipes for communication.
-- `SyncVectorEnv`runs multiple environments serially
-
-```python
-import gym
-env = gym.vector.make('CartPole-v1', 3,asynchronous=True)  # Creates an Asynchronous env
-env.reset()
-#> array([[-0.04456399, 0.04653909, 0.01326909, -0.02099827],
-#> [ 0.03073904, 0.00145001, -0.03088818, -0.03131252],
-#> [ 0.03468829, 0.01500225, 0.01230312, 0.01825218]],
-#> dtype=float32)
-
-```
-
+# Vector API
 
 ## Vectorized Environments
 
@@ -38,6 +19,7 @@ Similar to `gym.make`, you can run a vectorized version of a registered environm
 
 The following example runs 3 copies of the ``CartPole-v1`` environment in parallel, taking as input a vector of 3 binary actions (one for each sub-environment), and returning an array of 3 observations stacked along the first dimension, with an array of rewards returned by each sub-environment, and an array of booleans indicating if the episode in each sub-environment has ended.
 
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     >>> actions = np.array([1, 0, 1])
@@ -54,7 +36,7 @@ The following example runs 3 copies of the ``CartPole-v1`` environment in parall
     array([False, False, False])
     >>> infos
     ({}, {}, {})
-
+```
 
     The function `gym.vector.make` is meant to be used only in basic cases (e.g. running multiple copies of the same registered environment). For any other use-cases, please use either the `SyncVectorEnv` for sequential execution, or `AsyncVectorEnv` for parallel execution. These use-cases may include:
 
@@ -68,36 +50,37 @@ The following example runs 3 copies of the ``CartPole-v1`` environment in parall
 
 To create a vectorized environment that runs multiple sub-environments, you can wrap your sub-environments inside `gym.vector.SyncVectorEnv` (for sequential execution), or `gym.vector.AsyncVectorEnv` (for parallel execution, with [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)). These vectorized environments take as input a list of callable specifying how the sub-environments are created.
 
-
+```python
     >>> envs = gym.vector.AsyncVectorEnv([
     ...     lambda: gym.make("CartPole-v1"),
     ...     lambda: gym.make("CartPole-v1"),
     ...     lambda: gym.make("CartPole-v1")
     ... ])
+```
 
 Alternatively, to create a vectorized environment of multiple copies of the same registered sub-environment, you can use the function :func:`gym.vector.make`.
 
-
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)  # Equivalent
+```
 
 To enable automatic batching of actions and observations, all the sub-environments must share the same :obj:`action_space` and :obj:`observation_space`. However, all the sub-environments are not required to be exact copies of one another. For example, you can run 2 instances of ``Pendulum-v0`` with different values of the gravity in a vectorized environment with
 
-    
-
+```python
         >>> env = gym.vector.AsyncVectorEnv([
         ...     lambda: gym.make("Pendulum-v0", g=9.81),
         ...     lambda: gym.make("Pendulum-v0", g=1.62)
         ... ])
+```
 
 See also `Observation & Action spaces` for more information about automatic batching.
 
     When using `AsyncVectorEnv` with either the ``spawn`` or ``forkserver`` start methods, you must wrap your code containing the vectorized environment with ``if __name__ == "__main__":``. See `this documentation <https://docs.python.org/3/library/multiprocessing.html#the-spawn-and-forkserver-start-methods>`_ for more information.
 
-    
-
+```python
         if __name__ == "__main__":
             envs = gym.vector.make("CartPole-v1", num_envs=3, context="spawn")
-
+```
 ### Working with vectorized environments
 
 
@@ -290,10 +273,10 @@ Because sometimes things may not go as planned, the exceptions raised in sub-env
     ValueError: An error occurred.
 
 
-# Advanced Usage
+## Advanced Usage
 
 
-## Custom spaces
+### Custom spaces
 
 Vectorized environments will batch actions and observations if they are elements from standard Gym spaces, such as `gym.spaces.Box`, `gym.spaces.Discrete`, or `gym.spaces.Dict`. If you create your own environment with a custom action and/or observation space though (inheriting from `gym.Space`), the vectorized environment will not attempt to automatically batch the actions/observations, and instead it will return the raw tuple of elements from all sub-environments.
 
@@ -336,3 +319,93 @@ In the following example, we created a new environment `SMILESEnv`, whose observ
 Custom observation & action spaces may inherit from the `gym.Space` class. However, most use-cases should be covered by the existing space classes (e.g. `gym.spaces.Box`, `gym.spaces.Discrete`, etc...), and container classes (`gym.spaces.Tuple` & `gym.spaces.Dict`). Moreover, some implementations of Reinforcement Learning algorithms might not handle custom spaces properly. Use custom spaces with care.
 
 If you use `AsyncVectorEnv` with a custom observation space, you must set ``shared_memory=False``, since shared memory and automatic batching is not compatible with custom spaces. In general if you use custom spaces with `AsyncVectorEnv`, the elements of those spaces must be `pickleable`_.
+
+
+## API Reference
+
+### VectorEnv
+
+
+        The (batched) action space. The input actions of `step` must be valid elements of `action_space`.
+
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.action_space
+            MultiDiscrete([2 2 2])
+
+
+        `gym.spaces.Space`
+
+        The (batched) observation space. The observations returned by :meth:`reset` and :meth:`step` are valid elements of `observation_space`.
+
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.observation_space
+            Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
+
+
+       `gym.spaces.Space`
+
+        The action space of a sub-environment.
+
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.single_action_space
+            Discrete(2)
+
+
+        `gym.spaces.Space`
+
+        The observation space of a sub-environment.
+
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.single_action_space
+            Box([-4.8 ...], [4.8 ...], (4,), float32)
+
+### Reset
+
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.reset()
+            array([[-0.04456399,  0.04653909,  0.01326909, -0.02099827],
+                   [ 0.03073904,  0.00145001, -0.03088818, -0.03131252],
+                   [ 0.03468829,  0.01500225,  0.01230312,  0.01825218]],
+                  dtype=float32)
+
+### Step
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.reset()
+            >>> actions = np.array([1, 0, 1])
+            >>> observations, rewards, dones, infos = envs.step(actions)
+
+            >>> observations
+            array([[ 0.00122802,  0.16228443,  0.02521779, -0.23700266],
+                   [ 0.00788269, -0.17490888,  0.03393489,  0.31735462],
+                   [ 0.04918966,  0.19421194,  0.02938497, -0.29495203]],
+                  dtype=float32)
+            >>> rewards
+            array([1., 1., 1.])
+            >>> dones
+            array([False, False, False])
+            >>> infos
+            ({}, {}, {})
+
+### Seed
+
+        
+
+            >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+            >>> envs.seed([1, 3, 5])
+            >>> envs.reset()
+            array([[ 0.03073904,  0.00145001, -0.03088818, -0.03131252],
+                   [ 0.02281231, -0.02475473,  0.02306162,  0.02072129],
+                   [-0.03742824, -0.02316945,  0.0148571 ,  0.0296055 ]],
+                  dtype=float32)
