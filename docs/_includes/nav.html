@@ -16,16 +16,16 @@
     <div class="menu-btn">
       <img class="menu-icon" src="{{ site.data.img.nav.menu | relative_url}}" />
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav pl-0 ml-0">
           
           {%- for page in site.data.pages -%}
-          <li class="nav-item nav-first-item">
+          <li class="nav-item nav-first-item ml-0">
             {%- if page.path -%}
               {%- if page.title == "GitHub" -%}
-                <a class="nav-link js-scroll-trigger" style="font-weight: normal;" href="{{site.github}}">Github</a>
+                <a class="nav-link js-scroll-trigger pl-2 ml-0" style="font-weight: normal;" href="{{site.github}}">Github</a>
                 {% continue %}
               {%- endif -%}
-            <a class="nav-link js-scroll-trigger" style="font-weight: normal;" href="{{ site.baseurl }}/pages{{ page.path }}/index">{{ page.title }}
+            <a class="nav-link js-scroll-trigger pl-2 ml-0" style="font-weight: normal;" href="{{ site.baseurl }}/pages{{ page.path }}/index">{{ page.title }}
             
             </a>
             
