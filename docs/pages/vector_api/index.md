@@ -170,18 +170,13 @@ The sub-environments inside a vectorized environment automatically call :obj:`re
 
 Like any Gym environment, vectorized environments contain two properties `VectorEnv.observation_space` and `VectorEnv.action_space` to specify the observation and action spaces of the environment. Since vectorized environments operate on multiple sub-environments, where the observations and actions of sub-environments are batched together, the observation and action spaces are adequately batched as well so that the input actions are valid elements of `VectorEnv.action_space`, and the observations are valid elements of `VectorEnv.observation_space`.
 
-
-
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.observation_space
     Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
     >>> envs.action_space
     MultiDiscrete([2 2 2])
 
-
-    In order to appropriately batch the observations and actions in vectorized environments, the observation and action spaces of all the sub-environments are required to be identical.
-
-    
+In order to appropriately batch the observations and actions in vectorized environments, the observation and action spaces of all the sub-environments are required to be identical.
 
     >>> envs = gym.vector.AsyncVectorEnv([
     ...     lambda: gym.make("CartPole-v1"),
@@ -191,8 +186,6 @@ Like any Gym environment, vectorized environments contain two properties `Vector
 
 However, sometimes it may be handy to have access to the observation and action spaces of a sub-environment, and not the batched spaces. You can access those with the properties `VectorEnv.single_observation_space` and `VectorEnv.single_action_space` of the vectorized environment.
 
-
-
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.single_observation_space
     Box([-4.8 ...], [4.8 ...], (4,), float32)
@@ -200,8 +193,6 @@ However, sometimes it may be handy to have access to the observation and action 
     Discrete(2)
 
 This is convenient, for example, if you instantiate a policy. In the following example, we used `VectorEnv.single_observation_space` and `VectorEnv.single_action_space` to define the weights of a linear policy. Note that thanks to the vectorized environment, you can apply the policy directly to the whole batch of observations with a single call to :obj:`policy`.
-
-
 
     >>> from gym.spaces.utils import flatdim
     >>> from scipy.special import softmax
@@ -228,8 +219,6 @@ This is convenient, for example, if you instantiate a policy. In the following e
 
 `AsyncVectorEnv` runs each sub-environment inside an individual process. At each call to :meth:`AsyncVectorEnv.reset` or :meth:`AsyncVectorEnv.step`, the observations of all the sub-environments are sent back to the main process. To avoid expensive transfers of data between processes, especially with large observations (e.g. images), `AsyncVectorEnv` uses a shared memory by default (``shared_memory=True``) that processes can write to and read from at minimal cost. This can increase the throughout of the vectorized environment.
 
-
-
     >>> env_fns = [lambda: gym.make("BreakoutNoFrameskip-v4")] * 5
 
     >>> envs = gym.vector.AsyncVectorEnv(env_fns, shared_memory=False)
@@ -243,7 +232,6 @@ This is convenient, for example, if you instantiate a policy. In the following e
     1.36 ms ± 15.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 
 ### Exception handling
-
 
 Because sometimes things may not go as planned, the exceptions raised in sub-environments are re-raised in the vectorized environment, even when the sub-environments run in parallel with `AsyncVectorEnv`. This way, you can choose how to handle these exceptions yourself (with ``try ... except``).
 
@@ -271,45 +259,42 @@ Because sometimes things may not go as planned, the exceptions raised in sub-env
 
 ## Advanced Usage
 
-
 ### Custom spaces
 
 Vectorized environments will batch actions and observations if they are elements from standard Gym spaces, such as `gym.spaces.Box`, `gym.spaces.Discrete`, or `gym.spaces.Dict`. If you create your own environment with a custom action and/or observation space though (inheriting from `gym.Space`), the vectorized environment will not attempt to automatically batch the actions/observations, and instead it will return the raw tuple of elements from all sub-environments.
 
 In the following example, we created a new environment `SMILESEnv`, whose observations are strings representing the [SMILES](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system) notation of a molecular structure, with a custom observation space `SMILES`. The observations returned by the vectorized environment is a tuple of strings. 
 
-```
+```python
+>>> class SMILES(gym.Space):
+...     def __init__(self, symbols):
+...         super().__init__()
+...         self.symbols = symbols
+...
+...     def __eq__(self, other):
+...         return self.symbols == other.symbols
 
-    >>> class SMILES(gym.Space):
-    ...     def __init__(self, symbols):
-    ...         super().__init__()
-    ...         self.symbols = symbols
-    ...
-    ...     def __eq__(self, other):
-    ...         return self.symbols == other.symbols
+>>> class SMILESEnv(gym.Env):
+...     observation_space = SMILES("][()CO=")
+...     action_space = gym.spaces.Discrete(7)
+...
+...     def reset(self):
+...         self._state = "["
+...         return self._state
+...
+...     def step(self, action):
+...         self._state += self.observation_space.symbols[action]
+...         reward = done = (action == 0)
+...         return (self._state, float(reward), done, {})
 
-    >>> class SMILESEnv(gym.Env):
-    ...     observation_space = SMILES("][()CO=")
-    ...     action_space = gym.spaces.Discrete(7)
-    ...
-    ...     def reset(self):
-    ...         self._state = "["
-    ...         return self._state
-    ...
-    ...     def step(self, action):
-    ...         self._state += self.observation_space.symbols[action]
-    ...         reward = done = (action == 0)
-    ...         return (self._state, float(reward), done, {})
-
-    >>> envs = gym.vector.AsyncVectorEnv(
-    ...     [lambda: SMILESEnv()] * 3,
-    ...     shared_memory=False
-    ... )
-    >>> envs.reset()
-    >>> observations, rewards, dones, infos = envs.step(np.array([2, 5, 4]))
-    >>> observations
-    ('[(', '[O', '[C')
-
+>>> envs = gym.vector.AsyncVectorEnv(
+...     [lambda: SMILESEnv()] * 3,
+...     shared_memory=False
+... )
+>>> envs.reset()
+>>> observations, rewards, dones, infos = envs.step(np.array([2, 5, 4]))
+>>> observations
+('[(', '[O', '[C')
 ```
 
 Custom observation & action spaces may inherit from the `gym.Space` class. However, most use-cases should be covered by the existing space classes (e.g. `gym.spaces.Box`, `gym.spaces.Discrete`, etc...), and container classes (`gym.spaces.Tuple` & `gym.spaces.Dict`). Moreover, some implementations of Reinforcement Learning algorithms might not handle custom spaces properly. Use custom spaces with care.
@@ -321,7 +306,6 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
 
 ### VectorEnv
 
-
 The (batched) action space. The input actions of `step` must be valid elements of `action_space`.
 
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
@@ -332,7 +316,6 @@ The (batched) action space. The input actions of `step` must be valid elements o
 `gym.spaces.Space`
 
 The (batched) observation space. The observations returned by :meth:`reset` and :meth:`step` are valid elements of `observation_space`.
-
 
 
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
