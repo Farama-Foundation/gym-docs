@@ -16,8 +16,31 @@ Detailed documentation can be found on [the AtariAge page](https://atariage.com/
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
-Even if you use v0 or v4 or specify `full_action_space=False` during initialization, all actions 
-will be available in the default flavor.
+However, if you use v0 or v4 or specify `full_action_space=False` during initialization, only a reduced
+number of actions (those that are meaningful in this game) are available. The reduced action space may depend
+on the flavor of the environment (the combination of `mode` and `difficulty`). The reduced action space for the default 
+flavor looks like this:
+
+| Num | Action                 |
+|-----|------------------------|
+| 0   | NOOP |
+| 2   | UP |
+| 3   | RIGHT |
+| 4   | LEFT |
+| 5   | DOWN |
+| 6   | UPRIGHT |
+| 7   | UPLEFT |
+| 8   | DOWNRIGHT |
+| 9   | DOWNLEFT |
+| 11   | RIGHTFIRE |
+| 12   | LEFTFIRE |
+| 13   | DOWNFIRE |
+| 14   | UPRIGHTFIRE |
+| 15   | UPLEFTFIRE |
+| 16   | DOWNRIGHTFIRE |
+| 17   | DOWNLEFTFIRE |
+
+
 
 
 ### Observations
