@@ -79,6 +79,9 @@ the number of available modes and difficulty levels for different Atari games:
 | BeamRider | 1       | 2              |
 | Berzerk | 10      |1|
 | Bowling | 1       | 2              |
+| Boxing |1| 4              |
+| Breakout |1|2|
+| Carnival |1| 1              |
 
 
 
