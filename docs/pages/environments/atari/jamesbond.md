@@ -10,7 +10,7 @@ grid:
 ---
 
 ### Description
-Your mission is to control Mr.Bond's specially designed multipurpose craft to complete a variety of missions.
+Your mission is to control Mr. Bond's specially designed multipurpose craft to complete a variety of missions.
 The craft moves forward with a right motion and slightly back with a left motion.
 An up or down motion causes the craft to jump or dive.
 You can also fire by either lobbing a bomb to the bottom of the screen or firing a fixed angle shot to the top of the screen.
