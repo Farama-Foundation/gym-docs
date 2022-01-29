@@ -36,7 +36,7 @@ instead. The respective observation spaces are
  [255  ... 255]], (250, 160), uint8)
 `
 
-respectively. The general article on Atari environments outlines different ways to instantiate corresponding environments
+respectively. [The general article on Atari environments](https://brosa.ca/blog/ale-release-v0.7) outlines different ways to instantiate corresponding environments
 via `gym.make`.
 
 
@@ -57,12 +57,12 @@ A flavor is a combination of a game mode and a difficulty setting.
 
 |Title|# Modes|# Difficulties|
 | ----------- | ----------- | -----------|
-|IceHockey|4|4|
+|IceHockey|2|4|
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "Noframeskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 
 the general article on Atari environments.
-The versions v0 and v4 are not contained in the "ALE" namespace. I.e. they are instantiated via `gym.make("Alien-v0")`.
+The versions v0 and v4 are not contained in the "ALE" namespace. I.e. they are instantiated via `gym.make("Icehockey-v0")`.
 
 ### Version History
 A thorough discussion of the intricate differences between the versions and configurations can be found in the
