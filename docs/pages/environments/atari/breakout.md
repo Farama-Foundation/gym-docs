@@ -1,8 +1,12 @@
-ALE/Breakout-v5
 ---
-| Title           |Action Type|Action Shape|Action Values|Observation Shape|Observation Values|Average Total Reward|Import|
-|-----------------| -----------| ----------- | -----------| ----------- | -----------| ----------- | -----------|
-| ALE/Breakout-v5 |Discrete|(1,)|(0,1,...,17)|(250, 160, 3)|(0,255) in each entry| |`from gym.envs.atari import environment`|
+layout: env
+title: Breakout
+grid:
+   - Action Space: Discrete(18)
+   - Observation Shape: (210, 160, 3)
+   - Observation High: 255
+   - Observation Low: 0
+   - Import: <code>gym.make("ALE/Breakout-v5")</code>
 ---
 
 ### Description
