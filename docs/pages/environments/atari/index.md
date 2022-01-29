@@ -139,7 +139,7 @@ v0 and v4. Let us take a look at all variations of Amidar-v0 that are registered
 |Amidar-ramDeterministic-v0    |`"ram"`   |`4`        |`0.0`                      |`False`            |
 |Amidar-ramNoframeskip-v0      |`"ram"`   |`1`        |`0.25`                     |`False`            |
 
-Things change in v5: The suffixes "Deterministic" and "Noframeskip" are no longer available. Instead, you must specify the
+Things change in v5: The suffixes "Deterministic" and "NoFrameskip" are no longer available. Instead, you must specify the
 environment configuration via arguments passed to `gym.make`. Moreover, the v5 environments
 are in the "ALE" namespace. The suffix "-ram" is still available. Thus, we get the following table:
 
