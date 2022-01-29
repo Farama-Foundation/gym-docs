@@ -1,6 +1,6 @@
 ---
 layout: env
-title: MontezumaRevenge
+title: Montezuma Revenge
 grid:
    - Action Space: Discrete(18)
    - Observation Shape: (210, 160, 3)
