@@ -1,0 +1,117 @@
+I" <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Action Type</th>
+      <th>Action Shape</th>
+      <th>Action Values</th>
+      <th>Observation Shape</th>
+      <th>Observation Values</th>
+      <th>Average Total Reward</th>
+      <th>Import</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Taxi</td>
+      <td>Discrete</td>
+      <td>(1,)</td>
+      <td>(0,5)</td>
+      <td>(1,)</td>
+      <td>(0,499)</td>
+      <td> </td>
+      <td>from gym.envs.toy_text import taxi</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Taxi Problem
+from “Hierarchical Reinforcement Learning with the MAXQ Value Function Decomposition”</p>
+
+<p>by Tom Dietterich</p>
+
+<p>Description:</p>
+
+<p>There are four designated locations in the grid world indicated by R(ed), G(reen), Y(ellow), and B(lue). When the episode starts, the taxi starts off at a random square and the passenger is at a random location. The taxi drives to the passenger’s location, picks up the passenger, drives to the passenger’s destination (another one of the four specified locations), and then drops off the passenger. Once the passenger is dropped off, the episode ends.</p>
+
+<p>MAP:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------+
+|R: | : :G|
+| : | : : |
+| : : : : |
+| | : | : |
+|Y| : |B: |
++---------+
+</code></pre></div></div>
+
+<p>Actions:</p>
+
+<p>There are 6 discrete deterministic actions:</p>
+<ul>
+  <li>0: move south</li>
+  <li>1: move north</li>
+  <li>2: move east</li>
+  <li>3: move west</li>
+  <li>4: pickup passenger</li>
+  <li>5: drop off passenger</li>
+</ul>
+
+<p>Observations:</p>
+
+<p>There are 500 discrete states since there are 25 taxi positions, 5 possible locations of the passenger (including the case when the passenger is in the taxi), and 4 destination locations.</p>
+
+<p>Note that there are 400 states that can actually be reached during an episode. The missing states correspond to situations in which the passenger is at the same location as their destination, as this typically signals the end of an episode.
+Four additional states can be observed right after a successful episodes, when both the passenger and the taxi are at the destination.
+This gives a total of 404 reachable discrete states.</p>
+
+<p>Passenger locations:</p>
+<ul>
+  <li>0: R(ed)</li>
+  <li>1: G(reen)</li>
+  <li>2: Y(ellow)</li>
+  <li>3: B(lue)</li>
+  <li>4: in taxi</li>
+</ul>
+
+<p>Destinations:</p>
+<ul>
+  <li>0: R(ed)</li>
+  <li>1: G(reen)</li>
+  <li>2: Y(ellow)</li>
+  <li>3: B(lue)</li>
+</ul>
+
+<p><strong>Rewards:</strong></p>
+
+<ul>
+  <li>-1 per step reward unless other reward is triggered.</li>
+  <li>+20 delivering passenger.</li>
+  <li>-10  executing “pickup” and “drop-off” actions illegally.</li>
+</ul>
+
+<p>Rendering:</p>
+<ul>
+  <li>blue: passenger</li>
+  <li>magenta: destination</li>
+  <li>yellow: empty taxi</li>
+  <li>green: full taxi</li>
+  <li>other letters (R, G, Y and B): locations for passengers and destinations
+state space is represented by:
+(taxi_row, taxi_col, passenger_location, destination)</li>
+</ul>
+
+<h3 id="arguments">Arguments</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gym.make('Taxi-v3')
+</code></pre></div></div>
+
+<h3 id="version-history">Version History</h3>
+
+<ul>
+  <li>v3: Map Correction + Cleaner Domain Description</li>
+  <li>v2: Disallow Taxi start location = goal location, Update Taxi observations in the rollout, Update Taxi reward threshold.</li>
+  <li>v1: Remove (3,2) from locs, add passidx&lt;4 check</li>
+  <li>v0: Initial versions release</li>
+</ul>
+:ET

@@ -1,0 +1,51 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that.
+# This file is *NOT* reloaded automatically when you use 'bundle exec jekyll serve'.
+# If you change this file, please restart the server process.
+
+# Site settings
+# are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+url    : "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/gym-docs" # the subpath of your site, e.g. /blog
+
+title      : Gym
+email      : contact@farama.org
+description: "Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments"
+author     : Farama Foundation
+# copyright  : Farama Foundation
+logo:    
+  path: assets/img/gym_logo_white.svg
+  height: 100 #height in px, defaults to 52px
+favicon: /assets/img/favicon.png
+github: https://github.com/Farama-Foundation/gym-docs
+
+analytics:
+  google: #Google Analytics tracking code here
+
+markdown: kramdown
+
+remote_theme: trigaten/fantasia
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      is_parallel: "True"
+  -
+    scope:
+      path: "classic"
+    values:
+      is_parallel: "false" # overrides previous default layout
+
+plugins:
+  - jekyll-remote-theme
+
+sass:
+   sourcemap: never
