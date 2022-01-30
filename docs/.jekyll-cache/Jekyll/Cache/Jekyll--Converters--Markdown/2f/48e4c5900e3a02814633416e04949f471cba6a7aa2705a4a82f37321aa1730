@@ -1,0 +1,108 @@
+I"¼$<h1 id="how-to-create-new-environments-for-gym">How to create new environments for Gym</h1>
+
+<p>This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in OpenAI Gym designed for the creation of new environments.</p>
+
+<h2 id="example-custom-environment">Example Custom Environment</h2>
+
+<p>Here is a simple skeleton of the repository structure for a Python Package containing a custom environment. For a more complete example, please refer to: https://github.com/openai/gym-soccer.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  gym-foo/
+    README.md
+    setup.py
+    gym_foo/
+      __init__.py
+      envs/
+        __init__.py
+        foo_env.py
+        foo_extrahard_env.py
+</code></pre></div></div>
+
+<h3 id="subclassing-gymenv">Subclassing gym.Env</h3>
+
+<p>We will first write the code for our custom environment in <code class="language-plaintext highlighter-rouge">gym-foo/gym_foo/envs/foo_env.py</code> - letâ€™s call it <code class="language-plaintext highlighter-rouge">FooEnv</code>. All custom environments should subclass <code class="language-plaintext highlighter-rouge">gym.Env</code> and override the <code class="language-plaintext highlighter-rouge">step</code>, <code class="language-plaintext highlighter-rouge">reset</code>, <code class="language-plaintext highlighter-rouge">render</code>, <code class="language-plaintext highlighter-rouge">close</code>  methods like so:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">gym</span>
+  <span class="kn">from</span> <span class="nn">gym</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span> <span class="n">spaces</span><span class="p">,</span> <span class="n">utils</span>
+  <span class="kn">from</span> <span class="nn">gym.utils</span> <span class="kn">import</span> <span class="n">seeding</span>
+
+  <span class="k">class</span> <span class="nc">FooEnv</span><span class="p">(</span><span class="n">gym</span><span class="p">.</span><span class="n">Env</span><span class="p">):</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s">'render.modes'</span><span class="p">:</span> <span class="p">[</span><span class="s">'human'</span><span class="p">]}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'human'</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+</code></pre></div></div>
+
+<p>We will also create a more difficult version, <code class="language-plaintext highlighter-rouge">FooExtraHardEnv</code>, in <code class="language-plaintext highlighter-rouge">gym-foo/gym_foo/envs/foo_extrahard_env.py</code>, following the same template as above:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">gym</span>
+  <span class="kn">from</span> <span class="nn">gym</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span> <span class="n">spaces</span><span class="p">,</span> <span class="n">utils</span>
+  <span class="kn">from</span> <span class="nn">gym.utils</span> <span class="kn">import</span> <span class="n">seeding</span>
+
+  <span class="k">class</span> <span class="nc">FooExtraHardEnv</span><span class="p">(</span><span class="n">gym</span><span class="p">.</span><span class="n">Env</span><span class="p">):</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s">'render.modes'</span><span class="p">:</span> <span class="p">[</span><span class="s">'human'</span><span class="p">]}</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'human'</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># TODO
+</span>      <span class="p">...</span>
+</code></pre></div></div>
+
+<h3 id="registering-envs">Registering Envs</h3>
+
+<p>In order for the custom environments to be detected by OpenAI gym, they must be registered as follows. We will choose to put this code in <code class="language-plaintext highlighter-rouge">gym-foo/gym_foo/__init__.py</code>.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">gym.envs.registration</span> <span class="kn">import</span> <span class="n">register</span>
+
+  <span class="n">register</span><span class="p">(</span>
+      <span class="nb">id</span><span class="o">=</span><span class="s">'foo-v0'</span><span class="p">,</span>
+      <span class="n">entry_point</span><span class="o">=</span><span class="s">'gym_foo.envs:FooEnv'</span><span class="p">,</span>
+  <span class="p">)</span>
+  <span class="n">register</span><span class="p">(</span>
+      <span class="nb">id</span><span class="o">=</span><span class="s">'foo-extrahard-v0'</span><span class="p">,</span>
+      <span class="n">entry_point</span><span class="o">=</span><span class="s">'gym_foo.envs:FooExtraHardEnv'</span><span class="p">,</span>
+  <span class="p">)</span>
+</code></pre></div></div>
+
+<p>After registration, our custom <code class="language-plaintext highlighter-rouge">FooEnv</code> environment can be created with <code class="language-plaintext highlighter-rouge">env = gym.make('foo-v0')</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">gym-foo/gym_foo/envs/__init__.py</code> should have:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">gym_foo.envs.foo_env</span> <span class="kn">import</span> <span class="n">FooEnv</span>
+  <span class="kn">from</span> <span class="nn">gym_foo.envs.foo_extrahard_env</span> <span class="kn">import</span> <span class="n">FooExtraHardEnv</span>
+</code></pre></div></div>
+
+<h3 id="creating-a-package">Creating a Package</h3>
+
+<p>The last step is to structure our code as a Python package. This involves configuring <code class="language-plaintext highlighter-rouge">gym-foo/setup.py</code>. A minimal example of how to do so is as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+  <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'gym_foo'</span><span class="p">,</span>
+        <span class="n">version</span><span class="o">=</span><span class="s">'0.0.1'</span><span class="p">,</span>
+        <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s">'gym'</span><span class="p">]</span>  <span class="c1"># And any other dependencies foo needs
+</span>  <span class="p">)</span>
+</code></pre></div></div>
+
+<p>After you have installed your package locally with <code class="language-plaintext highlighter-rouge">pip install -e gym-foo</code>, you can create an instance of the environment with <code class="language-plaintext highlighter-rouge">gym.make('gym_foo:foo-v0')</code></p>
+:ET

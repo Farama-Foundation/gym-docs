@@ -15,9 +15,9 @@ url    : "" # the base hostname & protocol for your site, e.g. http://example.co
 baseurl: "/gym-docs" # the subpath of your site, e.g. /blog
 
 title      : Gym
-email      : jkterry@gmail.com #this is also the email contact forms will go to
+email      : contact@farama.org
 description: "Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments"
-author     : Jordan Terry
+author     : Farama Foundation
 # copyright  : Farama Foundation
 logo:    
   path: assets/img/gym_logo_white.svg
@@ -30,6 +30,9 @@ analytics:
 
 markdown: kramdown
 
+remote_theme: trigaten/fantasia
+theme: fantasia
+
 defaults:
   - scope:
       path: ""
@@ -41,3 +44,9 @@ defaults:
       path: "classic"
     values:
       is_parallel: "false" # overrides previous default layout
+
+plugins:
+  - jekyll-remote-theme
+
+sass:
+   sourcemap: never

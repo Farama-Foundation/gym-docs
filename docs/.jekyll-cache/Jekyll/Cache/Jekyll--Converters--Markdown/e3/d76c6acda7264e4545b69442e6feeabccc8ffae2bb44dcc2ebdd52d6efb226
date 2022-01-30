@@ -1,0 +1,166 @@
+I"9<h2 id="description">Description</h2>
+<p>The Acrobot system includes two joints and two links, where the joint between the two links is actuated. Initially, the
+links are hanging downwards, and the goal is to swing the end of the lower link up to a given height by applying changes
+to torque on the actuated joint (middle).</p>
+
+<p><strong>Gif</strong>: two blue pendulum links connected by two green joints. The joint in between the two pendulum links is acted
+upon by the agent via changes in torque. The goal is to swing the end of the outer-link to reach the target height
+(black horizontal line above system).</p>
+
+<h2 id="action-space">Action Space</h2>
+
+<p>The action is either applying +1, 0 or -1 torque on the joint between the two pendulum links.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Num</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>apply -1 torque to the joint</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>apply 0 torque to the joint</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>apply 1 torque to the joint</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="observation-space">Observation Space</h2>
+
+<p>The observation space gives information about the two rotational joint angles <code class="language-plaintext highlighter-rouge">theta1</code> and <code class="language-plaintext highlighter-rouge">theta2</code>, as well as their
+angular velocities:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">theta1</code> is the angle of the inner link joint, where an angle of 0 indicates the first link is pointing directly
+downwards.</li>
+  <li><code class="language-plaintext highlighter-rouge">theta2</code> is <em>relative to the angle of the first link.</em> An angle of 0 corresponds to having the same angle between the
+two links.</li>
+</ul>
+
+<p>The angular velocities of <code class="language-plaintext highlighter-rouge">theta1</code> and <code class="language-plaintext highlighter-rouge">theta2</code> are bounded at ±4π, and ±9π respectively.
+The observation is a <code class="language-plaintext highlighter-rouge">ndarray</code> with shape <code class="language-plaintext highlighter-rouge">(6,)</code> where the elements correspond to the following:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Num</th>
+      <th>Observation</th>
+      <th>Min</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Cosine of <code class="language-plaintext highlighter-rouge">theta1</code></td>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Sine of <code class="language-plaintext highlighter-rouge">theta1</code></td>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Cosine of <code class="language-plaintext highlighter-rouge">theta2</code></td>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Sine of <code class="language-plaintext highlighter-rouge">theta2</code></td>
+      <td>-1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Angular velocity of <code class="language-plaintext highlighter-rouge">theta1</code></td>
+      <td>~ -12.567 (-4 * pi)</td>
+      <td>~ 12.567 (4 * pi)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Angular velocity of <code class="language-plaintext highlighter-rouge">theta2</code></td>
+      <td>~ -28.274 (-9 * pi)</td>
+      <td>~ 28.274 (9 * pi)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>or <code class="language-plaintext highlighter-rouge">[cos(theta1) sin(theta1) cos(theta2) sin(theta2) thetaDot1 thetaDot2]</code>. As an example, a state of
+<code class="language-plaintext highlighter-rouge">[1, 0, 1, 0, ..., ...]</code> indicates that both links are pointing downwards.</p>
+
+<h2 id="rewards">Rewards</h2>
+
+<p>All steps that do not reach the goal (termination criteria) incur a reward of -1. Achieving the target height and
+terminating incurs a reward of 0. The reward threshold is -100.</p>
+
+<h2 id="starting-state">Starting State</h2>
+
+<p>At start, each parameter in the underlying state (<code class="language-plaintext highlighter-rouge">theta1</code>, <code class="language-plaintext highlighter-rouge">theta2</code>, and the two angular velocities) is initialized
+uniformly at random between -0.1 and 0.1. This means both links are pointing roughly downwards.</p>
+
+<h2 id="episode-termination">Episode Termination</h2>
+<p>The episode terminates of one of the following occurs:</p>
+
+<ol>
+  <li>The target height is achieved. As constructed, this occurs when
+<code class="language-plaintext highlighter-rouge">-cos(theta1) - cos(theta2 + theta1) &gt; 1.0</code></li>
+  <li>Episode length is greater than 500 (200 for v0)</li>
+</ol>
+
+<h2 id="arguments">Arguments</h2>
+
+<p>There are no arguments supported in constructing the environment. As an example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="n">env_name</span> <span class="o">=</span> <span class="s">'Acrobot-v1'</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="n">env_name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>By default, the dynamics of the acrobot follow those described in Richard Sutton’s book
+<a href="http://incompleteideas.net/book/11/node4.html">Reinforcement Learning: An Introduction</a>. However, a <code class="language-plaintext highlighter-rouge">book_or_nips</code>
+setting can be modified on the environment to change the pendulum dynamics to those described
+in <a href="https://papers.nips.cc/paper/1995/hash/8f1d43620bc6bb580df6e80b0dc05c48-Abstract.html">the original NeurIPS paper</a>.
+See the following note and
+the <a href="https://github.com/openai/gym/blob/master/gym/envs/classic_control/acrobot.py">implementation</a> for details:</p>
+
+<blockquote>
+  <p>The dynamics equations were missing some terms in the NIPS paper which
+        are present in the book. R. Sutton confirmed in personal correspondence
+        that the experimental results shown in the paper and the book were
+        generated with the equations shown in the book.
+        However, there is the option to run the domain with the paper equations
+        by setting <code class="language-plaintext highlighter-rouge">book_or_nips = 'nips'</code></p>
+</blockquote>
+
+<p>Continuing from the prior example:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To change the dynamics as described above
+</span><span class="n">env</span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">book_or_nips</span> <span class="o">=</span> <span class="s">'nips'</span>
+</code></pre></div></div>
+
+<h2 id="version-history">Version History</h2>
+
+<ul>
+  <li>v1: Maximum number of steps increased from 200 to 500. The observation space for v0 provided direct readings of
+<code class="language-plaintext highlighter-rouge">theta1</code> and <code class="language-plaintext highlighter-rouge">theta2</code> in radians, having a range of <code class="language-plaintext highlighter-rouge">[-pi, pi]</code>. The v1 observation space as described here provides the
+sin and cosin of each angle instead.</li>
+  <li>v0: Initial versions release (1.0.0) (removed from gym for v1)</li>
+</ul>
+
+<h2 id="references">References</h2>
+<ul>
+  <li>Sutton, R. S. (1996). Generalization in Reinforcement Learning: Successful Examples Using Sparse Coarse Coding. In D. Touretzky, M. C. Mozer, &amp; M. Hasselmo (Eds.), Advances in Neural Information Processing Systems (Vol. 8). MIT Press. https://proceedings.neurips.cc/paper/1995/file/8f1d43620bc6bb580df6e80b0dc05c48-Paper.pdf</li>
+  <li>Sutton, R. S., Barto, A. G. (2018 ). Reinforcement Learning: An Introduction. The MIT Press.</li>
+</ul>
+:ET

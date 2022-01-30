@@ -1,0 +1,16 @@
+I"�<p>MuJoCo stands for Multi-Joint dynamics with Contact. It is a physics engine for faciliatating research and development in robotics, biomechanics, graphics and animation, and other areas where fast and accurate simulation is needed.</p>
+
+<p>The unique dependencies for this set of environments can be installed via:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>gym[mujoco]
+</code></pre></div></div>
+
+<p>These environments also require that the MuJoCo engine be installed. As of October 2021 DeepMind has acquired MuJoCo and is open sourcing it in 2022, making it free for everyone. Instructions on installing the MuJoCo engine can be found at their <a href="https://mujoco.org">website</a> and <a href="https://github.com/deepmind/mujoco">GitHub repository</a>. Using MuJoCo with OpenAI Gym also requires that the framework <code class="language-plaintext highlighter-rouge">mujoco-py</code> be installed, which can be found at the <a href="https://github.com/openai/mujoco-py/tree/master/mujoco_py">GitHub repository</a> (this dependency in installed with the above command).</p>
+
+<p>There are ten Mujoco environments: Ant, HalfCheetah, Hopper, Humanoid, HumanoidStandup, IvertedDoublePendulum, InvertedPendulum, Reacher, Swimmer, and Walker. All of these environments are stochastic in terms of their initial state, with a Gaussian noise added to a fixed initial state in order to add stochasticity. The state spaces for MuJoCo environments in Gym consist of two parts that are flattened and concatented together: a position of a body part (‘<em>mujoco-py.mjsim.qpos</em>’) or joint and its corresponding velocity (‘<em>mujoco-py.mjsim.qvel</em>’). Often, some of the first positional elements are omitted from the state space since the reward is calculated based on their values, leaviing it up to the algorithm to infer those hidden values indirectly.</p>
+
+<p>Among Gym environments, this set of environments can be considered as more difficult ones to solve by a policy.</p>
+
+<p>Environments can be configured by changing the XML files or by tweaking the parameters of their classes.</p>
+
+:ET
