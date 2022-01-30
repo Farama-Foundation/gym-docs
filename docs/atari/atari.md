@@ -73,6 +73,7 @@ the number of available modes and difficulty levels for different Atari games:
 |Assault|1|1|
 |Asterix|1|1|
 |Crazy Climber|4|2|
+|Demon Attack|4|2|
 
 
 ### Common Arguments
