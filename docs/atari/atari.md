@@ -72,6 +72,7 @@ the number of available modes and difficulty levels for different Atari games:
 |Amidar|1|2|
 |Assault|1|1|
 |Asterix|1|1|
+|Crazy Climber|4|2|
 
 
 ### Common Arguments
