@@ -1,0 +1,249 @@
+I"�L<h1 id="spaces">Spaces</h1>
+
+<p>Spaces define the valid format of observation and action spaces for an environment. The following spaces are provided:</p>
+
+<ul>
+  <li><a href="#Box">Box</a></li>
+  <li><a href="#Discrete">Discrete</a></li>
+  <li><a href="#MultiBinary">MultiBinary</a></li>
+  <li><a href="#MultiDiscrete">MultiDiscrete</a></li>
+  <li><a href="#Dict">Dict</a></li>
+  <li><a href="#Tuple">Tuple</a></li>
+</ul>
+
+<p>Each space implements the following functions:</p>
+
+<h3 id="sample">sample()</h3>
+<p>Randomly sample an element of this space. Can be
+uniform or non-uniform sampling based on boundedness of space.</p>
+
+<h3 id="containsx">contains(x)</h3>
+<p>Return boolean specifying if x is a valid member of this space.</p>
+
+<h3 id="property-shape"><em>property</em> shape</h3>
+<p>Return the shape of the space as an immutable property.</p>
+
+<h3 id="property-dtype"><em>property</em> dtype</h3>
+<p>Return the data type of this space.</p>
+
+<h3 id="seedseed">seed(seed)</h3>
+<p>Seed the PRNG of this space.</p>
+
+<h3 id="property-np_random"><em>property</em> np_random</h3>
+<p>Returns the random number generator used by this space.</p>
+
+<h3 id="to_jsonablesample_n">to_jsonable(sample_n)</h3>
+<p>Convert a batch of samples from this space to a JSONable data type.</p>
+
+<h3 id="from_jsonablesample_n">from_jsonable(sample_n)</h3>
+<p>Convert a JSONable data type to a batch of samples from this space.</p>
+
+<h2 id="box">Box</h2>
+
+<p>A (possibly unbounded) box in R^n. Specifically, a Box represents the Cartesian product 
+of n closed intervals. Each interval has the form of one of [a, b], (-oo, b], [a, oo), 
+or (-oo, oo).</p>
+
+<p>There are two common use cases:</p>
+
+<ul>
+  <li>Identical bound for each dimension:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">Box</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Independent bound for each dimension:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">]),</span> <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">Box</span><span class="p">(</span><span class="mi">2</span><span class="p">,)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="is_boundedmannerboth">is_bounded(manner=’both’)</h3>
+<p>Returns a boolean array that indicates whether each element of the box is bounded. The 
+returned array has the same shape as the space. Accepts an optional <code class="language-plaintext highlighter-rouge">manner</code> argument 
+which specifies the direction that the element is bounded. It has the following 
+options: <code class="language-plaintext highlighter-rouge">below</code>, <code class="language-plaintext highlighter-rouge">above</code>, <code class="language-plaintext highlighter-rouge">both</code>.</p>
+
+<h3 id="sample-1">sample()</h3>
+
+<p>Generates a single random sample inside of the Box.</p>
+
+<p>In creating a sample of the box, each coordinate is sampled according to the form of the interval:</p>
+
+<ul>
+  <li>[a, b] : uniform distribution</li>
+  <li>[a, oo) : shifted exponential distribution</li>
+  <li>(-oo, b] : shifted negative exponential distribution</li>
+  <li>(-oo, oo) : normal distribution</li>
+</ul>
+
+<h2 id="discrete">Discrete</h2>
+
+<p>A single discrete value in ${ 0, 1, …, n-1 }$. A start value can be optionally 
+specified to shift the range to ${ a, a+1, …, a+n-1 }$.</p>
+
+<p>Example:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">start</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># {-1, 0, 1}
+</span></code></pre></div></div>
+
+<h2 id="multibinary">MultiBinary</h2>
+
+<p>An n-shape binary space.</p>
+
+<p>The argument to MultiBinary defines n, which could be a number or a list of numbers.</p>
+
+<p>Example Usage:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="p">.</span><span class="n">MultiBinary</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">observation_space</span><span class="p">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int8</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="p">.</span><span class="n">MultiBinary</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">observation_space</span><span class="p">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int8</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="multidiscrete">MultiDiscrete</h2>
+
+<p>The multi-discrete action space consists of a series of discrete action spaces with different number of actions in each. It is useful to represent game controllers or keyboards where each key can be represented as a discrete action space. It is parametrized by passing an array of positive integers specifying number of actions for each discrete action space.</p>
+
+<p>Note: Some environment wrappers assume a value of 0 always represents the NOOP action.</p>
+
+<p>e.g. The Nintendo Game Controller can be conceptualized as 3 discrete action spaces:</p>
+
+<ul>
+  <li>
+    <ol>
+      <li>Arrow Keys: Discrete 5  - NOOP[0], UP[1], RIGHT[2], DOWN[3], LEFT[4]  - params: min: 0, max: 4</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Button A:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>Button B:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</li>
+    </ol>
+  </li>
+</ul>
+
+<p>It can be initialized as <code class="language-plaintext highlighter-rouge">MultiDiscrete([ 5, 2, 2 ])</code></p>
+
+<h2 id="dict">Dict</h2>
+
+<p>A dictionary of simpler spaces.</p>
+
+<p>Example usage:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Dict</span><span class="p">({</span><span class="s">"position"</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s">"velocity"</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)})</span>
+</code></pre></div></div>
+
+<p>Example usage (nested):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">nested_observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Dict</span><span class="p">({</span>
+    <span class="s">'sensors'</span><span class="p">:</span>  <span class="n">spaces</span><span class="p">.</span><span class="n">Dict</span><span class="p">({</span>
+        <span class="s">'position'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)),</span>
+        <span class="s">'velocity'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)),</span>
+        <span class="s">'front_cam'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Tuple</span><span class="p">((</span>
+            <span class="n">spaces</span><span class="p">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+            <span class="n">spaces</span><span class="p">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="p">)),</span>
+        <span class="s">'rear_cam'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+    <span class="p">}),</span>
+    <span class="s">'ext_controller'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">MultiDiscrete</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="s">'inner_state'</span><span class="p">:</span><span class="n">spaces</span><span class="p">.</span><span class="n">Dict</span><span class="p">({</span>
+        <span class="s">'charge'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+        <span class="s">'system_checks'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">MultiBinary</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+        <span class="s">'job_status'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Dict</span><span class="p">({</span>
+            <span class="s">'task'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+            <span class="s">'progress'</span><span class="p">:</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">()),</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="tuple">Tuple</h2>
+
+<p>A tuple (i.e., product) of simpler spaces.</p>
+
+<p>Example usage:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="bp">self</span><span class="p">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Tuple</span><span class="p">((</span><span class="n">spaces</span><span class="p">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">spaces</span><span class="p">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<h2 id="utility-functions">Utility Functions</h2>
+
+<h3 id="flatdimspace">flatdim(space)</h3>
+<p>Return the number of dimensions a flattened equivalent of this space would have.</p>
+
+<p>Accepts a space and returns an integer. Raises <code class="language-plaintext highlighter-rouge">NotImplementedError</code> if the space is 
+not defined in <code class="language-plaintext highlighter-rouge">gym.spaces</code>.</p>
+
+<p>Example usage:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; s = spaces.Dict({"position": spaces.Discrete(2), "velocity": spaces.Discrete(3)})
+&gt;&gt;&gt; spaces.flatdim(s)
+5
+</code></pre></div></div>
+
+<h3 id="flatten_spacespace">flatten_space(space)</h3>
+
+<p>Flatten a space into a single <code class="language-plaintext highlighter-rouge">Box</code>.</p>
+
+<p>This is equivalent to <code class="language-plaintext highlighter-rouge">flatten()</code>, but operates on the space itself. The result 
+always is a <code class="language-plaintext highlighter-rouge">Box</code> with flat boundaries. The box has exactly <code class="language-plaintext highlighter-rouge">flatdim(space)</code> 
+dimensions. Flattening a sample of the original space has the same effect as taking a
+sample of the flattenend space.</p>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; box = Box(0.0, 1.0, shape=(3, 4, 5))
+&gt;&gt;&gt; box
+Box(3, 4, 5)
+&gt;&gt;&gt; flatten_space(box)
+Box(60,)
+&gt;&gt;&gt; flatten(box, box.sample()) in flatten_space(box)
+True
+</code></pre></div></div>
+
+<p>Example that flattens a discrete space:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; discrete = Discrete(5)
+&gt;&gt;&gt; flatten_space(discrete)
+Box(5,)
+&gt;&gt;&gt; flatten(box, box.sample()) in flatten_space(box)
+True
+</code></pre></div></div>
+
+<p>Example that recursively flattens a dict:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; space = Dict({"position": Discrete(2),
+...               "velocity": Box(0, 1, shape=(2, 2))})
+&gt;&gt;&gt; flatten_space(space)
+Box(6,)
+&gt;&gt;&gt; flatten(space, space.sample()) in flatten_space(space)
+True
+</code></pre></div></div>
+
+<h3 id="flattenspace-x">flatten(space, x)</h3>
+
+<p>Flatten a data point from a space.</p>
+
+<p>This is useful when e.g. points from spaces must be passed to a neural network, which
+only understands flat arrays of floats.</p>
+
+<p>Accepts a space and a point from that space. Always returns a 1D array. Raises 
+<code class="language-plaintext highlighter-rouge">NotImplementedError</code> if the space is not defined in <code class="language-plaintext highlighter-rouge">gym.spaces</code>.</p>
+
+<h3 id="unflattenspace-x">unflatten(space, x)</h3>
+
+<p>Unflatten a data point from a space.</p>
+
+<p>This reverses the transformation applied by <code class="language-plaintext highlighter-rouge">flatten()</code>. You must ensure that the 
+<code class="language-plaintext highlighter-rouge">space</code> argument is the same as for the <code class="language-plaintext highlighter-rouge">flatten()</code> call.</p>
+
+<p>Accepts a space and a flattened point. Returns a point with a structure that matches 
+the space. Raises <code class="language-plaintext highlighter-rouge">NotImplementedError</code> if the space is not defined in 
+<code class="language-plaintext highlighter-rouge">gym.spaces</code>.</p>
+:ET

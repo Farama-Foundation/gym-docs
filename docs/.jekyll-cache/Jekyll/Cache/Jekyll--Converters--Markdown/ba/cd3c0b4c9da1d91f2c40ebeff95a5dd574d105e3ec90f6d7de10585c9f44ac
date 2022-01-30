@@ -1,0 +1,205 @@
+I"55<h1 id="wrappers">Wrappers</h1>
+
+<p>Gym includes numerous wrappers for environments that include preprocessing and various other functions. The following categories are included:</p>
+
+<h2 id="observation-wrappers">Observation Wrappers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">DelayObservation(env, delay)</code> [text]</p>
+<ul>
+  <li>Bring over from SuperSuit</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">FilterObservation(env, filter_keys)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">FlattenObservation(env)</code> [text]</p>
+<ul>
+  <li>Needs good asseration messages</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">FrameStack(env, num_stack, lz4_compress=False)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">GrayScaleObservation(env)</code> [text]</p>
+<ul>
+  <li>Needs R/G/B channel argument added like supersuit wrapper</li>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+  <li>Needs CV2 dependency replaced with SuperSuit’s way of doing full grey scaling: https://github.com/PettingZoo-Team/SuperSuit/blob/master/supersuit/utils/basic_transforms/color_reduction.py</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">PixelObservationWrapper(pixels_only=True, render_kwargs=None, pixel_keys=("pixels",))</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">RescaleObservation(env, min_obs, max_obs</code>) [text]</p>
+<ul>
+  <li>Bring over from Supersuit or from https://github.com/openai/gym/pull/1635</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">ResizeObservation(env, shape)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+  <li>Switch from CV2 to Lycon2 once released</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">TimeAwareObservation(env)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">NormalizeObservation(env, epsilon=1e-8)</code> [text]</p>
+<ul>
+  <li>This wrapper normalizes the observations to have approximately zero mean and unit variance</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">NormalizeReward(env, gamma=0.99, epsilon=1e-8)</code> [text]</p>
+<ul>
+  <li>This wrapper scales the rewards, which are divided through by the standard deviation of a rolling discounted returns. See page 3 of from <a href="https://arxiv.org/pdf/2005.12729.pdf">Engstrom, Ilyas et al. (2020)</a></li>
+</ul>
+
+<h2 id="action-wrappers">Action Wrappers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ClipAction(env)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">ChangeDtype(env, dtype)</code> [text]</p>
+<ul>
+  <li>Bring over from SuperSuit</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">RescaleAction(env, min_action, max_action)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">StickyActions(env, repeat_action_probability)</code> [text]</p>
+<ul>
+  <li>Create as separate wrapper from Atari/bring over from SuperSuit</li>
+</ul>
+
+<h2 id="reward-wrappers">Reward Wrappers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ClipReward(env, lower_bound-1, upper_bound=1)</code> [text]</p>
+<ul>
+  <li>Bring over from SuperSuit</li>
+</ul>
+
+<h2 id="lambda-wrappers">Lambda Wrappers</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ActionLambda(env, change_action_fn, change_space_fn)</code> [text]</p>
+<ul>
+  <li>Bring over from SuperSuit</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">ObservationLambda(env, observation_fn, observation_space_fn)</code> [text]</p>
+<ul>
+  <li>Bring over from SuperSuit, replaces TransformObservation</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">RewardLambda(env, reward_fn)</code> [text]</p>
+<ul>
+  <li>Bring over from SuperSuit, replaces TransformReward</li>
+</ul>
+
+<h2 id="other">Other</h2>
+<p><code class="language-plaintext highlighter-rouge">AtariPreprocessing(env, noop_max=30, frame_skip=4, screen_size=84, terminal_on_life_loss=False, grayscale_obs=True, grayscale_newaxis=False, scale_obs=False)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">RecordEpisodeStatistic(env)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">RecordVideo(env, video_folder, episode_trigger, step_trigger, video_length=0, name_prefix="rl-video")</code> [text]</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">RecordVideo</code> is a lightweight <code class="language-plaintext highlighter-rouge">gym.Wrapper</code> that helps recording videos. See the following
+code as an example.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="kn">from</span> <span class="nn">gym.wrappers</span> <span class="kn">import</span> <span class="n">RecordVideo</span><span class="p">,</span> <span class="n">capped_cubic_video_schedule</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="s">"CartPole-v1"</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">RecordVideo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s">"videos"</span><span class="p">)</span>
+<span class="c1"># the above is equivalent as
+# env = RecordVideo(env, "videos", episode_trigger=capped_cubic_video_schedule)
+</span><span class="n">observation</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+  <span class="n">env</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>
+  <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">action_space</span><span class="p">.</span><span class="n">sample</span><span class="p">()</span> <span class="c1"># your agent here (this takes random actions)
+</span>  <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+    <span class="n">observation</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">env</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>To use it, you need to specify the <code class="language-plaintext highlighter-rouge">video_folder</code> as the storing location. By default
+the <code class="language-plaintext highlighter-rouge">RecordVideo</code> uses episode counts to trigger video recording based on the <code class="language-plaintext highlighter-rouge">episode_trigger=capped_cubic_video_schedule</code>,
+which is a cubic progression for early episodes (1,8,27,…) and then every 1000 episodes (1000, 2000, 3000…).
+This can be changed by modifying the <code class="language-plaintext highlighter-rouge">episode_trigger</code> argument of the <code class="language-plaintext highlighter-rouge">RecordVideo</code>).</p>
+
+<p>Alternatively, you may also trigger the the video recording based on the environment steps via the  <code class="language-plaintext highlighter-rouge">step_trigger</code> like</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="kn">from</span> <span class="nn">gym.wrappers</span> <span class="kn">import</span> <span class="n">RecordVideo</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="s">"CartPole-v1"</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">RecordVideo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="s">"videos"</span><span class="p">,</span> <span class="n">step_trigger</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">observation</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+  <span class="n">env</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>
+  <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">action_space</span><span class="p">.</span><span class="n">sample</span><span class="p">()</span> <span class="c1"># your agent here (this takes random actions)
+</span>  <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
+    <span class="n">observation</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">env</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Which will trigger the video recording at exactly every 100 environment steps (unless the previous recording hasn’t finished yet).</p>
+
+<p>Note that you may use exactly one trigger (i.e. <code class="language-plaintext highlighter-rouge">step_trigger</code> or <code class="language-plaintext highlighter-rouge">record_video_trigger</code>) at a time.</p>
+
+<p>There are two modes to end the video recording:</p>
+<ol>
+  <li>Episodic mode.
+    <ul>
+      <li>By default <code class="language-plaintext highlighter-rouge">video_length=0</code> means the wrapper will record <em>episodic</em> videos: it will keep
+ record the frames until the env returns <code class="language-plaintext highlighter-rouge">done=True</code>.</li>
+    </ul>
+  </li>
+  <li>Fixed-interval mode.
+    <ul>
+      <li>By tuning <code class="language-plaintext highlighter-rouge">video_length</code> such as <code class="language-plaintext highlighter-rouge">video_length=100</code>, the wrapper will record exactly 100 frames
+ for every videos the wrapper creates.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Lastly the <code class="language-plaintext highlighter-rouge">name_prefix</code> allows you to customize the name of the videos.</p>
+
+<p><code class="language-plaintext highlighter-rouge">TimeLimit(env, max_episode_steps)</code> [text]</p>
+<ul>
+  <li>Needs review (including for good assertion messages and test coverage)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">OrderEnforcing(env)</code> [text]</p>
+
+<p><code class="language-plaintext highlighter-rouge">OrderEnforcing</code> is a light-weight wrapper that throws an exception when <code class="language-plaintext highlighter-rouge">env.step()</code> is called before <code class="language-plaintext highlighter-rouge">env.reset()</code>, the wrapper is enabled by default for environment specs without <code class="language-plaintext highlighter-rouge">max_episode_steps</code> and can be disabled by passing <code class="language-plaintext highlighter-rouge">order_enforce=False</code> like:</p>
+<pre><code class="language-python3">register(
+    id="CustomEnv-v1",
+    entry_point="...",
+    order_enforce=False,
+)
+</code></pre>
+
+<p>Some sort of vector environment conversion wrapper needs to be added here, this will be figured out after the API is changed.</p>
+
+:ET

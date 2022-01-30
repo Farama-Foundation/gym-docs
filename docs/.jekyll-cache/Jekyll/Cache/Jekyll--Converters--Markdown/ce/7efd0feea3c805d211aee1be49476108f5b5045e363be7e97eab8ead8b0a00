@@ -1,0 +1,109 @@
+I"�$<h1 id="api">API</h1>
+<h2 id="initializing-environments">Initializing Environments</h2>
+<p>Initializing environment is very easy in Gym and can be done via:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="s">'CartPole-v0'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="interacting-with-the-environment">Interacting with the Environment</h2>
+<p>This example will run an instance of <code class="language-plaintext highlighter-rouge">CartPole-v0</code> environment for 1000 timesteps, rendering the environment at each step. You should see a window pop up rendering the classic <a href="https://www.youtube.com/watch?v=J7E6_my3CHk&amp;ab_channel=TylerStreeter">cart-pole</a> problem</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="s">'CartPole-v0'</span><span class="p">)</span>
+<span class="n">env</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span> 
+	<span class="n">env</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>  <span class="c1"># by default `mode="human"`(GUI), you can pass `mode="rbg_array"` to retrieve an image instead
+</span>	<span class="n">env</span><span class="p">.</span><span class="n">step</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">action_space</span><span class="p">.</span><span class="n">sample</span><span class="p">())</span>  <span class="c1"># take a random action 	
+</span><span class="n">env</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The output should look something like this</p>
+
+<p><img src="https://user-images.githubusercontent.com/28860173/129241283-70069f7c-453d-4670-a226-854203bd8a1b.gif" alt="cartpole-no-reset" /></p>
+
+<p>The commonly used methods are:</p>
+
+<p><code class="language-plaintext highlighter-rouge">reset()</code> resets the environment to its initial state and returns the observation corresponding to the initial state
+<code class="language-plaintext highlighter-rouge">step(action)</code> takes an action as an input and implements that action in the environment. This method returns a set of four values 
+<code class="language-plaintext highlighter-rouge">render()</code> renders the environment</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">observation</code> (<strong>object</strong>) : an environment specific object representation your observation of the environment after the step is taken. Its often aliased as the next state after the action has been taken</li>
+  <li><code class="language-plaintext highlighter-rouge">reward</code>(<strong>float</strong>) : immediate reward achieved by the previous action. Actual value and range will varies between environments, but the final goal is always to increase your total reward</li>
+  <li><code class="language-plaintext highlighter-rouge">done</code>(<strong>boolean</strong>): whether it’s time to <code class="language-plaintext highlighter-rouge">reset</code> the environment again. Most (but not all) tasks are divided up into well-defined episodes, and <code class="language-plaintext highlighter-rouge">done</code> being <code class="language-plaintext highlighter-rouge">True</code> indicates the episode has terminated. (For example, perhaps the pole tipped too far, or you lost your last life.)</li>
+  <li><code class="language-plaintext highlighter-rouge">info</code>(<strong>dict</strong>) : This provides general information helpful for debugging or additional information depending on the environment, such as the raw probabilities behind the environment’s last state change</li>
+</ul>
+
+<h2 id="additional-environment-api">Additional Environment API</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">action_space</code>: this attribute gives the format of valid actions. It is of datatype <code class="language-plaintext highlighter-rouge">Space</code> provided by Gym. (For ex: If the action space is of type <code class="language-plaintext highlighter-rouge">Discrete</code> and gives the value <code class="language-plaintext highlighter-rouge">Discrete(2)</code>, this means there are two valid discrete actions 0 &amp; 1 )
+```python
+print(env.action_space)
+#&gt; Discrete(2)</li>
+</ul>
+
+<p>print(env.observation_space)
+#&gt; Box(-3.4028234663852886e+38, 3.4028234663852886e+38, (4,), float32)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- `observation_space`: this attribute gives the format of valid observations. It if of datatype `Space` provided by Gym. (For ex: if the observation space is of type `Box` and the shape of the object is `(4,)`, this denotes a valid observation will be an array of 4 numbers). We can check the box bounds as well with attributes
+
+```python
+print(env.observation_space.high)
+#&gt; array([4.8000002e+00, 3.4028235e+38, 4.1887903e-01, 3.4028235e+38], dtype=float32)
+
+print(env.observation_space.low)
+#&gt; array([-4.8000002e+00, -3.4028235e+38, -4.1887903e-01, -3.4028235e+38], dtype=float32)
+</code></pre></div></div>
+<ul>
+  <li>There are multiple types of Space types inherently available in gym:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Box</code> describes an n-dimensional continuous space. Its a bounded space where we can define the upper and lower limit which describe the valid values our observations can take.</li>
+      <li><code class="language-plaintext highlighter-rouge">Discrete</code> describes a discrete space where { 0, 1, ……., n-1} are the possible values our observation/action can take. Values can be shifted to { a, a+1, ……., a+n-1} using an optional argument.</li>
+      <li><code class="language-plaintext highlighter-rouge">Dict</code> represents a dictionary of simple spaces.</li>
+      <li><code class="language-plaintext highlighter-rouge">Tuple</code> represents a tuple of simple spaces</li>
+      <li><code class="language-plaintext highlighter-rouge">MultiBinary</code> creates a n-shape binary space. Argument n can be a number or a <code class="language-plaintext highlighter-rouge">list</code> of numbers</li>
+      <li><code class="language-plaintext highlighter-rouge">MultiDiscrete</code> consists of a series of <code class="language-plaintext highlighter-rouge">Discrete</code> action spaces with different number of actions in each element
+  ```python
+  observation_space = Box(low=-1.0, high=2.0, shape=(3,), dtype=np.float32)
+  print(observation_space.sample())
+  #&gt; [ 1.6952509 -0.4399011 -0.7981693]</li>
+    </ul>
+
+    <p>observation_space = Discrete(4)
+  print(observation_space.sample())
+  #&gt; 1</p>
+
+    <p>observation_space = Discrete(5, start=-2)
+  print(observation_space.sample())
+  #&gt; -2</p>
+
+    <p>observation_space = Dict({“position”: Discrete(2), “velocity”: Discrete(3)})
+  print(observation_space.sample())
+  #&gt; OrderedDict([(‘position’, 0), (‘velocity’, 1)])</p>
+
+    <p>observation_space = Tuple((Discrete(2), Discrete(3)))
+  print(observation_space.sample())
+  #&gt; (1, 2)</p>
+
+    <p>observation_space = MultiBinary(5)
+  print(observation_space.sample())
+  #&gt; [1 1 1 0 1]</p>
+
+    <p>observation_space = MultiDiscrete([ 5, 2, 2 ])
+  print(observation_space.sample())
+  #&gt; [3 0 0]
+  ```</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">reward_range</code>:  returns a tuple corresponding to min and max possible rewards. Default range is set to <code class="language-plaintext highlighter-rouge">[-inf,+inf]</code>. You can set it if you want a narrower range</li>
+  <li><code class="language-plaintext highlighter-rouge">close()</code> : Override close in your subclass to perform any necessary cleanup</li>
+  <li><code class="language-plaintext highlighter-rouge">seed()</code>: Sets the seed for this env’s random number generator</li>
+</ul>
+
+<h3 id="unwrapping-an-environment">Unwrapping an environment</h3>
+<p>If you have a wrapped environment, and you want to get the unwrapped environment underneath all the layers of wrappers (so that you can manually call a function or change some underlying aspect of the environment), you can use the <code class="language-plaintext highlighter-rouge">.unwrapped</code> attribute. If the environment is already a base environment, the <code class="language-plaintext highlighter-rouge">.unwrapped</code> attribute will just return itself.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">base_env</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">unwrapped</span>
+</code></pre></div></div>
+:ET
