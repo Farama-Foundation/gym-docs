@@ -54,7 +54,7 @@ respectively. The general article on Atari environments outlines different ways 
 via `gym.make`.
 
 ### Rewards
-Scores follow the rules of basketball. You can get either 3 points, 2 points foul line) gqdepending
+Scores follow the rules of basketball. You can get either 3 points, 2 points foul line) depending
 from where you shoot. After a defensive foul, a successful shot from the foul line gives you 1
 point.
 
