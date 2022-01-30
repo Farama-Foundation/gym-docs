@@ -31,7 +31,6 @@ analytics:
 markdown: kramdown
 
 remote_theme: trigaten/fantasia
-theme: fantasia
 
 defaults:
   - scope:
