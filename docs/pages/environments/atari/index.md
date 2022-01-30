@@ -20,7 +20,7 @@ The action space a subset of the following discrete set of legal actions:
 | 8   | DOWNRIGHT |
 | 9   | DOWNLEFT |
 | 10   | UPFIRE |
-| 11   | RIGHTGFIRE |
+| 11   | RIGHTFIRE |
 | 12   | LEFTFIRE |
 | 13   | DOWNFIRE |
 | 14   | UPRIGHTFIRE |
