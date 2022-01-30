@@ -75,6 +75,7 @@ the number of available modes and difficulty levels for different Atari games:
 |Crazy Climber|4|2|
 |Demon Attack|4|2|
 |Double Dunk|16|1|
+|Elevator Action|1|1|
 
 
 ### Common Arguments
