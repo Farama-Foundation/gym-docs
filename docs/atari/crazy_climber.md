@@ -13,7 +13,7 @@ a helicopter which you need to catch to get to the next building. The goal is to
 possible while receiving the least amout of damage. 
 
 
-Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=113).
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=113).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -53,7 +53,7 @@ respectively. The general article on Atari environments outlines different ways 
 via `gym.make`.
 
 ### Rewards
-A table of scores awarded for completing each row of a building is provided on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=113).
+A table of scores awarded for completing each row of a building is provided on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=113).
 
 ### Arguments
 

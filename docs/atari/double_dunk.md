@@ -10,7 +10,7 @@ You are playing a 2v2 game of basketball. At the start of each possession, you s
 of different plays and then execute them to either score or prevent your rivals from scoring. The
 game lasts a set amount of time or until one of the teams reaches a certain score
 
-Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=153).
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=153).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.

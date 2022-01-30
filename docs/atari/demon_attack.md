@@ -12,7 +12,7 @@ attacks. Each attack wave you survive without any hits, grants you a new bunker.
 hits you, a bunker is destroyed. When the last bunker falls, the next enemy hit will destroy you and
 the game ends.
 
-Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=135).
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=135).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -54,7 +54,7 @@ via `gym.make`.
 ### Rewards
 Each enemy you slay gives you points. The amount of points depends on the type of demon and which
 wave you are in. A detailed table of scores is provided on [the AtariAge
-page](https://atariage.com/manual_html_page.php?SoftwareID=135).
+page](https://atariage.com/manual_html_page.php?SoftwareLabelID=135).
 
 ### Arguments
 
