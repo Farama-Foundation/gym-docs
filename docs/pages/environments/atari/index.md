@@ -81,7 +81,11 @@ the number of available modes and difficulty levels for different Atari games:
 | Boxing |1| 4              |
 | Breakout |1|2|
 | Carnival |1| 1              |
-
+|Crazy Climber|4|2|
+|Demon Attack|4|2|
+|Double Dunk|16|1|
+|Elevator Action|1|1|
+|Enduro|1|1|
 
 
 
