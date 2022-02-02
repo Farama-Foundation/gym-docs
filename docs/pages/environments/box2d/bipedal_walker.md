@@ -63,6 +63,3 @@ env = gym.make("BipedalWalker-v3", hardcore=True)
 <!-- - v1: -->
 
 <!-- ### References -->
-
-### Credits
-Created by Oleg Klimov
