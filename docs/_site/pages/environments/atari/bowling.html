@@ -1,7 +1,7 @@
 <!-- the default layout throughout the site -->
 <!DOCTYPE html>
 <html>
-<link rel="icon" href="/gym-docs/assets/img/favicon.png">
+<link rel="icon" href="/assets/img/favicon.png">
 
 <head>
   
@@ -10,18 +10,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments">
   <meta name="author" content="Farama Foundation">
-  <link rel="canonical" href="http://localhost:4000/gym-docs/pages/environments/atari/bowling.html">
+  <link rel="canonical" href="http://localhost:4000/pages/environments/atari/bowling.html">
 
   <title>Bowling | Gym</title>
 
   <!-- our style -->
-  <link rel="stylesheet" href="/gym-docs/assets/css/website.css">
+  <link rel="stylesheet" href="/assets/css/website.css">
 
   <!-- Bootstrap core CSS -->
-  <link href="/gym-docs/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="/gym-docs/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -31,10 +31,10 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans:regular&subset=Latin" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this theme -->
-  <link href="/gym-docs/assets/css/markdown_format.css" rel="stylesheet">
-  <link href="/gym-docs/assets/css/highlighting.css" rel="stylesheet">
+  <link href="/assets/css/markdown_format.css" rel="stylesheet">
+  <link href="/assets/css/highlighting.css" rel="stylesheet">
   <!--<link href="/assets/css/agency.min.css" rel="stylesheet">-->
-  <link href="/gym-docs/assets/css/agency.css" rel="stylesheet">
+  <link href="/assets/css/agency.css" rel="stylesheet">
   <!--<script src="/assets/js/particles.js"></script>-->
 
 </head>
@@ -44,9 +44,9 @@
 <nav class="navbar navbar-expand-lg fixed-left" id="mainNav">
   <div class="container shorten">
     <div class="navbar-site-title">
-      <a class="navbar-brand" href="/gym-docs/#">
+      <a class="navbar-brand" href="/#">
         <!-- big gym logo at top left -->
-        <img class="navbar-brand-img" src="/gym-docs/assets/img/gym_logo_white.svg" />
+        <img class="navbar-brand-img" src="/assets/img/gym_logo_white.svg" />
       </a>
       <!-- gym title right below -->
       <div class="navbar-text">
@@ -55,611 +55,611 @@
     </div>
     <div class="spacer"></div>
     <div class="menu-btn">
-      <img class="menu-icon" src="/gym-docs/assets/img/menu_icon.svg" />
+      <img class="menu-icon" src="/assets/img/menu_icon.svg" />
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav pl-0 ml-0"><li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
               href="https://github.com/Farama-Foundation/gym-docs">Github</a>
             <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/api/index">
+              href="/pages/api/index">
               API
-            </a><img class="navbar-arrow" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
+            </a><img class="navbar-arrow" src="/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
               <li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/api#initializing-environments">Initializing Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/api#initializing-environments">Initializing Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/api#interacting-with-the-environment">Interacting with the Environment</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/api#interacting-with-the-environment">Interacting with the Environment</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/api#additional-environment-api">Additional Environment API</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/api#additional-environment-api">Additional Environment API</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/api#unwrapping-an-environment">Unwrapping an environment</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/api#unwrapping-an-environment">Unwrapping an environment</a><ul class="nav-subsubmenu"></ul>
               </li></ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/vector_api/index">
+              href="/pages/vector_api/index">
               Vector API
-            </a><img class="navbar-arrow" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
+            </a><img class="navbar-arrow" src="/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
               <li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#vectorized-environments">Vectorized Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#vectorized-environments">Vectorized Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#creating-a-vectorized-environment">Creating a vectorized environment</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#creating-a-vectorized-environment">Creating a vectorized environment</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#working-with-vectorized-environments">Working with vectorized environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#working-with-vectorized-environments">Working with vectorized environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#observation-&-action-spaces">Observation & Action spaces</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#observation-&-action-spaces">Observation & Action spaces</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#intermediate-usage">Intermediate Usage</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#intermediate-usage">Intermediate Usage</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#shared-memory">Shared memory</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#shared-memory">Shared memory</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#exception-handling">Exception handling</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#exception-handling">Exception handling</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#advanced-usage">Advanced Usage</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#advanced-usage">Advanced Usage</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#custom-spaces">Custom spaces</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#custom-spaces">Custom spaces</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#api-reference">API Reference</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#api-reference">API Reference</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#vectorenv">VectorEnv</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#vectorenv">VectorEnv</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#reset">Reset</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#reset">Reset</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#step">Step</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#step">Step</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/vector_api#seed">Seed</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/vector_api#seed">Seed</a><ul class="nav-subsubmenu"></ul>
               </li></ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/environments/index">
+              href="/pages/environments/index">
               Environments
-            </a><img class="navbar-arrow" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
+            </a><img class="navbar-arrow" src="/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
               <li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environments/toy_text">Toy Text</a><img class="navbar-arrow" height="20px" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
+                  href="/pages/environments/toy_text">Toy Text</a><img class="navbar-arrow" height="20px" src="/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ToyText/Blackjack.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/toy_text/blackjack">Blackjack</a>
+                      href="/pages/environments/toy_text/blackjack">Blackjack</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ToyText/FrozenLake.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/toy_text/frozen_lake">Frozen Lake</a>
+                      href="/pages/environments/toy_text/frozen_lake">Frozen Lake</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ToyText/Taxi.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/toy_text/taxi">Taxi</a>
+                      href="/pages/environments/toy_text/taxi">Taxi</a>
                   </li></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environments/atari">Atari</a><img class="navbar-arrow" height="20px" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
+                  href="/pages/environments/atari">Atari</a><img class="navbar-arrow" height="20px" src="/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Krull.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/krull">Krull</a>
+                      href="/pages/environments/atari/krull">Krull</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Kangaroo.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/kangaroo">Kangaroo</a>
+                      href="/pages/environments/atari/kangaroo">Kangaroo</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Asterix.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/asterix">Asterix</a>
+                      href="/pages/environments/atari/asterix">Asterix</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/BattleZone.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/battle_zone">Battle Zone</a>
+                      href="/pages/environments/atari/battle_zone">Battle Zone</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Amidar.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/amidar">Amidar</a>
+                      href="/pages/environments/atari/amidar">Amidar</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/IceHockey.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/ice_hockey">Ice Hockey</a>
+                      href="/pages/environments/atari/ice_hockey">Ice Hockey</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Assault.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/assault">Assault</a>
+                      href="/pages/environments/atari/assault">Assault</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Asteroids.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/asteroids">Asteroids</a>
+                      href="/pages/environments/atari/asteroids">Asteroids</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Carnival.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/carnival">Carnival</a>
+                      href="/pages/environments/atari/carnival">Carnival</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Jamesbond.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/jamesbond">Jamesbond</a>
+                      href="/pages/environments/atari/jamesbond">Jamesbond</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/AirRaid.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/air_raid">Air Raid</a>
+                      href="/pages/environments/atari/air_raid">Air Raid</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Bowling.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/bowling">Bowling</a>
+                      href="/pages/environments/atari/bowling">Bowling</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Breakout.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/breakout">Breakout</a>
+                      href="/pages/environments/atari/breakout">Breakout</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Alien.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/alien">Alien</a>
+                      href="/pages/environments/atari/alien">Alien</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/BeamRider.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/beam_rider">Beam Rider</a>
+                      href="/pages/environments/atari/beam_rider">Beam Rider</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/JourneyEscape.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/journey_escape">Journey Escape</a>
+                      href="/pages/environments/atari/journey_escape">Journey Escape</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Atlantis.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/atlantis">Atlantis</a>
+                      href="/pages/environments/atari/atlantis">Atlantis</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Boxing.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/boxing">Boxing</a>
+                      href="/pages/environments/atari/boxing">Boxing</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/Berzerk.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/berzerk">Berzerk</a>
+                      href="/pages/environments/atari/berzerk">Berzerk</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Atari/BankHeist.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/atari/bank_heist">Bank Heist</a>
+                      href="/pages/environments/atari/bank_heist">Bank Heist</a>
                   </li></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environments/mujoco">Mujoco</a><img class="navbar-arrow" height="20px" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
+                  href="/pages/environments/mujoco">Mujoco</a><img class="navbar-arrow" height="20px" src="/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/HumanoidStandup.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/humanoid_standup">Humanoid Standup</a>
+                      href="/pages/environments/mujoco/humanoid_standup">Humanoid Standup</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/Hopper.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/hopper">Hopper</a>
+                      href="/pages/environments/mujoco/hopper">Hopper</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/Walker2D.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/walker2d">Walker2D</a>
+                      href="/pages/environments/mujoco/walker2d">Walker2D</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/Swimmer.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/swimmer">Swimmer</a>
+                      href="/pages/environments/mujoco/swimmer">Swimmer</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/InvertedDoublePendulum.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/inverted_double_pendulum">Inverted Double Pendulum</a>
+                      href="/pages/environments/mujoco/inverted_double_pendulum">Inverted Double Pendulum</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/InvertedPendulum.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/inverted_pendulum">Inverted Pendulum</a>
+                      href="/pages/environments/mujoco/inverted_pendulum">Inverted Pendulum</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/Humanoid.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/humanoid">Humanoid</a>
+                      href="/pages/environments/mujoco/humanoid">Humanoid</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/Ant.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/ant">Ant</a>
+                      href="/pages/environments/mujoco/ant">Ant</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Mujoco/HalfCheetah.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/mujoco/half_cheetah">Half Cheetah</a>
+                      href="/pages/environments/mujoco/half_cheetah">Half Cheetah</a>
                   </li></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environments/classic_control">Classic Control</a><img class="navbar-arrow" height="20px" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
+                  href="/pages/environments/classic_control">Classic Control</a><img class="navbar-arrow" height="20px" src="/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ClassicControl/MountainCar.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/classic_control/mountain_car">Mountain Car</a>
+                      href="/pages/environments/classic_control/mountain_car">Mountain Car</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ClassicControl/Pendulum.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/classic_control/pendulum">Pendulum</a>
+                      href="/pages/environments/classic_control/pendulum">Pendulum</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ClassicControl/Acrobot.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/classic_control/acrobot">Acrobot</a>
+                      href="/pages/environments/classic_control/acrobot">Acrobot</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ClassicControl/CartPole.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/classic_control/cart_pole">Cart Pole</a>
+                      href="/pages/environments/classic_control/cart_pole">Cart Pole</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/ClassicControl/MountainCarContinuous.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/classic_control/mountain_car_continuous">Mountain Car Continuous</a>
+                      href="/pages/environments/classic_control/mountain_car_continuous">Mountain Car Continuous</a>
                   </li></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environments/box2d">Box2D</a><img class="navbar-arrow" height="20px" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
+                  href="/pages/environments/box2d">Box2D</a><img class="navbar-arrow" height="20px" src="/assets/img/expand_arrow.svg" /><ul class="nav-subsubmenu"><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Box2D/LunarLander.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/box2d/lunar_lander">Lunar Lander</a>
+                      href="/pages/environments/box2d/lunar_lander">Lunar Lander</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Box2D/BipedalWalker.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/box2d/bipedal_walker">Bipedal Walker</a>
+                      href="/pages/environments/box2d/bipedal_walker">Bipedal Walker</a>
                   </li><li class="nav-subsubitem nav-item">
                     
                     <!-- currently dont have icons for each gym, so this is commented out -->
                     <!-- <a class="icon-anchor" href=""><img class="icon" src="/assets/img/icons/Box2D/CarRacing.png"></a> -->
                     <a style="font-weight: normal;" class="nav-link-icon nav-link js-scroll-trigger env-link"
-                      href="/gym-docs/pages/environments/box2d/car_racing">Car Racing</a>
+                      href="/pages/environments/box2d/car_racing">Car Racing</a>
                   </li></ul>
               </li></ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/environment_creation/index">
+              href="/pages/environment_creation/index">
               Environment Creation
-            </a><img class="navbar-arrow" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
+            </a><img class="navbar-arrow" src="/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
               <li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environment_creation#example-custom-environment">Example Custom Environment</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/environment_creation#example-custom-environment">Example Custom Environment</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environment_creation#subclassing-gym.env">Subclassing gym.Env</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/environment_creation#subclassing-gym.env">Subclassing gym.Env</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environment_creation#registering-envs">Registering Envs</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/environment_creation#registering-envs">Registering Envs</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/environment_creation#creating-a-package">Creating a Package</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/environment_creation#creating-a-package">Creating a Package</a><ul class="nav-subsubmenu"></ul>
               </li></ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/wrappers/index">
+              href="/pages/wrappers/index">
               Wrappers
             </a><ul class="nav-submenu">
               </ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/spaces/index">
+              href="/pages/spaces/index">
               Spaces
-            </a><img class="navbar-arrow" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
+            </a><img class="navbar-arrow" src="/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
               <li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#sample()">sample()</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#sample()">sample()</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#contains(x)">contains(x)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#contains(x)">contains(x)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#_property_-shape">_property_ shape</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#_property_-shape">_property_ shape</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#_property_-dtype">_property_ dtype</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#_property_-dtype">_property_ dtype</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#seed(seed)">seed(seed)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#seed(seed)">seed(seed)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#_property_-np_random">_property_ np_random</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#_property_-np_random">_property_ np_random</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#to_jsonable(sample_n)">to_jsonable(sample_n)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#to_jsonable(sample_n)">to_jsonable(sample_n)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#from_jsonable(sample_n)">from_jsonable(sample_n)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#from_jsonable(sample_n)">from_jsonable(sample_n)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#box">Box</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#box">Box</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#is_bounded(manner='both')">is_bounded(manner='both')</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#is_bounded(manner='both')">is_bounded(manner='both')</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#sample()">sample()</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#sample()">sample()</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#discrete">Discrete</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#discrete">Discrete</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#multibinary">MultiBinary</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#multibinary">MultiBinary</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#multidiscrete">MultiDiscrete</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#multidiscrete">MultiDiscrete</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#dict">Dict</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#dict">Dict</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#tuple">Tuple</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#tuple">Tuple</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#utility-functions">Utility Functions</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#utility-functions">Utility Functions</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#flatdim(space)">flatdim(space)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#flatdim(space)">flatdim(space)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#flatten_space(space)">flatten_space(space)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#flatten_space(space)">flatten_space(space)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#flatten(space,-x)">flatten(space, x)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#flatten(space,-x)">flatten(space, x)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/spaces#unflatten(space,-x)">unflatten(space, x)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/spaces#unflatten(space,-x)">unflatten(space, x)</a><ul class="nav-subsubmenu"></ul>
               </li></ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/third_party_environments/index">
+              href="/pages/third_party_environments/index">
               Third Party Environments
-            </a><img class="navbar-arrow" src="/gym-docs/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
+            </a><img class="navbar-arrow" src="/assets/img/expand_arrow.svg" /><ul class="nav-submenu">
               <li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#video-game-environments">Video Game Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#video-game-environments">Video Game Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#flappy-bird-gym:-a-flappy-bird-environment-for-openai-gym">flappy-bird-gym: A Flappy Bird environment for OpenAI Gym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#flappy-bird-gym:-a-flappy-bird-environment-for-openai-gym">flappy-bird-gym: A Flappy Bird environment for OpenAI Gym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-derk:-gpu-accelerated-moba-environment">gym-derk: GPU accelerated MOBA environment</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-derk:-gpu-accelerated-moba-environment">gym-derk: GPU accelerated MOBA environment</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#minerl">MineRL</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#minerl">MineRL</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#procgen">Procgen</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#procgen">Procgen</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#slimevolleygym:-a-simple-environment-for-single-and-multi-agent-reinforcement-learning">SlimeVolleyGym: A simple environment for single and multi-agent reinforcement learning</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#slimevolleygym:-a-simple-environment-for-single-and-multi-agent-reinforcement-learning">SlimeVolleyGym: A simple environment for single and multi-agent reinforcement learning</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#stable-retro">stable-retro</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#stable-retro">stable-retro</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#unity-ml-agents">Unity ML Agents</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#unity-ml-agents">Unity ML Agents</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#classic-environments-(board,-card,-etc.-games)">Classic Environments (board, card, etc. games)</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#classic-environments-(board,-card,-etc.-games)">Classic Environments (board, card, etc. games)</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-abalone:-a-two-player-abstract-strategy-board-game">gym-abalone: A two-player abstract strategy board game</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-abalone:-a-two-player-abstract-strategy-board-game">gym-abalone: A two-player abstract strategy board game</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-spoof">gym-spoof</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-spoof">gym-spoof</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-xiangqi:-xiangqi---the-chinese-chess-game">gym-xiangqi: Xiangqi - The Chinese Chess Game</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-xiangqi:-xiangqi---the-chinese-chess-game">gym-xiangqi: Xiangqi - The Chinese Chess Game</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#rubikscubegym">RubiksCubeGym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#rubikscubegym">RubiksCubeGym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#robotics-environments">Robotics Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#robotics-environments">Robotics Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gymfc:-a-flight-control-tuning-and-training-framework">GymFC: A flight control tuning and training framework</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gymfc:-a-flight-control-tuning-and-training-framework">GymFC: A flight control tuning and training framework</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-gazebo">gym-gazebo</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-gazebo">gym-gazebo</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-goddard:-goddard's-rocket-problem">gym-goddard: Goddard's Rocket Problem</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-goddard:-goddard's-rocket-problem">gym-goddard: Goddard's Rocket Problem</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-jiminy:-training-robots-in-jiminy">gym-jiminy: training Robots in Jiminy</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-jiminy:-training-robots-in-jiminy">gym-jiminy: training Robots in Jiminy</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-miniworld">gym-miniworld</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-miniworld">gym-miniworld</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-pybullet-drones">gym-pybullet-drones</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-pybullet-drones">gym-pybullet-drones</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#marsexplorer">MarsExplorer</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#marsexplorer">MarsExplorer</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#panda-gym">panda-gym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#panda-gym">panda-gym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#pybullet-robotics-environments">PyBullet Robotics Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#pybullet-robotics-environments">PyBullet Robotics Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#robo-gym">robo-gym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#robo-gym">robo-gym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#offworld-gym">Offworld-gym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#offworld-gym">Offworld-gym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#autonomous-driving-and-traffic-control-environments">Autonomous Driving and Traffic Control Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#autonomous-driving-and-traffic-control-environments">Autonomous Driving and Traffic Control Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-carla">gym-carla</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-carla">gym-carla</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-duckietown">gym-duckietown</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-duckietown">gym-duckietown</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-electric-motor">gym-electric-motor</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-electric-motor">gym-electric-motor</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#highway-env">highway-env</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#highway-env">highway-env</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#longicontrol">LongiControl</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#longicontrol">LongiControl</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#sumo-rl">sumo-rl</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#sumo-rl">sumo-rl</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#other-environments">Other Environments</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#other-environments">Other Environments</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#anomalous_rl_envs">anomalous_rl_envs</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#anomalous_rl_envs">anomalous_rl_envs</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#compilergym">CompilerGym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#compilergym">CompilerGym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gridworld">Gridworld</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gridworld">Gridworld</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-adserve">gym-adserve</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-adserve">gym-adserve</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-algorithmic">gym-algorithmic</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-algorithmic">gym-algorithmic</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-anytrading">gym-anytrading</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-anytrading">gym-anytrading</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-autokey">gym-autokey</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-autokey">gym-autokey</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-ccc">gym-ccc</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-ccc">gym-ccc</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-cellular-automata">gym-cellular-automata</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-cellular-automata">gym-cellular-automata</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-games">gym-games</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-games">gym-games</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-inventory">gym-inventory</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-inventory">gym-inventory</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-maze">gym-maze</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-maze">gym-maze</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-mtsim">gym-mtsim</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-mtsim">gym-mtsim</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-legacy-toytext">gym-legacy-toytext</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-legacy-toytext">gym-legacy-toytext</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-riverswim">gym-riverswim</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-riverswim">gym-riverswim</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-recsys">gym-recsys</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-recsys">gym-recsys</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#gym-sokoban">gym-sokoban</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#gym-sokoban">gym-sokoban</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#math-prog-synth-env">math-prog-synth-env</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#math-prog-synth-env">math-prog-synth-env</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#nasgym">NASGym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#nasgym">NASGym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#nlpgym:-a-toolkit-to-develop-rl-agents-to-solve-nlp-tasks">NLPGym: A toolkit to develop RL agents to solve NLP tasks</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#nlpgym:-a-toolkit-to-develop-rl-agents-to-solve-nlp-tasks">NLPGym: A toolkit to develop RL agents to solve NLP tasks</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#obstacle-tower">Obstacle Tower</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#obstacle-tower">Obstacle Tower</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#openmodelica-microgrid-gym">openmodelica-microgrid-gym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#openmodelica-microgrid-gym">openmodelica-microgrid-gym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#osim-rl">osim-rl</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#osim-rl">osim-rl</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#pge:-parallel-game-engine">PGE: Parallel Game Engine</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#pge:-parallel-game-engine">PGE: Parallel Game Engine</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#qasgym">QASGym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#qasgym">QASGym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#safe-control-gym">safe-control-gym</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#safe-control-gym">safe-control-gym</a><ul class="nav-subsubmenu"></ul>
               </li><li class="nav-subitem-1 nav-item">
                 <a style="font-weight: normal;" class="nav-link js-scroll-trigger"
-                  href="/gym-docs/pages/third_party_environments#virtualtaobao">VirtualTaobao</a><ul class="nav-subsubmenu"></ul>
+                  href="/pages/third_party_environments#virtualtaobao">VirtualTaobao</a><ul class="nav-subsubmenu"></ul>
               </li></ul></li>
           <li class="nav-item nav-first-item ml-0"><a class="nav-link js-scroll-trigger pl-2 pl-md-3 ml-0" style="font-weight: normal;"
-              href="/gym-docs/pages/tutorials/index">
+              href="/pages/tutorials/index">
               Tutorials
             </a><ul class="nav-submenu">
               </ul></li>
@@ -699,7 +699,7 @@
 
 <div class="floatright">
 
-    <img src="/gym-docs/pages/environments/atari/videos/bowling.gif" alt="bowling gif" />
+    <img src="/pages/environments/atari/videos/bowling.gif" alt="bowling gif" />
 
     <p style="text-align: left;" class="my-2">
         This environment is part of the <a href="../atari">atari environments</a>.

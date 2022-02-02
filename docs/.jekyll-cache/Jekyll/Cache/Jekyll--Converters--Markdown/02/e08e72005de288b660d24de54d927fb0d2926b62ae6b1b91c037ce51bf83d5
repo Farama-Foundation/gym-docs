@@ -1,4 +1,4 @@
-I"�?<p>Atari environments are simulated via the Arcade Learning Environment (ALE) <a href="#1">[1]</a>.</p>
+I"rA<p>Atari environments are simulated via the Arcade Learning Environment (ALE) <a href="#1">[1]</a>.</p>
 <h3 id="action-space">Action Space</h3>
 <p>The action space a subset of the following discrete set of legal actions:</p>
 
@@ -219,6 +219,36 @@ the number of available modes and difficulty levels for different Atari games:</
     </tr>
     <tr>
       <td>Carnival</td>
+      <td>1</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Crazy Climber</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Demon Attack</td>
+      <td>4</td>
+      <td>2</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Double Dunk</td>
+      <td>16</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Elevator Action</td>
+      <td>1</td>
+      <td>1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Enduro</td>
       <td>1</td>
       <td>1</td>
       <td> </td>
