@@ -1,0 +1,61 @@
+I"^<h3 id="description">Description</h3>
+<p>This is simple 4-joints walker robot environment.
+There are two versions:</p>
+<ul>
+  <li>Normal, with slightly uneven terrain.</li>
+  <li>Hardcore with ladders, stumps, pitfalls.</li>
+</ul>
+
+<p>To solve the game you need to get 300 points in 1600 time steps.
+To solve the hardcore version you need 300 points in 2000 time steps.</p>
+
+<p>Heuristic is provided for testing, it’s also useful to get demonstrations
+to learn from. To run the heuristic:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python gym/envs/box2d/bipedal_walker.py
+</code></pre></div></div>
+
+<h3 id="action-space">Action Space</h3>
+<p>Actions are motor speed values in the [-1, 1] range for each of the
+4 joints at both hips and knees.</p>
+
+<h3 id="observation-space">Observation Space</h3>
+<p>State consists of hull angle speed, angular velocity, horizontal speed,
+vertical speed, position of joints and joints angular speed, legs contact
+with ground, and 10 lidar rangefinder measurements. There’s no coordinates
+in the state vector.</p>
+
+<h3 id="rewards">Rewards</h3>
+<p>Reward is given for moving forward, total 300+ points up to the far end.
+If the robot falls, it gets -100. Applying motor torque costs a small
+amount of points, more optimal agent will get better score.</p>
+
+<h3 id="starting-state">Starting State</h3>
+<p>The walker starts standing at the left end of the terrain with the hull
+horizontal, and both legs in the same position with a slight knee angle.</p>
+
+<h3 id="episode-termination">Episode Termination</h3>
+<p>The episode will terminate if the hull gets in contact with the ground or
+if the walker exceeds the right end of the terrain length.</p>
+
+<h3 id="arguments">Arguments</h3>
+<p>To use to the <em>hardcore</em> environment, you need to specify the
+<code class="language-plaintext highlighter-rouge">hardcore=True</code> argument like below:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="s">"BipedalWalker-v3"</span><span class="p">,</span> <span class="n">hardcore</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="version-history">Version History</h3>
+<ul>
+  <li>v3: returns closest lidar trace instead of furthest;
+  faster video recording</li>
+  <li>v2: Count energy spent</li>
+  <li>v1: Legs now report contact with ground; motors have higher torque and
+  speed; ground has higher friction; lidar rendered less nervously.</li>
+  <li>v0: Initial version</li>
+</ul>
+
+<!-- ### References -->
+
+<h3 id="credits">Credits</h3>
+<p>Created by Oleg Klimov</p>
+:ET

@@ -1,0 +1,77 @@
+I"�<h3 id="description">Description</h3>
+<p>This environment is a classic rocket trajectory optimization problem.
+According to Pontryagin’s maximum principle, it is optimal to fire the
+engine at full throttle or turn it off. This is the reason why this
+environment has discreet actions: engine on or off.</p>
+
+<p>There are two environment versions: discrete or continuous.
+The landing pad is always at coordinates (0,0). The coordinates are the
+first two numbers in the state vector.
+Landing outside the landing pad is possible. Fuel is infinite, so an agent
+can learn to fly and then land on its first attempt.</p>
+
+<p>To see a heuristic landing, run:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python gym/envs/box2d/lunar_lander.py
+</code></pre></div></div>
+<!-- To play yourself, run: -->
+<!-- python examples/agents/keyboard_agent.py LunarLander-v2 -->
+
+<h2 id="action-space">Action Space</h2>
+<p>There are four discrete actions available: do nothing, fire left
+orientation engine, fire main engine, fire right orientation engine.</p>
+
+<h2 id="observation-space">Observation Space</h2>
+<p>There are 8 states: the coordinates of the lander in <code class="language-plaintext highlighter-rouge">x</code> &amp; <code class="language-plaintext highlighter-rouge">y</code>, its linear
+velocities in <code class="language-plaintext highlighter-rouge">x</code> &amp; <code class="language-plaintext highlighter-rouge">y</code>, its angle, its angular velocity, and two boleans
+showing if each leg is in contact with the ground or not.</p>
+
+<h2 id="rewards">Rewards</h2>
+<p>Reward for moving from the top of the screen to the landing pad and zero
+speed is about 100..140 points.
+If the lander moves away from the landing pad it loses reward.
+If the lander crashes, it receives an additional -100 points. If it comes
+to rest, it receives an additional +100 points. Each leg with ground
+contact is +10 points.
+Firing the main engine is -0.3 points each frame. Firing the side engine
+is -0.03 points each frame. Solved is 200 points.</p>
+
+<h2 id="starting-state">Starting State</h2>
+<p>The lander starts at the top center of the viewport with a random initial
+force applied to its center of mass.</p>
+
+<h2 id="episode-termination">Episode Termination</h2>
+<p>The episode finishes if:
+1) the lander crashes (the lander body gets in contact with the moon);
+2) the lander gets outside of the viewport (<code class="language-plaintext highlighter-rouge">x</code> coordinate is greater than 1);
+3) the lander is not awake. From the <a href="https://box2d.org/documentation/md__d_1__git_hub_box2d_docs_dynamics.html#autotoc_md61">Box2D docs</a>,
+    a body which is not awake is a body which doesn’t move and doesn’t
+    collide with any other body:</p>
+<blockquote>
+  <p>When Box2D determines that a body (or group of bodies) has come to rest,
+the body enters a sleep state which has very little CPU overhead. If a
+body is awake and collides with a sleeping body, then the sleeping body
+wakes up. Bodies will also wake up if a joint or contact attached to
+them is destroyed.</p>
+</blockquote>
+
+<h2 id="arguments">Arguments</h2>
+<p>To use to the <em>continuous</em> environment, you need to specify the
+<code class="language-plaintext highlighter-rouge">continuous=True</code> argument like below:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gym</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="n">make</span><span class="p">(</span><span class="s">"LunarLander-v2"</span><span class="p">,</span> <span class="n">continuous</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="version-history">Version History</h3>
+<ul>
+  <li>v2: Count energy spent</li>
+  <li>v1: Legs contact with ground added in state vector; contact with ground
+  give +10 reward points, and -10 if then lose contact; reward
+  renormalized to 200; harder initial random push.</li>
+  <li>v0: Initial version</li>
+</ul>
+
+<!-- ### References -->
+
+<h2 id="credits">Credits</h2>
+<p>Created by Oleg Klimov</p>
+:ET
