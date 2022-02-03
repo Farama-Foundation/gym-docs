@@ -7,7 +7,7 @@ grid:
    - Observation Shape: (11,)
    - Observation High: [inf inf inf inf inf inf inf inf inf inf inf]
    - Observation Low: [-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf]
-   - Import: <code>gym.make("Hopper-v2")</code>
+   - Import: <code>gym.make("Hopper-v3")</code>
 ---
 ### Description
 
@@ -27,11 +27,11 @@ The agent take a 3-element vector for actions.
 The action space is a continuous `(action, action, action)` all in `[-1, 1]`
 , where `action` represents the numerical torques applied between *links*
 
-| Num | Action                    | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit |
-|-------|----------------------|---------------|----------------|---------------------------------------|-------|------|
-| 0   | Torque applied on the thigh rotor | -1 | 1 | thigh_joint  | hinge | torque (N m) |
-| 1   | Torque applied on the leg rotor    | -1 | 1 | leg_joint     | hinge | torque (N m) |
-| 3   | Torque applied on the foot rotor  | -1 | 1 | foot_joint    | hinge | torque (N m) |
+| Num | Action                             | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit         |
+|-----|------------------------------------|-------------|-------------|----------------------------------|-------|--------------|
+| 0   | Torque applied on the thigh rotor  | -1          | 1           | thigh_joint                      | hinge | torque (N m) |
+| 1   | Torque applied on the leg rotor    | -1          | 1           | leg_joint                        | hinge | torque (N m) |
+| 3   | Torque applied on the foot rotor   | -1          | 1           | foot_joint                       | hinge | torque (N m) |
 
 ### Observation Space
 
@@ -44,18 +44,18 @@ correspond to the following:
 
 | Num | Observation           | Min                  | Max                | Name (in corresponding XML file) | Joint| Unit |
 |-----|-----------------------|----------------------|--------------------|----------------------|--------------------|--------------------|
-| 0       | x-coordinate of the top                                    | -Inf                 | Inf                | rootx | slide | position (m) |
-| 1       | z-coordinate of the top (height of hopper)       | -Inf                 | Inf                | rootz | slide | position (m) |
-| 2       | angle of the top                                                | -Inf                 | Inf                | rooty | hinge | angle (rad) |
-| 3       | angle of the thigh joint                                      | -Inf                 | Inf                | thigh_joint | hinge | angle (rad) |
-| 4       | angle of the leg joint                                         | -Inf                 | Inf                | leg_joint | hinge | angle (rad) |
-| 5       | angle of the foot joint                                        | -Inf                 | Inf                | foot_joint | hinge | angle (rad) |
-| 6       | velocity of the x-coordinate of the top              | -Inf                 | Inf                | rootx | slide | velocity (m/s) |
-| 7       | velocity of the z-coordinate (height) of the top | -Inf                 | Inf                | rootz | slide | velocity (m/s)  |
-| 8       | angular velocity of the angle of the top            | -Inf                 | Inf                | rooty | hinge | angular velocity (rad/s) |
-| 9       | angular velocity of the thigh hinge                   | -Inf                 | Inf                | thigh_joint | hinge | angular velocity (rad/s) |
-| 10     | angular velocity of the leg hinge                       | -Inf                 | Inf                | leg_joint | hinge | angular velocity (rad/s) |
-| 11     | angular velocity of the foot hinge                     | -Inf                 | Inf                | foot_joint | hinge | angular velocity (rad/s) |
+| 0   | x-coordinate of the top                          | -Inf                 | Inf                | rootx | slide | position (m) |
+| 1   | z-coordinate of the top (height of hopper)       | -Inf                 | Inf                | rootz | slide | position (m) |
+| 2   | angle of the top                                 | -Inf                 | Inf                | rooty | hinge | angle (rad) |
+| 3   | angle of the thigh joint                         | -Inf                 | Inf                | thigh_joint | hinge | angle (rad) |
+| 4   | angle of the leg joint                           | -Inf                 | Inf                | leg_joint | hinge | angle (rad) |
+| 5   | angle of the foot joint                          | -Inf                 | Inf                | foot_joint | hinge | angle (rad) |
+| 6   | velocity of the x-coordinate of the top          | -Inf                 | Inf                | rootx | slide | velocity (m/s) |
+| 7   | velocity of the z-coordinate (height) of the top | -Inf                 | Inf                | rootz | slide | velocity (m/s)  |
+| 8   | angular velocity of the angle of the top         | -Inf                 | Inf                | rooty | hinge | angular velocity (rad/s) |
+| 9   | angular velocity of the thigh hinge              | -Inf                 | Inf                | thigh_joint | hinge | angular velocity (rad/s) |
+| 10  | angular velocity of the leg hinge                | -Inf                 | Inf                | leg_joint | hinge | angular velocity (rad/s) |
+| 11  | angular velocity of the foot hinge               | -Inf                 | Inf                | foot_joint | hinge | angular velocity (rad/s) |
 
 
 
@@ -67,17 +67,17 @@ to develop an abstract understanding of it from the observed rewards.
 Therefore, observation space has shape `(11,)` instead of `(12,)` and looks like:
 | Num | Observation           | Min                  | Max                | Name (in corresponding XML file) | Joint| Unit |
 |-----|-----------------------|----------------------|--------------------|----------------------|--------------------|--------------------|
-| 0       | z-coordinate of the top (height of hopper)        | -Inf                 | Inf                | rootz | slide | position (m) |
-| 1       | angle of the top                                                 | -Inf                 | Inf                | rooty | hinge | angle (rad) |
-| 2       | angle of the thigh joint                                       | -Inf                 | Inf                | thigh_joint | hinge | angle (rad) |
-| 3       | angle of the leg joint                                          | -Inf                 | Inf                | leg_joint | hinge | angle (rad) |
-| 4       | angle of the foot joint                                         | -Inf                 | Inf                | foot_joint | hinge | angle (rad) |
-| 5       | velocity of the x-coordinate of the top               | -Inf                 | Inf                | rootx | slide | velocity (m/s) |
-| 6       | velocity of the z-coordinate (height) of the top  | -Inf                 | Inf                | rootz | slide | velocity (m/s)  |
-| 7       | angular velocity of the angle of the top              | -Inf                 | Inf                | rooty | hinge | angular velocity (rad/s) |
-| 8       | angular velocity of the thigh hinge                      | -Inf                 | Inf                | thigh_joint | hinge | angular velocity (rad/s) |
-| 9       | angular velocity of the leg hinge                         | -Inf                 | Inf                | leg_joint | hinge | angular velocity (rad/s) |
-| 10     | angular velocity of the foot hinge                       | -Inf                 | Inf                | foot_joint | hinge | angular velocity (rad/s) |
+| 0   | z-coordinate of the top (height of hopper)        | -Inf                 | Inf                | rootz | slide | position (m) |
+| 1   | angle of the top                                  | -Inf                 | Inf                | rooty | hinge | angle (rad) |
+| 2   | angle of the thigh joint                          | -Inf                 | Inf                | thigh_joint | hinge | angle (rad) |
+| 3   | angle of the leg joint                            | -Inf                 | Inf                | leg_joint | hinge | angle (rad) |
+| 4   | angle of the foot joint                           | -Inf                 | Inf                | foot_joint | hinge | angle (rad) |
+| 5   | velocity of the x-coordinate of the top           | -Inf                 | Inf                | rootx | slide | velocity (m/s) |
+| 6   | velocity of the z-coordinate (height) of the top  | -Inf                 | Inf                | rootz | slide | velocity (m/s)  |
+| 7   | angular velocity of the angle of the top          | -Inf                 | Inf                | rooty | hinge | angular velocity (rad/s) |
+| 8   | angular velocity of the thigh hinge               | -Inf                 | Inf                | thigh_joint | hinge | angular velocity (rad/s) |
+| 9   | angular velocity of the leg hinge                 | -Inf                 | Inf                | leg_joint | hinge | angular velocity (rad/s) |
+| 10  | angular velocity of the foot hinge                | -Inf                 | Inf                | foot_joint | hinge | angular velocity (rad/s) |
 
 ### Rewards
 The reward consists of three parts:
@@ -97,7 +97,7 @@ The total reward returned is ***reward*** *=* *alive bonus + reward_forward + re
 
 ### Starting State
 All observations start in state
-(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) with a uniform nois
+(0.0, 1.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) with a uniform nois
 e in the range of [-0.005, 0.005] added to the values for stochasticity.
 
 ### Episode Termination

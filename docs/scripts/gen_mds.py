@@ -18,9 +18,8 @@ for env_spec in gym.envs.registry.all():
     
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
-
+    
     print(env_spec.id)
-    continue
     try:
         env = gym.make(env_spec.id)
         if "ALE" in env.unwrapped.__doc__:
@@ -29,9 +28,8 @@ for env_spec in gym.envs.registry.all():
         e_n = str(env_spec).lower()
         
         docstring = env.unwrapped.__doc__
-        if docstring == None:
+        if not docstring:
             docstring = env.unwrapped.__class__.__doc__
-
         docstring = trim(docstring)
         split = str(type(env.unwrapped)).split(".")
 
