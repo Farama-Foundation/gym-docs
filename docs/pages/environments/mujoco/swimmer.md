@@ -7,7 +7,7 @@ grid:
    - Observation Shape: (8,)
    - Observation High: [inf inf inf inf inf inf inf inf]
    - Observation Low: [-inf -inf -inf -inf -inf -inf -inf -inf]
-   - Import: <code>gym.make("Swimmer-v2")</code>
+   - Import: <code>gym.make("Swimmer-v3")</code>
 ---
 ### Description
 
@@ -40,10 +40,10 @@ The agent take a 2-element vector for actions.
 The action space is a continuous `(action, action)` in `[-1, 1]`, where
 `action` represents the numerical torques applied between *links*
 
-| Num | Action                 | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit |
-|-----|------------------------|-----|-----|------|-----|-----|
-| 0   | Torque applied on the first rotor  | -1 | 1 | rot2 | hinge | torque (N m) |
-| 1   | Torque applied on the second rotor  | -1 | 1 | rot3 | hinge | torque (N m) |
+| Num | Action                             | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit         |
+|-----|------------------------------------|-------------|-------------|----------------------------------|-------|--------------|
+| 0   | Torque applied on the first rotor  | -1          | 1           | rot2                             | hinge | torque (N m) |
+| 1   | Torque applied on the second rotor | -1          | 1           | rot3                             | hinge | torque (N m) |
 
 ### Observation Space
 
@@ -58,13 +58,13 @@ The observation is a `ndarray` with shape `(8,)` where the elements correspond t
 |-----|-----------------------|----------------------|--------------------|----------------------|--------------------|--------------------|
 | 0   | x-coordinate of the front tip              | -Inf                 | Inf                | slider1 | slide | position (m) |
 | 1   | y-coordinate of the front tip              | -Inf                 | Inf                | slider2 | slide | position (m) |
-| 2   | angle of the front tip                          | -Inf                 | Inf                | rot | hinge | angle (rad) |
+| 2   | angle of the front tip                     | -Inf                 | Inf                | rot | hinge | angle (rad) |
 | 3   | angle of the second rotor                  | -Inf                 | Inf                | rot2 | hinge | angle (rad) |
 | 4   | angle of the second rotor                  | -Inf                 | Inf                | rot3 | hinge | angle (rad) |
-| 5   | velocity of the tip along the x-axis    | -Inf                 | Inf                | slider1 | slide | velocity (m/s) |
-| 6   | velocity of the tip along the y-axis    | -Inf                 | Inf                | slider2 | slide | velocity (m/s) |
-| 7   | angular velocity of front tip               | -Inf                 | Inf                | rot | hinge | angular velocity (rad/s) |
-| 8   | angular velocity of second rotor       | -Inf                 | Inf                | rot2 | hinge | angular velocity (rad/s) |
+| 5   | velocity of the tip along the x-axis       | -Inf                 | Inf                | slider1 | slide | velocity (m/s) |
+| 6   | velocity of the tip along the y-axis       | -Inf                 | Inf                | slider2 | slide | velocity (m/s) |
+| 7   | angular velocity of front tip              | -Inf                 | Inf                | rot | hinge | angular velocity (rad/s) |
+| 8   | angular velocity of second rotor           | -Inf                 | Inf                | rot2 | hinge | angular velocity (rad/s) |
 | 9   | angular velocity of third rotor            | -Inf                 | Inf                | rot3 | hinge | angular velocity (rad/s) |
 
 **Note:**
@@ -73,13 +73,13 @@ omitted from the state space since the reward function is calculated based
 on those values. Therefore, observation space has shape `(8,)` and looks like:
 | Num | Observation           | Min                  | Max                | Name (in corresponding XML file) | Joint| Unit |
 |-----|-----------------------|----------------------|--------------------|----------------------|--------------------|--------------------|
-| 0   | angle of the front tip                          | -Inf                 | Inf                | rot | hinge | angle (rad) |
+| 0   | angle of the front tip                     | -Inf                 | Inf                | rot | hinge | angle (rad) |
 | 1   | angle of the second rotor                  | -Inf                 | Inf                | rot2 | hinge | angle (rad) |
 | 2   | angle of the second rotor                  | -Inf                 | Inf                | rot3 | hinge | angle (rad) |
-| 3   | velocity of the tip along the x-axis    | -Inf                 | Inf                | slider1 | slide | velocity (m/s) |
-| 4   | velocity of the tip along the y-axis    | -Inf                 | Inf                | slider2 | slide | velocity (m/s) |
-| 5   | angular velocity of front tip               | -Inf                 | Inf                | rot | hinge | angular velocity (rad/s) |
-| 6   | angular velocity of second rotor       | -Inf                 | Inf                | rot2 | hinge | angular velocity (rad/s) |
+| 3   | velocity of the tip along the x-axis       | -Inf                 | Inf                | slider1 | slide | velocity (m/s) |
+| 4   | velocity of the tip along the y-axis       | -Inf                 | Inf                | slider2 | slide | velocity (m/s) |
+| 5   | angular velocity of front tip              | -Inf                 | Inf                | rot | hinge | angular velocity (rad/s) |
+| 6   | angular velocity of second rotor           | -Inf                 | Inf                | rot2 | hinge | angular velocity (rad/s) |
 | 7   | angular velocity of third rotor            | -Inf                 | Inf                | rot3 | hinge | angular velocity (rad/s) |
 
 ### Rewards
