@@ -7,7 +7,7 @@ grid:
    - Observation Shape: (4,)
    - Observation High: [4.8   inf 0.42  inf]
    - Observation Low: [-4.8   -inf -0.42  -inf]
-   - Import: <code>gym.make("CartPole-v0")</code>
+   - Import: <code>gym.make("CartPole-v1")</code>
 ---
 ### Description
 This environment corresponds to the version of the cart-pole problem

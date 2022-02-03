@@ -52,7 +52,10 @@ get -100 and die.
 There are no arguments supported in constructing the environment.
 
 ## Version History
-- v0: current version
+- v0: Current version
 
 ## References
 - Chris Campbell (2014), http://www.iforce2d.net/b2dtut/top-down-car.
+
+## Credits
+Created by Oleg Klimov
