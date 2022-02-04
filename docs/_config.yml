@@ -25,8 +25,7 @@ logo:
 favicon: /assets/img/favicon.png
 github: https://github.com/Farama-Foundation/gym-docs
 
-analytics:
-  google: #Google Analytics tracking code here
+google_analytics: G-JGXSLW7N06
 
 markdown: kramdown
 
