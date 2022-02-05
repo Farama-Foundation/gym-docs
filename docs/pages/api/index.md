@@ -44,15 +44,16 @@ The commonly used methods are:
 ## Additional Environment API
 
 - `action_space`: this attribute gives the format of valid actions. It is of datatype `Space` provided by Gym. (For ex: If the action space is of type `Discrete` and gives the value `Discrete(2)`, this means there are two valid discrete actions 0 & 1 )
+
 ```python
 print(env.action_space)
 #> Discrete(2)
 
 print(env.observation_space)
 #> Box(-3.4028234663852886e+38, 3.4028234663852886e+38, (4,), float32)
-
 ```
-- `observation_space`: this attribute gives the format of valid observations. It if of datatype `Space` provided by Gym. (For ex: if the observation space is of type `Box` and the shape of the object is `(4,)`, this denotes a valid observation will be an array of 4 numbers). We can check the box bounds as well with attributes
+
+- `observation_space`: this attribute gives the format of valid observations. It if of datatype `Space` provided by Gym. (For ex: if the observation space is of type `Box` and the shape of the object is `(4,)`, this denotes a valid observation will be an array of 4 numbers). We can check the box bounds as well with attributes.
 
 ```python
 print(env.observation_space.high)
@@ -68,6 +69,7 @@ print(env.observation_space.low)
 	- `Tuple` represents a tuple of simple spaces
 	- `MultiBinary` creates a n-shape binary space. Argument n can be a number or a `list` of numbers
 	- `MultiDiscrete` consists of a series of `Discrete` action spaces with different number of actions in each element
+	
 	```python
 	observation_space = Box(low=-1.0, high=2.0, shape=(3,), dtype=np.float32)
 	print(observation_space.sample())
@@ -102,7 +104,7 @@ print(env.observation_space.low)
 - `seed()`: Sets the seed for this env's random number generator
 
 
-### Unwrapping an environment
+## Unwrapping an environment
 If you have a wrapped environment, and you want to get the unwrapped environment underneath all the layers of wrappers (so that you can manually call a function or change some underlying aspect of the environment), you can use the `.unwrapped` attribute. If the environment is already a base environment, the `.unwrapped` attribute will just return itself.
 
 ```python

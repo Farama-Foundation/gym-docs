@@ -22,7 +22,7 @@ Here is a simple skeleton of the repository structure for a Python Package conta
         foo_extrahard_env.py
   ```
 
-### Subclassing gym.Env
+## Subclassing gym.Env
 
 We will first write the code for our custom environment in `gym-foo/gym_foo/envs/foo_env.py` - let's call it `FooEnv`. All custom environments should subclass `gym.Env` and override the `step`, `reset`, `render`, `close`  methods like so:
 
@@ -77,7 +77,7 @@ We will also create a more difficult version, `FooExtraHardEnv`, in `gym-foo/gym
       ...
   ```
 
-### Registering Envs
+## Registering Envs
 
 In order for the custom environments to be detected by OpenAI gym, they must be registered as follows. We will choose to put this code in `gym-foo/gym_foo/__init__.py`. 
   ```python
@@ -101,7 +101,7 @@ After registration, our custom `FooEnv` environment can be created with `env = g
   from gym_foo.envs.foo_extrahard_env import FooExtraHardEnv
   ```
 
-### Creating a Package
+## Creating a Package
 
 The last step is to structure our code as a Python package. This involves configuring `gym-foo/setup.py`. A minimal example of how to do so is as follows: 
 

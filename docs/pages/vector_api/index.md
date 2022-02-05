@@ -11,8 +11,8 @@ title: Vector API
 
 Gym provides two types of vectorized environments:
 
-    - `gym.vector.SyncVectorEnv`, where the sub-environment are executed sequentially.
-    - `gym.vector.AsyncVectorEnv`, where the sub-environments are executed in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). This creates one process per sub-environment.
+- `gym.vector.SyncVectorEnv`, where the sub-environment are executed sequentially.
+- `gym.vector.AsyncVectorEnv`, where the sub-environments are executed in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). This creates one process per sub-environment.
 
 
 Similar to `gym.make`, you can run a vectorized version of a registered environment using the `gym.vector.make` function. This runs multiple copies of the same environment (in parallel, by default).
@@ -110,7 +110,7 @@ While standard Gym environments take a single action and return a single observa
     >>> infos
     ({}, {}, {})
 
-Vectorized environments are compatible with any sub-environment, regardless of the action and observation spaces (e.g. container spaces like `gym.spaces.Dict`, or any arbitrarily nested spaces). In particular, vectorized environments can automatically batch the observations returned by :meth:`VectorEnv.reset` and :meth:`VectorEnv.step` for any standard Gym space (e.g. `gym.spaces.Box`, `gym.spaces.Discrete`, `gym.spaces.Dict`, or any nested structure thereof). Similarly, vectorized environments can take batches of actions from any standard Gym space.
+Vectorized environments are compatible with any sub-environment, regardless of the action and observation spaces (e.g. container spaces like `gym.spaces.Dict`, or any arbitrarily nested spaces). In particular, vectorized environments can automatically batch the observations returned by `VectorEnv.reset` and `VectorEnv.step` for any standard Gym space (e.g. `gym.spaces.Box`, `gym.spaces.Discrete`, `gym.spaces.Dict`, or any nested structure thereof). Similarly, vectorized environments can take batches of actions from any standard Gym space.
 
     >>> class DictEnv(gym.Env):
     ...     observation_space = gym.spaces.Dict({
@@ -165,7 +165,7 @@ The sub-environments inside a vectorized environment automatically call :obj:`re
     >>> observations
     array([8, 2, 0])
 
-### Observation & Action spaces
+## Observation & Action spaces
 
 
 Like any Gym environment, vectorized environments contain two properties `VectorEnv.observation_space` and `VectorEnv.action_space` to specify the observation and action spaces of the environment. Since vectorized environments operate on multiple sub-environments, where the observations and actions of sub-environments are batched together, the observation and action spaces are adequately batched as well so that the input actions are valid elements of `VectorEnv.action_space`, and the observations are valid elements of `VectorEnv.observation_space`.
@@ -217,7 +217,7 @@ This is convenient, for example, if you instantiate a policy. In the following e
 ### Shared memory
 
 
-`AsyncVectorEnv` runs each sub-environment inside an individual process. At each call to :meth:`AsyncVectorEnv.reset` or :meth:`AsyncVectorEnv.step`, the observations of all the sub-environments are sent back to the main process. To avoid expensive transfers of data between processes, especially with large observations (e.g. images), `AsyncVectorEnv` uses a shared memory by default (``shared_memory=True``) that processes can write to and read from at minimal cost. This can increase the throughout of the vectorized environment.
+`AsyncVectorEnv` runs each sub-environment inside an individual process. At each call to `AsyncVectorEnv.reset` or `AsyncVectorEnv.step`, the observations of all the sub-environments are sent back to the main process. To avoid expensive transfers of data between processes, especially with large observations (e.g. images), `AsyncVectorEnv` uses a shared memory by default (``shared_memory=True``) that processes can write to and read from at minimal cost. This can increase the throughout of the vectorized environment.
 
     >>> env_fns = [lambda: gym.make("BreakoutNoFrameskip-v4")] * 5
 
@@ -315,7 +315,7 @@ The (batched) action space. The input actions of `step` must be valid elements o
 
 `gym.spaces.Space`
 
-The (batched) observation space. The observations returned by :meth:`reset` and :meth:`step` are valid elements of `observation_space`.
+The (batched) observation space. The observations returned by `reset` and `step` are valid elements of `observation_space`.
 
 
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)

@@ -5,14 +5,9 @@ title: Spaces
 
 # Spaces
 
-Spaces define the valid format of observation and action spaces for an environment. The following spaces are provided:
+Spaces define the valid format of observation and action spaces for an environment. 
 
-- [Box](#Box)
-- [Discrete](#Discrete)
-- [MultiBinary](#MultiBinary)
-- [MultiDiscrete](#MultiDiscrete)
-- [Dict](#Dict)
-- [Tuple](#Tuple)
+## Space Functions
 
 Each space implements the following functions:
 
@@ -51,13 +46,13 @@ There are two common use cases:
 
 * Identical bound for each dimension:
 ```python
-    >>> Box(low=-1.0, high=2.0, shape=(3, 4), dtype=np.float32)
-    Box(3, 4)
+>>> Box(low=-1.0, high=2.0, shape=(3, 4), dtype=np.float32)
+Box(3, 4)
 ```
 * Independent bound for each dimension:
 ```python
-    >>> Box(low=np.array([-1.0, -2.0]), high=np.array([2.0, 4.0]), dtype=np.float32)
-    Box(2,)
+>>> Box(low=np.array([-1.0, -2.0]), high=np.array([2.0, 4.0]), dtype=np.float32)
+Box(2,)
 ```
 
 ### is_bounded(manner='both')
