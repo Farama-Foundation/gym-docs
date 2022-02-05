@@ -66,7 +66,7 @@ the number of available modes and difficulty levels for different Atari games:
 
 |Title|# Modes|# Difficulties|
 | ----------- | ----------- | -----------|
-|AirRaid|9|1|       # Not mentioned in paper
+|AirRaid|9|1|
 |Alien|4|4|
 |Amidar|1|2|
 |Assault|1|1|
