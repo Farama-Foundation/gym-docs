@@ -181,10 +181,10 @@ When initializing Atari environments via `gym.make`, you may pass some additiona
 Atari environment. However, legal values for `mode` and `difficulty` depend on the environment.
 
 
-`mode`: `int`. Game mode, see [[2]](#2). Legal values are in {0, ..., **# Modes** - 1}.
+`mode`: `int`. Game mode, see [[2]](#2). Legal values depend on the environment and are listed in the table above.
 
-`difficulty`: `int`. Difficulty of the game, see [[2]](#2).. Legal values are in {0, ..., **# Difficulties** - 1}.
-Together with `mode`, this determines the "flavor" of the game.
+`difficulty`: `int`. Difficulty of the game, see [[2]](#2). Legal values depend on the environment and are listed in 
+the table above. Together with `mode`, this determines the "flavor" of the game.
 
 `obs_type`: `str`. This argument determines what observations are returned by the environment:
 - "ram": The 128 Bytes of RAM are returned
