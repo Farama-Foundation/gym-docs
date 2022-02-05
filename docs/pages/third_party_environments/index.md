@@ -1,5 +1,5 @@
 ---
-layout: "links"
+layout: "contents"
 title: Third Party Environments
 ---
 
