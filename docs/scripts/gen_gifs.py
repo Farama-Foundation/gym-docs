@@ -8,15 +8,22 @@ from os import mkdir, path
 from PIL import Image
 import re
 
+from utils import kill_strs
+
 # snake to camel case: https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
 pattern = re.compile(r'(?<!^)(?=[A-Z])')
 # how many steps to record an env for
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in gym.envs.registry.all():
+    
+    if any(x in str(env_spec.id) for x in kill_strs):
+        continue
     # try catch in case missing some installs
     try:
         env = gym.make(env_spec.id)
+
+       
 
         # the gym needs to be rgb renderable
         if not "rgb_array" in env.metadata["render.modes"]:

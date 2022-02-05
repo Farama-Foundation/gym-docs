@@ -23,3 +23,9 @@ def trim(docstring):
         trimmed.pop(0)
     # Return a single string:
     return '\n'.join(trimmed)
+
+# dont want envs which contain these
+kill_strs = ["eterministic", "ALE", "-ram", 
+"Frameskip", "Hard", "LanderContinu", "8x8",
+"liff", "uessing", "otter", "oinflip", "hain",
+"oulette"]
