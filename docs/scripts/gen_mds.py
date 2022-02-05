@@ -9,14 +9,11 @@ from os import mkdir, path
 import re
 import numpy as np
 from utils import trim
+from utils import kill_strs
 LAYOUT = "env"
 
 pattern = re.compile(r'(?<!^)(?=[A-Z])')
-# dont want envs which contain these
-kill_strs = ["eterministic", "ALE", "-ram", 
-"Frameskip", "Hard", "LanderContinu", "8x8",
-"liff", "uessing", "otter", "oinflip", "hain",
-"oulette"]
+
 for env_spec in gym.envs.registry.all():
     
     if any(x in str(env_spec.id) for x in kill_strs):

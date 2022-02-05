@@ -122,7 +122,7 @@
        path: "/pitfall"
    - title: "Mujoco"
      path: "/mujoco"
-     image: ../environments/mujoco/videos/Ant.gif
+     image: ../environments/mujoco/videos/ant.gif
      subsublinks: 
      - title: "Humanoid Standup"
        path: "/humanoid_standup"
