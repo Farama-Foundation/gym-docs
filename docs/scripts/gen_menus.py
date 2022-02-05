@@ -4,9 +4,9 @@ __email__ = "sanderschulhoff@gmail.com"
 import sys
 import os
 sys.path.append("..")
-menu = ["API", "Vector API", "environments", 
+menu = ["API", "Vector API", "Spaces", 
+"environments", 
 "Environment Creation", "Third Party Environments",
-"Spaces",
 "Wrappers"]
 
 env_type_images = {
