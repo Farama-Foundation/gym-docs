@@ -29,6 +29,26 @@
     - title: "API Reference"
       path: "#api-reference"
 
+- title: Spaces
+  path: /spaces
+  sublinks: 
+    - title: "Space Functions"
+      path: "#space-functions"
+    - title: "Box"
+      path: "#box"
+    - title: "Discrete"
+      path: "#discrete"
+    - title: "MultiBinary"
+      path: "#multibinary"
+    - title: "MultiDiscrete"
+      path: "#multidiscrete"
+    - title: "Dict"
+      path: "#dict"
+    - title: "Tuple"
+      path: "#tuple"
+    - title: "Utility Functions"
+      path: "#utility-functions"
+
 - title: Environments
   path: /environments
   sublinks:
@@ -123,26 +143,6 @@
       path: "#autonomous-driving-and-traffic-control-environments"
     - title: "Other Environments"
       path: "#other-environments"
-
-- title: Spaces
-  path: /spaces
-  sublinks: 
-    - title: "Space Functions"
-      path: "#space-functions"
-    - title: "Box"
-      path: "#box"
-    - title: "Discrete"
-      path: "#discrete"
-    - title: "MultiBinary"
-      path: "#multibinary"
-    - title: "MultiDiscrete"
-      path: "#multidiscrete"
-    - title: "Dict"
-      path: "#dict"
-    - title: "Tuple"
-      path: "#tuple"
-    - title: "Utility Functions"
-      path: "#utility-functions"
 
 - title: Wrappers
   path: /wrappers
