@@ -10,11 +10,11 @@ header:
       import gym
       env = gym.make("LunarLander-v2")
       observation = env.reset()
-      for _ in range(1000)
+      for _ in range(1000):
         env.render()
         action = policy(observation)
         observation, reward, done, info = env.step(action)
 
-        if done
+        if done:
           observation = env.reset()
       env.close()
