@@ -15,13 +15,14 @@ url    : "gymlibrary.ml" # the base hostname & protocol for your site, e.g. http
 baseurl: "" # the subpath of your site, e.g. /blog
 
 title      : Gym
+tagline    : The Reinforcement Learning API
+author     : Farama Foundation
 email      : contact@farama.org
 description: "Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments"
 author     : Farama Foundation
 # copyright  : Farama Foundation
-logo:    
-  path: assets/img/gym_logo_white.svg
-  height: 100 #height in px, defaults to 52px
+logo: assets/img/gym_logo_white.svg
+
 favicon: /assets/img/favicon.png
 github: https://github.com/Farama-Foundation/gym-docs
 
@@ -45,6 +46,8 @@ defaults:
 
 plugins:
   - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 sass:
    sourcemap: never
