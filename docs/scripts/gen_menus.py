@@ -72,20 +72,18 @@ for item in menu:
                 # go through environments
                 listdir = [m for m in os.listdir(f) if m[-3:] == ".md" and m != "index.md"]
                 for env_path in listdir:
-                    # check extension
-                    if env_path[-3:] == ".md" and env_path != "index.md":
-                        if envs_added == 5:
-                            env_path = ""
-                            env_title = f"<strong>And {len(listdir)-5} more...</strong>"
-                        else:
-                            env_path = env_path[:-3]
-                            env_title = env_path.replace("_", " ").title()
-                            env_path = "/" + env_path
-                        ret+= f"     - title: \"{env_title}\"\n"
-                        ret+= f"       path: \"{env_path}\"\n"
-                        if envs_added == 5:
-                            break
-                        envs_added+= 1
+                    if envs_added == 5:
+                        env_path = ""
+                        env_title = f"<strong>And {len(listdir)-5} more...</strong>"
+                    else:
+                        env_path = env_path[:-3]
+                        env_title = env_path.replace("_", " ").title()
+                        env_path = "/" + env_path
+                    ret+= f"     - title: \"{env_title}\"\n"
+                    ret+= f"       path: \"{env_path}\"\n"
+                    if envs_added == 5:
+                        break
+                    envs_added+= 1
 
 ret+= "#AUTOGENERATION ENDED"
 
