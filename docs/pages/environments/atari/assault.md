@@ -56,9 +56,10 @@ env = gym.make("ALE/Assault-v5")
 
 The various ways to configure the environment are described in detail in the article on Atari environments.
 
-|Title|# Modes|# Difficulties|
-| ----------- | ----------- | -----------|
-|Assault|1|1|
+|      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
+|          Assault | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "NoFrameskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 

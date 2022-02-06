@@ -61,8 +61,8 @@ random between `frameskip[0]` (inclusive) and `frameskip[1]` (exclusive) in each
 ### Flavors
 Some games allow the user to set a difficulty level and a game mode. Different modes/difficulties may have different
 game dynamics and (if a reduced action space is used) different action spaces. We follow the convention of [[2]](#2) and
-refer to the combination of difficulty level and game mode as a flavor of a game. The following table from [[2]](#2) shows
-the number of available modes and difficulty levels for different Atari games:
+refer to the combination of difficulty level and game mode as a flavor of a game. The following table shows
+the available modes and difficulty levels for different Atari games:
 
 |      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
@@ -170,8 +170,6 @@ the number of available modes and difficulty levels for different Atari games:
 |       WordZapper | `[0, ..., 23]`                                                                                                                                                                      |      `[0, ..., 3]` | `0`          |
 |      YarsRevenge | `[0, 32, 64, 96]`                                                                                                                                                                   |           `[0, 1]` | `0`          |
 |           Zaxxon | `[0, 8, 16, 24]`                                                                                                                                                                    |              `[0]` | `0`          |
-
-
 
 
 
