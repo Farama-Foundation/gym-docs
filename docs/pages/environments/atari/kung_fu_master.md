@@ -58,9 +58,9 @@ env = gym.make("ALE/KungFuMaster-v5")
 
 The various ways to configure the environment are described in detail in the article on Atari environments.
 
-|Title|# Modes|# Difficulties|
-| ----------- | ----------- | -----------|
-|KungFuMaster|1|1|
+|      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
+|     KungFuMaster | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "Noframeskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 

@@ -51,9 +51,9 @@ env = gym.make("ALE/NameThisGame-v5")
 
 The various ways to configure the environment are described in detail in the article on Atari environments.
 
-|Title|# Modes|# Difficulties|
-| ----------- | ----------- | -----------|
-|NameThisGame|1|2|
+|      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
+|     NameThisGame | `[8, 24, 40]`                                                                                                                                                                       |           `[0, 1]` | `8`          |
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "Noframeskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 

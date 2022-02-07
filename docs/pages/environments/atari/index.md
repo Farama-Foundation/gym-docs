@@ -61,31 +61,116 @@ random between `frameskip[0]` (inclusive) and `frameskip[1]` (exclusive) in each
 ### Flavors
 Some games allow the user to set a difficulty level and a game mode. Different modes/difficulties may have different
 game dynamics and (if a reduced action space is used) different action spaces. We follow the convention of [[2]](#2) and
-refer to the combination of difficulty level and game mode as a flavor of a game. The following table from [[2]](#2) shows
-the number of available modes and difficulty levels for different Atari games:
+refer to the combination of difficulty level and game mode as a flavor of a game. The following table shows
+the available modes and difficulty levels for different Atari games:
 
-|Title|# Modes|# Difficulties|
-| ----------- | ----------- | -----------|
-|AirRaid|9|1|
-|Alien|4|4|
-|Amidar|1|2|
-|Assault|1|1|
-|Asterix|1|1|
-|Asteroids|32|1|
-|Atlantis|4|1|
-| BankHeist | 1       | 4              |
-| BattleZone | 4       |1|
-| BeamRider | 1       | 2              |
-| Berzerk | 10      |1|
-| Bowling | 1       | 2              |
-| Boxing |1| 4              |
-| Breakout |1|2|
-| Carnival |1| 1              |
-|Crazy Climber|4|2|
-|Demon Attack|4|2|
-|Double Dunk|16|1|
-|Elevator Action|1|1|
-|Enduro|1|1|
+|      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
+|        Adventure | `[0, 1, 2]`                                                                                                                                                                         |      `[0, ..., 3]` | `0`          |
+|          AirRaid | `[1, ..., 8]`                                                                                                                                                                       |              `[0]` | `1`          |
+|            Alien | `[0, ..., 3]`                                                                                                                                                                       |      `[0, ..., 3]` | `0`          |
+|           Amidar | `[0]`                                                                                                                                                                               |           `[0, 3]` | `0`          |
+|          Assault | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|          Asterix | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|        Asteroids | `[0, ..., 31, 128]`                                                                                                                                                                 |           `[0, 3]` | `0`          |
+|         Atlantis | `[0, ..., 3]`                                                                                                                                                                       |              `[0]` | `0`          |
+|        Atlantis2 | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|       Backgammon | `[0]`                                                                                                                                                                               |              `[3]` | `0`          |
+|        BankHeist | `[0, 4, 8, 12, 16, 20, 24, 28]`                                                                                                                                                     |      `[0, ..., 3]` | `0`          |
+|        BasicMath | `[5, ..., 8]`                                                                                                                                                                       |        `[0, 2, 3]` | `5`          |
+|       BattleZone | `[1, 2, 3]`                                                                                                                                                                         |              `[0]` | `1`          |
+|        BeamRider | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|          Berzerk | `[1, ..., 9, 16, 17, 18]`                                                                                                                                           |              `[0]` | `1`          |
+|        Blackjack | `[0]`                                                                                                                                                                               |      `[0, ..., 3]` | `0`          |
+|          Bowling | `[0, 2, 4]`                                                                                                                                                                         |           `[0, 1]` | `0`          |
+|           Boxing | `[0]`                                                                                                                                                                               |      `[0, ..., 3]` | `0`          |
+|         Breakout | `[0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44]`                                                                                                                                     |           `[0, 1]` | `0`          |
+|         Carnival | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|           Casino | `[0, 2, 3]`                                                                                                                                                                         |      `[0, ..., 3]` | `0`          |
+|        Centipede | `[22, 86]`                                                                                                                                                                          |              `[0]` | `22`         |
+|   ChopperCommand | `[0, 2]`                                                                                                                                                                            |           `[0, 1]` | `0`          |
+|     CrazyClimber | `[0, ..., 3]`                                                                                                                                                                       |           `[0, 1]` | `0`          |
+|         Crossbow | `[0, 2, 4, 6]`                                                                                                                                                                      |           `[0, 1]` | `0`          |
+|     Darkchambers | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         Defender | `[1, ..., 9, 16]`                                                                                                                                                                   |           `[0, 1]` | `1`          |
+|      DemonAttack | `[1, 3, 5, 7]`                                                                                                                                                                      |           `[0, 1]` | `1`          |
+|       DonkeyKong | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|       DoubleDunk | `[0, ..., 15]`                                                                                                                                                                      |              `[0]` | `0`          |
+|       Earthworld | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|   ElevatorAction | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|           Enduro | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         Entombed | `[0]`                                                                                                                                                                               |           `[0, 2]` | `0`          |
+|               Et | `[0, 1, 2]`                                                                                                                                                                         |      `[0, ..., 3]` | `0`          |
+|     FishingDerby | `[0]`                                                                                                                                                                               |      `[0, ..., 3]` | `0`          |
+|      FlagCapture | `[8, 9, 10]`                                                                                                                                                                        |              `[0]` | `8`          |
+|          Freeway | `[0, ..., 7]`                                                                                                                                                                       |           `[0, 1]` | `0`          |
+|          Frogger | `[0, 1, 2]`                                                                                                                                                                         |           `[0, 1]` | `0`          |
+|        Frostbite | `[0, 2]`                                                                                                                                                                            |              `[0]` | `0`          |
+|         Galaxian | `[1, ..., 9]`                                                                                                                                                                       |           `[0, 1]` | `1`          |
+|           Gopher | `[0, 2]`                                                                                                                                                                            |           `[0, 1]` | `0`          |
+|         Gravitar | `[0, ..., 4]`                                                                                                                                                                       |              `[0]` | `0`          |
+|          Hangman | `[0, ..., 3]`                                                                                                                                                                       |           `[0, 1]` | `0`          |
+|     HauntedHouse | `[0, ..., 8]`                                                                                                                                                                       |           `[0, 1]` | `0`          |
+|             Hero | `[0, ..., 4]`                                                                                                                                                                       |              `[0]` | `0`          |
+|  HumanCannonball | `[0, ..., 7]`                                                                                                                                                                       |           `[0, 1]` | `0`          |
+|        IceHockey | `[0, 2]`                                                                                                                                                                            |      `[0, ..., 3]` | `0`          |
+|        Jamesbond | `[0, 1]`                                                                                                                                                                            |              `[0]` | `0`          |
+|    JourneyEscape | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|           Kaboom | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         Kangaroo | `[0, 1]`                                                                                                                                                                            |              `[0]` | `0`          |
+|   KeystoneKapers | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         KingKong | `[0, ..., 3]`                                                                                                                                                                       |              `[0]` | `0`          |
+|             Klax | `[0, 1, 2]`                                                                                                                                                                         |              `[0]` | `0`          |
+|          Koolaid | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|            Krull | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|     KungFuMaster | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|       LaserGates | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|      LostLuggage | `[0, 1]`                                                                                                                                                                            |           `[0, 1]` | `0`          |
+|        MarioBros | `[0, 2, 4, 6]`                                                                                                                                                                      |              `[0]` | `0`          |
+|    MiniatureGolf | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+| MontezumaRevenge | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|             MrDo | `[0, ..., 3]`                                                                                                                                                                       |              `[0]` | `0`          |
+|         MsPacman | `[0, ..., 3]`                                                                                                                                                                       |              `[0]` | `0`          |
+|     NameThisGame | `[8, 24, 40]`                                                                                                                                                                       |           `[0, 1]` | `8`          |
+|          Othello | `[0, 1, 2]`                                                                                                                                                                         |           `[0, 2]` | `0`          |
+|           Pacman | `[0, ..., 7]`                                                                                                                                                                       |           `[0, 1]` | `0`          |
+|          Phoenix | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|          Pitfall | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         Pitfall2 | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|             Pong | `[0, 1]`                                                                                                                                                                            |      `[0, ..., 3]` | `0`          |
+|           Pooyan | `[10, 30, 50, 70]`                                                                                                                                                                  |              `[0]` | `10`         |
+|       PrivateEye | `[0, ..., 4]`                                                                                                                                                                       |      `[0, ..., 3]` | `0`          |
+|            Qbert | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|        Riverraid | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|       RoadRunner | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         Robotank | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|         Seaquest | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|      SirLancelot | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|           Skiing | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|          Solaris | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|    SpaceInvaders | `[0, ..., 15]`                                                                                                                                                                      |           `[0, 1]` | `0`          |
+|         SpaceWar | `[6, ..., 17]`                                                                                                                                                                      |              `[0]` | `6`          |
+|       StarGunner | `[0, ..., 3]`                                                                                                                                                                       |              `[0]` | `0`          |
+|         Superman | `[0]`                                                                                                                                                                               |      `[0, ..., 3]` | `0`          |
+|         Surround | `[0, 2]`                                                                                                                                                                            |      `[0, ..., 3]` | `0`          |
+|           Tennis | `[0, 2]`                                                                                                                                                                            |      `[0, ..., 3]` | `0`          |
+|           Tetris | `[0]`                                                                                                                                                                               |              `[0]` | `0`          |
+|      TicTacToe3D | `[0, ..., 8]`                                                                                                                                                                       |           `[0, 2]` | `0`          |
+|        TimePilot | `[0]`                                                                                                                                                                               |        `[0, 1, 2]` | `0`          |
+|         Trondead | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|          Turmoil | `[0, ..., 8]`                                                                                                                                                                       |              `[0]` | `0`          |
+|        Tutankham | `[0, 4, 8, 12]`                                                                                                                                                                     |              `[0]` | `0`          |
+|          UpNDown | `[0]`                                                                                                                                                                               |      `[0, ..., 3]` | `0`          |
+|          Venture | `[0]`                                                                                                                                                                               |      `[0, ..., 3]` | `0`          |
+|    VideoCheckers | `[1, ..., 9, 11, 12, ..., 19]`                                                                                                                   |              `[0]` | `1`          |
+|     VideoPinball | `[0, 2]`                                                                                                                                                                            |           `[0, 1]` | `0`          |
+|       Videochess | `[0, ..., 4]`                                                                                                                                                                       |              `[0]` | `0`          |
+|        Videocube | `[0, 1, 2, 100, 101, 102, 200, 201, 202, 300, 301, ..., 5000, 5001, 5002]`                                                                                                           |           `[0, 1]` | `0`          |
+|      WizardOfWor | `[0]`                                                                                                                                                                               |           `[0, 1]` | `0`          |
+|       WordZapper | `[0, ..., 23]`                                                                                                                                                                      |      `[0, ..., 3]` | `0`          |
+|      YarsRevenge | `[0, 32, 64, 96]`                                                                                                                                                                   |           `[0, 1]` | `0`          |
+|           Zaxxon | `[0, 8, 16, 24]`                                                                                                                                                                    |              `[0]` | `0`          |
+
 
 
 
@@ -94,10 +179,10 @@ When initializing Atari environments via `gym.make`, you may pass some additiona
 Atari environment. However, legal values for `mode` and `difficulty` depend on the environment.
 
 
-`mode`: `int`. Game mode, see [[2]](#2). Legal values are in {0, ..., **# Modes** - 1}.
+`mode`: `int`. Game mode, see [[2]](#2). Legal values depend on the environment and are listed in the table above.
 
-`difficulty`: `int`. Difficulty of the game, see [[2]](#2).. Legal values are in {0, ..., **# Difficulties** - 1}.
-Together with `mode`, this determines the "flavor" of the game.
+`difficulty`: `int`. Difficulty of the game, see [[2]](#2). Legal values depend on the environment and are listed in 
+the table above. Together with `mode`, this determines the "flavor" of the game.
 
 `obs_type`: `str`. This argument determines what observations are returned by the environment:
 - "ram": The 128 Bytes of RAM are returned

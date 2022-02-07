@@ -1,18 +1,17 @@
 ---
 layout: env
-title: Pooyan
+title: StarGunner
 grid:
    - Action Space: Discrete(18)
    - Observation Shape: (210, 160, 3)
    - Observation High: 255
    - Observation Low: 0
-   - Import: <code>gym.make("ALE/Pooyan-v5")</code>
+   - Import: <code>gym.make("ALE/StarGunner-v5")</code>
 ---
 
 ### Description
 
-You are a mother pig protecting her piglets (Pooyans) from wolves. In the first scene, you can move up and down a rope. Try to shoot the worker's balloons, while guarding yourself from attacks. If the wolves reach the ground safely they will get behind and try to eat you. In the second scene, the wolves try to float up. You have to try and stop them using arrows and bait. You die if a wolf eats you, or a stone or rock hits you. 
-Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=372)
+Stop the alien invasion by shooting down alien saucers and creatures while avoiding bombs. More details can be found on [the Atari Mania page](http://www.atarimania.com/game-atari-2600-vcs-stargunner_16921.html)
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -25,10 +24,9 @@ flavor looks like this:
 | 0   | NOOP |
 | 1   | FIRE |
 | 2   | UP |
-| 3   | DOWN |
-| 4   | UPFIRE |
-| 5   | DOWNFIRE |
-
+| 3   | RIGHT |
+| 4   | LEFT |
+| 5   | DOWN |
 
 
 ### Observations
@@ -49,27 +47,28 @@ respectively. The general article on Atari environments outlines different ways 
 via `gym.make`.
 
 ### Rewards
-If you hit a balloon, wolf or stone with an arrow you score points.  
-For a more detailed documentation, see [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=372).
+
+You score points for destroying enemies. You get bonus points for clearing a wave and a level. For a more detailed documentation, see [the Atari Mania page](http://www.atarimania.com/game-atari-2600-vcs-stargunner_16921.html).
+
 
 ### Arguments
 
 ```
-env = gym.make("ALE/Pooyan-v5")
+env = gym.make("ALE/StarGunner-v5")
 ```
 
 The various ways to configure the environment are described in detail in the article on Atari environments.
 It is possible to specify various flavors of the environment via the keyword arguments `difficulty` and `mode`. 
 A flavor is a combination of a game mode and a difficulty setting.
 
-|      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
-|           Pooyan | `[10, 30, 50, 70]`                                                                                                                                                                  |              `[0]` | `10`         |
+| Title   | # Modes |# Difficulties|
+|---------|---------| -----------|
+| StarGunner | 4       |1|
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "NoFrameskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 
 the general article on Atari environments.
-The versions v0 and v4 are not contained in the "ALE" namespace. I.e. they are instantiated via `gym.make("Pooyan-v0")`.
+The versions v0 and v4 are not contained in the "ALE" namespace. I.e. they are instantiated via `gym.make("StarGunner-v0")`.
 
 ### Version History
 A thorough discussion of the intricate differences between the versions and configurations can be found in the
