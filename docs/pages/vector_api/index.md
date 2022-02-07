@@ -7,7 +7,7 @@ title: Vector API
 
 ## Vectorized Environments
 
-*Vectorized environments* are environments that run multiple (independent) sub-environments, either sequentially, or in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). Vectorized environments take as input a batch of actions, and return a batch of observations. This is particularly useful, for example, when the policy is defined as a neural network that operates over a batch of observations.
+*Vectorized environments* are environments that run multiple independent instances of the same environment, either sequentially, or in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). Vectorized environments take as input a batch of actions, and return a batch of observations. This is particularly useful, for example, when the policy is defined as a neural network that operates over a batch of observations.
 
 Gym provides two types of vectorized environments:
 

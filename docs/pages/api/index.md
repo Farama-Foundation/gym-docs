@@ -32,7 +32,9 @@ The output should look something like this
 The commonly used methods are: 
 
 `reset()` resets the environment to its initial state and returns the observation corresponding to the initial state
+
 `step(action)` takes an action as an input and implements that action in the environment. This method returns a set of four values 
+
 `render()` renders the environment
 	
 - `observation` (**object**) : an environment specific object representation your observation of the environment after the step is taken. Its often aliased as the next state after the action has been taken
