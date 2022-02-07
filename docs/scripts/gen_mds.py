@@ -24,7 +24,8 @@ for env_spec in gym.envs.registry.all():
         env = gym.make(env_spec.id)
         if "ALE" in env.unwrapped.__doc__:
             continue
-        # varients dont get their own pages
+        
+        # variants dont get their own pages
         e_n = str(env_spec).lower()
         
         docstring = env.unwrapped.__doc__

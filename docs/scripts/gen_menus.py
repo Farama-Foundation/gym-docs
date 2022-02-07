@@ -38,7 +38,7 @@ for item in menu:
             ret+= "  sublinks: \n"
             for header in headers:
                 ret+= f"    - title: \"{header}\"\n"
-                link = header.replace(" ", "-").lower()
+                link = header.replace(" ", "-").replace(".", "").replace("&", "").lower()
                 ret+= f"      path: \"#{link}\"\n"
 
         ret+= "\n"

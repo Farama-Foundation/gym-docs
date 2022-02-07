@@ -16,17 +16,20 @@ pattern = re.compile(r'(?<!^)(?=[A-Z])')
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in gym.envs.registry.all():
+    if env_spec.id != "FrozenLake-v1":
+        continue
     
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
+    
     # try catch in case missing some installs
     try:
         env = gym.make(env_spec.id)
 
        
-
+        print(env.metadata["render.modes"])
         # the gym needs to be rgb renderable
-        if not "rgb_array" in env.metadata["render.modes"]:
+        if not ("rgb_array" in env.metadata["render.modes"] or "human" in env.metadata["render.modes"]):
             continue
         
         # extract env name/type from class path
@@ -45,7 +48,7 @@ for env_spec in gym.envs.registry.all():
         #     env_name = env_spec.id.split("-")[0][4:] 
         #     env_name = pattern.sub('_', env_name).lower()
 
-        
+        print("HERE")
         # path for saving video
         v_path = os.path.join("..", "pages", "environments", env_type, "videos")
         # create dir if it doesnt exist
@@ -58,7 +61,9 @@ for env_spec in gym.envs.registry.all():
             state = env.reset()
             done = False
             while not done and len(frames) <= LENGTH:
+                
                 frame = env.render(mode='rgb_array')
+                print(frame)
                 frames.append(Image.fromarray(frame))
                 action = env.action_space.sample()
                 state_next, reward, done, info = env.step(action)
@@ -73,6 +78,7 @@ for env_spec in gym.envs.registry.all():
             frames[0].save(os.path.join(v_path, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
             print("Saved: " + env_name)
 
-    except:
+    except BaseException as e:
+        print(e)
         continue
 
