@@ -30,7 +30,7 @@ google_analytics: G-JGXSLW7N06
 
 markdown: kramdown
 
-remote_theme: trigaten/fantasia
+remote_theme: Farama-Foundation/fantasia
 
 defaults:
   - scope:
