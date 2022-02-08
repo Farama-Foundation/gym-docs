@@ -11,16 +11,35 @@ import gym
 env = gym.make('CartPole-v0')
 ```
 
+This will automatically apply a few useful wrappers (`TimeLimit` and `OrderEnforcing`) for easier replicability and consistent versioning. 
+Alternatively, you may just import the specific environment and instantiate it like any other Python object:
+
+```python
+from gym.envs import PendulumEnv
+env = PendulumEnv(g=9.81)
+```
+
+Note that you can pass keyword arguments using the `make` approach as well:
+
+```python
+import gym
+env = gym.make("Pendulum-v1", g=9.81)
+```
+
+A list of all environments available in `gym.make` by default can be found in the gym repository at [gym/envs/\_\_init\_\_.py](https://github.com/openai/gym/blob/master/gym/envs/__init__.py). External libraries might extend this list.
+
+
 ## Interacting with the Environment
-This example will run an instance of `CartPole-v0` environment for 1000 timesteps, rendering the environment at each step. You should see a window pop up rendering the classic [cart-pole](https://www.youtube.com/watch?v=J7E6_my3CHk&ab_channel=TylerStreeter) problem
+This example will run an instance of `CartPole-v0` environment for 1000 timesteps, rendering the environment at each step. You should see a window pop up rendering the classic [cart-pole](https://www.youtube.com/watch?v=J7E6_my3CHk&ab_channel=TylerStreeter) problem. The intention is to briefly showcase the general usage of the API
 
 ```python
 import gym
 env = gym.make('CartPole-v0')
-env.reset()
+obs, info = env.reset(seed=0, return_info=True)
 for _ in range(1000): 
-	env.render()  # by default `mode="human"`(GUI), you can pass `mode="rbg_array"` to retrieve an image instead
-	env.step(env.action_space.sample())  # take a random action 	
+	env.render(mode="human")  # you can pass `mode="rbg_array"` to retrieve an image instead as the output of the method
+	action = env.action_space.sample()
+	obs, reward, done, info = env.step(action)  # take a random action 	
 env.close()
 ```
 
@@ -29,12 +48,16 @@ The output should look something like this
 ![cartpole-no-reset](https://user-images.githubusercontent.com/28860173/129241283-70069f7c-453d-4670-a226-854203bd8a1b.gif)
 
 
-The commonly used methods are: 
+The standard methods are: 
 
-- `reset()`: resets the environment to its initial state and returns the observation corresponding to the initial state.
-- `render()`: renders the environment.
+- `reset(seed: Optional[int] = None, return_info: bool = False, options: Optional[dict] = None)`: resets the environment to its initial state and returns the observation corresponding to the initial state. It has three optional parameters:
+	- `seed` specifies the RNG seed that enables deterministic behavior of the environment
+	- `return_info` adds a dictionary with additional information to the output. If its value is `False`, the output of `reset` is a single object containing the observation (`obs = env.reset(return_info=False)`). Otherwise, the output is a tuple containing the observation and the additional information dictionary.
+- `render(mode: str = "human")`: renders the environment. There are several modes available, although not all of them are available in all environments (especially third-party ones). Typically, you should expect the following:
+	- `human`: the environment will be rendered on screen; the method returns `None`
+	- `ansi`: the method returns a string containing the representation of the environment
+	- `rgb_array`: the method returns an RGB numpy array containing a depiction of the environment
 - `step(action)`: takes an action as an input and implements that action in the environment. This method returns a tuple of four values:
-	
 	- `observation` (**object**): an environment-specific object representation of your observation of the environment after the step is taken. It's often aliased as the next state after the action has been taken.
 	- `reward`(**float**): immediate reward achieved by the previous action. Actual values and ranges vary between environments, but the final goal is always to maximize your total reward.
 	- `done`(**boolean**): whether it’s time to `reset` the environment again. Most (but not all) tasks are divided up into well-defined episodes, and `done` being `True` indicates the episode has terminated (e.g. the pole tipped too far, or you lost your last life).
