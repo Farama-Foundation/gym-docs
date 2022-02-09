@@ -19,7 +19,7 @@ import gym
 env = gym.make('CartPole-v0')
 env.reset()
 for _ in range(1000): 
-	env.render()  # by default `mode="human"`(GUI), you can pass `mode="rbg_array"` to retrieve an image instead
+	env.render()  # by default `mode="human"`(GUI), you can pass `mode="rgb_array"` to retrieve an image instead
 	env.step(env.action_space.sample())  # take a random action 	
 env.close()
 ```
@@ -110,4 +110,40 @@ If you have a wrapped environment, and you want to get the unwrapped environment
 
 ```python
 base_env = env.unwrapped
+```
+
+## Playing within an environment
+You can also play the environment using your keyboard using the `play` function in `gym.utils.play`. 
+```python
+from gym.utils.play import play
+play(gym.make('Pong-v0'))
+```
+This opens a window of the environment and allows you to control the agent using your keyboard.
+
+Playing using the keyboard requires a key-action map. This map should be a `dict: tuple(int) -> int or None`, which maps the keys pressed to action performed.
+For example, if pressing the keys `w` and `space` at the same time is supposed to perform action `2`, then the `key_to_action` dict should look like:
+```python
+{
+    # ...
+    (ord('w'), ord(' ')): 2,
+    # ...
+}
+```
+As a more complete example, let's say we wish to play with `CartPole-v0` using our left and right arrow keys. The code would be as follow:
+```python
+import gym
+import pygame
+from gym.utils.play import play
+mapping = {(pygame.K_LEFT,): 0, (pygame.K_RIGHT,): 1}
+play(gym.make("CartPole-v0"), keys_to_action=mapping)
+```
+where we obtain the corresponding key ID constants from pygame. If the `key_to_action` argument is not specified, then the default `key_to_action` mapping for that env is used, if provided.
+
+Furthermore, you wish to plot real time statistics as you play, you can use `gym.utils.play.PlayPlot`. Here's some sample code for plotting the reward for last 5 second of gameplay:
+```python
+def callback(obs_t, obs_tp1, action, rew, done, info):
+    return [rew,]
+plotter = PlayPlot(callback, 30 * 5, ["reward"])
+env = gym.make("Pong-v0")
+play(env, callback=plotter.callback)
 ```
