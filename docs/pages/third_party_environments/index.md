@@ -132,9 +132,17 @@ Gym wrapper for various environments in the Sumo traffic simulator
 
 A set of environments from control tasks: Acrobot, CartPole, and LunarLander with various types of anomalies injected into them. It could be very useful to study the behavior and robustness of a policy.
 
+### [ CARL](https://github.com/automl/CARL)
+
+Configurable reinforcement learning environments for testing generalization, e.g. CartPole with variable pole lengths or Brax robots with different ground frictions.
+
 ### [ CompilerGym](https://github.com/facebookresearch/CompilerGym)
 
 Reinforcement learning environments for compiler optimization tasks, such as LLVM phase ordering, GCC flag tuning, and CUDA loop nest code generation.
+
+### [ DACBench](https://github.com/automl/DACBench)
+
+Environments for hyperparameter configuration using RL. Includes cheap surrogate benchmarks as well as real-world algorithms from e.g. AI Planning, Evolutionary Computation and Deep Learning. 
 
 ### [ Gridworld](https://github.com/addy1997/Gridworld)
 
