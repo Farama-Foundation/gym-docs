@@ -53,6 +53,10 @@ A reinforcement learning environment of Xiangqi, the Chinese Chess game.
 
 The RubiksCubeGym package provides environments for twisty puzzles with  multiple reward functions to help simluate the methods used by humans.
 
+### [ GymGo](https://github.com/aigagror/GymGo)
+
+The board game Go, also known as Weiqi. The game that was famously conquered by AlphaGo.
+
 ## Robotics Environments
 
 ### [ GymFC: A flight control tuning and training framework](https://github.com/wil3/gymfc/)
