@@ -8,7 +8,7 @@ Please see instructions below on how to contribute.
 
 ## Editing an environment page
 
-If you are editing an Atari environment, directly edit the md file in this repository. Otherwise, fork Gym and edit the docstring the Python file. Then, pip install your Gym fork and run `_scripts/gen_mds.py` in this repo. This will automatically generate a md documentation file for the environment.
+If you are editing an Atari environment, directly edit the md file in this repository. Otherwise, fork Gym and edit the docstring in the environment's Python file. Then, pip install your Gym fork and run `_scripts/gen_mds.py` in this repo. This will automatically generate a md documentation file for the environment.
 
 ## Adding a new environment
 
