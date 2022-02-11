@@ -5,7 +5,7 @@ title: Blackjack
 grid:
    - Action Space: Discrete(2)
    - Observation Space: Tuple(Discrete(32), Discrete(11), Discrete(2))
-   - Import: <code>gym.make("Blackjack-v0")</code>
+   - Import: <code>gym.make("Blackjack-v1")</code>
 ---
 Simple blackjack environment
 

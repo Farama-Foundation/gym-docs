@@ -9,41 +9,40 @@ grid:
    - Observation Low: [-1.2  -0.07]
    - Import: <code>gym.make("MountainCar-v0")</code>
 ---
-The agent (a car) is started at the bottom of a valley. For any given state
-the agent may choose to accelerate to the left, right or cease any
-acceleration. The code is originally based on [this code](http://incompleteideas.net/MountainCar/MountainCar1.cp)
-and the environment appeared first in Andrew Moore's PhD Thesis (1990):
-```
-@TECHREPORT{Moore90efficientmemory-based,
-    author = {Andrew William Moore},
-    title = {Efficient Memory-based Learning for Robot Control},
-    institution = {},
-    year = {1990}
-}
-```
+Description:
+    The agent (a car) is started at the bottom of a valley. For any given
+    state the agent may choose to accelerate to the left, right or cease
+    any acceleration.
 
-Observation space is a 2-dim vector, where the 1st element represents the "car position" and the 2nd element represents the "car velocity".
+Source:
+    The environment appeared first in Andrew Moore's PhD Thesis (1990).
 
-There are 3 discrete deterministic actions:
-- 0: Accelerate to the Left
-- 1: Don't accelerate
-- 2: Accelerate to the Right
+Observation:
+    Type: Box(2)
+    Num    Observation               Min            Max
+    0      Car Position              -1.2           0.6
+    1      Car Velocity              -0.07          0.07
 
-Reward: Reward of 0 is awarded if the agent reached the flag
-(position = 0.5) on top of the mountain. Reward of -1 is awarded if the position of the agent is less than 0.5.
+Actions:
+    Type: Discrete(3)
+    Num    Action
+    0      Accelerate to the Left
+    1      Don't accelerate
+    2      Accelerate to the Right
 
-Starting State: The position of the car is assigned a uniform random value in [-0.6 , -0.4]. The starting velocity of the car is always assigned to 0.
+    Note: This does not affect the amount of velocity affected by the
+    gravitational pull acting on the car.
 
-Episode Termination: The car position is more than 0.5. Episode length is greater than 200
+Reward:
+     Reward of 0 is awarded if the agent reached the flag (position = 0.5)
+     on top of the mountain.
+     Reward of -1 is awarded if the position of the agent is less than 0.5.
 
+Starting State:
+     The position of the car is assigned a uniform random value in
+     [-0.6 , -0.4].
+     The starting velocity of the car is always assigned to 0.
 
-
-### Arguments
-
-```
-gym.make('MountainCar-v0')
-```
-
-### Version History
-
-* v0: Initial versions release (1.0.0)
+Episode Termination:
+     The car position is more than 0.5
+     Episode length is greater than 200
