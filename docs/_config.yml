@@ -21,6 +21,7 @@ email      : contact@farama.org
 description: "Gym is a standard API for reinforcement learning methods and environments to communicate and a diverse set of reference environments"
 author     : Farama Foundation
 # copyright  : Farama Foundation
+message: Contribute to the docs <a style="color:black" href="https://github.com/Farama-Foundation/gym-docs">here</a>
 logo: assets/img/gym_logo_white.svg
 
 favicon: /assets/img/favicon.png

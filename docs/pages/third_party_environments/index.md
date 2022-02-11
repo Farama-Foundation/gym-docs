@@ -53,6 +53,10 @@ A reinforcement learning environment of Xiangqi, the Chinese Chess game.
 
 The RubiksCubeGym package provides environments for twisty puzzles with  multiple reward functions to help simluate the methods used by humans.
 
+### [ GymGo](https://github.com/aigagror/GymGo)
+
+The board game Go, also known as Weiqi. The game that was famously conquered by AlphaGo.
+
 ## Robotics Environments
 
 ### [ GymFC: A flight control tuning and training framework](https://github.com/wil3/gymfc/)
@@ -132,9 +136,17 @@ Gym wrapper for various environments in the Sumo traffic simulator
 
 A set of environments from control tasks: Acrobot, CartPole, and LunarLander with various types of anomalies injected into them. It could be very useful to study the behavior and robustness of a policy.
 
+### [ CARL](https://github.com/automl/CARL)
+
+Configurable reinforcement learning environments for testing generalization, e.g. CartPole with variable pole lengths or Brax robots with different ground frictions.
+
 ### [ CompilerGym](https://github.com/facebookresearch/CompilerGym)
 
 Reinforcement learning environments for compiler optimization tasks, such as LLVM phase ordering, GCC flag tuning, and CUDA loop nest code generation.
+
+### [ DACBench](https://github.com/automl/DACBench)
+
+Environments for hyperparameter configuration using RL. Includes cheap surrogate benchmarks as well as real-world algorithms from e.g. AI Planning, Evolutionary Computation and Deep Learning. 
 
 ### [ Gridworld](https://github.com/addy1997/Gridworld)
 
