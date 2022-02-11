@@ -19,8 +19,8 @@ import gym
 env = gym.make('CartPole-v0')
 env.reset()
 for _ in range(1000): 
-	env.render()  # by default `mode="human"`(GUI), you can pass `mode="rgb_array"` to retrieve an image instead
-	env.step(env.action_space.sample())  # take a random action 	
+    env.render()  # by default `mode="human"`(GUI), you can pass `mode="rgb_array"` to retrieve an image instead
+    env.step(env.action_space.sample())  # take a random action 	
 env.close()
 ```
 
