@@ -1,6 +1,6 @@
 # Gym-docs
 
-This repo contains the NEW website for [Gym](https://github.com/openai/gym). It is currently in Beta and we are in the process of adding various information. 
+This repo contains the NEW website for [Gym](https://github.com/openai/gym). This site is currently in Beta and we are in the process of adding various information. 
 
 Please see instructions below on how to contribute.
 
