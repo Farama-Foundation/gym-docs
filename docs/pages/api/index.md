@@ -53,32 +53,37 @@ The output should look something like this
 
 ![lunar_lander](https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif)
 
+Every environmnet specifies the format of valid actions by providing an `env.action_space` attribute. Similarly,
+the format of valid observations is spacified by `env.observation_space`.
+In the example above we sampled random actions via `env.action_space.sample()`. Note that we need to seed the action space separately from the 
+environment to ensure reproducible samples.
 
-## Commonly used methods
+## Standard methods
 >### Stepping
-> `step(action: ActType) -> Tuple[ObsType, float, bool, dict]`
+> `step(self, action: ActType) -> Tuple[ObsType, float, bool, dict]`
 > 
 >Run one timestep of the environment's dynamics. When end of episode is reached, you are responsible for calling `reset()`
 to reset this environment's state. Accepts an action and returns a tuple `(observation, reward, done, info)`.
 >
 >>**Parameters**
 >>- `action`(**object**): an action provided by the agent. This will oftentimes be a numpy array, but might also be 
->> an integer (for discrete action spaces) or a more complex object.
+>> an integer (for discrete action spaces) or a more complex object. This should be am element of the environment's 
+action space `self.action_space`.
 > 
 >>**Returns**
 >>
 >> This method returns a tuple `(observation, reward, done, info)`:
->>- `observation` (**object**): agent's observation of the current environment.
->> This may, for instance, be a numpy array containing the positions and velocities of certain objects.
+>>- `observation` (**object**): agent's observation of the current environment. This will be an element of the environment's
+observation space, `self.observation_space`. This may, for instance, be a numpy array containing the positions and velocities of certain objects.
 >>- `reward` (**float**) : amount of reward returned after previous action
 >>- `done` (**bool**): whether the episode has ended, in which case further `step()` calls will return undefined results.
->> A done signal may be emitted for different reasons: Maybe the task underlying the environment was solved successfully, 
->> a certain timelimit was exceeded, or the physics simulation has entered an invalid state. `info` may contain additional
->> information regarding the reasone for a done signal.
->>- `info` (**dict**): contains auxiliary diagnostic information (helpful for debugging, and sometimes learning)
+A done signal may be emitted for different reasons: Maybe the task underlying the environment was solved successfully, 
+a certain timelimit was exceeded, or the physics simulation has entered an invalid state. `info` may contain additional
+information regarding the reasone for a done signal.
+>>- `info` (**dict**): contains auxiliary diagnostic information (helpful for debugging, learning, and logging)
 
 >### Resetting
->`reset(*, seed: Optional[int] = None, return_info: bool = False, options: Optional[dict] = None,) -> Union[ObsType, tuple[ObsType, dict]]`
+>`reset(self, *, seed: Optional[int] = None, return_info: bool = False, options: Optional[dict] = None) -> ObsType | tuple[ObsType, dict]`
 >
 >Resets the environment to an initial state and returns an initial observation.
 >>**Parameters**
@@ -89,7 +94,7 @@ If you pass an integer, the PRNG will be reset even if it already exists. Usuall
 has been initialized and then never again*. Please refer to the minimal example above to see this paradigm in action.
 >>- `return_info`(**bool**): If true, return additional information along with initial observation. This info should be analogous
 to the info returned in `step`
->>- `options`(**dict** or **None**):
+>>- `options`(**dict** or **None**): Additional information to specify how the environment is reset (optional, depending on the specific environment)
 >
 >>**Returns**
 >>
@@ -99,12 +104,12 @@ to the info returned in `step`
 
 >### Rendering
 > 
->`render(mode: str="human") -> Optional[Union[numpy.ndarray, str]]`
+>`render(self, mode: str="human") -> Optional[np.ndarray | str]`
 >>**Parameters**
->>- `mode`(**str**): This parameter specifies how the environment is rendered. The set of supported modes varies per environment. (And some
-environments do not support rendering at all.) By convention, if mode is:
+>>- `mode`(**str**): This parameter specifies how the environment is rendered. The set of supported modes varies per environment 
+(and some third-party environments may not support). By convention, if mode is:
 >>      - "human": render to the current display or terminal and return nothing. Usually for human consumption.
->>      - "rgb_array": Return an numpy.ndarray with shape (x, y, 3), representing RGB values for an x-by-y pixel image, suitable
+>>      - "rgb_array": Return an np.ndarray with shape (height, width, 3), representing RGB values, suitable
 >>        for turning into a video.
 >>      - "ansi": Return a string (str) or StringIO.StringIO containing a
          terminal-style text representation. The text can include newlines
@@ -125,35 +130,115 @@ implementations to use the functionality of this method.
 
 ## Additional Environment API
 - `action_space`: this attribute gives the format of valid actions. It is of datatype `Space` provided by Gym. For example, if the action space is of type `Discrete` and gives the value `Discrete(2)`, this means there are two valid discrete actions: 0 & 1.
-
-```python
-print(env.action_space)
-#> Discrete(2)
-
-print(env.observation_space)
-#> Box(-3.4028234663852886e+38, 3.4028234663852886e+38, (4,), float32)
-```
+    ```python
+    >>> env.action_space
+    Discrete(2)
+    >>> env.observation_space
+    Box(-3.4028234663852886e+38, 3.4028234663852886e+38, (4,), float32)
+    ```
 
 - `observation_space`: this attribute gives the format of valid observations. It is of datatype `Space` provided by Gym. For example, if the observation space is of type `Box` and the shape of the object is `(4,)`, this denotes a valid observation will be an array of 4 numbers. We can check the box bounds as well with attributes.
-
-```python
-print(env.observation_space.high)
-#> array([4.8000002e+00, 3.4028235e+38, 4.1887903e-01, 3.4028235e+38], dtype=float32)
-
-print(env.observation_space.low)
-#> array([-4.8000002e+00, -3.4028235e+38, -4.1887903e-01, -3.4028235e+38], dtype=float32)
-```
+    ```python
+    >>> env.observation_space.high
+    array([4.8000002e+00, 3.4028235e+38, 4.1887903e-01, 3.4028235e+38], dtype=float32)
+    >>> env.observation_space.low
+    array([-4.8000002e+00, -3.4028235e+38, -4.1887903e-01, -3.4028235e+38], dtype=float32)
+    ```
 - `reward_range`: returns a tuple corresponding to min and max possible rewards. Default range is set to `[-inf,+inf]`. You can set it if you want a narrower range .
 - `close()`: override close in your subclass to perform any necessary cleanup.
 - `seed()`: sets the seed for this environment’s random number generator. This method is being deprecated in favor of passing the keyword argument `seed` to `reset`.
 Nonetheless, you will see this method being used heavily in older code.
 
 
+## Spaces
+Spaces are usually used to specify the format of valid actions and observations.
+Every environment should have the attributes `action_space` and `observation_space`, both of which should be instances
+of classes that inherit from `Space`.
+There are multiple `Space` types available in Gym:
+
+- `Box`: describes an n-dimensional continuous space. It's a bounded space where we can define the upper and lower limits which describe the valid values our observations can take.
+- `Discrete`: describes a discrete space where {0, 1, ..., n-1} are the possible values our observation or action can take. Values can be shifted to {a, a+1, ..., a+n-1} using an optional argument.
+- `Dict`: represents a dictionary of simple spaces.
+- `Tuple`: represents a tuple of simple spaces.
+- `MultiBinary`: creates a n-shape binary space. Argument n can be a number or a `list` of numbers.
+- `MultiDiscrete`: consists of a series of `Discrete` action spaces with a different number of actions in each element.
+
+```python
+>>> from gym.spaces import Box, Discrete, Dict, Tuple, MultiBinary, MultiDiscrete
+>>> 
+>>> observation_space = Box(low=-1.0, high=2.0, shape=(3,), dtype=np.float32)
+>>> observation_space.sample()
+[ 1.6952509 -0.4399011 -0.7981693]
+>>>
+>>> observation_space = Discrete(4)
+>>> observation_space.sample()
+1
+>>> 
+>>> observation_space = Discrete(5, start=-2)
+>>> observation_space.sample()
+-2
+>>> 
+>>> observation_space = Dict({"position": Discrete(2), "velocity": Discrete(3)})
+>>> observation_space.sample()
+OrderedDict([('position', 0), ('velocity', 1)])
+>>>
+>>> observation_space = Tuple((Discrete(2), Discrete(3)))
+>>> observation_space.sample()
+(1, 2)
+>>>
+>>> observation_space = MultiBinary(5)
+>>> observation_space.sample()
+[1 1 1 0 1]
+>>>
+>>> observation_space = MultiDiscrete([ 5, 2, 2 ])
+>>> observation_space.sample()
+[3 0 0]
+ ```
+
 ## Wrappers
+Wrappers are a convenient way to modify an existing environment without having to alter the underlying code directly.
+Using wrappers will allow you to avoid a lot of boilerplate code and make your environment more modular. Wrappers can 
+also chained to combine their effects. Most environments that are generated via `gym.make` will already be wrapped by default.
+
+In order to wrap an environment, you must first initialize a base environment. Then you can pass this environment along
+with (possibly optional) parameters to the wrapper's constructor:
+```python
+>>> import gym
+>>> from gym.wrappers import RescaleAction
+>>> base_env = gym.make("BipedalWalker-v3")
+>>> base_env.action_space
+Box([-1. -1. -1. -1.], [1. 1. 1. 1.], (4,), float32)
+>>> wrapped_env = RescaleAction(base_env, min_action=0, max_action=1)
+>>> wrapped_env.action_space
+Box([0. 0. 0. 0.], [1. 1. 1. 1.], (4,), float32)
+```
+
+There are three very common things you might want a wrapper to do:
+
+- Transform actions before applying them to the base environment
+- Transform observations that are returned by the base environment
+- Transform rewards that are returned by the base environment
+
+Such wrappers can be easily implemented by inheriting from `ActionWrapper`, `ObservationWrapper`, or `RewardWrapper` and implementing the
+respective transformation.
+
+However, sometimes you might need to implement a wrapper that does some more complicated modifications (e.g. modify the
+reward based on data in `info`). Such wrappers
+can be implemented by inheriting from `Wrapper`.
+Gym already provides many commonly used wrappers for you. Some examples:
+
+- `TimeLimit`: Issue a done signal if a maximum number of timesteps has been exceeded (or the base environment has issued a done signal).
+- `ClipAction`: Clip the action such that it lies in the action space (of type Box).
+- `RescaleAction`: Rescale actions to lie in a specified interval
+- `TimeAwareObservation`: Add information about the index of timestep to observation. In some cases helpful to ensure that transitions are Markov.
+
 If you have a wrapped environment, and you want to get the unwrapped environment underneath all of the layers of wrappers (so that you can manually call a function or change some underlying aspect of the environment), you can use the `.unwrapped` attribute. If the environment is already a base environment, the `.unwrapped` attribute will just return itself.
 
 ```python
-base_env = env.unwrapped
+>>> wrapped_env
+<RescaleAction<TimeLimit<BipedalWalker<BipedalWalker-v3>>>>
+>>> wrapped_env.unwrapped
+<gym.envs.box2d.bipedal_walker.BipedalWalker object at 0x7f87d70712d0>
 ```
 
 ## Playing within an environment
