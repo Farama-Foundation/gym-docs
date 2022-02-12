@@ -54,7 +54,7 @@ The output should look something like this
 ![lunar_lander](https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif)
 
 Every environmnet specifies the format of valid actions by providing an `env.action_space` attribute. Similarly,
-the format of valid observations is spacified by `env.observation_space`.
+the format of valid observations is specified by `env.observation_space`.
 In the example above we sampled random actions via `env.action_space.sample()`. Note that we need to seed the action space separately from the 
 environment to ensure reproducible samples.
 
