@@ -6,7 +6,7 @@ Please see instructions below on how to contribute.
 
 If you are modifying a non-environment page, please PR this repo. You may want to run `_scripts/gen_menus.py` if you are adding a new subheader to a page. Otherwise, follow the steps below:
 
-# Instructions for modifying environment docs
+# Instructions for modifying environment pages
 
 ## Editing an environment page
 
