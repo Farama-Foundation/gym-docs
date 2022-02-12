@@ -51,7 +51,7 @@ Score points are your only reward. You get score points each time you destroy an
 | Jet          | 100|
 | Bridge       | 500| 
 
-For a more detailed documentation, see [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=587).
+For a more detailed documentation, see [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=409).
 
 ### Arguments
 
@@ -65,7 +65,7 @@ A flavor is a combination of a game mode and a difficulty setting.
 
 |      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------|
-|             Pong | `[0, 1]`                                                                                                                                                                            |      `[0, ..., 3]` | `0`          |
+|             Riverraid | `[0, 1]`                                                                                                                                                                            |      `[0, ..., 3]` | `0`          |
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "NoFrameskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 
