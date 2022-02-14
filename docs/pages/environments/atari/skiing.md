@@ -68,7 +68,7 @@ A flavor is a combination of a game mode and a difficulty setting.
 
 |      Environment | Valid Modes                                                                                                                                                                         | Valid Difficulties | Default Mode |
 |------------------|------------------------------|---------------|--------------|
-|             Seaquest | `[0]`                    |      `[0]` | `0`          |
+|             Skiing | `[0]`                    |      `[0]` | `0`          |
 
 You may use the suffix "-ram" to switch to the RAM observation space. In v0 and v4, the suffixes "Deterministic" and "NoFrameskip" 
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to `gym.make` as outlined in 
