@@ -80,7 +80,14 @@ observation space, `self.observation_space`. This may, for instance, be a numpy 
 A done signal may be emitted for different reasons: Maybe the task underlying the environment was solved successfully, 
 a certain timelimit was exceeded, or the physics simulation has entered an invalid state. `info` may contain additional
 information regarding the reasone for a done signal.
->>- `info` (**dict**): contains auxiliary diagnostic information (helpful for debugging, learning, and logging)
+>>- `info` (**dict**): contains auxiliary diagnostic information (helpful for debugging, learning, and logging). This might, for instance, 
+contain:
+
+>>    - metrics that describe the agent's performance or
+>>    - state variables that are hidden from observations or
+>>    - information that distinguishes truncation and termination or
+>>    - individual reward terms that are combined to produce the total reward
+
 
 >### Resetting
 >`reset(self, *, seed: Optional[int] = None, return_info: bool = False, options: Optional[dict] = None) -> ObsType | tuple[ObsType, dict]`
