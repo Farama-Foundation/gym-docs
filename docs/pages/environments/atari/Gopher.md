@@ -10,7 +10,7 @@ grid:
 ---
 
 ### Description
- The player controls a shovel-wielding farmer who protects a crop of three carrots from a gopher. [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=218).
+The player controls a shovel-wielding farmer who protects a crop of three carrots from a gopher. [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=218).
 
 ### Rewards
 The exact reward dynamics depend on the environment and are usually documented in the game's manual. You can
