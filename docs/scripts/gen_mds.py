@@ -20,8 +20,7 @@ for env_spec in tqdm(gym.envs.registry.all()):
     
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
-    print("HERE", env_spec) 
-    print(env_spec.id)
+    
     try:
         env = gym.make(env_spec.id)
         if "ALE" in env.unwrapped.__doc__:
