@@ -62,7 +62,7 @@ An episode terminates after 200 steps. There's no other criteria for termination
 `g=10.0`.
 
 ```
-gym.make('Pendulum-v1', g=9.81)
+gym.make('CartPole-v1', g=9.81)
 ```
 
 ## Version History
