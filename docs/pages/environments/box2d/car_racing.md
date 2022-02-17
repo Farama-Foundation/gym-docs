@@ -7,7 +7,7 @@ grid:
    - Observation Shape: (96, 96, 3)
    - Observation High: 255
    - Observation Low: 0
-   - Import: <code>gym.make("CarRacing-v1")</code>
+   - Import: <code>gym.make("CarRacing-v0")</code>
 ---
 ## Description
 Easiest continuous control task to learn from pixels, a top-down
