@@ -222,6 +222,7 @@ Box([-1. -1. -1. -1.], [1. 1. 1. 1.], (4,), float32)
 Box([0. 0. 0. 0.], [1. 1. 1. 1.], (4,), float32)
 ```
 
+
 There are three very common things you might want a wrapper to do:
 
 - Transform actions before applying them to the base environment

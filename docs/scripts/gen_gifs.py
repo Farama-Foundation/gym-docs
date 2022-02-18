@@ -9,13 +9,14 @@ from PIL import Image
 import re
 
 from utils import kill_strs
+from tqdm import tqdm
 
 # snake to camel case: https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
 pattern = re.compile(r'(?<!^)(?=[A-Z])')
 # how many steps to record an env for
 LENGTH = 100
 # iterate through all envspecs
-for env_spec in gym.envs.registry.all():
+for env_spec in tqdm(gym.envs.registry.all()):
     
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
@@ -24,10 +25,8 @@ for env_spec in gym.envs.registry.all():
     try:
         env = gym.make(env_spec.id)
 
-       
-        print(env.metadata["render.modes"])
         # the gym needs to be rgb renderable
-        if not ("rgb_array" in env.metadata["render.modes"] or "human" in env.metadata["render.modes"]):
+        if not ("rgb_array" in env.metadata["render.modes"]):
             continue
         
         # extract env name/type from class path
@@ -46,7 +45,6 @@ for env_spec in gym.envs.registry.all():
         #     env_name = env_spec.id.split("-")[0][4:] 
         #     env_name = pattern.sub('_', env_name).lower()
 
-        print("HERE")
         # path for saving video
         v_path = os.path.join("..", "pages", "environments", env_type, "videos")
         # create dir if it doesnt exist
@@ -61,7 +59,6 @@ for env_spec in gym.envs.registry.all():
             while not done and len(frames) <= LENGTH:
                 
                 frame = env.render(mode='rgb_array')
-                print(frame)
                 frames.append(Image.fromarray(frame))
                 action = env.action_space.sample()
                 state_next, reward, done, info = env.step(action)
