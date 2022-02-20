@@ -24,3 +24,15 @@ Good Algorithmic Introduction to Reinforcement Learning showcasing how to use Gy
 [https://www.gocoder.one/blog/rl-tutorial-with-openai-gym
 ](https://www.gocoder.one/blog/rl-tutorial-with-openai-gym
 )
+
+## An Introduction to Reinforcement Learning with OpenAI Gym, RLlib, and Google Colab
+
+[https://www.anyscale.com/blog/an-introduction-to-reinforcement-learning-with-openai-gym-rllib-and-google](https://www.anyscale.com/blog/an-introduction-to-reinforcement-learning-with-openai-gym-rllib-and-google)
+
+## Intro to RLlib: Example Environments
+
+[https://medium.com/distributed-computing-with-ray/intro-to-rllib-example-environments-3a113f532c70](https://medium.com/distributed-computing-with-ray/intro-to-rllib-example-environments-3a113f532c70)
+
+## Ray and RLlib for Fast and Parallel Reinforcement Learning
+
+[https://towardsdatascience.com/ray-and-rllib-for-fast-and-parallel-reinforcement-learning-6d31ee21c96c](https://towardsdatascience.com/ray-and-rllib-for-fast-and-parallel-reinforcement-learning-6d31ee21c96c)
