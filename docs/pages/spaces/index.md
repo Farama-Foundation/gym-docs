@@ -7,7 +7,7 @@ title: Spaces
 
 Spaces define the valid format of observation and action spaces for an environment. 
 
-## Space Functions
+## General Functions
 
 Each space implements the following functions:
 
