@@ -43,6 +43,7 @@ via `gym.make`.
 
 ### Rewards
 Score points are your only reward. You get score points each time you destroy an enemy object:
+
 | Enemy Object | Score Points |
 |--------------|--------------|
 | Tanker       |  30|
