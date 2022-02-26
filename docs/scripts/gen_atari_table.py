@@ -1,7 +1,5 @@
 import gym
-from rich.table import Table
-from rich.console import Console
-from rich import box
+import tabulate
 from tqdm import tqdm
 
 
@@ -17,24 +15,86 @@ def shortened_repr(lst):
     return f"`{str(lst)}`"
 
 
-current_atari_envs = sorted(
-    [env_spec.id for env_spec in gym.envs.registry.all() if env_spec.id.startswith("ALE") and "ram" not in env_spec.id])
+def to_gym_spelling(game):
+    parts = game.split("_")
+    return "".join([part.capitalize() for part in parts])
 
-table = Table(title="Atari Flavors", box=box.ASCII)
+atari_envs = [
+        "adventure",
+        "air_raid",
+        "alien",
+        "amidar",
+        "assault",
+        "asterix",
+        "asteroids",
+        "atlantis",
+        "bank_heist",
+        "battle_zone",
+        "beam_rider",
+        "berzerk",
+        "bowling",
+        "boxing",
+        "breakout",
+        "carnival",
+        "centipede",
+        "chopper_command",
+        "crazy_climber",
+        "defender",
+        "demon_attack",
+        "double_dunk",
+        "elevator_action",
+        "enduro",
+        "fishing_derby",
+        "freeway",
+        "frostbite",
+        "gopher",
+        "gravitar",
+        "hero",
+        "ice_hockey",
+        "jamesbond",
+        "journey_escape",
+        "kangaroo",
+        "krull",
+        "kung_fu_master",
+        "montezuma_revenge",
+        "ms_pacman",
+        "name_this_game",
+        "phoenix",
+        "pitfall",
+        "pong",
+        "pooyan",
+        "private_eye",
+        "qbert",
+        "riverraid",
+        "road_runner",
+        "robotank",
+        "seaquest",
+        "skiing",
+        "solaris",
+        "space_invaders",
+        "star_gunner",
+        "tennis",
+        "time_pilot",
+        "tutankham",
+        "up_n_down",
+        "venture",
+        "video_pinball",
+        "wizard_of_wor",
+        "yars_revenge",
+        "zaxxon",
+        ]
 
-table.add_column("Environment", no_wrap=True)
-table.add_column("Valid Modes")
-table.add_column("Valid Difficulties")
-table.add_column("Default Mode")
 
-for env_name in tqdm(current_atari_envs):
-    env = gym.make(env_name)
+header = ["Environment", "Valid Modes", "Valid Difficulties", "Default Mode"]
+rows = []
+
+for game in tqdm(atari_envs):
+    env = gym.make(f"ALE/{to_gym_spelling(game)}-v5")
     valid_modes = env.unwrapped.ale.getAvailableModes()
     valid_difficulties = env.unwrapped.ale.getAvailableDifficulties()
     difficulty = env.unwrapped.ale.cloneState().getDifficulty()
     assert (difficulty == 0), difficulty
-    table.add_row(env_name.split("/")[1].split("-")[0], shortened_repr(valid_modes), shortened_repr(valid_difficulties),
-                  f"`{env.unwrapped.ale.cloneState().getCurrentMode()}`")
+    rows.append([to_gym_spelling(game), shortened_repr(valid_modes), shortened_repr(valid_difficulties), f"`{env.unwrapped.ale.cloneState().getCurrentMode()}`"])
 
-console = Console()
-console.print(table)
+
+print(tabulate.tabulate(rows, headers=header, tablefmt="github"))
