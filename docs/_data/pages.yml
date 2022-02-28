@@ -92,7 +92,7 @@
        path: "/battle_zone"
      - title: "<strong>And 50 more...</strong>"
        path: ""
-   - title: "Mujoco"
+   - title: "MuJoCo"
      path: "/mujoco"
      image: ../environments/mujoco/videos/ant.gif
      subsublinks: 
