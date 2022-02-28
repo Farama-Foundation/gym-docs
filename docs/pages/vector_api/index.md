@@ -147,7 +147,7 @@ Vectorized environments are compatible with any sub-environment, regardless of t
                        [ 0.26341468,  0.72282314]], dtype=float32)}
 
 
-The sub-environments inside a vectorized environment automatically call :obj:`reset` at the end of an episode. In the following example, the episode of the 3rd sub-environment ends after 2 steps (the agent fell in a hole), and the sub-environment gets reset (observation ``0``).
+The sub-environments inside a vectorized environment automatically call `gym.Env.reset` at the end of an episode. In the following example, the episode of the 3rd sub-environment ends after 2 steps (the agent fell in a hole), and the sub-environment gets reset (observation ``0``).
 
     >>> envs = gym.vector.make("FrozenLake-v1", num_envs=3, is_slippery=False)
     >>> envs.reset()
