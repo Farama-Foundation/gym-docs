@@ -79,7 +79,7 @@ observation space, `self.observation_space`. This may, for instance, be a numpy 
 - `done` (**bool**): whether the episode has ended, in which case further `step()` calls will return undefined results.
 A done signal may be emitted for different reasons: Maybe the task underlying the environment was solved successfully, 
 a certain timelimit was exceeded, or the physics simulation has entered an invalid state. `info` may contain additional
-information regarding the reasone for a done signal.
+information regarding the reason for a `done` signal.
 - `info` (**dict**): contains auxiliary diagnostic information (helpful for debugging, learning, and logging). This might, for instance, 
 contain:
 
