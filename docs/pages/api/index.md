@@ -14,7 +14,11 @@ env = gym.make('CartPole-v0')
 ## Interacting with the Environment
 Gym implements the classic "agent-environment loop":
 
-<img src="AE_loop.svg"/>
+<html>
+<p style="width:50%;margin-left:auto;margin-right:auto">
+  <img src="AE_loop.png"/>
+</p>
+</html>
 
 The agent performs some actions in the environment (usually by passing some control inputs to the environment, e.g. torque inputs of motors) and observes
 how the environment's state changes. One such action-observation exchange is referred to as a *timestep*. 
