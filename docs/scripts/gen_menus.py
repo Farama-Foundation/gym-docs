@@ -17,7 +17,7 @@ menu = ["API", "Vector API", "Spaces",
 
 env_type_images = {
     "Atari": "space_invaders",
-    "Mujoco": "ant"
+    "MuJoCo": "ant"
 }
 
 ret = autogen_start
@@ -61,10 +61,17 @@ for item in menu:
             if os.path.isdir(f):
                 env_type = os.path.basename(f)
                 env_type_path = f"/{env_type}"
-                if env_type == "box2d":
+                env_type_title = env_type.replace("_", " ")
+                if env_type_title == "box2d":
                     env_type_title = "Box2D"
+                elif env_type_title == "mujoco":
+                    env_type_title = "MuJoCo"
                 else:
-                    env_type_title = env_type.replace("_", " ").title()
+                    spaceds = env_type_title.split(" ")
+                    spaceds = [spaced.title() for spaced in spaceds]
+                    env_type_title = " ".join(spaceds)
+
+                print(env_type_title)
                 ret+= f"   - title: \"{env_type_title}\"\n"
                 ret+= f"     path: \"{env_type_path}\"\n"
                 if env_type_title in env_type_images:
