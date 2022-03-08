@@ -64,6 +64,8 @@
      subsublinks: 
      - title: "Blackjack"
        path: "/blackjack"
+     - title: "Cliff Walking"
+       path: "/cliff_walking"
      - title: "Frozen Lake"
        path: "/frozen_lake"
      - title: "Taxi"

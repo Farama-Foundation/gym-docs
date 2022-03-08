@@ -17,7 +17,7 @@ pattern = re.compile(r'(?<!^)(?=[A-Z])')
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in tqdm(gym.envs.registry.all()):
-    
+
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
     
@@ -26,7 +26,7 @@ for env_spec in tqdm(gym.envs.registry.all()):
         env = gym.make(env_spec.id)
 
         # the gym needs to be rgb renderable
-        if not ("rgb_array" in env.metadata["render.modes"]):
+        if not ("rgb_array" in env.metadata["render_modes"]):
             continue
         
         # extract env name/type from class path
@@ -59,7 +59,8 @@ for env_spec in tqdm(gym.envs.registry.all()):
             while not done and len(frames) <= LENGTH:
                 
                 frame = env.render(mode='rgb_array')
-                frames.append(Image.fromarray(frame))
+                for i in range(15):
+                    frames.append(Image.fromarray(frame))
                 action = env.action_space.sample()
                 state_next, reward, done, info = env.step(action)
             
@@ -69,9 +70,9 @@ for env_spec in tqdm(gym.envs.registry.all()):
         env.close()
 
         # make sure video doesnt already exist
-        if not os.path.exists(os.path.join(v_path, env_name + ".gif")):
-            frames[0].save(os.path.join(v_path, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
-            print("Saved: " + env_name)
+        # if not os.path.exists(os.path.join(v_path, env_name + ".gif")):
+        frames[0].save(os.path.join(v_path, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
+        print("Saved: " + env_name)
 
     except BaseException as e:
         print(e)

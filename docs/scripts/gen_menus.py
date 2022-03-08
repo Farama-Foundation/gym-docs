@@ -71,7 +71,6 @@ for item in menu:
                     spaceds = [spaced.title() for spaced in spaceds]
                     env_type_title = " ".join(spaceds)
 
-                print(env_type_title)
                 ret+= f"   - title: \"{env_type_title}\"\n"
                 ret+= f"     path: \"{env_type_path}\"\n"
                 if env_type_title in env_type_images:
