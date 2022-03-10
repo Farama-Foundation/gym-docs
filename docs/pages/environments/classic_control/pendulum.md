@@ -9,23 +9,22 @@ grid:
    - Observation Low: [-1. -1. -8.]
    - Import: <code>gym.make("Pendulum-v1")</code>
 ---
-### Description
+   ### Description
 
-The inverted pendulum swingup problem is a classic problem in the control literature. In this
-version of the problem, the pendulum starts in a random position, and the goal is to swing it up so
-it stays upright.
+The inverted pendulum swingup problem is based on the classic problem in control theory. The system consists of a pendulum attached at one end to a fixed point, and the other end being free. The pendulum starts in a random position and the goal is to apply torque on the free end to swing it into an upright position, with its center of gravity right above the fixed point.
 
 The diagram below specifies the coordinate system used for the implementation of the pendulum's
 dynamic equations.
 
 ![Pendulum Coordinate System](./diagrams/pendulum.png)
 
-- `x-y`: cartesian coordinates of the pendulum's end in meters.
-- `theta`: angle in radians.
-- `tau`: torque in `N * m`. Defined as positive _counter-clockwise_.
+-  `x-y`: cartesian coordinates of the pendulum's end in meters.
+- `theta` : angle in radians.
+- `tau`: torque in `N m`. Defined as positive _counter-clockwise_.
 
 ### Action Space
-The action is the torque applied to the pendulum.
+
+The action is a `ndarray` with shape `(1,)` representing the torque applied to free end of the pendulum.
 
 | Num | Action | Min  | Max |
 |-----|--------|------|-----|
@@ -33,7 +32,8 @@ The action is the torque applied to the pendulum.
 
 
 ### Observation Space
-The observations correspond to the x-y coordinate of the pendulum's end, and its angular velocity.
+
+The observation is a `ndarray` with shape `(3,)` representing the x-y coordinates of the pendulum's free end and its angular velocity.
 
 | Num | Observation      | Min  | Max |
 |-----|------------------|------|-----|
@@ -42,24 +42,26 @@ The observations correspond to the x-y coordinate of the pendulum's end, and its
 | 2   | Angular Velocity | -8.0 | 8.0 |
 
 ### Rewards
-The reward is defined as:
-```
-r = -(theta^2 + 0.1*theta_dt^2 + 0.001*torque^2)
-```
-where `theta` is the pendulum's angle normalized between `[-pi, pi]`.
-Based on the above equation, the minimum reward that can be obtained is `-(pi^2 + 0.1*8^2 +
-0.001*2^2) = -16.2736044`, while the maximum reward is zero (pendulum is
-upright with zero velocity and no torque being applied).
+
+The reward function is defined as:
+
+*r = -(theta<sup>2</sup> + 0.1 * theta_dt<sup>2</sup> + 0.001 * torque<sup>2</sup>)*
+
+where `$    heta$` is the pendulum's angle normalized between *[-pi, pi]* (with 0 being in the upright position).
+Based on the above equation, the minimum reward that can be obtained is *-(pi<sup>2</sup> + 0.1 * 8<sup>2</sup> + 0.001 * 2<sup>2</sup>) = -16.2736044*, while the maximum reward is zero (pendulum is
+upright with zero velocity and no torque applied).
 
 ### Starting State
-The starting state is a random angle in `[-pi, pi]` and a random angular velocity in `[-1,1]`.
+
+The starting state is a random angle in *[-pi, pi]* and a random angular velocity in *[-1,1]*.
 
 ### Episode Termination
-An episode terminates after 200 steps. There's no other criteria for termination.
+
+The episode terminates at 200 time steps.
 
 ### Arguments
-- `g`: acceleration of gravity measured in `(m/s^2)` used to calculate the pendulum dynamics. The default is
-`g=10.0`.
+
+- `g`: acceleration of gravity measured in *(m s<sup>-2</sup>)* used to calculate the pendulum dynamics. The default value is g = 10.0 .
 
 ```
 gym.make('Pendulum-v1', g=9.81)
