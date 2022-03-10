@@ -18,8 +18,8 @@
 from gym import __version__ as gym_version
 
 project = 'Gym'
-copyright = '2022, Manuel Goulão'
-author = 'Manuel Goulão'
+copyright = '2022'
+author = ''
 
 # The full version, including alpha/beta/rc tags
 release = gym_version
@@ -34,7 +34,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
-    'sphinx.ext.githubpages' 
+    'sphinx.ext.githubpages',
+    'myst_parser',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
