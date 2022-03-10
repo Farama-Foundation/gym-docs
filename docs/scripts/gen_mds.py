@@ -83,8 +83,7 @@ title: {title_env_name}
             env_table += f"| Observation Space | {env.observation_space} |\n"
 
         env_table += f"| Import | `gym.make(\"{env_spec.id}\")` | \n"
-        if env_type == "box2d":
-            print(docstring)
+
         if docstring is None:
             docstring = "No information provided"
         all_text = f"""{front_matter}
