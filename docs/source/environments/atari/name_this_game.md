@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Name This Game
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/NameThisGame-v5")</code>
 ---
 # Name This Game
+
+```{figure} ../../_static/videos/atari/name_this_game.gif 
+:width: 120px
+:name: NameThisGame
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/NameThisGame-v5")` |
 
 ### Description
 Your goal is to defend the treasure that you have discovered. You must fight off a shark and an octopus while keeping an eye on your oxygen supply. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=323).

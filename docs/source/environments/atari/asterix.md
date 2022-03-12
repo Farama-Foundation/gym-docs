@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Asterix
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Asterix-v5")</code>
 ---
 # Asterix
+
+```{figure} ../../_static/videos/atari/asterix.gif 
+:width: 120px
+:name: asterix
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Asterix-v5")` | 
 
 ### Description
 You are Asterix and can move horizontally (continuously) and vertically (discretely). Objects

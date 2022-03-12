@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Pitfall
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Pitfall-v5")</code>
 ---
 # Pitfall
+
+```{figure} ../../_static/videos/atari/pitfall.gif 
+:width: 120px
+:name: Pitfall
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Pitfall-v5")` |
 
 ### Description
 You control Pitfall Harry and are tasked with collecting all the treasures in a jungle within 20 minutes. You have three lives. The game is over if you collect all the treasures or if you die or if the time runs out.

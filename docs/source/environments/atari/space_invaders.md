@@ -1,14 +1,22 @@
 ---
-layout: env
 title: SpaceInvaders
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/SpaceInvaders-v5")</code>
 ---
 # SpaceInvaders
+
+```{figure} ../../_static/videos/atari/space_invaders.gif 
+:width: 120px
+:name: SpaceInvaders
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/SpaceInvaders-v5")` |
 
 ### Description
 

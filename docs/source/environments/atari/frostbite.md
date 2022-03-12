@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Frostbite
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Frostbite-v5")</code>
 ---
 # Frostbite
+
+```{figure} ../../_static/videos/atari/frostbite.gif 
+:width: 120px
+:name: Frostbite
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Frostbite-v5")` | 
 
 ### Description
  In Frostbite, the player controls "Frostbite Bailey" who hops back and forth across across an Arctic river, changing the color of the ice blocks from white to blue. Each time he does so, a block is added to his igloo. [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=199).

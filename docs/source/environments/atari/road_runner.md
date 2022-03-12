@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Road Runner
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/RoadRunner-v0")</code>
 ---
 # Road Runner
+
+```{figure} ../../_static/videos/atari/road_runner.gif 
+:width: 120px
+:name: RoadRunner
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/RoadRunner-v0")` |
 
 ### Description
 You control the Road Runner(TM) in a race; you can control the direction to run in and times to jumps.

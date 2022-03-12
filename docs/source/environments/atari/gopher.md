@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Gopher
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Gopher-v5")</code>
 ---
 # Gopher
+
+```{figure} ../../_static/videos/atari/gopher.gif 
+:width: 120px
+:name: Gopher
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Gopher-v5")` | 
 
 ### Description
 The player controls a shovel-wielding farmer who protects a crop of three carrots from a gopher. [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=218).

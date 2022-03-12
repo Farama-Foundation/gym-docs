@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Robot Tank
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Robotank-v0")</code>
 ---
 # Robot Tank
+
+```{figure} ../../_static/videos/atari/robotank.gif 
+:width: 120px
+:name: Robotank
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Robotank-v0")` |
 
 ### Description
 You control your Robot Tanks to destroy enemies and avoid enemy fire.

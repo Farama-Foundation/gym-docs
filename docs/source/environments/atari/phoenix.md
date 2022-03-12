@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Phoenix
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Phoenix-v5")</code>
 ---
 # Phoenix
+
+```{figure} ../../_static/videos/atari/phoenix.gif 
+:width: 120px
+:name: Phoenix
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Phoenix-v5")` |
 
 ### Description
 Your goal is to reach and shoot the alien pilot. On your way there, you must eliminate waves of war birds while avoiding their bombs. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_thumbs.php?SoftwareLabelID=355).

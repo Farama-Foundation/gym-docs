@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Chopper Command
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/ChopperCommand-v5")</code>
 ---
 # Chopper Command
+
+```{figure} ../../_static/videos/atari/chopper_command.gif 
+:width: 120px
+:name: ChopperCommand
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/ChopperCommand-v5")` | 
 
 ### Description
 You control a helicopter and must protect truck convoys. To that end, you need to shoot down enemy aircraft.

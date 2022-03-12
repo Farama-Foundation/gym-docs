@@ -1,14 +1,23 @@
 ---
-layout: env
 title: Battle Zone
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/BattleZone-v5")</code>
 ---
+   
 # Battle Zone
+
+```{figure} ../../_static/videos/atari/battle_zone.gif 
+:width: 120px
+:name: BattleZone
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/BattleZone-v5")` | 
 
 ### Description
 You control a tank and must destroy enemy vehicles. This game is played in a first-person perspective and creates 

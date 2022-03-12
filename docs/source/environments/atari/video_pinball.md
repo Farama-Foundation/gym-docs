@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Video Pinball
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/VideoPinball-v5")</code>
 ---
 # Video Pinball
+
+```{figure} ../../_static/videos/atari/video_pinball.gif 
+:width: 120px
+:name: VideoPinball
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/VideoPinball-v5")` |
 
 ### Description
 Your goal is to keep the ball in play as long as possible and to score as many points as possible. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=588).

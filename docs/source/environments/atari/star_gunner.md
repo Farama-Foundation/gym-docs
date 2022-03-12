@@ -1,14 +1,22 @@
 ---
-layout: env
 title: StarGunner
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/StarGunner-v5")</code>
 ---
 # StarGunner
+
+```{figure} ../../_static/videos/atari/star_gunner.gif 
+:width: 120px
+:name: StarGunner
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/StarGunner-v5")` |
 
 ### Description
 

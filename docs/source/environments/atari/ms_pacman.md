@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Ms Pacman
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/MsPacman-v5")</code>
 ---
 # Ms Pacman
+ 
+```{figure} ../../_static/videos/atari/ms_pacman.gif 
+:width: 120px
+:name: MsPacman
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/MsPacman-v5")` |
  
 ### Description
 Your goal is to collect all of the pellets on the screen while avoiding the ghosts.

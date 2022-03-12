@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Solaris
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Solaris-v5")</code>
 ---
 # Solaris
+
+```{figure} ../../_static/videos/atari/solaris.gif 
+:width: 120px
+:name: Solaris
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Solaris-v5")` |
 
 ### Description
 You control a spaceship. Blast enemies before they can blast you. You can warp to different sectors. You have to defend Federation planets, and destroy Zylon forces. Keep track of your fuel, if you run out you lose a life. Warp to a Federation planet to refuel. The game ends if all your ships are destroyed or if you reach the Solaris planet. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=450)

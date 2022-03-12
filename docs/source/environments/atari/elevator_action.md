@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Elevator Action
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (250, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/ElevatorAction-v5")</code>
 ---
 # Elevator Action
+
+```{figure} ../../_static/videos/atari/elevator_action.gif 
+:width: 120px
+:name: ElevatorAction
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (250, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/ElevatorAction-v5")` | 
 
 ### Description
 You are a secret agent that must retrieve some secret documents and reach the ground level of a

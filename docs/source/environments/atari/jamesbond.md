@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Jamesbond
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Jamesbond-v5")</code>
 ---
 # Jamesbond
+
+```{figure} ../../_static/videos/atari/jamesbond.gif 
+:width: 120px
+:name: Jamesbond
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Jamesbond-v5")` | 
 
 ### Description
 Your mission is to control Mr. Bond's specially designed multipurpose craft to complete a variety of missions.

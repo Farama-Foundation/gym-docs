@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Bowling
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Bowling-v5")</code>
 ---
 # Bowling
+
+```{figure} ../../_static/videos/atari/bowling.gif 
+:width: 120px
+:name: Bowling
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Bowling-v5")` | 
 
 ### Description
 Your goal is to score as many points as possible in the game of Bowling. A game consists of 10 frames and you have two

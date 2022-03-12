@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Montezuma Revenge
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/MontezumaRevenge-v5")</code>
 ---
 # Montezuma Revenge
+
+```{figure} ../../_static/videos/atari/montezuma_revenge.gif 
+:width: 120px
+:name: MontezumaRevenge
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/MontezumaRevenge-v5")` |
 
 ### Description
 Your goal is to acquire Montezuma's treasure by making your way through a maze of chambers within the emperor's fortress. You must avoid deadly creatures while collecting valuables and tools which can help you escape with the treasure. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=310).

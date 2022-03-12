@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Riverraid
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Riverraid-v0")</code>
 ---
 # Riverraid
+
+```{figure} ../../_static/videos/atari/riverraid.gif 
+:width: 120px
+:name: Riverraid
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Riverraid-v5")` |
 
 ### Description
 You control a jet that flies over a river: you can move it sideways and fire missiles to destroy enemy objects. Each time an enemy object is destroyed you score points (i.e. rewards). 

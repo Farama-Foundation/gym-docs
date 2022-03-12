@@ -10,6 +10,21 @@ grid:
 ---
 # Beam Rider
 
+```{figure} ../../_static/videos/atari/beam_rider.gif 
+:width: 120px
+:name: BeamRider
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/BeamRider-v5")` | 
+
 ### Description
 You control a space-ship that travels forward at a constant speed. You can only steer it sideways between discrete
 positions. Your goal is to destroy enemy ships, avoid their attacks and dodge space debris.

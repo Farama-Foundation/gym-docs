@@ -1,14 +1,22 @@
 ---
-layout: env
 title: IceHockey
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/IceHockey-v5")</code>
 ---
 # IceHockey
+
+```{figure} ../../_static/videos/atari/ice_hockey.gif 
+:width: 120px
+:name: IceHockey
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/IceHockey-v5")` | 
 
 ### Description
 Your goal is to score as many points as possible in a standard game of Ice Hockey over a 3-minute time period. The ball is usually called "the puck".

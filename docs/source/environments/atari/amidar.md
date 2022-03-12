@@ -1,15 +1,23 @@
 ---
-layout: env
 title: Amidar
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Amidar-v5")</code>
 ---
 
 # Amidar
+
+```{figure} ../../_static/videos/atari/amidar.gif 
+:width: 120px
+:name: amidar
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Amidar-v5")` | 
 
 ### Description
 This game is similar to Pac-Man: You are trying to visit all places on a 2-dimensional grid while simultaneously avoiding

@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Crazy Climber
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (250, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/CrazyClimber-v5")</code>
 ---
 # Crazy Climber
+
+```{figure} ../../_static/videos/atari/crazy_climber.gif 
+:width: 120px
+:name: CrazyClimber
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (250, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/CrazyClimber-v5")` | 
 
 ### Description
 You are a climber trying to reach the top of four builidings, while avoiding obstacles like closing

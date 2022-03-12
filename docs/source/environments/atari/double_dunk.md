@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Double Dunk
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (250, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/DoubleDunk-v5")</code>
 ---
 # Double Dunk
+
+```{figure} ../../_static/videos/atari/double_dunk.gif 
+:width: 120px
+:name: DoubleDunk
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (250, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/DoubleDunk-v5")` | 
 
 ### Description
 You are playing a 2v2 game of basketball. At the start of each possession, you select between a set

@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Gravitar
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Gravitar-v5")</code>
 ---
 # Gravitar
+
+```{figure} ../../_static/videos/atari/gravitar.gif 
+:width: 120px
+:name: Gravitar
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Gravitar-v5")` | 
 
 ### Description
 The player controls a small blue spacecraft. The game starts in a fictional solar system with several planets to explore. If the player moves his ship into a planet, he will be taken to a side-view landscape. Player has to destroy red bunkers [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=223).

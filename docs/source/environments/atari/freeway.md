@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Freeway
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Freeway-v5")</code>
 ---
 # Freeway
+
+```{figure} ../../_static/videos/atari/fishing_derby.gif 
+:width: 120px
+:name: Freeway
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Freeway-v5")` | 
 
 ### Description
 your objective is to guide your chicken across lane after lane of busy rush hour traffic. You receive a point for every chicken that makes it to the top fo the screen after crossing all the lanes of traffic. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=192).

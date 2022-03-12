@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Wizard of Wor
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/WizardOfWor-v5")</code>
 ---
 # Wizard of Wor
+
+```{figure} ../../_static/videos/atari/wizard_of_wor.gif 
+:width: 120px
+:name: WizardOfWor
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/WizardOfWor-v5")` |
 
 ### Description
 Your goal is to beat the Wizard using your laser and radar scanner. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=598).

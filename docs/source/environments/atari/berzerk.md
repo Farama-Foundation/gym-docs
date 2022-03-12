@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Berzerk
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Berzerk-v5")</code>
 ---
 # Berzerk
+
+```{figure} ../../_static/videos/atari/berzerk.gif 
+:width: 120px
+:name: Berzerk
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Berzerk-v5")` | 
 
 ### Description
 You are stuck in a maze with evil robots. You must destroy them and avoid touching the walls of the maze, as this will

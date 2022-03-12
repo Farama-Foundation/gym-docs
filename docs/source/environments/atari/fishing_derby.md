@@ -1,14 +1,22 @@
 ---
-layout: env
 title: FishingDerby
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/FishingDerby-v5")</code>
 ---
 # FishingDerby
+
+```{figure} ../../_static/videos/atari/fishing_derby.gif 
+:width: 120px
+:name: FishingDerby
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/FishingDerby-v5")` | 
 
 ### Description
 your objective is to catch more sunfish than your opponent. But it's not just between you and the other fisherman, as a big, black shark is lurking just below the surface, waiting to steal your catch! Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=182).

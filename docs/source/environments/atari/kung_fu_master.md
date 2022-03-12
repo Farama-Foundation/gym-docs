@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Kung Fu Master
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (210, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/KungFuMaster-v5")</code>
 ---
 # Kung Fu Master
+
+```{figure} ../../_static/videos/atari/kung_fu_master.gif 
+:width: 120px
+:name: KungFuMaster
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (210, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/KungFuMaster-v5")` | 
 
 ### Description
 You are a Kung-Fu Master fighting your way through the Evil Wizard's temple. Your goal is to rescue Princess Victoria, defeating various enemies along the way. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_thumbs.php?SoftwareLabelID=268).

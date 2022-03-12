@@ -1,14 +1,22 @@
 ---
-layout: env
 title: Carnival
-grid:
-   - Action Space: Discrete(18)
-   - Observation Shape: (214, 160, 3)
-   - Observation High: 255
-   - Observation Low: 0
-   - Import: <code>gym.make("ALE/Carnival-v5")</code>
 ---
 # Carnival
+
+```{figure} ../../_static/videos/atari/carnival.gif 
+:width: 120px
+:name: Carnival
+```
+
+This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+
+|   |   |
+|---|---|
+| Action Space | Discrete(18) |
+| Observation Space | (214, 160, 3) |
+| Observation High | 255 |
+| Observation Low | 0 |
+| Import | `gym.make("ALE/Carnival-v5")` | 
 
 ### Description
 This is a "shoot 'em up" game. Targets move horizontally across the screen and you must shoot them. You are
