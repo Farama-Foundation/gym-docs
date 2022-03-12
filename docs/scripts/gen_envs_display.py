@@ -88,10 +88,10 @@ all_envs = [
 
 def create_grid_cell(type_id, env_id):
     return f'''
-            <a href="{env_id}.html">
+            <a href="{env_id}">
                 <div class="env-grid__cell">
                     <div class="cell__image-container">
-                        <img src="../../_static/videos/{type_id}/{env_id}.gif">
+                        <img src="/_static/videos/{type_id}/{env_id}.gif">
                     </div>
                     <div class="cell__title">
                         <span>{' '.join(env_id.split('_')).title()}</span>
@@ -111,13 +111,13 @@ def generate_page(env, limit=-1):
     else:
         cells = '\n'.join(cells[:limit])
 
-    more_btn = '<a href="./complete_list.html"><button class="more-btn">See More Environments</button></a>' if not non_limited_page else ''
+    more_btn = '<a href="./complete_list"><button class="more-btn">See More Environments</button></a>' if not non_limited_page else ''
     return f'''
 <!DOCTYPE html>
 
 <html>
     <body>
-        <link rel="stylesheet" href="../../_static/css/env_pages.css">
+        <link rel="stylesheet" href="/_static/css/env_pages.css">
 
         <div class="env-grid">
             {cells}
@@ -129,17 +129,22 @@ def generate_page(env, limit=-1):
 
 
 if __name__ == "__main__":
-    type_arg = sys.argv[1]
-    type_dict = {
-        'id': ''
-    }
-    for i in all_envs:
-        if type_arg == i['id']:
-            type_dict = i
-            break
+    '''
+    python gen_envs_display [ mujoco | atari | box2d | classic_control | toy_text ]
+    '''
 
-    type_id = type_dict['id']
-    if type_id != '':
+    type_dict_arr = []
+    type_arg = ""
+
+    if len(sys.argv) > 1:
+        type_arg = sys.argv[1]
+
+    for env in all_envs:
+        if type_arg == env['id'] or type_arg == "":
+            type_dict_arr.append(env)
+
+    for type_dict in type_dict_arr:
+        type_id = type_dict['id']
         envs_path = f'../source/environments/{type_id}'
         if len(type_dict['list']) > 20:
             page = generate_page(type_dict, limit=9)
@@ -151,10 +156,13 @@ if __name__ == "__main__":
             fp = open(f'{envs_path}/complete_list.html', 'w+', encoding='utf-8')
             fp.write(page)
             fp.close()
+
+            fp = open(f'{envs_path}/complete_list.md', 'w+', encoding='utf-8')
+            env_name = " ".join(type_id.split("_")).title()
+            fp.write(f"# Complete List - {env_name}\n" + "```{raw} html\n:file: complete_list.html\n```")
+            fp.close()
         else:
             page = generate_page(type_dict)
             fp = open(f'{envs_path}/index.html', 'w+', encoding='utf-8')
             fp.write(page)
             fp.close()
-    else:
-        print(f'Invalid type of environment: {type_arg}')
