@@ -10,7 +10,7 @@ title: Mountain Car Continuous
 :name: mountain_car_continuous
 ```
 
-This environment is part of the <a href='../classic_control'>Classic Control environments</a>. Please read that page first for general information.
+This environment is part of the <a href='..'>Classic Control environments</a>. Please read that page first for general information.
 
 |   |   |
 |---|---|

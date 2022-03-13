@@ -54,7 +54,7 @@ title: {title_env_name}
 """
         title = f"# {title_env_name}"
         gif = "```{figure}" + f" ../../_static/videos/{env_type}/{snake_env_name}.gif" + f" \n:width: 200px\n:name: {snake_env_name}\n```"
-        info = f"This environment is part of the <a href='../{env_type}'>{env_type_title} environments</a>. Please read that page first for general information."
+        info = f"This environment is part of the <a href='..'>{env_type_title} environments</a>. Please read that page first for general information."
         env_table = f"|   |   |\n|---|---|\n"
         env_table += f"| Action Space | {env.action_space} |\n"
 

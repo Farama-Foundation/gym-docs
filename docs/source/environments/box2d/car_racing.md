@@ -10,7 +10,7 @@ title: Car Racing
 :name: car_racing
 ```
 
-This environment is part of the <a href='../box2d'>Box2D environments</a>. Please read that page first for general information.
+This environment is part of the <a href='..'>Box2D environments</a>. Please read that page first for general information.
 
 |   |   |
 |---|---|

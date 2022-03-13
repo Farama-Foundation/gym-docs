@@ -10,7 +10,7 @@ title: Bipedal Walker
 :name: bipedal_walker
 ```
 
-This environment is part of the <a href='../box2d'>Box2D environments</a>. Please read that page first for general information.
+This environment is part of the <a href='..'>Box2D environments</a>. Please read that page first for general information.
 
 |   |   |
 |---|---|

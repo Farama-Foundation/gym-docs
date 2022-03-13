@@ -10,7 +10,7 @@ title: Blackjack
 :name: blackjack
 ```
 
-This environment is part of the <a href='../toy_text'>Toy Text environments</a>. Please read that page first for general information.
+This environment is part of the <a href='..'>Toy Text environments</a>. Please read that page first for general information.
 
 |   |   |
 |---|---|

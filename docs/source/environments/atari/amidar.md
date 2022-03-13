@@ -9,7 +9,7 @@ title: Amidar
 :name: amidar
 ```
 
-This environment is part of the <a href='../atari'>Atari environments</a>. Please read that page first for general information.
+This environment is part of the <a href='..'>Atari environments</a>. Please read that page first for general information.
 
 |   |   |
 |---|---|

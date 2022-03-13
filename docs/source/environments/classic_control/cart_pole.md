@@ -10,7 +10,7 @@ title: Cart Pole
 :name: cart_pole
 ```
 
-This environment is part of the <a href='../classic_control'>Classic Control environments</a>. Please read that page first for general information.
+This environment is part of the <a href='..'>Classic Control environments</a>. Please read that page first for general information.
 
 |   |   |
 |---|---|
@@ -47,12 +47,12 @@ The observation is a `ndarray` with shape `(4,)` with the values corresponding t
 |-----|-----------------------|----------------------|--------------------|
 | 0   | Cart Position         | -4.8                 | 4.8                |
 | 1   | Cart Velocity         | -Inf                 | Inf                |
-| 2   | Pole Angle            | ~ -0.418 rad (-24°)  | ~ 0.418 rad (24°)  |
+| 2   | Pole Angle            | ~ -0.418 rad (-24Â°)  | ~ 0.418 rad (24Â°)  |
 | 3   | Pole Angular Velocity | -Inf                 | Inf                |
 
 **Note:** While the ranges above denote the possible values for observation space of each element, it is not reflective of the allowed values of the state space in an unterminated episode. Particularly:
 -  The cart x-position (index 0) can be take values between `(-4.8, 4.8)`, but the episode terminates if the cart leaves the `(-2.4, 2.4)` range.
--  The pole angle can be observed between  `(-.418, .418)` radians (or **±24°**), but the episode terminates if the pole angle is not in the range `(-.2095, .2095)` (or **±12°**)
+-  The pole angle can be observed between  `(-.418, .418)` radians (or **Â±24Â°**), but the episode terminates if the pole angle is not in the range `(-.2095, .2095)` (or **Â±12Â°**)
 
 ### Rewards
 
@@ -65,8 +65,8 @@ All observations are assigned a uniformly random value in `(-0.05, 0.05)`
 ### Episode Termination
 
 The episode terminates if any one of the following occurs:
-1. Pole Angle is greater than ±12°
-2. Cart Position is greater than ±2.4 (center of the cart reaches the edge of the display)
+1. Pole Angle is greater than Â±12Â°
+2. Cart Position is greater than Â±2.4 (center of the cart reaches the edge of the display)
 3. Episode length is greater than 500 (200 for v0)
 
 ### Arguments
