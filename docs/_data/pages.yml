@@ -112,12 +112,12 @@
        path: "/inverted_pendulum"
      - title: "Humanoid"
        path: "/humanoid"
+     - title: "Pusher"
+       path: "/pusher"
      - title: "Ant"
        path: "/ant"
-     - title: "Half Cheetah"
-       path: "/half_cheetah"
-     - title: "Reacher"
-       path: "/reacher"
+     - title: "<strong>And 2 more...</strong>"
+       path: ""
    - title: "Classic Control"
      path: "/classic_control"
      image: ../environments/classic_control/videos/cart_pole.gif
@@ -170,6 +170,15 @@
 
 - title: Wrappers
   path: /wrappers
+  sublinks: 
+    - title: "ActionWrapper"
+      path: "#actionwrapper"
+    - title: "ObservationWrapper"
+      path: "#observationwrapper"
+    - title: "RewardWrapper"
+      path: "#rewardwrapper"
+    - title: "General Wrappers"
+      path: "#general-wrappers"
 
 #AUTOGENERATION ENDED
 
