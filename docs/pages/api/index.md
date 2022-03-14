@@ -211,7 +211,7 @@ OrderedDict([('position', 0), ('velocity', 1)])
 ## Wrappers
 Wrappers are a convenient way to modify an existing environment without having to alter the underlying code directly.
 Using wrappers will allow you to avoid a lot of boilerplate code and make your environment more modular. Wrappers can 
-also chained to combine their effects. Most environments that are generated via `gym.make` will already be wrapped by default.
+also be chained to combine their effects. Most environments that are generated via `gym.make` will already be wrapped by default.
 
 In order to wrap an environment, you must first initialize a base environment. Then you can pass this environment along
 with (possibly optional) parameters to the wrapper's constructor:
