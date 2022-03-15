@@ -1,5 +1,4 @@
 ---
-layout: "contents"
 title: Wrappers
 ---
 
@@ -156,4 +155,6 @@ class ReacherRewardWrapper(gym.Wrapper):
         return obs, reward, done, info
 ```
 
-Note that it is *not* sufficient to use a `RewardWrapper` in this case!
+```{note}
+It is *not* sufficient to use a `RewardWrapper` in this case!
+```
