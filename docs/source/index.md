@@ -30,7 +30,7 @@ hide-toc: true
 
 ```{toctree}
 :hidden:
-:caption: Base
+:caption: User Guide
 
 content/api
 content/environment_creation
@@ -39,15 +39,6 @@ content/vector_api
 content/tutorials
 content/wrappers
 Github <https://github.com/openai/gym>
-```
-
-```{toctree}
-:hidden:
-:caption: Documentation
-
-documentation/vector
-documentation/spaces
-documentation/wrappers
 ```
 
 ```{toctree}

@@ -294,45 +294,48 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
 
 ### VectorEnv
 
-`action_space`
+```{eval-rst}
+.. attribute:: gym.vector.VectorEnv.action_space
 
-The (batched) action space. The input actions of `step` must be valid elements of `action_space`.
+    The (batched) action space. The input actions of `step` must be valid elements of `action_space`.::
 
-    >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-    >>> envs.action_space
-    MultiDiscrete([2 2 2])
+        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+        >>> envs.action_space
+        MultiDiscrete([2 2 2])
+
+.. attribute:: gym.vector.VectorEnv.observation_space
+
+    The (batched) observation space. The observations returned by `reset` and `step` are valid elements of `observation_space`.::
+
+        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+        >>> envs.observation_space
+        Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
+
+.. attribute:: gym.vector.VectorEnv.single_action_space
+
+    The action space of a sub-environment.::
+
+        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+        >>> envs.single_action_space
+        Discrete(2)
+
+.. attribute:: gym.vector.VectorEnv.single_observation_space
+
+    The observation space of a sub-environment.::
+
+        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+        >>> envs.single_action_space
+        Box([-4.8 ...], [4.8 ...], (4,), float32)
+``` 
 
 
-`observation_space`
-
-The (batched) observation space. The observations returned by `reset` and `step` are valid elements of `observation_space`.
-
-
-    >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-    >>> envs.observation_space
-    Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
-
-
-`single_action_space`
-
-The action space of a sub-environment.
-
-
-
-    >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-    >>> envs.single_action_space
-    Discrete(2)
-
-
-`single_observation_space`
-
-The observation space of a sub-environment.
-
-    >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-    >>> envs.single_action_space
-    Box([-4.8 ...], [4.8 ...], (4,), float32)
 
 ### Reset
+
+```{eval-rst}
+.. automethod:: gym.vector.VectorEnv.reset
+``` 
+
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     array([[-0.04456399,  0.04653909,  0.01326909, -0.02099827],
@@ -341,6 +344,11 @@ The observation space of a sub-environment.
             dtype=float32)
 
 ### Step
+
+```{eval-rst}
+.. automethod:: gym.vector.VectorEnv.step
+``` 
+
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     >>> actions = np.array([1, 0, 1])
@@ -359,6 +367,11 @@ The observation space of a sub-environment.
     ({}, {}, {})
 
 ### Seed
+
+```{eval-rst}
+.. automethod:: gym.vector.VectorEnv.seed
+``` 
+
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.seed([1, 3, 5])
     >>> envs.reset()

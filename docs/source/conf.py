@@ -14,6 +14,8 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import commonmark
+
 # -- Project information -----------------------------------------------------
 from gym import __version__ as gym_version
 
@@ -48,7 +50,7 @@ exclude_patterns = []
 
 # Napoleon settings
 napoleon_google_docstring = True
-napoleon_numpy_docstring = True
+napoleon_numpy_docstring = False
 napoleon_include_init_with_doc = False
 napoleon_include_private_with_doc = False
 napoleon_include_special_with_doc = True
@@ -84,3 +86,16 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+
+# From https://github.com/executablebooks/MyST-Parser/issues/228
+def docstring(app, what, name, obj, options, lines):
+    md  = '\n'.join(lines)
+    ast = commonmark.Parser().parse(md)
+    rst = commonmark.ReStructuredTextRenderer().render(ast)
+    # Remove code block duplication
+    rst = rst.replace("::\n\n.. code::", "::")
+    lines.clear()
+    lines += rst.splitlines()
+
+def setup(app):
+    app.connect('autodoc-process-docstring', docstring)

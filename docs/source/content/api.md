@@ -56,7 +56,10 @@ env.close()
 
 The output should look something like this
 
-![lunar_lander](https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif)
+```{figure} https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif
+:width: 50%
+:align: center
+```
 
 Every environment specifies the format of valid actions by providing an `env.action_space` attribute. Similarly,
 the format of valid observations is specified by `env.observation_space`.
@@ -64,86 +67,31 @@ In the example above we sampled random actions via `env.action_space.sample()`. 
 environment to ensure reproducible samples.
 
 ## Standard methods
+
 ### Stepping
-`step(self, action: ActType) -> Tuple[ObsType, float, bool, dict]`
- 
-Run one timestep of the environment's dynamics. When end of episode is reached, you are responsible for calling `reset()`
-to reset this environment's state. Accepts an action and returns a tuple `(observation, reward, done, info)`.
-
-**Parameters**
-- `action`(**object**): an action provided by the agent. This will oftentimes be a numpy array, but might also be 
- an integer (for discrete action spaces) or a more complex object. This should be am element of the environment's 
-action space `self.action_space`.
- 
-**Returns**
-
- This method returns a tuple `(observation, reward, done, info)`:
-- `observation` (**object**): agent's observation of the current environment. This will be an element of the environment's
-observation space, `self.observation_space`. This may, for instance, be a numpy array containing the positions and velocities of certain objects.
-- `reward` (**float**) : amount of reward returned after previous action
-- `done` (**bool**): whether the episode has ended, in which case further `step()` calls will return undefined results.
-A done signal may be emitted for different reasons: Maybe the task underlying the environment was solved successfully, 
-a certain timelimit was exceeded, or the physics simulation has entered an invalid state. `info` may contain additional
-information regarding the reason for a `done` signal.
-- `info` (**dict**): contains auxiliary diagnostic information (helpful for debugging, learning, and logging). This might, for instance, 
-contain:
-
-    - metrics that describe the agent's performance or
-    - state variables that are hidden from observations or
-    - information that distinguishes truncation and termination or
-    - individual reward terms that are combined to produce the total reward
-
+```{eval-rst}
+.. autofunction:: gym.Env.step
+```
 
 ### Resetting
-`reset(self, *, seed: Optional[int] = None, return_info: bool = False, options: Optional[dict] = None) -> ObsType | tuple[ObsType, dict]`
-
-Resets the environment to an initial state and returns an initial observation.
-**Parameters**
-- `seed`(**int** or **None**): The seed that is used to initialize the environment's PRNG. If the environment does not already
- have a PRNG and `seed=None`(the default option) is passed, a seed will be chosen from some source of entropy (e.g. timestamp 
-or /dev/urandom). However, if the environment already has a PRNG and `seed=None` is pased, the PRNG will *not* be reset. 
-If you pass an integer, the PRNG will be reset even if it already exists. Usually, you want to pass an integer *right after the environment
-has been initialized and then never again*. Please refer to the minimal example above to see this paradigm in action.
-- `return_info`(**bool**): If true, return additional information along with initial observation. This info should be analogous
-to the info returned in `step`
-- `options`(**dict** or **None**): Additional information to specify how the environment is reset (optional, depending on the specific environment)
-
-**Returns**
-
-This method will return an observation of the initial environment state. If `return_info=True` is passed, the method returns a tuple
- `(observation, info)`, otherwise only `observation` will be returned.
- - `observation` (**object**): Observation of the initial state. This will be an element of `env.observation_space` (usually a numpy array) and is analogous to
-the observation returned by `step`.
- - `info` (**dict**): This will *only* be returned if `return_info=True` is passed. It contains auxiliary information complementing `observation`. This dictionary should be analogous to the `info` returned by `step`.
+```{eval-rst}
+.. autofunction:: gym.Env.reset
+```
 
 ### Rendering
 
-`render(self, mode: str="human") -> Optional[np.ndarray | str]`
-**Parameters**
-- `mode`(**str**): This parameter specifies how the environment is rendered. The set of supported modes varies per environment 
-(and some third-party environments may not support). By convention, if mode is:
-      - "human": render to the current display or terminal and return nothing. Usually for human consumption.
-      - "rgb_array": Return an np.ndarray with shape (height, width, 3), representing RGB values, suitable
-        for turning into a video.
-      - "ansi": Return a string (str) or StringIO.StringIO containing a
-         terminal-style text representation. The text can include newlines
-         and ANSI escape sequences (e.g. for colors).
-
-**Returns**
-
-Depending on the `mode`, this method may return a representation of the environment as a **str** or **ndarray**. 
-It may also return **None** e.g. if `mode="human"`
-
-Make sure that your class's metadata 'render.modes' key includes  the list of supported modes. It's recommended to call super()
-implementations to use the functionality of this method.
-
-
-
-
-
+```{eval-rst}
+.. autofunction:: gym.Env.render
+```
 
 ## Additional Environment API
-- `action_space`: this attribute gives the format of valid actions. It is of datatype `Space` provided by Gym. For example, if the action space is of type `Discrete` and gives the value `Discrete(2)`, this means there are two valid discrete actions: 0 & 1.
+
+### Attributes
+
+```{eval-rst}
+.. autoattribute:: gym.Env.action_space
+``` 
+This attribute gives the format of valid actions. It is of datatype `Space` provided by Gym. For example, if the action space is of type `Discrete` and gives the value `Discrete(2)`, this means there are two valid discrete actions: 0 & 1.
 ```python
 >>> env.action_space
 Discrete(2)
@@ -151,17 +99,31 @@ Discrete(2)
 Box(-3.4028234663852886e+38, 3.4028234663852886e+38, (4,), float32)
 ```
 
-- `observation_space`: this attribute gives the format of valid observations. It is of datatype `Space` provided by Gym. For example, if the observation space is of type `Box` and the shape of the object is `(4,)`, this denotes a valid observation will be an array of 4 numbers. We can check the box bounds as well with attributes.
+```{eval-rst}
+.. autoattribute:: gym.Env.observation_space
+``` 
+this attribute gives the format of valid observations. It is of datatype `Space` provided by Gym. For example, if the observation space is of type `Box` and the shape of the object is `(4,)`, this denotes a valid observation will be an array of 4 numbers. We can check the box bounds as well with attributes.
 ```python
 >>> env.observation_space.high
 array([4.8000002e+00, 3.4028235e+38, 4.1887903e-01, 3.4028235e+38], dtype=float32)
 >>> env.observation_space.low
 array([-4.8000002e+00, -3.4028235e+38, -4.1887903e-01, -3.4028235e+38], dtype=float32)
 ```
-- `reward_range`: returns a tuple corresponding to min and max possible rewards. Default range is set to `[-inf,+inf]`. You can set it if you want a narrower range .
-- `close()`: override close in your subclass to perform any necessary cleanup.
-- `seed()`: sets the seed for this environment’s random number generator. This method is being deprecated in favor of passing the keyword argument `seed` to `reset`.
-Nonetheless, you will see this method being used heavily in older code.
+
+```{eval-rst}
+.. autoattribute:: gym.Env.reward_range
+``` 
+returns a tuple corresponding to min and max possible rewards. Default range is set to `[-inf,+inf]`. You can set it if you want a narrower range .
+
+### Methods
+
+```{eval-rst}
+.. autofunction:: gym.Env.close
+``` 
+ 
+```{eval-rst}
+.. autofunction:: gym.Env.seed
+```  
 
 
 ## Spaces
