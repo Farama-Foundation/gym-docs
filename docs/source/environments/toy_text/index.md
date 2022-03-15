@@ -5,6 +5,7 @@
 
 blackjack.md
 taxi.md
+cliff_walking.md
 frozen_lake.md
 ```
 
