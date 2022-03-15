@@ -13,7 +13,11 @@ Each space implements the following functions:
 
 .. autoproperty:: gym.spaces.Space.shape
 
-.. autoproperty:: gym.spaces.Space.dtype
+.. property:: gym.spaces.Space.dtype
+
+    Return the data type of this space.
+
+.. autofunction:: gym.spaces.Space.seed
 
 .. autofunction:: gym.spaces.Space.to_jsonable
 

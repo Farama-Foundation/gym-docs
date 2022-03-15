@@ -14,8 +14,6 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import commonmark
-
 # -- Project information -----------------------------------------------------
 from gym import __version__ as gym_version
 
@@ -49,20 +47,8 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # Napoleon settings
-napoleon_google_docstring = True
-napoleon_numpy_docstring = False
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = False
-napoleon_include_special_with_doc = True
-napoleon_use_admonition_for_examples = False
-napoleon_use_admonition_for_notes = False
-napoleon_use_admonition_for_references = False
-napoleon_use_ivar = False
-napoleon_use_param = True
-napoleon_use_rtype = True
-napoleon_preprocess_types = False
-napoleon_type_aliases = None
-napoleon_attr_annotations = True
+napoleon_use_ivar = True
+napoleon_use_admonition_for_references = True
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -87,15 +73,5 @@ html_css_files = [
     'css/custom.css',
 ]
 
-# From https://github.com/executablebooks/MyST-Parser/issues/228
-def docstring(app, what, name, obj, options, lines):
-    md  = '\n'.join(lines)
-    ast = commonmark.Parser().parse(md)
-    rst = commonmark.ReStructuredTextRenderer().render(ast)
-    # Remove code block duplication
-    rst = rst.replace("::\n\n.. code::", "::")
-    lines.clear()
-    lines += rst.splitlines()
-
-def setup(app):
-    app.connect('autodoc-process-docstring', docstring)
+# See https://github.com/sphinx-doc/sphinx/issues/9119
+napoleon_custom_sections = [('Returns', 'params_style')]
