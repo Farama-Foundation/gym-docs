@@ -8,7 +8,13 @@ header:
     code: | 
 
       import gym
+      import numpy as np
       env = gym.make("LunarLander-v2")
+    
+      def policy(observation):
+          # Your RL algorithm goes here.
+          return np.random.default_rng().integers(4)
+
       observation, info = env.reset(seed=42, return_info=True)
       for _ in range(1000):
           env.render()
