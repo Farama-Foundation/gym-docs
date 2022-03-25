@@ -18,13 +18,21 @@ gym-foo/
     __init__.py
     envs/
       __init__.py
-      foo_env.py
-      foo_extrahard_env.py
+      grid_world.py
 ```
 
 ## Subclassing gym.Env
 
-We will first write the code for our custom environment in `gym-foo/gym_foo/envs/foo_env.py` - let's call it `FooEnv`. All custom environments should subclass `gym.Env` and override the `step`, `reset`, `render`, `close`  methods like so:
+We will first write the code for our custom environment in `gym-foo/gym_foo/envs/grid_world.py`. The environment consists of a 2-dimensional grid of fixed size and we call it `GridWorld`
+- The agent can move vertically and horizontally in each timestep. 
+- The goal is to navigate to a target on the grid.
+- Observations consist of the position of the agent and the position of the target. 
+- There are 4 actions in our environment, corresponding to "right", "up", "left", "down".
+- A done signal is issued as soon as the agent has navigated to the grid cell where the target is located
+- Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1
+
+All custom environments should subclass `gym.Env` and override the `step`, `reset`, `render`, `close`  methods.
+Let us look at the implementation of `GridWorld`:
 
 ```python
 import gym
@@ -48,7 +56,6 @@ class GridWorld(gym.Env):
 
         self.window = None
         self.clock = None
-         
 
     def _get_obs(self):
         return {"agent": self._agent_location,
@@ -100,7 +107,6 @@ class GridWorld(gym.Env):
             pygame.draw.line(canvas, 0, (0, pix_square_size * x), (self.window_size, pix_square_size * x))
             pygame.draw.line(canvas, 0, (pix_square_size * x, 0), (pix_square_size * x, self.window_size))
 
-
         if mode == "human":
             self.window.blit(canvas, canvas.get_rect())
             pygame.event.pump()
@@ -117,32 +123,6 @@ class GridWorld(gym.Env):
             pygame.quit()
 ```
 
-We will also create a more difficult version, `FooExtraHardEnv`, in `gym-foo/gym_foo/envs/foo_extrahard_env.py`, following the same template as above: 
-
-```python
-import gym
-from gym import error, spaces, utils
-from gym.utils import seeding
-
-class FooExtraHardEnv(gym.Env):
-    metadata = {'render.modes': ['human']}
-
-    def __init__(self):
-        # TODO
-        ...
-    def step(self, action):
-        # TODO
-        ...
-    def reset(self):
-        # TODO
-        ...
-    def render(self, mode='human'):
-        # TODO
-        ...
-    def close(self):
-        # TODO
-        ...
-```
 
 ## Registering Envs
 
@@ -152,22 +132,17 @@ In order for the custom environments to be detected by OpenAI gym, they must be 
 from gym.envs.registration import register
 
 register(
-    id='foo-v0',
-    entry_point='gym_foo.envs:FooEnv',
-)
-register(
-    id='foo-extrahard-v0',
-    entry_point='gym_foo.envs:FooExtraHardEnv',
+    id='GridWorld-v0',
+    entry_point='gym_foo.envs:GridWorld',
 )
 ```
 
-After registration, our custom `FooEnv` environment can be created with `env = gym.make('foo-v0')`. 
+After registration, our custom `FooEnv` environment can be created with `env = gym.make('GridWorld-v0')`. 
 
 `gym-foo/gym_foo/envs/__init__.py` should have:
 
 ```python
-from gym_foo.envs.foo_env import FooEnv
-from gym_foo.envs.foo_extrahard_env import FooExtraHardEnv
+from gym_foo.envs.grid_world import GridWorld
 ```
 
 ## Creating a Package
@@ -183,4 +158,4 @@ setup(name='gym_foo',
 )
 ```
   
-After you have installed your package locally with `pip install -e gym-foo`, you can create an instance of the environment with `gym.make('gym_foo:foo-v0')`
+After you have installed your package locally with `pip install -e gym-foo`, you can create an instance of the environment with `gym.make('gym_foo:GridWorld-v0')`
