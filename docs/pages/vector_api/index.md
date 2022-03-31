@@ -294,7 +294,9 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
 
 ### VectorEnv
 
-`action_space`
+Some of the attributes of the parallel vector environments are:
+
+***action_space***
 
 The (batched) action space. The input actions of `step` must be valid elements of `action_space`.
 
@@ -303,7 +305,7 @@ The (batched) action space. The input actions of `step` must be valid elements o
     MultiDiscrete([2 2 2])
 
 
-`observation_space`
+***observation_space***
 
 The (batched) observation space. The observations returned by `reset` and `step` are valid elements of `observation_space`.
 
@@ -313,7 +315,7 @@ The (batched) observation space. The observations returned by `reset` and `step`
     Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
 
 
-`single_action_space`
+***single_action_space***
 
 The action space of a single environment is kept in a separate property.
 
@@ -323,7 +325,7 @@ The action space of a single environment is kept in a separate property.
     Discrete(2)
 
 
-`single_observation_space`
+***single_observation_space***
 
 The observation space of a single environment is kept in a separate property as well.
 
