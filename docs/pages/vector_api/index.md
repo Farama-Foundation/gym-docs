@@ -6,7 +6,7 @@ title: Vector API
 # Vector API
 
 ## Vectorized Environments
-*Vectorized environments* are environments that run multiple (independent) sub-environments, either sequentially, or in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). Vectorized environments take as input a batch of actions, and return a batch of observations. This is particularly useful, for example, when the policy is defined as a neural network that operates over a batch of observations.
+*Vectorized environments* are environments that multiple independent copies of the same environment in parallel, either sequentially or in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). Vectorized environments take as input a batch of actions, and return a batch of observations. This is particularly useful, for example, when the policy is defined as a neural network that operates over a batch of observations.
 
 Gym provides two types of vectorized environments:
 
@@ -315,8 +315,7 @@ The (batched) observation space. The observations returned by `reset` and `step`
 
 `single_action_space`
 
-The action space of a sub-environment.
-
+The action space of a single environment is kept in a separate property.
 
 
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
@@ -326,13 +325,16 @@ The action space of a sub-environment.
 
 `single_observation_space`
 
-The observation space of a sub-environment.
+The observation space of a single environment is kept in a separate property as well.
 
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.single_action_space
     Box([-4.8 ...], [4.8 ...], (4,), float32)
 
 ### Reset
+
+Calling `reset()` will reset all the parallel environments and return a batch of initial observations.
+
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     array([[-0.04456399,  0.04653909,  0.01326909, -0.02099827],
@@ -341,6 +343,9 @@ The observation space of a sub-environment.
             dtype=float32)
 
 ### Step
+
+All the parallel environments can be stepped through by providing independent actions (attributes of `action_space` of the correct size corresponding to the environment. The returned observations, rewards, dones and infos are of size batch_size and are the individual attributes for each of the independent and parallel environments.
+
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     >>> actions = np.array([1, 0, 1])
@@ -359,6 +364,9 @@ The observation space of a sub-environment.
     ({}, {}, {})
 
 ### Seed
+
+All the parallel copies of the environment can be given different independent seeds as below. If `seed` is a list of length `num_envs`, then the items of the list are chosen as random seeds. If `seed` is an int, then each sub-environment uses the random seed `seed + n`, where `n` is the index of the sub-environment
+
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.seed([1, 3, 5])
     >>> envs.reset()
