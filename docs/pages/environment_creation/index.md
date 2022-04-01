@@ -5,27 +5,36 @@ title: Environment Creation
 # How to create new environments for Gym
 
 This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in OpenAI Gym designed for the creation of new environments.
+You can clone gym-examples to play with the examples that are presented here:
+
+```console
+git clone https://github.com/Farama-Foundation/gym-examples
+pip install -e gym-examples
+```
 
 ## Example Custom Environment
 
-Here is a simple skeleton of the repository structure for a Python Package containing a custom environment.
-For a more complete example, please refer to: https://github.com/openai/gym-soccer.
+The structure of gym-examples looks like this:
 
 ```sh
-gym-foo/
+gym-examples/
   README.md
   setup.py
-  gym_foo/
+  gym_examples/
     __init__.py
     envs/
       __init__.py
       grid_world.py
 ```
 
+For a more complete example, please refer to: https://github.com/openai/gym-soccer.
+
 ## Subclassing gym.Env
 
-We will first write the code for our custom environment in `gym-foo/gym_foo/envs/grid_world.py`. 
-To illustrate the process of subclassing `gym.Env`, we will implement a very simplistic game, called `GridWorld`.
+Before learning how to create your own environment you should check out [the documentation of Gym's API](https://www.gymlibrary.ml/pages/api/index).
+
+To illustrate the process of subclassing `gym.Env`, we will implement a very simplistic game, called `GridWorldEnv`.
+We will write the code for our custom environment in `gym-examples/gym_examples/envs/grid_world.py`.
 The environment consists of a 2-dimensional square grid of fixed size (specified via the `size` parameter during construction).
 The agent can move vertically or horizontally between grid cells in each timestep. The goal of the agent is to navigate to a 
 target on the grid that has been placed randomly at the beginning of the episode.
@@ -42,13 +51,13 @@ An episode in this environment (with `size=5`) might look like this:
 where the blue dot is the agent and the red square represents the target.
 
 
-Let us look at the source code of `GridWorld` piece by piece: 
+Let us look at the source code of `GridWorldEnv` piece by piece: 
 
 ### Declaration and Initialization
 Our custom environment will inherit from the abstract class `gym.Env`. You shouldn't forget to add the `metadata` attribute to you class. 
 There, you should specify the render-modes that are supported by your environment (e.g. `"human"`, `"rgb_array"`, `"ansi"`)
 and the framerate at which your environment should be rendered.
-In `GridWorld`, we will support the modes "rgb_array" and "human" and render at 4 FPS.
+In `GridWorldEnv`, we will support the modes "rgb_array" and "human" and render at 4 FPS.
 
 The `__init__` method of our environment will accept the integer `size`, that determines the size of the square grid.
 We will set up some variables for rendering and define `self.observation_space` and `self.action_space`.
@@ -56,9 +65,9 @@ In our case, observations should provide information about the location of the a
 We will choose to represent observations in the form of a dictionaries with keys `"agent"` and `"target"`. An observation
 may look like ` {"agent": array([1, 0]), "target": array([0, 3])}`.
 Since we have 4 actions in our environment ("right", "up", "left", "down"), we will use `Discrete(4)` as an action space.
-Here is the declaration of `GridWorld` and the implementation of `__init__`:
+Here is the declaration of `GridWorldEnv` and the implementation of `__init__`:
 ```python
-class GridWorld(gym.Env):
+class GridWorldEnv(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
     def __init__(self, size=5):
@@ -153,7 +162,7 @@ and `_get_info` that we implemented earlier for that:
 The `step` method usually contains most of the logic of your environment. It accepts an `action`, computes the state of 
 the environment after applying that action and returns the 4-tuple `(observation, reward, done, info)`.
 Once the new state of the environment has been computed, we can check whether it is a terminal state and we set `done`
-accordingly. Since we are using sparse binary rewards in `GridWorld`, computing `reward` is trivial once we know `done`. To gather
+accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computing `reward` is trivial once we know `done`. To gather
 `observation` and `info`, we can again make use of `_get_obs` and `_get_info`:
 
 ```python
@@ -257,36 +266,41 @@ or release other resources. You shouldn't interact with the environment after ha
 
 ## Registering Envs
 
-In order for the custom environments to be detected by OpenAI gym, they must be registered as follows. We will choose to put this code in `gym-foo/gym_foo/__init__.py`. 
+In order for the custom environments to be detected by OpenAI gym, they must be registered as follows. We will choose to put this code in `gym-examples/gym_examples/__init__.py`. 
 
 ```python
 from gym.envs.registration import register
 
 register(
-    id='GridWorld-v0',
-    entry_point='gym_foo.envs:GridWorld',
+    id='gym_examples/GridWorld-v0',
+    entry_point='gym_examples.envs:GridWorldEnv',
 )
 ```
 
-After registration, our custom `GridWorld` environment can be created with `env = gym.make('GridWorld-v0')`. 
+After registration, our custom `GridWorldEnv` environment can be created with `env = gym.make('GridWorld-v0')`. 
 
-`gym-foo/gym_foo/envs/__init__.py` should have:
+`gym-examples/gym_examples/envs/__init__.py` should have:
 
 ```python
-from gym_foo.envs.grid_world import GridWorld
+from gym_examples.envs.grid_world import GridWorldEnv
 ```
 
 ## Creating a Package
 
-The last step is to structure our code as a Python package. This involves configuring `gym-foo/setup.py`. A minimal example of how to do so is as follows: 
+The last step is to structure our code as a Python package. This involves configuring `gym-examples/setup.py`. A minimal example of how to do so is as follows: 
 
 ```python
 from setuptools import setup
 
-setup(name='gym_foo',
+setup(name='gym_examples',
     version='0.0.1',
-    install_requires=['gym']  # And any other dependencies foo needs
+    install_requires=['gym', 'pygame']
 )
 ```
   
-After you have installed your package locally with `pip install -e gym-foo`, you can create an instance of the environment with `gym.make('gym_foo:GridWorld-v0')`
+After you have installed your package locally with `pip install -e gym-examples`, you can create an instance of the via:
+
+```python
+import gym_examples
+gym.make('gym_examples/GridWorld-v0')
+```
