@@ -17,7 +17,7 @@ pattern = re.compile(r'(?<!^)(?=[A-Z])')
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in tqdm(gym.envs.registry.all()):
-
+    
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
     
@@ -59,7 +59,8 @@ for env_spec in tqdm(gym.envs.registry.all()):
             while not done and len(frames) <= LENGTH:
                 
                 frame = env.render(mode='rgb_array')
-                for i in range(15):
+                repeat = int(60/env.metadata["render_fps"]) if env_type == "toy_text" else 1
+                for i in range(repeat):
                     frames.append(Image.fromarray(frame))
                 action = env.action_space.sample()
                 state_next, reward, done, info = env.step(action)
@@ -75,6 +76,6 @@ for env_spec in tqdm(gym.envs.registry.all()):
         print("Saved: " + env_name)
 
     except BaseException as e:
-        print(e)
+        print("ERROR", e)
         continue
 
