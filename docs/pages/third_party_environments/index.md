@@ -9,7 +9,7 @@ title: Third Party Environments
 
 ### [ViZDoom](https://github.com/mwydmuch/ViZDoom)
 
-An environment around the original [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) game, focusing on visual control (from image to actions) at thousands of frames per second. ViZDoom supports depth and automatic annotation/labels buffer, as well as accessing the sound. The Gym wrappers provide easy-to-use access to the example scenarios that come with ViZDoom. By 2022, the [ViZDoom paper](https://arxiv.org/abs/1605.02097) has been cited more than 600 times.
+An environment around the original [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) game, focusing on visual control (from image to actions) at thousands of frames per second. ViZDoom supports depth and automatic annotation/labels buffers, as well as accessing the sound. The Gym wrappers provide easy-to-use access to the example scenarios that come with ViZDoom. Since 2022, the [ViZDoom paper](https://arxiv.org/abs/1605.02097) has been cited more than 600 times.
 
 ### [ flappy-bird-gym: A Flappy Bird environment for OpenAI Gym](https://github.com/Talendar/flappy-bird-gym)
 
