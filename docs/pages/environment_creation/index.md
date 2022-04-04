@@ -5,16 +5,18 @@ title: Environment Creation
 # How to create new environments for Gym
 
 This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in OpenAI Gym designed for the creation of new environments.
-You can clone gym-examples to play with the examples that are presented here:
+You can clone gym-examples to play with the code that are presented here:
 
 ```console
 git clone https://github.com/Farama-Foundation/gym-examples
 pip install -e gym-examples
 ```
 
-## Example Custom Environment
+## Subclassing gym.Env
 
-The structure of gym-examples looks like this:
+Before learning how to create your own environment you should check out [the documentation of Gym's API](https://www.gymlibrary.ml/pages/api/index).
+
+We will be concerned with a subset of gym-examples that looks like this:
 
 ```sh
 gym-examples/
@@ -28,10 +30,6 @@ gym-examples/
 ```
 
 For a more complete example, please refer to: https://github.com/openai/gym-soccer.
-
-## Subclassing gym.Env
-
-Before learning how to create your own environment you should check out [the documentation of Gym's API](https://www.gymlibrary.ml/pages/api/index).
 
 To illustrate the process of subclassing `gym.Env`, we will implement a very simplistic game, called `GridWorldEnv`.
 We will write the code for our custom environment in `gym-examples/gym_examples/envs/grid_world.py`.
