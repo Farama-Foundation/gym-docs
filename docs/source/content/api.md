@@ -130,6 +130,23 @@ environment to ensure reproducible samples.
 .. autofunction:: gym.Env.seed
 ```  
 
+## Checking API-Conformity
+If you have implemented a custom environment and would like to perform a sanity check to make sure that it conforms to 
+the API, you can run: 
+
+```python
+>>> from gym.utils.env_checker import check_env
+>>> check_env(env)
+```
+
+This function will throw an exception if it seems like your environment does not follow the Gym API. It will also produce
+warnings if it looks like you made a mistake or do not follow a best practice (e.g. if `observation_space` looks like 
+an image but does not have the right dtype). Warnings can be turned off by passing `warn=False`. By default, `check_env` will 
+not check the `render` method. To change this behavior, you can pass `skip_render_check=False`.
+
+> After running `check_env` on an environment, you should not reuse the instance that was checked, as it may have already
+been closed!
+
 ## Spaces
 Spaces are usually used to specify the format of valid actions and observations.
 Every environment should have the attributes `action_space` and `observation_space`, both of which should be instances

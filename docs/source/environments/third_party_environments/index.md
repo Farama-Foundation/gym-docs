@@ -2,6 +2,10 @@
 
 ## Video Game Environments
 
+### [ViZDoom](https://github.com/mwydmuch/ViZDoom)
+
+An environment centered around the original [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) game, focusing on visual control (from image to actions) at thousands of frames per second. ViZDoom supports depth and automatic annotation/labels buffers, as well as accessing the sound. The Gym wrappers provide easy-to-use access to the example scenarios that come with ViZDoom. Since 2022, the [ViZDoom paper](https://arxiv.org/abs/1605.02097) has been cited more than 600 times.
+
 ### [ flappy-bird-gym: A Flappy Bird environment for OpenAI Gym](https://github.com/Talendar/flappy-bird-gym)
 
 A simple environment for single-agent reinforcement learning algorithms on a clone of [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird), the hugely popular arcade-style mobile game. Both state and pixel observation environments are available.
