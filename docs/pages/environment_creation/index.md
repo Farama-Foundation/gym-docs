@@ -272,10 +272,27 @@ from gym.envs.registration import register
 register(
     id='gym_examples/GridWorld-v0',
     entry_point='gym_examples.envs:GridWorldEnv',
+    max_episode_steps=300,
 )
 ```
+The keyword argument `max_episode_steps=300` will ensure that GridWorld environments that are instantiated via `gym.make`
+will be wrapped in a `TimeLimit` wrapper (see [the wrapper documentation](https://www.gymlibrary.ml/pages/wrappers/index) 
+for more information). A done signal will then be produced if the agent has reached the target *or* 300 steps have been
+executed in the current episode. To distinguish truncation and termination, you can check `info["TimeLimit.truncated"]`.
 
-After registration, our custom `GridWorldEnv` environment can be created with `env = gym.make('GridWorld-v0')`. 
+Apart from `id` and `entrypoint`, you may pass the following additional keyword arguments to `register`:
+
+| Name                | Type   | Default  | Description                                                                                               |
+|---------------------|--------|----------|-----------------------------------------------------------------------------------------------------------|
+| `reward_threshold`  | `int`  | `None`   | The reward threshold before the task is considered solved                                                 |
+| `nondeterministic`  | `bool` | `False`  | Whether this environment is non-deterministic even after seeding                                          |
+| `max_episode_steps` | `int`  | `None`   | The maximum number of steps that an episode can consist of. If not `None`, a `TimeLimit` wrapper is added |
+| `order_enforce`     | `bool` | `True`   | Whether to wrap the environment in an `OrderEnforcing` wrapper                                            |
+| `kwargs`            | `dict` | `{}`     | The default kwargs to pass to the environment class                                                       |
+
+Most of these keywords (except for `max_episode_steps`, `order_enforce` and `kwargs`) do not alter the behavior 
+of environment instances but merely provide some extra information about your environment.
+After registration, our custom `GridWorldEnv` environment can be created with `env = gym.make('gym_examples/GridWorld-v0')`. 
 
 `gym-examples/gym_examples/envs/__init__.py` should have:
 
@@ -295,10 +312,22 @@ setup(name='gym_examples',
     install_requires=['gym', 'pygame']
 )
 ```
-  
-After you have installed your package locally with `pip install -e gym-examples`, you can create an instance of the via:
+
+## Creating Environment Instances  
+After you have installed your package locally with `pip install -e gym-examples`, you can create an instance of the environment via:
 
 ```python
 import gym_examples
-gym.make('gym_examples/GridWorld-v0')
+env = gym.make('gym_examples/GridWorld-v0')
 ```
+
+You can also pass keyword arguments of your environment's constructor to `gym.make` to customize the environment.
+In our case, we could do:
+
+```python
+env = gym.make('gym_examples/GridWorld-v0', size=10)
+```
+
+Sometimes, you may find it more convenient to skip registration and call the environment's
+constructor yourself. Some may find this approach more pythonic and environments that are instantiated like this are
+also perfectly fine (but remember to add  wrappers as well!).
