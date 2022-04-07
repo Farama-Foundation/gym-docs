@@ -2,7 +2,7 @@
 
 This repo contains the [NEW website](http://www.gymlibrary.ml) for [Gym](https://github.com/openai/gym). This site is currently in Beta and we are in the process of adding/editing information. 
 
-Please see instructions below on how to contribute.
+INSTRUCTIONS BELOW ARE OUTDATED
 
 If you are modifying a non-environment page, please PR this repo. You may want to run `_scripts/gen_menus.py` if you are adding a new subheader to a page. Otherwise, follow the steps below:
 
