@@ -362,19 +362,29 @@ environment to ensure reproducible samples.</p>
 <dt class="sig sig-object py" id="gym.Env.step">
 <span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">gym.core.ActType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">gym.core.ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.step" title="Permalink to this definition">#</a></dt>
 <dd><p>Run one timestep of the environment’s dynamics. When end of
-episode is reached, you are responsible for calling <cite>reset()</cite>
+episode is reached, you are responsible for calling <a class="reference internal" href="#gym.Env.reset" title="gym.Env.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a>
 to reset this environment’s state.</p>
 <p>Accepts an action and returns a tuple (observation, reward, done, info).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>action</strong> (<em>object</em>) – an action provided by the agent</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>observation</strong> (<em>object</em>) – agent’s observation of the current environment</p></li>
+</dl>
+<p>This method returns a tuple <code class="docutils literal notranslate"><span class="pre">(observation,</span> <span class="pre">reward,</span> <span class="pre">done,</span> <span class="pre">info)</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation</strong> (<em>object</em>) – agent’s observation of the current environment. This will be an element of the environment’s <a class="reference internal" href="#gym.Env.observation_space" title="gym.Env.observation_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observation_space</span></code></a>. This may, for instance, be a numpy array containing the positions and velocities of certain objects.</p></li>
 <li><p><strong>reward</strong> (<em>float</em>) – amount of reward returned after previous action</p></li>
-<li><p><strong>done</strong> (<em>bool</em>) – whether the episode has ended, in which case further step() calls will return undefined results</p></li>
-<li><p><strong>info</strong> (<em>dict</em>) – contains auxiliary diagnostic information (helpful for debugging, logging, and sometimes learning)</p></li>
+<li><p><strong>done</strong> (<em>bool</em>) – whether the episode has ended, in which case further <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a> calls will return undefined results. A done signal may be emitted for different reasons: Maybe the task underlying the environment was solved successfully, a certain timelimit was exceeded, or the physics simulation has entered an invalid state. <code class="docutils literal notranslate"><span class="pre">info</span></code> may contain additional information regarding the reason for a <code class="docutils literal notranslate"><span class="pre">done</span></code> signal.</p></li>
+<li><p><strong>info</strong> (<em>dict</em>) – contains auxiliary diagnostic information (helpful for debugging, learning, and logging). This might, for instance, contain:</p>
+<ul>
+<li><p>metrics that describe the agent’s performance or</p></li>
+<li><p>state variables that are hidden from observations or</p></li>
+<li><p>information that distinguishes truncation and termination or</p></li>
+<li><p>individual reward terms that are combined to produce the total reward</p></li>
+</ul>
+</li>
 </ul>
 </dd>
 </dl>
@@ -388,17 +398,24 @@ to reset this environment’s state.</p>
 <dd><p>Resets the environment to an initial state and returns an initial
 observation.</p>
 <p>This method should also reset the environment’s random number
-generator(s) if <cite>seed</cite> is an integer or if the environment has not
+generator(s) if <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an integer or if the environment has not
 yet initialized a random number generator. If the environment already
-has a random number generator and <cite>reset</cite> is called with <cite>seed=None</cite>,
+has a random number generator and <a class="reference internal" href="#gym.Env.reset" title="gym.Env.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> is called with <code class="docutils literal notranslate"><span class="pre">seed=None</span></code>,
 the RNG should not be reset.
-Moreover, <cite>reset</cite> should (in the typical use case) be called with an
+Moreover, <a class="reference internal" href="#gym.Env.reset" title="gym.Env.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> should (in the typical use case) be called with an
 integer seed right after initialization and then never again.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>observation</strong> (<em>object</em>) – the initial observation.</p></li>
-<li><p><strong>info</strong> (<em>optional dictionary</em>) – a dictionary containing extra information, this is only returned if return_info is set to true</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em> or </em><em>None</em>) – The seed that is used to initialize the environment’s PRNG. If the environment does not already have a PRNG and <code class="docutils literal notranslate"><span class="pre">seed=None</span></code> (the default option) is passed, a seed will be chosen from some source of entropy (e.g. timestamp or /dev/urandom). However, if the environment already has a PRNG and <code class="docutils literal notranslate"><span class="pre">seed=None</span></code> is pased, the PRNG will <em>not</em> be reset. If you pass an integer, the PRNG will be reset even if it already exists. Usually, you want to pass an integer <em>right after the environment has been initialized and then never again</em>. Please refer to the minimal example above to see this paradigm in action.</p></li>
+<li><p><strong>return_info</strong> (<em>bool</em>) – If true, return additional information along with initial observation. This info should be analogous to the info returned in <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a></p></li>
+<li><p><strong>options</strong> (<em>dict</em><em> or </em><em>None</em>) – Additional information to specify how the environment is reset (optional, depending on the specific environment)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>observation</strong> (<em>object</em>) – Observation of the initial state. This will be an element of <a class="reference internal" href="#gym.Env.observation_space" title="gym.Env.observation_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observation_space</span></code></a> (usually a numpy array) and is analogous to the observation returned by <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p></li>
+<li><p><strong>info</strong> (<em>optional dictionary</em>) – This will <em>only</em> be returned if <code class="docutils literal notranslate"><span class="pre">return_info=True</span></code> is passed. It contains auxiliary information complementing <code class="docutils literal notranslate"><span class="pre">observation</span></code>. This dictionary should be analogous to the <code class="docutils literal notranslate"><span class="pre">info</span></code> returned by <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -437,21 +454,18 @@ in implementations to use the functionality of this method.</p>
 </dd>
 </dl>
 <p>Example:</p>
-<dl>
-<dt>class MyEnv(Env):</dt><dd><p>metadata = {‘render_modes’: [‘human’, ‘rgb_array’]}</p>
-<dl class="simple">
-<dt>def render(self, mode=’human’):</dt><dd><dl class="simple">
-<dt>if mode == ‘rgb_array’:</dt><dd><p>return np.array(…) # return RGB frame suitable for video</p>
-</dd>
-<dt>elif mode == ‘human’:</dt><dd><p>… # pop up a window and render</p>
-</dd>
-<dt>else:</dt><dd><p>super(MyEnv, self).render(mode=mode) # just raise an exception</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyEnv</span><span class="p">(</span><span class="n">Env</span><span class="p">):</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'render_modes'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'human'</span><span class="p">,</span> <span class="s1">'rgb_array'</span><span class="p">]}</span>
+
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'human'</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'rgb_array'</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1"># return RGB frame suitable for video</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">'human'</span><span class="p">:</span>
+            <span class="o">...</span> <span class="c1"># pop up a window and render</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">MyEnv</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span> <span class="c1"># just raise an exception</span>
+</pre></div>
+</div>
 </dd></dl>
 </section>
 </section>

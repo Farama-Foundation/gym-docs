@@ -355,21 +355,17 @@ Cartesian product of n closed intervals. Each interval has the form of one
 of [a, b], (-oo, b], [a, oo), or (-oo, oo).</p>
 <p>There are two common use cases:</p>
 <ul>
-<li><dl>
-<dt>Identical bound for each dimension::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<li><p>Identical bound for each dimension:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="go">Box(3, 4)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </li>
-<li><dl>
-<dt>Independent bound for each dimension::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">]),</span> <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<li><p>Independent bound for each dimension:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">]),</span> <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="go">Box(2,)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 </li>
 </ul>
 <dl class="py method">
@@ -396,9 +392,9 @@ the form of the interval:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="gym.spaces.Discrete">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Discrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Discrete" title="Permalink to this definition">#</a></dt>
-<dd><p>A discrete space in <span class="math notranslate nohighlight">\(\{ 0, 1, \\dots, n-1 \}\)</span>.</p>
+<dd><p>A discrete space in <span class="math notranslate nohighlight">\(\{ 0, 1, \dots, n-1 \}\)</span>.</p>
 <p>A start value can be optionally specified to shift the range
-to <span class="math notranslate nohighlight">\(\{ a, a+1, \\dots, a+n-1 \}\)</span>.</p>
+to <span class="math notranslate nohighlight">\(\{ a, a+1, \dots, a+n-1 \}\)</span>.</p>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># {0, 1}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">start</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># {-1, 0, 1}</span>
@@ -412,22 +408,18 @@ to <span class="math notranslate nohighlight">\(\{ a, a+1, \\dots, a+n-1 \}\)</s
 <dt class="sig sig-object py" id="gym.spaces.MultiBinary">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">MultiBinary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiBinary" title="Permalink to this definition">#</a></dt>
 <dd><p>An n-shape binary space.</p>
-<p>The argument to MultiBinary defines n, which could be a number or a <cite>list</cite> of numbers.</p>
+<p>The argument to MultiBinary defines n, which could be a number or a <code class="docutils literal notranslate"><span class="pre">list</span></code> of numbers.</p>
 <p>Example Usage:</p>
-<p>&gt;&gt; self.observation_space = spaces.MultiBinary(5)</p>
-<p>&gt;&gt; self.observation_space.sample()</p>
-<blockquote>
-<div><p>array([0, 1, 0, 1, 0], dtype=int8)</p>
-</div></blockquote>
-<p>&gt;&gt; self.observation_space = spaces.MultiBinary([3, 2])</p>
-<p>&gt;&gt; self.observation_space.sample()</p>
-<blockquote>
-<div><dl class="simple">
-<dt>array([[0, 0],</dt><dd><p>[0, 1],
-[1, 1]], dtype=int8)</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">MultiBinary</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">    array([0, 1, 0, 1, 0], dtype=int8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">MultiBinary</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">    array([[0, 0],</span>
+<span class="go">        [0, 1],</span>
+<span class="go">        [1, 1]], dtype=int8)</span>
+</pre></div>
+</div>
 </dd></dl>
 </section>
 <section id="multidiscrete">
@@ -435,28 +427,18 @@ to <span class="math notranslate nohighlight">\(\{ a, a+1, \\dots, a+n-1 \}\)</s
 <dl class="py class">
 <dt class="sig sig-object py" id="gym.spaces.MultiDiscrete">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">MultiDiscrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nvec:</span> <span class="pre">list[int],</span> <span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.int64'&gt;,</span> <span class="pre">seed=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiDiscrete" title="Permalink to this definition">#</a></dt>
-<dd><ul class="simple">
-<li><p>The multi-discrete action space consists of a series of discrete action spaces with different number of actions in each</p></li>
-<li><p>It is useful to represent game controllers or keyboards where each key can be represented as a discrete action space</p></li>
-<li><p>It is parametrized by passing an array of positive integers specifying number of actions for each discrete action space</p></li>
-</ul>
-<p>Note: Some environment wrappers assume a value of 0 always represents the NOOP action.</p>
-<p>e.g. Nintendo Game Controller
-- Can be conceptualized as 3 discrete action spaces:</p>
-<blockquote>
-<div><ol class="arabic simple">
+<dd><p>The multi-discrete action space consists of a series of discrete action spaces with different number of actions in each. It is useful to represent game controllers or keyboards where each key can be represented as a discrete action space. It is parametrized by passing an array of positive integers specifying number of actions for each discrete action space.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some environment wrappers assume a value of 0 always represents the NOOP action.</p>
+</div>
+<p>e.g. Nintendo Game Controller - Can be conceptualized as 3 discrete action spaces:</p>
+<ol class="arabic simple">
 <li><p>Arrow Keys: Discrete 5  - NOOP[0], UP[1], RIGHT[2], DOWN[3], LEFT[4]  - params: min: 0, max: 4</p></li>
 <li><p>Button A:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</p></li>
 <li><p>Button B:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</p></li>
 </ol>
-</div></blockquote>
-<ul>
-<li><p>Can be initialized as</p>
-<blockquote>
-<div><p>MultiDiscrete([ 5, 2, 2 ])</p>
-</div></blockquote>
-</li>
-</ul>
+<p>It can be initialized as <code class="docutils literal notranslate"><span class="pre">MultiDiscrete([</span> <span class="pre">5,</span> <span class="pre">2,</span> <span class="pre">2</span> <span class="pre">])</span></code></p>
 </dd></dl>
 </section>
 <section id="dict">
@@ -465,39 +447,33 @@ to <span class="math notranslate nohighlight">\(\{ a, a+1, \\dots, a+n-1 \}\)</s
 <dt class="sig sig-object py" id="gym.spaces.Dict">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">gym.spaces.space.Space</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">spaces_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">gym.spaces.space.Space</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Dict" title="Permalink to this definition">#</a></dt>
 <dd><p>A dictionary of simpler spaces.</p>
-<p>Example usage:
-self.observation_space = spaces.Dict({“position”: spaces.Discrete(2), “velocity”: spaces.Discrete(3)})</p>
-<p>Example usage [nested]:
-self.nested_observation_space = spaces.Dict({</p>
-<blockquote>
-<div><dl>
-<dt>‘sensors’:  spaces.Dict({</dt><dd><p>‘position’: spaces.Box(low=-100, high=100, shape=(3,)),
-‘velocity’: spaces.Box(low=-1, high=1, shape=(3,)),
-‘front_cam’: spaces.Tuple((</p>
-<blockquote>
-<div><p>spaces.Box(low=0, high=1, shape=(10, 10, 3)),
-spaces.Box(low=0, high=1, shape=(10, 10, 3))</p>
-</div></blockquote>
-<p>)),
-‘rear_cam’: spaces.Box(low=0, high=1, shape=(10, 10, 3)),</p>
-</dd>
-</dl>
-<p>}),
-‘ext_controller’: spaces.MultiDiscrete((5, 2, 2)),
-‘inner_state’:spaces.Dict({</p>
-<blockquote>
-<div><p>‘charge’: spaces.Discrete(100),
-‘system_checks’: spaces.MultiBinary(10),
-‘job_status’: spaces.Dict({</p>
-<blockquote>
-<div><p>‘task’: spaces.Discrete(5),
-‘progress’: spaces.Box(low=0, high=100, shape=()),</p>
-</div></blockquote>
-<p>})</p>
-</div></blockquote>
-<p>})</p>
-</div></blockquote>
-<p>})</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">({</span><span class="s2">"position"</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s2">"velocity"</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)})</span>
+</pre></div>
+</div>
+<p>Example usage [nested]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">nested_observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">({</span>
+    <span class="s1">'sensors'</span><span class="p">:</span>  <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">({</span>
+        <span class="s1">'position'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)),</span>
+        <span class="s1">'velocity'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)),</span>
+        <span class="s1">'front_cam'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Tuple</span><span class="p">((</span>
+            <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+            <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="p">)),</span>
+        <span class="s1">'rear_cam'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+    <span class="p">}),</span>
+    <span class="s1">'ext_controller'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">MultiDiscrete</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
+    <span class="s1">'inner_state'</span><span class="p">:</span><span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">({</span>
+        <span class="s1">'charge'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+        <span class="s1">'system_checks'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">MultiBinary</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+        <span class="s1">'job_status'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">({</span>
+            <span class="s1">'task'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+            <span class="s1">'progress'</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">()),</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 </section>
 <section id="tuple">
@@ -506,8 +482,10 @@ spaces.Box(low=0, high=1, shape=(10, 10, 3))</p>
 <dt class="sig sig-object py" id="gym.spaces.Tuple">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">gym.spaces.space.Space</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Tuple" title="Permalink to this definition">#</a></dt>
 <dd><p>A tuple (i.e., product) of simpler spaces</p>
-<p>Example usage:
-self.observation_space = spaces.Tuple((spaces.Discrete(2), spaces.Discrete(3)))</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Tuple</span><span class="p">((</span><span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</div>
 </dd></dl>
 </section>
 <section id="utility-functions">
@@ -519,14 +497,20 @@ self.observation_space = spaces.Tuple((spaces.Discrete(2), spaces.Discrete(3)))<
 would have.</p>
 <p>Accepts a space and returns an integer. Raises <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> if
 the space is not defined in <code class="docutils literal notranslate"><span class="pre">gym.spaces</span></code>.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Dict</span><span class="p">({</span><span class="s2">"position"</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s2">"velocity"</span><span class="p">:</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spaces</span><span class="o">.</span><span class="n">flatdim</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.spaces.utils.flatten_space">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">gym.spaces.space.Space</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">gym.spaces.box.Box</span></a></span></span><a class="headerlink" href="#gym.spaces.utils.flatten_space" title="Permalink to this definition">#</a></dt>
 <dd><p>Flatten a space into a single <code class="docutils literal notranslate"><span class="pre">Box</span></code>.</p>
-<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">flatten()</span></code>, but operates on the space itself. The
+<p>This is equivalent to <a class="reference internal" href="#gym.spaces.utils.flatten" title="gym.spaces.utils.flatten"><code class="xref py py-func docutils literal notranslate"><span class="pre">flatten()</span></code></a>, but operates on the space itself. The
 result always is a <cite>Box</cite> with flat boundaries. The box has exactly
-<code class="docutils literal notranslate"><span class="pre">flatdim(space)</span></code> dimensions. Flattening a sample of the original space
+<a class="reference internal" href="#gym.spaces.utils.flatdim" title="gym.spaces.utils.flatdim"><code class="xref py py-func docutils literal notranslate"><span class="pre">flatdim()</span></code></a> dimensions. Flattening a sample of the original space
 has the same effect as taking a sample of the flattenend space.</p>
 <p>Raises <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> if the space is not defined in
 <code class="docutils literal notranslate"><span class="pre">gym.spaces</span></code>.</p>
@@ -584,8 +568,8 @@ Raises <code class="docutils literal notranslate"><span class="pre">NotImplement
 <dt class="sig sig-object py" id="gym.spaces.utils.unflatten">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">gym.spaces.space.Space</span><span class="p"><span class="pre">[</span></span><span class="pre">gym.spaces.utils.T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">gym.spaces.utils.T</span></span></span><a class="headerlink" href="#gym.spaces.utils.unflatten" title="Permalink to this definition">#</a></dt>
 <dd><p>Unflatten a data point from a space.</p>
-<p>This reverses the transformation applied by <code class="docutils literal notranslate"><span class="pre">flatten()</span></code>. You must ensure
-that the <code class="docutils literal notranslate"><span class="pre">space</span></code> argument is the same as for the <code class="docutils literal notranslate"><span class="pre">flatten()</span></code> call.</p>
+<p>This reverses the transformation applied by <a class="reference internal" href="#gym.spaces.utils.flatten" title="gym.spaces.utils.flatten"><code class="xref py py-func docutils literal notranslate"><span class="pre">flatten()</span></code></a>. You must ensure
+that the <code class="docutils literal notranslate"><span class="pre">space</span></code> argument is the same as for the <a class="reference internal" href="#gym.spaces.utils.flatten" title="gym.spaces.utils.flatten"><code class="xref py py-func docutils literal notranslate"><span class="pre">flatten()</span></code></a> call.</p>
 <p>Accepts a space and a flattened point. Returns a point with a structure
 that matches the space. Raises <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> if the space is not
 defined in <code class="docutils literal notranslate"><span class="pre">gym.spaces</span></code>.</p>
