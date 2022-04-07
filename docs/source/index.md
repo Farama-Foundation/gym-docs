@@ -2,7 +2,7 @@
 hide-toc: true
 ---
 
-# Gym's documentation
+# Gym documentation
 
 ## Gym is a standard API for reinforcement learning, and a diverse collection of reference environments.
 
