@@ -58,6 +58,7 @@ napoleon_use_admonition_for_references = True
 #
 html_theme = "furo"
 html_title = "Gym Documentation"
+html_baseurl = 'https://www.gymlibrary.ml'
 html_favicon = '_static/img/favicon.png'
 html_theme_options = {
     "light_logo": "img/gym_logo_black.svg",
