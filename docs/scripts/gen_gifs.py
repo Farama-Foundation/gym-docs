@@ -17,10 +17,12 @@ pattern = re.compile(r'(?<!^)(?=[A-Z])')
 LENGTH = 100
 # iterate through all envspecs
 for env_spec in tqdm(gym.envs.registry.all()):
+    if "Taxi" not in env_spec.id:
+        continue
 
     if any(x in str(env_spec.id) for x in kill_strs):
         continue
-    
+    print(env_spec.id)
     # try catch in case missing some installs
     try:
         env = gym.make(env_spec.id)
@@ -46,10 +48,10 @@ for env_spec in tqdm(gym.envs.registry.all()):
         #     env_name = pattern.sub('_', env_name).lower()
 
         # path for saving video
-        v_path = os.path.join("..", "pages", "environments", env_type, "videos")
-        # create dir if it doesnt exist
-        if not path.isdir(v_path):
-            mkdir(v_path)
+        # v_path = os.path.join("..", "pages", "environments", env_type, "videos")
+        # # create dir if it doesnt exist
+        # if not path.isdir(v_path):
+        #     mkdir(v_path)
             
         # obtain and save LENGTH frames worth of steps
         frames = []
@@ -59,7 +61,8 @@ for env_spec in tqdm(gym.envs.registry.all()):
             while not done and len(frames) <= LENGTH:
                 
                 frame = env.render(mode='rgb_array')
-                for i in range(15):
+                repeat = int(60/env.metadata["render_fps"]) if env_type == "toy_text" else 1
+                for i in range(repeat):
                     frames.append(Image.fromarray(frame))
                 action = env.action_space.sample()
                 state_next, reward, done, info = env.step(action)
@@ -71,10 +74,10 @@ for env_spec in tqdm(gym.envs.registry.all()):
 
         # make sure video doesnt already exist
         # if not os.path.exists(os.path.join(v_path, env_name + ".gif")):
-        frames[0].save(os.path.join(v_path, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
+        frames[0].save(os.path.join("..", "source", "videos",  env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
         print("Saved: " + env_name)
 
     except BaseException as e:
-        print(e)
+        print("ERROR", e)
         continue
 
