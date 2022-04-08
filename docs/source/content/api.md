@@ -16,9 +16,16 @@ env = gym.make('CartPole-v0')
 ## Interacting with the Environment
 Gym implements the classic "agent-environment loop":
 
-```{figure} /_static/diagrams/AE_loop.png
+```{image} /_static/diagrams/AE_loop.png
 :width: 50%
 :align: center
+:class: only-light
+```
+
+```{image} /_static/diagrams/AE_loop_dark.png
+:width: 50%
+:align: center
+:class: only-dark
 ```
 
 The agent performs some actions in the environment (usually by passing some control inputs to the environment, e.g. torque inputs of motors) and observes
