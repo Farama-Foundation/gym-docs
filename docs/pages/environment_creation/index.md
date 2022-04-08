@@ -4,7 +4,7 @@ title: Environment Creation
 ---
 # How to create new environments for Gym
 
-This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in OpenAI Gym designed for the creation of new environments.
+This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in Gym designed for the creation of new environments.
 You can clone gym-examples to play with the code that are presented here:
 
 ```console
@@ -28,8 +28,6 @@ gym-examples/
       __init__.py
       grid_world.py
 ```
-
-For a more complete example, please refer to: https://github.com/openai/gym-soccer.
 
 To illustrate the process of subclassing `gym.Env`, we will implement a very simplistic game, called `GridWorldEnv`.
 We will write the code for our custom environment in `gym-examples/gym_examples/envs/grid_world.py`.
@@ -65,6 +63,12 @@ may look like ` {"agent": array([1, 0]), "target": array([0, 3])}`.
 Since we have 4 actions in our environment ("right", "up", "left", "down"), we will use `Discrete(4)` as an action space.
 Here is the declaration of `GridWorldEnv` and the implementation of `__init__`:
 ```python
+import gym
+from gym import spaces
+import pygame
+import numpy as np
+
+
 class GridWorldEnv(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
@@ -264,7 +268,7 @@ or release other resources. You shouldn't interact with the environment after ha
 
 ## Registering Envs
 
-In order for the custom environments to be detected by OpenAI gym, they must be registered as follows. We will choose to put this code in `gym-examples/gym_examples/__init__.py`. 
+In order for the custom environments to be detected by Gym, they must be registered as follows. We will choose to put this code in `gym-examples/gym_examples/__init__.py`. 
 
 ```python
 from gym.envs.registration import register
