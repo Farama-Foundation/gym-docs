@@ -5,11 +5,14 @@ title: Environment Creation
 # Environment Creation
 
 This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in Gym designed for the creation of new environments.
-You can clone gym-examples to play with the code that are presented here:
+You can clone gym-examples to play with the code that are presented here. We recommend that you use a virtual environment:
 
 ```console
 git clone https://github.com/Farama-Foundation/gym-examples
-pip install -e gym-examples
+cd gym-examples
+python -m venv .env
+source .env/bin/activate
+pip install -e .
 ```
 
 ## Subclassing gym.Env
@@ -313,7 +316,7 @@ from setuptools import setup
 
 setup(name='gym_examples',
     version='0.0.1',
-    install_requires=['gym', 'pygame']
+    install_requires=['gym==0.23.1', 'pygame==2.1.0']
 )
 ```
 
