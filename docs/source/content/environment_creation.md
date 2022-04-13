@@ -294,13 +294,13 @@ executed in the current episode. To distinguish truncation and termination, you 
 
 Apart from `id` and `entrypoint`, you may pass the following additional keyword arguments to `register`:
 
-| Name                | Type   | Default  | Description                                                                                               |
-|---------------------|--------|----------|-----------------------------------------------------------------------------------------------------------|
-| `reward_threshold`  | `int`  | `None`   | The reward threshold before the task is considered solved                                                 |
-| `nondeterministic`  | `bool` | `False`  | Whether this environment is non-deterministic even after seeding                                          |
-| `max_episode_steps` | `int`  | `None`   | The maximum number of steps that an episode can consist of. If not `None`, a `TimeLimit` wrapper is added |
-| `order_enforce`     | `bool` | `True`   | Whether to wrap the environment in an `OrderEnforcing` wrapper                                            |
-| `kwargs`            | `dict` | `{}`     | The default kwargs to pass to the environment class                                                       |
+| Name                | Type     | Default  | Description                                                                                               |
+|---------------------|----------|----------|-----------------------------------------------------------------------------------------------------------|
+| `reward_threshold`  | `float`  | `None`   | The reward threshold before the task is considered solved                                                 |
+| `nondeterministic`  | `bool`   | `False`  | Whether this environment is non-deterministic even after seeding                                          |
+| `max_episode_steps` | `int`    | `None`   | The maximum number of steps that an episode can consist of. If not `None`, a `TimeLimit` wrapper is added |
+| `order_enforce`     | `bool`   | `True`   | Whether to wrap the environment in an `OrderEnforcing` wrapper                                            |
+| `kwargs`            | `dict`   | `{}`     | The default kwargs to pass to the environment class                                                       |
 
 Most of these keywords (except for `max_episode_steps`, `order_enforce` and `kwargs`) do not alter the behavior 
 of environment instances but merely provide some extra information about your environment.
