@@ -1,4 +1,4 @@
-# Gym-docs
+# INSTRUCTIONS BELOW ARE OUTDATED
 
 This repo contains the [NEW website](http://www.gymlibrary.ml) for [Gym](https://github.com/openai/gym). This site is currently in Beta and we are in the process of adding/editing information. 
 
