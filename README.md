@@ -5,8 +5,6 @@ This repo contains the [NEW website](http://www.gymlibrary.ml) for [Gym](https:/
 
 The documentation uses Sphinx. However, the documentation is written in regular md, NOT rst.
 
-INSTRUCTIONS BELOW ARE OUTDATED
-
 If you are modifying a non-environment page or an atari environment page, please PR this repo. Otherwise, follow the steps below:
 
 ## Instructions for modifying environment pages
