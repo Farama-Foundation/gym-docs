@@ -17,7 +17,7 @@ pip install -e .
 
 ## Subclassing gym.Env
 
-Before learning how to create your own environment you should check out [the documentation of Gym's API](https://www.gymlibrary.ml/pages/api/index).
+Before learning how to create your own environment you should check out [the documentation of Gym's API](https://www.gymlibrary.ml/content/api/).
 
 We will be concerned with a subset of gym-examples that looks like this:
 
@@ -30,7 +30,10 @@ gym-examples/
     envs/
       __init__.py
       grid_world.py
-```
+     wrappers/
+      __init__.py
+      relative_position.py
+ ```
 
 To illustrate the process of subclassing `gym.Env`, we will implement a very simplistic game, called `GridWorldEnv`.
 We will write the code for our custom environment in `gym-examples/gym_examples/envs/grid_world.py`.
@@ -76,18 +79,18 @@ class GridWorldEnv(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
     def __init__(self, size=5):
-        self.size = size    # The size of the square grid
+        self.size = size  # The size of the square grid
         self.window_size = 512  # The size of the PyGame window
-        
+
         # Observations are dictionaries with the agent's and the target's location.
         # Each location is encoded as an element of {0, ..., `size`}^2, i.e. MultiDiscrete([size, size]).
         self.observation_space = spaces.Dict(
             {
-                "agent": spaces.MultiDiscrete([size, size]),
-                "target": spaces.MultiDiscrete([size, size]),
+                "agent": spaces.Box(0, size - 1, shape=(2,), dtype=int),
+                "target": spaces.Box(0, size - 1, shape=(2,), dtype=int),
             }
         )
-        
+
         # We have 4 actions, corresponding to "right", "up", "left", "down", "right"
         self.action_space = spaces.Discrete(4)
 
@@ -102,7 +105,7 @@ class GridWorldEnv(gym.Env):
             2: np.array([-1, 0]),
             3: np.array([0, -1]),
         }
-            
+
         """
         If human-rendering is used, `self.window` will be a reference
         to the window that we draw to. `self.clock` will be a clock that is used
@@ -148,15 +151,15 @@ and `_get_info` that we implemented earlier for that:
 ```python
     def reset(self, seed=None, return_info=False, options=None):
         # We need the following line to seed self.np_random
-        super().reset(seed=seed) 
-        
+        super().reset(seed=seed)
+
         # Choose the agent's location uniformly at random
-        self._agent_location = self.np_random.integers(0, self.size, size=2) 
+        self._agent_location = self.np_random.integers(0, self.size, size=2)
 
         # We will sample the target's location randomly until it does not coincide with the agent's location
         self._target_location = self._agent_location
         while np.array_equal(self._target_location, self._agent_location):
-            self._target_location = self.np_random.randint(0, self.size, size=2)
+            self._target_location = self.np_random.integers(0, self.size, size=2)
 
         observation = self._get_obs()
         info = self._get_info()
@@ -180,7 +183,7 @@ accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computi
         )
         # An episode is done iff the agent has reached the target
         done = np.array_equal(self._agent_location, self._target_location)
-        reward = 1 if done else 0       # Binary sparse rewards
+        reward = 1 if done else 0  # Binary sparse rewards
         observation = self._get_obs()
         info = self._get_info()
 
@@ -202,7 +205,9 @@ with Gym and you can use it as a skeleton for your own environments:
 
         canvas = pygame.Surface((self.window_size, self.window_size))
         canvas.fill((255, 255, 255))
-        pix_square_size = self.window_size / self.size      # The size of a single grid square in pixels
+        pix_square_size = (
+            self.window_size / self.size
+        )  # The size of a single grid square in pixels
 
         # First we draw the target
         pygame.draw.rect(
@@ -243,7 +248,7 @@ with Gym and you can use it as a skeleton for your own environments:
             self.window.blit(canvas, canvas.get_rect())
             pygame.event.pump()
             pygame.display.update()
-            
+
             # We need to ensure that human-rendering occurs at the predefined framerate.
             # The following line will automatically add a delay to keep the framerate stable.
             self.clock.tick(self.metadata["render_fps"])
@@ -338,3 +343,37 @@ env = gym.make('gym_examples/GridWorld-v0', size=10)
 Sometimes, you may find it more convenient to skip registration and call the environment's
 constructor yourself. Some may find this approach more pythonic and environments that are instantiated like this are
 also perfectly fine (but remember to add  wrappers as well!).
+
+## Using Wrappers
+Oftentimes, we want to use different variants of a custom environment, or we want to
+modify the behavior of an environment that is provided by Gym or some other party. 
+Wrappers allow us to do this without changing the environment implementation or adding any boilerplate code.
+Check out the [wrapper documentation](https://www.gymlibrary.ml/content/wrappers/) for details on how to 
+use wrappers and instructions for implementing your own.
+In our example, observations cannot be used directly in learning code because they are dictionaries.
+However, we don't actually need to touch our environment implementation to fix this! We can simply add 
+a wrapper on top of environment instances to flatten observations into a single array:
+
+```python
+import gym_examples
+from gym.wrappers import FlattenObservation
+
+env = gym.make('gym_examples/GridWorld-v0')
+wrapped_env = FlattenObservation(env)
+print(wrapped_env.reset())     # E.g.  [3 0 3 3]
+```
+
+Wrappers have the big advantage that they make environments highly modular. For instance, instead of flattening the 
+observations from GridWorld, you might only want to look at the relative position of the target and the agent. 
+In the section on [ObservationWrappers](https://www.gymlibrary.ml/content/wrappers/#observationwrapper) we have implemented
+a wrapper that does this job. This wrapper is also available in gym-examples:
+
+```python
+import gym_examples
+from gym_examples.wrappers import RelativePosition
+
+env = gym.make('gym_examples/GridWorld-v0')
+wrapped_env = RelativePosition(env)
+print(wrapped_env.reset())     # E.g.  [-3  3]
+```
+
