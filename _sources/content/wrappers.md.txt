@@ -49,6 +49,8 @@ There are three common things you might want a wrapper to do:
 
 Such wrappers can be easily implemented by inheriting from `ActionWrapper`, `ObservationWrapper`, or `RewardWrapper` and implementing the
 respective transformation. If you need a wrapper to do more complicated tasks, you can inherit from the `Wrapper` class directly.
+The code that is presented in the following sections can also be found in 
+the [gym-examples](https://github.com/Farama-Foundation/gym-examples) repository
 
 ## ActionWrapper
 If you would like to apply a function to the action before passing it to the base environment,
@@ -96,9 +98,9 @@ class RelativePosition(gym.ObservationWrapper):
     def __init__(self, env):
         super().__init__(env)
         self._observation_space = Box(shape=(2,), low=-np.inf, high=np.inf)
-    
+
     def observation(self, obs):
-        return obs["target_position"] - obs["agent_position"]
+        return obs["target"] - obs["agent"]
 ```
 
 Among others, Gym provides the observation wrapper `TimeAwareObservation`, which adds information about the index of the timestep 
