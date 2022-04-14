@@ -22,7 +22,7 @@ The following example runs 3 copies of the ``CartPole-v1`` environment in parall
 >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
 >>> envs.reset()
 >>> actions = np.array([1, 0, 1])
->>> observations, rewards, dones, infos = envs.step(actions)
+>>> observations, rewards, terminateds, truncateds, infos = envs.step(actions)
 
 >>> observations
 array([[ 0.00122802,  0.16228443,  0.02521779, -0.23700266],
@@ -31,7 +31,9 @@ array([[ 0.00122802,  0.16228443,  0.02521779, -0.23700266],
         dtype=float32)
 >>> rewards
 array([1., 1., 1.])
->>> dones
+>>> terminateds
+array([False, False, False])
+>>> truncateds
 array([False, False, False])
 >>> infos
 ({}, {}, {})
@@ -91,7 +93,7 @@ While standard Gym environments take a single action and return a single observa
           dtype=float32)
 
     >>> actions = np.array([1, 0, 1])
-    >>> observations, rewards, dones, infos = envs.step(actions)
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(actions)
 
     >>> observations
     array([[ 0.00187507,  0.18986781, -0.03168437, -0.301252  ],
@@ -100,7 +102,9 @@ While standard Gym environments take a single action and return a single observa
           dtype=float32)
     >>> rewards
     array([1., 1., 1.])
-    >>> dones
+    >>> terminateds
+    array([False, False, False])
+    >>> truncateds
     array([False, False, False])
     >>> infos
     ({}, {}, {})
@@ -123,7 +127,7 @@ Vectorized environments are compatible with any sub-environment, regardless of t
     ...
     ...     def step(self, action):
     ...         observation = self.observation_space.sample()
-    ...         return (observation, 0., False, {})
+    ...         return (observation, 0., False, False, {})
 
     >>> envs = gym.vector.AsyncVectorEnv([lambda: DictEnv()] * 3)
     >>> envs.observation_space
@@ -137,7 +141,7 @@ Vectorized environments are compatible with any sub-environment, regardless of t
     ...     "jump": np.array([0, 1, 0]),
     ...     "acceleration": np.random.uniform(-1., 1., size=(3, 2))
     ... }
-    >>> observations, rewards, dones, infos = envs.step(actions)
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(actions)
     >>> observations
     {"position": array([[-0.5337036 ,  0.7439302 ,  0.41748118],
                         [ 0.9373266 , -0.5780453 ,  0.8987405 ],
@@ -152,8 +156,8 @@ The sub-environments inside a vectorized environment automatically call `gym.Env
     >>> envs = gym.vector.make("FrozenLake-v1", num_envs=3, is_slippery=False)
     >>> envs.reset()
     array([0, 0, 0])
-    >>> observations, rewards, dones, infos = envs.step(np.array([1, 2, 2]))
-    >>> observations, rewards, dones, infos = envs.step(np.array([1, 2, 1]))
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(np.array([1, 2, 2]))
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(np.array([1, 2, 1]))
 
     >>> dones
     array([False, False,  True])
@@ -201,7 +205,7 @@ This is convenient, for example, if you instantiate a policy. In the following e
     ... )
     >>> observations = envs.reset()
     >>> actions = policy(weights, observations).argmax(axis=1)
-    >>> observations, rewards, dones, infos = envs.step(actions)
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(actions)
 
 
 ## Intermediate Usage
@@ -235,11 +239,11 @@ Because sometimes things may not go as planned, the exceptions raised in sub-env
     ...         if action == 1:
     ...             raise ValueError("An error occurred.")
     ...         observation = self.observation_space.sample()
-    ...         return (observation, 0., False, {})
+    ...         return (observation, 0., False, False, {})
 
     >>> envs = gym.vector.AsyncVectorEnv([lambda: ErrorEnv()] * 3)
     >>> observations = envs.reset()
-    >>> observations, rewards, dones, infos = envs.step(np.array([0, 0, 1]))
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(np.array([0, 0, 1]))
     ERROR: Received the following error from Worker-2: ValueError: An error occurred.
     ERROR: Shutting down Worker-2.
     ERROR: Raising the last exception back to the main process.
@@ -272,15 +276,15 @@ In the following example, we create a new environment `SMILESEnv`, whose observa
 ...
 ...     def step(self, action):
 ...         self._state += self.observation_space.symbols[action]
-...         reward = done = (action == 0)
-...         return (self._state, float(reward), done, {})
+...         reward = terminated = (action == 0)
+...         return (self._state, float(reward), terminated, False, {})
 
 >>> envs = gym.vector.AsyncVectorEnv(
 ...     [lambda: SMILESEnv()] * 3,
 ...     shared_memory=False
 ... )
 >>> envs.reset()
->>> observations, rewards, dones, infos = envs.step(np.array([2, 5, 4]))
+>>> observations, rewards, terminateds, truncateds, infos = envs.step(np.array([2, 5, 4]))
 >>> observations
 ('[(', '[O', '[C')
 ```
@@ -352,7 +356,7 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     >>> actions = np.array([1, 0, 1])
-    >>> observations, rewards, dones, infos = envs.step(actions)
+    >>> observations, rewards, terminateds, truncateds, infos = envs.step(actions)
 
     >>> observations
     array([[ 0.00122802,  0.16228443,  0.02521779, -0.23700266],
@@ -361,7 +365,9 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
             dtype=float32)
     >>> rewards
     array([1., 1., 1.])
-    >>> dones
+    >>> terminateds
+    array([False, False, False])
+    >>> truncateds
     array([False, False, False])
     >>> infos
     ({}, {}, {})

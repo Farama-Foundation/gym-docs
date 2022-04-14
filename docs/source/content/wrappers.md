@@ -131,31 +131,31 @@ class ClipReward(gym.RewardWrapper):
 
 Some users may want a wrapper which will automatically reset its wrapped environment when its wrapped environment reaches the done state. An advantage of this environment is that it will never produce undefined behavior as standard gym environments do when stepping beyond the done state. 
 
-When calling step causes self.env.step() to return done,
+When calling step causes self.env.step() to return (terminated or truncated)=True),
 self.env.reset() is called,
 and the return format of self.step() is as follows:
 
 ```python
-new_obs, terminal_reward, terminal_done, info
+new_obs, closing_reward, closing_terminated, closing_truncated, info
 ```
 
 new_obs is the first observation after calling self.env.reset(),
 
-terminal_reward is the reward after calling self.env.step(),
+closing_reward is the reward after calling self.env.step(),
 prior to calling self.env.reset()
 
-terminal_done is always True
+The expression (closing_terminated or closing_truncated) is always True
 
 info is a dict containing all the keys from the info dict returned by
-the call to self.env.reset(), with an additional key "terminal_observation"
+the call to self.env.reset(), with an additional key "closing_observation"
 containing the observation returned by the last call to self.env.step()
-and "terminal_info" containing the info dict returned by the last call
+and "closing_info" containing the info dict returned by the last call
 to self.env.step().
 
-If done is not true when self.env.step() is called, self.step() returns
+If (terminated or truncated) is not true when self.env.step() is called, self.step() returns
 
 ```python
-obs, reward, done, info
+obs, reward, terminated, truncated, info
 ```
 as normal.
 
@@ -175,15 +175,83 @@ The AutoResetWrapper can also be applied using its constructor:
 
 ### Warning
 When using the  AutoResetWrapper to collect rollouts, note
-that the when self.env.step() returns done, a
+that the when self.env.step() returns (terminated or truncated)=True, a
 new observation from after calling self.env.reset() is returned
 by self.step() alongside the terminal reward and done state from the
 previous episode . If you need the terminal state from the previous
-episode, you need to retrieve it via the the "terminal_observation" key
+episode, you need to retrieve it via the the "closing_observation" key
 in the info dict. Make sure you know what you're doing if you
 use this wrapper!
 
+## StepCompatibilityWrapper
 
+Due to the breaking change with step method returning two bools instead of one, this wrapper is introduced for ease of transition. This wrapper is applied by default in make to transform any environment into the new API.
+
+```python
+>>> import gym
+>>> env = gym.make("CartPole-v1")
+>>> env
+<TimeLimit<OrderEnforcing<StepCompatibility<CartPoleEnv<CartPole-v1>>>>>
+>>> env.reset()
+array([-0.03018865, -0.02190439, -0.02665936,  0.02980426], dtype=float32)
+>>> env.step(env.action_space.sample())
+(array([-0.03062674,  0.17358953, -0.02606327, -0.27116933], dtype=float32), 1.0, False, False, {})
+```
+
+`return_two_dones` can be set at make to transform new step API to the old one. 
+
+```python
+>>> env = gym.make("CartPole-v1", return_two_dones=False)
+>>> env.reset()
+array([0.02902522, 0.01894217, 0.00593221, 0.03430589], dtype=float32)
+>>> env.step(env.action_space.sample())
+(array([ 0.03368363,  0.40900537,  0.00148834, -0.54708755], dtype=float32), 1.0, False, {})
+```
+
+Registered environments in old API are automatically transformed into new API since this is the default setting (for eg. atari envs) 
+
+```python
+>>> env = gym.make("ALE/Breakout-v5")
+>>> obs = env.reset()
+>>> step_returns = env.step(env.action_space.sample())
+>>> len(step_returns)
+5
+```
+
+To retain old API, set `return_two_dones=False`
+
+```python
+>>> env = gym.make("ALE/Breakout-v5", return_two_dones=False)
+>>> obs = env.reset()
+>>> step_returns = env.step(env.action_space.sample())
+>>> len(step_returns)
+4
+```
+
+### StepCompatibilityVectorWrapper
+Vector envs do not directly support old step API. Instead, `StepCompatibilityVector` wrapper can be used, while setting `return_two_dones=False`. This can be done in make for registered environments as well as explicitly.
+
+
+```python
+from gym.vector import StepCompatibilityVector, SyncVectorEnv
+
+>>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+>>> obs = envs.reset()
+>>> step_returns = envs.step(envs.action_space.sample())
+>>> len(step_returns)
+5
+>>> envs = gym.vector.make("CartPole-v1", num_envs=3, return_two_dones=False)
+>>> obs = envs.reset()
+>>> step_returns = envs.step(envs.action_space.sample())
+>>> len(step_returns)
+4
+>>> envs = StepCompatibilityVector(SyncVectorEnv([NewAPIEnv, NewAPIEnv]), return_two_dones=False) 
+>>> obs = envs.reset()
+>>> step_returns = envs.step(envs.action_space.sample())
+>>> len(step_returns)
+4
+```
+Here, NewAPIEnv is any environment class defined with the new API, not defined here. 
 
 ## General Wrappers
 
@@ -210,9 +278,9 @@ class ReacherRewardWrapper(gym.Wrapper):
         self.reward_ctrl_weight = reward_ctrl_weight
 
     def step(self, action):
-        obs, _, done, info = self.env.step(action)
+        obs, _, terminated, truncated, info = self.env.step(action)
         reward = self.reward_dist_weight*info["reward_dist"] + self.reward_ctrl_weight*info["reward_ctrl"]
-        return obs, reward, done, info
+        return obs, reward, terminated, truncated, info
 ```
 
 ```{note}
@@ -237,6 +305,8 @@ It is *not* sufficient to use a `RewardWrapper` in this case!
 | `RecordVideo`             | `gym.Wrapper`            | `env`, `video_folder: str`, `episode_trigger: Callable[[int], bool] = None`, `step_trigger: Callable[[int], bool] = None`, `video_length: int = 0`, `name_prefix: str = "rl-video"`                                      | This wrapper will record videos of rollouts. The results will be saved in the folder specified via `video_folder`. You can specify a prefix for the filenames via `name_prefix`. Usually, you only want to record the environment intermittently, say every hundreth episode. To allow this, you can pass `episode_trigger` or `step_trigger`. At most one of these should be passed. These functions will accept an episode index or step index, respectively. They should return a boolean that indicates whether a recording should be started at this point. If neither `episode_trigger`, nor `step_trigger` is passed, a default `episode_trigger` will be used. By default, the recording will be stopped once a done signal has been emitted by the environment. However, you can also create recordings of fixed length (possibly spanning several episodes) by passing a strictly positive value for `video_length`. |
 | `RescaleAction`           | `gym.ActionWrapper`      | `env`, `min_action`, `max_action`                                                                                                                                                                                        | Rescales the continuous action space of the environment to a range \[`min_action`, `max_action`], where `min_action` and `max_action` are numpy arrays or floats.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | `ResizeObservation`       | `gym.ObservationWrapper` | `env`, `shape`                                                                                                                                                                                                           | This wrapper works on environments with image observations (or more generally observations of shape AxBxC) and resizes the observation to the shape given by the tuple `shape`. The argument `shape` may also be an integer. In that case, the observation is scaled to a square of sidelength `shape`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `StepCompatibility` | `gym.Wrapper` | `env`, `return_two_dones: bool` |  Transforms environments from old step API to new and vice-versa. Old env.step returns one boolean `done`. New API returns two booleans `terminated` and `truncated`. |
+| `StepCompatibilityVector` | `gym.vector.VectorEnvWrapper` | `env: gym.vector.VectorEnv`, `return_two_dones: bool` |  Transforms vector environments from new  step API to old. Old env.step returns one boolean vector `dones`. New API returns two booleans `terminateds` and `truncateds`. 
 | `TimeAwareObservation`    | `gym.ObservationWrapper` | `env`                                                                                                                                                                                                                    | Augment the observation with current time step in the trajectory (by appending it to the observation). This can be useful to ensure that things stay Markov. Currently it only works with one-dimensional observation spaces.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `TimeLimit`               | `gym.Wrapper`            | `env`, `max_episode_steps=None`                                                                                                                                                                                          | Probably the most useful wrapper in Gym. This wrapper will emit a done signal if the speciefied number of steps is exceeded in an episode. In order to be able to distinguish termination and truncation, you need to check `info`. If it does not contain the key `"TimeLimit.truncated"`, the environment did not reach the timelimit. Otherwise, `info["TimeLimit.truncated"]` will be true if the episode was terminated because of the time limit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `TransformObservation`    | `gym.ObservationWrapper` | `env`, `f`                                                                                                                                                                                                               | This wrapper will apply `f` to observations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |

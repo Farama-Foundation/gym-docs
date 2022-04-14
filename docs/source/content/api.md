@@ -36,10 +36,8 @@ to a specific point in space. If it succeeds in doing this (or makes some progre
 alongside the observation for this timestep. The reward may also be negative or 0, if the agent did not yet succeed (or did not make any progress). 
 The agent will then be trained to maximize the reward it accumulates over many timesteps.
 
-After some timesteps, the environment may enter a terminal state. For instance, the robot may have crashed! In that case,
-we want to reset the environment to a new initial state. The environment issues a done signal to the agent if it enters such a terminal state.
-Not all done signals must be triggered by a "catastrophic failure": Sometimes we also want to issue a done signal after
-a fixed number of timesteps, or if the agent has succeeded in completing some task in the environment.
+After some timesteps, the environment may enter a terminal state. For instance, the robot may have crashed, or the agent may have succeeded in completing a task. In that case, we want to reset the environment to a new initial state. The environment issues a terminated signal to the agent if it enters such a terminal state. Sometimes we also want to end the episode after a fixed number of timesteps, in this case, the environment issues a truncated signal.
+This is a new change in API. Earlier a common done signal was issued for an episode ending via any means. This is now changed in favour of issuing two signals - terminated and truncated.
 
 Let's see what the agent-environment loop looks like in Gym.
 This example will run an instance of `LunarLander-v2` environment for 1000 timesteps, rendering the environment at each step. You should see a window pop up rendering the environment
@@ -53,9 +51,9 @@ observation, info = env.reset(seed=42, return_info=True)
 
 for _ in range(1000):
     env.render()
-    observation, reward, done, info = env.step(env.action_space.sample())
+    observation, reward, terminated, truncated, info = env.step(env.action_space.sample())
 
-    if done:
+    if terminated or truncated:
         observation, info = env.reset(return_info=True)
 
 env.close()
@@ -72,6 +70,50 @@ Every environment specifies the format of valid actions by providing an `env.act
 the format of valid observations is specified by `env.observation_space`.
 In the example above we sampled random actions via `env.action_space.sample()`. Note that we need to seed the action space separately from the 
 environment to ensure reproducible samples.
+
+### Change in env.step API
+
+Previously, the step method returned only one boolean - `done`. This is being deprecated in favour of returning two booleans `terminated` and `truncated`.
+
+Environment termination can happen due to any number of reasons inherent to the environment eg. task completition, failure etc. This is distinctly different from an episode of the environment ending due to a user-set time-limit, referred to as 'truncation'. 
+
+`terminated` signal is set to `True` when the core environment terminates inherently because of task completition, failure etc. 
+`truncated` signal is set to `True` when the episode ends specifically because of a time-limit not inherent to the environment. 
+
+It is possible for `terminated=True` and `truncated=True` to occur at the same time when termination and truncation occur at the same step. 
+
+#### Motivation 
+This is done to remove the ambiguity in the `done` signal. `done=True` does not distinguish between the environment terminating and the episode truncating. This problem was avoided previously by setting `info['TimeLimit.truncated']` in case of a timelimit through the TimeLimit wrapper. However, this forces the truncation to happen only through a wrapper, and does not accomodate environments which truncate in the core environment. 
+
+The main reason we need to distinguish between these two signals is the implications in implementing the Temporal Difference update, where the reward along with the value of the next state(s) are used to update the value of the current state. At terminal states, there is no contribution from the value of the next state(s) and we only consider the value as a function of the reward at that state.  However, this is not true when we forcibly truncate the episode. Time-limits are often set during training to diversify experience, but the goal of the agent is not to maximize reward over this time period. The `done` signal is often used to control whether the value of the next state 
+is used for backup. 
+```python
+vf_target = rew + gamma * (1-done)* vf(next_obs)
+```
+However, this leads to the next state backup being ignored during truncations as well which is incorrect. (See [link](https://arxiv.org/abs/1712.00378) for details)
+
+Instead, using explicit `terminated` and `truncated` signals resolves this problem.
+
+```python
+# vf_target = rew + gamma * (1-done)* vf(next_obs) # wrong 
+vf_target = rew + gamma * (1-terminated)* vf(next_obs) # correct
+```
+
+#### Backward compatibility
+Gym will retain support for the old API till v1.0 for ease of transition. 
+
+Users can toggle the old API through `make` by setting `return_two_dones=False`. 
+
+```python
+env = gym.make("CartPole-v1", return_two_dones=False)
+```
+This can also be done explicitly through a wrapper: 
+```python
+from gym.wrappers import StepCompatibility
+env = StepCompatibility(CustomEnv(), return_two_dones=False)
+```
+For more details see the wrappers section. 
+
 
 ## Standard methods
 
@@ -232,7 +274,7 @@ reward based on data in `info`). Such wrappers
 can be implemented by inheriting from `Wrapper`.
 Gym already provides many commonly used wrappers for you. Some examples:
 
-- `TimeLimit`: Issue a done signal if a maximum number of timesteps has been exceeded (or the base environment has issued a done signal).
+- `TimeLimit`: Issue a truncated signal if a maximum number of timesteps has been exceeded.
 - `ClipAction`: Clip the action such that it lies in the action space (of type Box).
 - `RescaleAction`: Rescale actions to lie in a specified interval
 - `TimeAwareObservation`: Add information about the index of timestep to observation. In some cases helpful to ensure that transitions are Markov.
@@ -275,7 +317,7 @@ where we obtain the corresponding key ID constants from pygame. If the `key_to_a
 
 Furthermore, you wish to plot real time statistics as you play, you can use `gym.utils.play.PlayPlot`. Here's some sample code for plotting the reward for last 5 second of gameplay:
 ```python
-def callback(obs_t, obs_tp1, action, rew, done, info):
+def callback(obs_t, obs_tp1, action, rew, terminated, truncated, info):
     return [rew,]
 plotter = PlayPlot(callback, 30 * 5, ["reward"])
 env = gym.make("Pong-v0")
