@@ -21,9 +21,9 @@ hide-toc: true
    for _ in range(1000):
       env.render()
       action = policy(observation)  # User-defined policy function
-      observation, reward, done, info = env.step(action)
+      observation, reward, terminated, truncated, info = env.step(action)
 
-      if done:
+      if terminated or truncated:
          observation, info = env.reset(return_info=True)
    env.close()
 ``` 

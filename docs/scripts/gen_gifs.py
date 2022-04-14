@@ -57,15 +57,16 @@ for env_spec in tqdm(gym.envs.registry.all()):
         frames = []
         while True:
             state = env.reset()
-            done = False
-            while not done and len(frames) <= LENGTH:
+            terminated = False
+            truncated = False 
+            while not (terminated or truncated) and len(frames) <= LENGTH:
                 
                 frame = env.render(mode='rgb_array')
                 repeat = int(60/env.metadata["render_fps"]) if env_type == "toy_text" else 1
                 for i in range(repeat):
                     frames.append(Image.fromarray(frame))
                 action = env.action_space.sample()
-                state_next, reward, done, info = env.step(action)
+                state_next, reward, terminated, truncated, info = env.step(action)
             
             if len(frames) > LENGTH:
                 break

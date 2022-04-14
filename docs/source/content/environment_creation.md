@@ -43,7 +43,7 @@ target on the grid that has been placed randomly at the beginning of the episode
 
 - Observations provide the location of the target and agent. 
 - There are 4 actions in our environment, corresponding to the movements "right", "up", "left", and "down".  
-- A done signal is issued as soon as the agent has navigated to the grid cell where the target is located.
+- A terminated signal is issued as soon as the agent has navigated to the grid cell where the target is located.
 - Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1
 
 An episode in this environment (with `size=5`) might look like this:
@@ -136,7 +136,7 @@ terms). In that case, we would have to update the dictionary that is returned by
 
 ### Reset
 The `reset` method will be called to initiate a new episode. You may assume that the `step` method will not
-be called before `reset` has been called. Moreover, `reset` should be called whenever a done signal has been issued.
+be called before `reset` has been called. Moreover, `reset` should be called whenever a terminated or truncated signal has been issued.
 Users may pass the `seed` keyword to `reset` to initialize any random number generator that is used by the environment
 to a deterministic state. It is recommended to use the random number generator `self.np_random` that is provided by the environment's
 base class, `gym.Env`. If you only use this RNG, you do not need to worry much about seeding, *but you need to remember to
@@ -168,9 +168,9 @@ and `_get_info` that we implemented earlier for that:
 
 ### Step
 The `step` method usually contains most of the logic of your environment. It accepts an `action`, computes the state of 
-the environment after applying that action and returns the 4-tuple `(observation, reward, done, info)`.
-Once the new state of the environment has been computed, we can check whether it is a terminal state and we set `done`
-accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computing `reward` is trivial once we know `done`. To gather
+the environment after applying that action and returns the 5-tuple `(observation, reward, terminated, truncated, info)`.
+Once the new state of the environment has been computed, we can check whether it is a terminal state and we set `terminated`
+accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computing `reward` is trivial once we know `terminated`. `truncated` is not set here. It is more convenient to set this through a wrapper as shown below. But if you prefer to not use a wrapper, you could also set it here. To gather
 `observation` and `info`, we can again make use of `_get_obs` and `_get_info`:
 
 ```python
@@ -181,13 +181,13 @@ accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computi
         self._agent_location = np.clip(
             self._agent_location + direction, 0, self.size - 1
         )
-        # An episode is done iff the agent has reached the target
-        done = np.array_equal(self._agent_location, self._target_location)
-        reward = 1 if done else 0  # Binary sparse rewards
+        # An episode is terminated iff the agent has reached the target
+        terminated = np.array_equal(self._agent_location, self._target_location)
+        reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()
         info = self._get_info()
 
-        return observation, reward, done, info
+        return observation, reward, terminated, False, info
 ```
 
 ### Rendering
@@ -289,8 +289,7 @@ register(
 ```
 The keyword argument `max_episode_steps=300` will ensure that GridWorld environments that are instantiated via `gym.make`
 will be wrapped in a `TimeLimit` wrapper (see [the wrapper documentation](https://www.gymlibrary.ml/pages/wrappers/index) 
-for more information). A done signal will then be produced if the agent has reached the target *or* 300 steps have been
-executed in the current episode. To distinguish truncation and termination, you can check `info["TimeLimit.truncated"]`.
+for more information). A terminated signal will then be produced if the agent has reached the target. A `truncated` signal will be issued if 300 steps have been executed in the current episode. 
 
 Apart from `id` and `entrypoint`, you may pass the following additional keyword arguments to `register`:
 
