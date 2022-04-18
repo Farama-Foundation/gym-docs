@@ -250,3 +250,7 @@ PyBullet based CartPole and Quadrotor environments—with [CasADi](https://web.c
 ### [ VirtualTaobao](https://github.com/eyounx/VirtualTaobao/)
 
 An environment for online recommendation, where customers are learned from Taobao.com, one of the world's largest e-commerce platform.
+
+### [ mo-gym](https://github.com/LucasAlegre/mo-gym)
+
+Multi-objective RL (MORL) gym environments, where the reward is a numpy array of different (possibly conflicting) objectives.
