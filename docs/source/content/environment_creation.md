@@ -30,7 +30,7 @@ gym-examples/
     envs/
       __init__.py
       grid_world.py
-     wrappers/
+    wrappers/
       __init__.py
       relative_position.py
  ```
@@ -44,7 +44,7 @@ target on the grid that has been placed randomly at the beginning of the episode
 - Observations provide the location of the target and agent. 
 - There are 4 actions in our environment, corresponding to the movements "right", "up", "left", and "down".  
 - A done signal is issued as soon as the agent has navigated to the grid cell where the target is located.
-- Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1
+- Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1.
 
 An episode in this environment (with `size=5`) might look like this:
 
@@ -91,7 +91,7 @@ class GridWorldEnv(gym.Env):
             }
         )
 
-        # We have 4 actions, corresponding to "right", "up", "left", "down", "right"
+        # We have 4 actions, corresponding to "right", "up", "left", "down"
         self.action_space = spaces.Discrete(4)
 
         """
@@ -270,7 +270,7 @@ been called with `mode="human"` and we might need to close the window that has b
             pygame.quit()
 ```
 
-In other environments `close`might also close files that were opened
+In other environments `close` might also close files that were opened
 or release other resources. You shouldn't interact with the environment after having called `close`.
 
 
