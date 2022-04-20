@@ -327,7 +327,7 @@ You can clone gym-examples to play with the code that are presented here. We rec
     envs/
       __init__.py
       grid_world.py
-     wrappers/
+    wrappers/
       __init__.py
       relative_position.py
 </pre></div>
@@ -341,7 +341,7 @@ target on the grid that has been placed randomly at the beginning of the episode
 <li><p>Observations provide the location of the target and agent.</p></li>
 <li><p>There are 4 actions in our environment, corresponding to the movements “right”, “up”, “left”, and “down”.</p></li>
 <li><p>A done signal is issued as soon as the agent has navigated to the grid cell where the target is located.</p></li>
-<li><p>Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1</p></li>
+<li><p>Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1.</p></li>
 </ul>
 <p>An episode in this environment (with <code class="docutils literal notranslate"><span class="pre">size=5</span></code>) might look like this:</p>
 <img src="https://user-images.githubusercontent.com/15806078/160155148-253a05ae-25c1-4fcf-9a72-f72362a64225.gif" width="35%"/>
@@ -382,7 +382,7 @@ Here is the declaration of <code class="docutils literal notranslate"><span clas
             <span class="p">}</span>
         <span class="p">)</span>
 
-        <span class="c1"># We have 4 actions, corresponding to "right", "up", "left", "down", "right"</span>
+        <span class="c1"># We have 4 actions, corresponding to "right", "up", "left", "down"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
         <span class="sd">"""</span>
@@ -561,7 +561,7 @@ been called with <code class="docutils literal notranslate"><span class="pre">mo
             <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>In other environments <code class="docutils literal notranslate"><span class="pre">close</span></code>might also close files that were opened
+<p>In other environments <code class="docutils literal notranslate"><span class="pre">close</span></code> might also close files that were opened
 or release other resources. You shouldn’t interact with the environment after having called <code class="docutils literal notranslate"><span class="pre">close</span></code>.</p>
 </section>
 </section>
