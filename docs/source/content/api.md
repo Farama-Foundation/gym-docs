@@ -263,7 +263,7 @@ For example, if pressing the keys `w` and `space` at the same time is supposed t
     # ...
 }
 ```
-As a more complete example, let's say we wish to play with `CartPole-v0` using our left and right arrow keys. The code would be as follow:
+As a more complete example, let's say we wish to play with `CartPole-v0` using our left and right arrow keys. The code would be as follows:
 ```python
 import gym
 import pygame
