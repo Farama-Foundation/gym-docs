@@ -181,7 +181,7 @@ accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computi
         self._agent_location = np.clip(
             self._agent_location + direction, 0, self.size - 1
         )
-        # An episode is done iff the agent has reached the target
+        # An episode is done if the agent has reached the target
         done = np.array_equal(self._agent_location, self._target_location)
         reward = 1 if done else 0  # Binary sparse rewards
         observation = self._get_obs()
