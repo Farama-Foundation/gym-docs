@@ -409,8 +409,12 @@ integer seed right after initialization and then never again.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>seed</strong> (<em>int</em><em> or </em><em>None</em>) – The seed that is used to initialize the environment’s PRNG. If the environment does not already have a PRNG and <code class="docutils literal notranslate"><span class="pre">seed=None</span></code> (the default option) is passed, a seed will be chosen from some source of entropy (e.g. timestamp or /dev/urandom). However, if the environment already has a PRNG and <code class="docutils literal notranslate"><span class="pre">seed=None</span></code> is passed, the PRNG will <em>not</em> be reset.
-If you pass an integer, the PRNG will be reset even if it already exists. Usually, you want to pass an integer <em>right after the environment has been initialized and then never again</em>. Please refer to the minimal example above to see this paradigm in action.</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em> or </em><em>None</em>) – The seed that is used to initialize the environment’s PRNG. If the environment does not already have a PRNG and <code class="docutils literal notranslate"><span class="pre">seed=None</span></code> (the default option) is passed, a seed will be chosen from some source of entropy (e.g. timestamp or /dev/urandom).</p></li>
+<li><p><strong>However</strong> – </p></li>
+<li><p><strong>passed</strong> (<em>if the environment already has a PRNG and seed=None is</em>) – </p></li>
+<li><p><strong>integer</strong> (<em>the PRNG will not be reset. If you pass an</em>) – </p></li>
+<li><p><strong>Usually</strong> (<em>the PRNG will be reset even if it already exists.</em>) – </p></li>
+<li><p><strong>action.</strong> (<em>you want to pass an integer right after the environment has been initialized and then never again. Please refer to the minimal example above to see this paradigm in</em>) – </p></li>
 <li><p><strong>return_info</strong> (<em>bool</em>) – If true, return additional information along with initial observation. This info should be analogous to the info returned in <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a></p></li>
 <li><p><strong>options</strong> (<em>dict</em><em> or </em><em>None</em>) – Additional information to specify how the environment is reset (optional, depending on the specific environment)</p></li>
 </ul>

@@ -577,6 +577,7 @@ or release other resources. You shouldn’t interact with the environment after 
 <span class="p">)</span>
 </pre></div>
 </div>
+<p>The environment ID consists of three components, two of which are optional: an optional namespace (here: <code class="docutils literal notranslate"><span class="pre">gym_examples</span></code>), a mandatory name (here: <code class="docutils literal notranslate"><span class="pre">GridWorld</span></code>) and an optional but recommended version (here: v0). It might have also been registered as <code class="docutils literal notranslate"><span class="pre">GridWorld-v0</span></code> (the recommended approach), <code class="docutils literal notranslate"><span class="pre">GridWorld</span></code> or <code class="docutils literal notranslate"><span class="pre">gym_examples/GridWorld</span></code>, and the appropriate ID should then be used during environment creation.</p>
 <p>The keyword argument <code class="docutils literal notranslate"><span class="pre">max_episode_steps=300</span></code> will ensure that GridWorld environments that are instantiated via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>
 will be wrapped in a <code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code> wrapper (see <a class="reference external" href="https://www.gymlibrary.ml/pages/wrappers/index">the wrapper documentation</a>
 for more information). A done signal will then be produced if the agent has reached the target <em>or</em> 300 steps have been
@@ -611,7 +612,12 @@ executed in the current episode. To distinguish truncation and termination, you 
 <td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
 <td><p>Whether to wrap the environment in an <code class="docutils literal notranslate"><span class="pre">OrderEnforcing</span></code> wrapper</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">autoreset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Whether to wrap the environment in an <code class="docutils literal notranslate"><span class="pre">AutoResetWrapper</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
 <td><p>The default kwargs to pass to the environment class</p></td>
