@@ -287,6 +287,8 @@ register(
     max_episode_steps=300,
 )
 ```
+The environment ID consists of three components, two of which are optional: an optional namespace (here: `gym_examples`), a mandatory name (here: `GridWorld`) and an optional but recommended version (here: v0). It might have also been registered as `GridWorld-v0` (the recommended approach), `GridWorld` or `gym_examples/GridWorld`, and the appropriate ID should then be used during environment creation.
+
 The keyword argument `max_episode_steps=300` will ensure that GridWorld environments that are instantiated via `gym.make`
 will be wrapped in a `TimeLimit` wrapper (see [the wrapper documentation](https://www.gymlibrary.ml/pages/wrappers/index) 
 for more information). A done signal will then be produced if the agent has reached the target *or* 300 steps have been
@@ -300,6 +302,7 @@ Apart from `id` and `entrypoint`, you may pass the following additional keyword 
 | `nondeterministic`  | `bool`   | `False`  | Whether this environment is non-deterministic even after seeding                                          |
 | `max_episode_steps` | `int`    | `None`   | The maximum number of steps that an episode can consist of. If not `None`, a `TimeLimit` wrapper is added |
 | `order_enforce`     | `bool`   | `True`   | Whether to wrap the environment in an `OrderEnforcing` wrapper                                            |
+| `autoreset`         | `bool`   | `False`  | Whether to wrap the environment in an `AutoResetWrapper`                                                  |
 | `kwargs`            | `dict`   | `{}`     | The default kwargs to pass to the environment class                                                       |
 
 Most of these keywords (except for `max_episode_steps`, `order_enforce` and `kwargs`) do not alter the behavior 
