@@ -2,6 +2,7 @@
 
 ```{toctree}
 :hidden:
+adventure
 air_raid
 alien
 amidar
