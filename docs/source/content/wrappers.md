@@ -175,11 +175,11 @@ The AutoResetWrapper can also be applied using its constructor:
 
 ```{note}
 When using the  AutoResetWrapper to collect rollouts, note
-that the when self.env.step() returns done, a
-new observation from after calling self.env.reset() is returned
-by self.step() alongside the terminal reward and done state from the
+that the when `self.env.step()` returns `done`, a
+new observation from after calling `self.env.reset()` is returned
+by `self.step()` alongside the terminal reward and done state from the
 previous episode . If you need the terminal state from the previous
-episode, you need to retrieve it via the the "terminal_observation" key
+episode, you need to retrieve it via the the `terminal_observation` key
 in the info dict. Make sure you know what you're doing if you
 use this wrapper!
 ```
