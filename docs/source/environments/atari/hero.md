@@ -2,7 +2,7 @@
 title: Hero
 ---
    
-# Defender
+# Hero
 
 ```{figure} ../../_static/videos/atari/hero.gif 
 :width: 120px
