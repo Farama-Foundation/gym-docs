@@ -421,27 +421,27 @@ to a range to gain some numerical stability. To do that, we could, for instance,
 <section id="autoresetwrapper">
 <h2>AutoResetWrapper<a class="headerlink" href="#autoresetwrapper" title="Permalink to this headline">#</a></h2>
 <p>Some users may want a wrapper which will automatically reset its wrapped environment when its wrapped environment reaches the done state. An advantage of this environment is that it will never produce undefined behavior as standard gym environments do when stepping beyond the done state.</p>
-<p>When calling step causes self.env.step() to return done,
-self.env.reset() is called,
-and the return format of self.step() is as follows:</p>
+<p>When calling step causes <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code> to return <code class="docutils literal notranslate"><span class="pre">done=True</span></code>,
+<code class="docutils literal notranslate"><span class="pre">self.env.reset()</span></code> is called,
+and the return format of <code class="docutils literal notranslate"><span class="pre">self.step()</span></code> is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_obs</span><span class="p">,</span> <span class="n">terminal_reward</span><span class="p">,</span> <span class="n">terminal_done</span><span class="p">,</span> <span class="n">info</span>
 </pre></div>
 </div>
-<p>new_obs is the first observation after calling self.env.reset(),</p>
-<p>terminal_reward is the reward after calling self.env.step(),
-prior to calling self.env.reset()</p>
-<p>terminal_done is always True</p>
-<p>info is a dict containing all the keys from the info dict returned by
-the call to self.env.reset(), with an additional key “terminal_observation”
-containing the observation returned by the last call to self.env.step()
-and “terminal_info” containing the info dict returned by the last call
-to self.env.step().</p>
-<p>If done is not true when self.env.step() is called, self.step() returns</p>
+<p><code class="docutils literal notranslate"><span class="pre">new_obs</span></code> is the first observation after calling <code class="docutils literal notranslate"><span class="pre">self.env.reset()</span></code>,</p>
+<p><code class="docutils literal notranslate"><span class="pre">terminal_reward</span></code> is the reward after calling <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code>,
+prior to calling <code class="docutils literal notranslate"><span class="pre">self.env.reset()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">terminal_done</span></code> is always <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">info</span></code> is a dict containing all the keys from the info dict returned by
+the call to <code class="docutils literal notranslate"><span class="pre">self.env.reset()</span></code>, with additional keys <code class="docutils literal notranslate"><span class="pre">terminal_observation</span></code>
+containing the observation returned by the last call to <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code>
+and <code class="docutils literal notranslate"><span class="pre">terminal_info</span></code> containing the info dict returned by the last call
+to <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">done</span></code> is not true when <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code> is called, <code class="docutils literal notranslate"><span class="pre">self.step()</span></code> returns</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span>
 </pre></div>
 </div>
 <p>as normal.</p>
-<p>The AutoResetWrapper is not applied by default when calling gym.make(), but can be applied by setting the optional autoreset argument to True:</p>
+<p>The AutoResetWrapper is not applied by default when calling <code class="docutils literal notranslate"><span class="pre">gym.make()</span></code>, but can be applied by setting the optional <code class="docutils literal notranslate"><span class="pre">autoreset</span></code> argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">,</span> <span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -450,17 +450,17 @@ to self.env.step().</p>
     <span class="n">env</span> <span class="o">=</span> <span class="n">AutoResetWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="warning">
-<h3>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>When using the  AutoResetWrapper to collect rollouts, note
-that the when self.env.step() returns done, a
-new observation from after calling self.env.reset() is returned
-by self.step() alongside the terminal reward and done state from the
+that the when <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code> returns <code class="docutils literal notranslate"><span class="pre">done</span></code>, a
+new observation from after calling <code class="docutils literal notranslate"><span class="pre">self.env.reset()</span></code> is returned
+by <code class="docutils literal notranslate"><span class="pre">self.step()</span></code> alongside the terminal reward and done state from the
 previous episode . If you need the terminal state from the previous
-episode, you need to retrieve it via the the “terminal_observation” key
+episode, you need to retrieve it via the the <code class="docutils literal notranslate"><span class="pre">terminal_observation</span></code> key
 in the info dict. Make sure you know what you’re doing if you
 use this wrapper!</p>
-</section>
+</div>
 </section>
 <section id="general-wrappers">
 <h2>General Wrappers<a class="headerlink" href="#general-wrappers" title="Permalink to this headline">#</a></h2>
@@ -511,87 +511,92 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 <td><p><code class="docutils literal notranslate"><span class="pre">env:</span> <span class="pre">gym.Env</span></code>, <code class="docutils literal notranslate"><span class="pre">noop_max:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">30</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_skip:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">4</span></code>, <code class="docutils literal notranslate"><span class="pre">screen_size:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">84</span></code>, <code class="docutils literal notranslate"><span class="pre">terminal_on_life_loss:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">grayscale_obs:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">grayscale_newaxis:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">scale_obs:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></code></p></td>
 <td><p>Implements the best practices from Machado et al. (2018), “Revisiting the Arcade Learning Environment: Evaluation Protocols and Open Problems for General Agents” but will be deprecated soon.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ClipAction</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AutoResetWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env</span></code></p></td>
+<td><p>The wrapped environment will automatically reset when the done state is reached. Make sure you read the documentation before using this wrapper!</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ClipAction</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ActionWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code></p></td>
 <td><p>Clip the continuous action to the valid bound specified by the environment’s <code class="docutils literal notranslate"><span class="pre">action_space</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FilterObservation</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FilterObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">filter_keys=None</span></code></p></td>
 <td><p>If you have an environment that returns dictionaries as observations, but you would like to only keep a subset of the entries, you can use this wrapper. <code class="docutils literal notranslate"><span class="pre">filter_keys</span></code> should be an iterable that contains the keys that are kept in the new observation. If it is <code class="docutils literal notranslate"><span class="pre">None</span></code>, all keys will be kept and the wrapper has no effect.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FlattenObservation</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FlattenObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code></p></td>
 <td><p>Observation wrapper that flattens the observation</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FrameStack</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FrameStack</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">num_stack</span></code>, <code class="docutils literal notranslate"><span class="pre">lz4_compress=False</span></code></p></td>
 <td><p>Observation wrapper that stacks the observations in a rolling manner. For example, if the number of stacks is 4, then the returned observation contains the most recent 4 observations. Observations will be objects of type <code class="docutils literal notranslate"><span class="pre">LazyFrames</span></code>. This object can be cast to a numpy array via <code class="docutils literal notranslate"><span class="pre">np.asarray(obs)</span></code>. You can also access single frames or slices via the usual <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> syntax. If <code class="docutils literal notranslate"><span class="pre">lz4_compress</span></code> is set to true, the <code class="docutils literal notranslate"><span class="pre">LazyFrames</span></code> object will compress the frames internally (losslessly). The first observation (i.e. the one returned by <code class="docutils literal notranslate"><span class="pre">reset</span></code>) will consist of <code class="docutils literal notranslate"><span class="pre">num_stack</span></code> repitions of the first frame.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GrayScaleObservation</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GrayScaleObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">keep_dim=False</span></code></p></td>
 <td><p>Convert the image observation from RGB to gray scale. By default, the resulting observation will be 2-dimensional. If <code class="docutils literal notranslate"><span class="pre">keep_dim</span></code> is set to true, a singleton dimension will be added (i.e. the observations are of shape AxBx1).</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NormalizeReward</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NormalizeReward</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">gamma=0.99</span></code>, <code class="docutils literal notranslate"><span class="pre">epsilon=1e-8</span></code></p></td>
 <td><p>This wrapper will normalize immediate rewards s.t. their exponential moving average has a fixed variance. <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> is a stability parameter and <code class="docutils literal notranslate"><span class="pre">gamma</span></code> is the discount factor that is used in the exponential moving average. The exponential moving average will have variance <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">-</span> <span class="pre">gamma)**2</span></code>. The scaling depends on past trajectories and rewards will not be scaled correctly if the wrapper was newly instantiated or the policy was changed recently.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">NormalizeObservation</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">NormalizeObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">epsilon=1e-8</span></code></p></td>
 <td><p>This wrapper will normalize observations s.t. each coordinate is centered with unit variance. The normalization depends on past trajectories and observations will not be normalized correctly if the wrapper was newly instantiated or the policy was changed recently. <code class="docutils literal notranslate"><span class="pre">epsilon</span></code> is a stability parameter that is used when scaling the observations.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OrderEnforcing</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OrderEnforcing</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code></p></td>
 <td><p>This will produce an error if <code class="docutils literal notranslate"><span class="pre">step</span></code> is called before an initial <code class="docutils literal notranslate"><span class="pre">reset</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PixelObservationWrapper</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PixelObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">pixels_only=True</span></code>, <code class="docutils literal notranslate"><span class="pre">render_kwargs=None</span></code>, <code class="docutils literal notranslate"><span class="pre">pixel_keys=("pixels",)</span></code></p></td>
 <td><p>Augment observations by pixel values obtained via <code class="docutils literal notranslate"><span class="pre">render</span></code>. You can specify whether the original observations should be discarded entirely or be augmented by setting <code class="docutils literal notranslate"><span class="pre">pixels_only</span></code>. Also, you can provide keyword arguments for <code class="docutils literal notranslate"><span class="pre">render</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RecordEpisodeStatistics</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RecordEpisodeStatistics</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">deque_size=100</span></code></p></td>
 <td><p>This will keep track of cumulative rewards and episode lengths. At the end of an episode, the statistics of the episode will be added to <code class="docutils literal notranslate"><span class="pre">info</span></code>. Moreover, the rewards and episode lengths are stored in buffers that can be accessed via <code class="docutils literal notranslate"><span class="pre">wrapped_env.return_queue</span></code> and <code class="docutils literal notranslate"><span class="pre">wrapped_env.length_queue</span></code> respectively. The size of these buffers can be set via <code class="docutils literal notranslate"><span class="pre">deque_size</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RecordVideo</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RecordVideo</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">video_folder:</span> <span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">episode_trigger:</span> <span class="pre">Callable[[int],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">step_trigger:</span> <span class="pre">Callable[[int],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">video_length:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">name_prefix:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">"rl-video"</span></code></p></td>
 <td><p>This wrapper will record videos of rollouts. The results will be saved in the folder specified via <code class="docutils literal notranslate"><span class="pre">video_folder</span></code>. You can specify a prefix for the filenames via <code class="docutils literal notranslate"><span class="pre">name_prefix</span></code>. Usually, you only want to record the environment intermittently, say every hundreth episode. To allow this, you can pass <code class="docutils literal notranslate"><span class="pre">episode_trigger</span></code> or <code class="docutils literal notranslate"><span class="pre">step_trigger</span></code>. At most one of these should be passed. These functions will accept an episode index or step index, respectively. They should return a boolean that indicates whether a recording should be started at this point. If neither <code class="docutils literal notranslate"><span class="pre">episode_trigger</span></code>, nor <code class="docutils literal notranslate"><span class="pre">step_trigger</span></code> is passed, a default <code class="docutils literal notranslate"><span class="pre">episode_trigger</span></code> will be used. By default, the recording will be stopped once a done signal has been emitted by the environment. However, you can also create recordings of fixed length (possibly spanning several episodes) by passing a strictly positive value for <code class="docutils literal notranslate"><span class="pre">video_length</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RescaleAction</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RescaleAction</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ActionWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">min_action</span></code>, <code class="docutils literal notranslate"><span class="pre">max_action</span></code></p></td>
 <td><p>Rescales the continuous action space of the environment to a range [<code class="docutils literal notranslate"><span class="pre">min_action</span></code>, <code class="docutils literal notranslate"><span class="pre">max_action</span></code>], where <code class="docutils literal notranslate"><span class="pre">min_action</span></code> and <code class="docutils literal notranslate"><span class="pre">max_action</span></code> are numpy arrays or floats.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ResizeObservation</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ResizeObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span></code></p></td>
 <td><p>This wrapper works on environments with image observations (or more generally observations of shape AxBxC) and resizes the observation to the shape given by the tuple <code class="docutils literal notranslate"><span class="pre">shape</span></code>. The argument <code class="docutils literal notranslate"><span class="pre">shape</span></code> may also be an integer. In that case, the observation is scaled to a square of sidelength <code class="docutils literal notranslate"><span class="pre">shape</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TimeAwareObservation</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TimeAwareObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code></p></td>
 <td><p>Augment the observation with current time step in the trajectory (by appending it to the observation). This can be useful to ensure that things stay Markov. Currently it only works with one-dimensional observation spaces.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">max_episode_steps=None</span></code></p></td>
 <td><p>Probably the most useful wrapper in Gym. This wrapper will emit a done signal if the speciefied number of steps is exceeded in an episode. In order to be able to distinguish termination and truncation, you need to check <code class="docutils literal notranslate"><span class="pre">info</span></code>. If it does not contain the key <code class="docutils literal notranslate"><span class="pre">"TimeLimit.truncated"</span></code>, the environment did not reach the timelimit. Otherwise, <code class="docutils literal notranslate"><span class="pre">info["TimeLimit.truncated"]</span></code> will be true if the episode was terminated because of the time limit.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TransformObservation</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TransformObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">f</span></code></p></td>
 <td><p>This wrapper will apply <code class="docutils literal notranslate"><span class="pre">f</span></code> to observations</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TransformReward</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TransformReward</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.RewardWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">f</span></code></p></td>
 <td><p>This wrapper will apply <code class="docutils literal notranslate"><span class="pre">f</span></code> to rewards</p></td>
@@ -662,10 +667,7 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 <li><a class="reference internal" href="#actionwrapper">ActionWrapper</a></li>
 <li><a class="reference internal" href="#observationwrapper">ObservationWrapper</a></li>
 <li><a class="reference internal" href="#rewardwrapper">RewardWrapper</a></li>
-<li><a class="reference internal" href="#autoresetwrapper">AutoResetWrapper</a><ul>
-<li><a class="reference internal" href="#warning">Warning</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#autoresetwrapper">AutoResetWrapper</a></li>
 <li><a class="reference internal" href="#general-wrappers">General Wrappers</a></li>
 <li><a class="reference internal" href="#available-wrappers">Available Wrappers</a></li>
 </ul>
