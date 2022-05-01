@@ -259,7 +259,7 @@ the available modes and difficulty levels for different Atari games:
 | YarsRevenge      | `[0, 32, 64, 96]`                               | `0`            |
 | Zaxxon           | `[0, 8, 16, 24]`                                | `0`            |
 
-: * Each game also has a valid difficulty for the opposing AI, which has a different range depending on the game. These values can have a range of 0 - n, where n can be found at [the ALE documentation](https://github.com/mgbellemare/Arcade-Learning-Environment/blob/master/docs/games.md)
+> Each game also has a valid difficulty for the opposing AI, which has a different range depending on the game. These values can have a range of 0 - n, where n can be found at [the ALE documentation](https://github.com/mgbellemare/Arcade-Learning-Environment/blob/master/docs/games.md)
 
 ### References
 
