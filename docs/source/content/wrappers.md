@@ -131,28 +131,28 @@ class ClipReward(gym.RewardWrapper):
 
 Some users may want a wrapper which will automatically reset its wrapped environment when its wrapped environment reaches the done state. An advantage of this environment is that it will never produce undefined behavior as standard gym environments do when stepping beyond the done state. 
 
-When calling step causes self.env.step() to return done,
-self.env.reset() is called,
-and the return format of self.step() is as follows:
+When calling step causes `self.env.step()` to return `done=True`,
+`self.env.reset()` is called,
+and the return format of `self.step()` is as follows:
 
 ```python
 new_obs, terminal_reward, terminal_done, info
 ```
 
-new_obs is the first observation after calling self.env.reset(),
+`new_obs` is the first observation after calling `self.env.reset()`,
 
-terminal_reward is the reward after calling self.env.step(),
-prior to calling self.env.reset()
+`terminal_reward` is the reward after calling `self.env.step()`,
+prior to calling `self.env.reset()`
 
-terminal_done is always True
+`terminal_done` is always `True`
 
-info is a dict containing all the keys from the info dict returned by
-the call to self.env.reset(), with an additional key "terminal_observation"
-containing the observation returned by the last call to self.env.step()
-and "terminal_info" containing the info dict returned by the last call
-to self.env.step().
+`info` is a dict containing all the keys from the info dict returned by
+the call to `self.env.reset()`, with additional keys `terminal_observation`
+containing the observation returned by the last call to `self.env.step()`
+and `terminal_info` containing the info dict returned by the last call
+to `self.env.step()`.
 
-If done is not true when self.env.step() is called, self.step() returns
+If `done` is not true when `self.env.step()` is called, `self.step()` returns
 
 ```python
 obs, reward, done, info
@@ -160,7 +160,7 @@ obs, reward, done, info
 as normal.
 
 
-The AutoResetWrapper is not applied by default when calling gym.make(), but can be applied by setting the optional autoreset argument to True:
+The AutoResetWrapper is not applied by default when calling `gym.make()`, but can be applied by setting the optional `autoreset` argument to `True`:
 
 ```python
     env = gym.make("CartPole-v1", autoreset=True)
@@ -173,16 +173,16 @@ The AutoResetWrapper can also be applied using its constructor:
 ```
 
 
-### Warning
+```{note}
 When using the  AutoResetWrapper to collect rollouts, note
-that the when self.env.step() returns done, a
-new observation from after calling self.env.reset() is returned
-by self.step() alongside the terminal reward and done state from the
+that the when `self.env.step()` returns `done`, a
+new observation from after calling `self.env.reset()` is returned
+by `self.step()` alongside the terminal reward and done state from the
 previous episode . If you need the terminal state from the previous
-episode, you need to retrieve it via the the "terminal_observation" key
+episode, you need to retrieve it via the the `terminal_observation` key
 in the info dict. Make sure you know what you're doing if you
 use this wrapper!
-
+```
 
 
 ## General Wrappers
@@ -224,6 +224,7 @@ It is *not* sufficient to use a `RewardWrapper` in this case!
 | Name                      | Type                     | Arguments                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |---------------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `AtariPreprocessing`      | `gym.Wrapper`            | `env: gym.Env`, `noop_max: int = 30`, `frame_skip: int = 4`, `screen_size: int = 84`, `terminal_on_life_loss: bool = False`, `grayscale_obs: bool = True`, `grayscale_newaxis: bool = False`, `scale_obs: bool = False`  | Implements the best practices from Machado et al. (2018), "Revisiting the Arcade Learning Environment: Evaluation Protocols and Open Problems for General Agents" but will be deprecated soon.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `AutoResetWrapper`          | `gym.Wrapper`            | `env`                                                                                                                                                                                                                    | The wrapped environment will automatically reset when the done state is reached. Make sure you read the documentation before using this wrapper!|
 | `ClipAction`              | `gym.ActionWrapper`      | `env`                                                                                                                                                                                                                    | Clip the continuous action to the valid bound specified by the environment's `action_space`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | `FilterObservation`       | `gym.ObservationWrapper` | `env`, `filter_keys=None`                                                                                                                                                                                                | If you have an environment that returns dictionaries as observations, but you would like to only keep a subset of the entries, you can use this wrapper. `filter_keys` should be an iterable that contains the keys that are kept in the new observation. If it is `None`, all keys will be kept and the wrapper has no effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 
 | `FlattenObservation`      | `gym.ObservationWrapper` | `env`                                                                                                                                                                                                                    | Observation wrapper that flattens the observation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
