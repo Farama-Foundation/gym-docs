@@ -2,6 +2,7 @@
 
 ```{toctree}
 :hidden:
+adventure
 air_raid
 alien
 amidar
@@ -20,6 +21,7 @@ carnival
 centipede
 chopper_command
 crazy_climber
+defender
 demon_attack
 double_dunk
 elevator_action
@@ -29,6 +31,7 @@ freeway
 frostbite
 gopher
 gravitar
+hero
 ice_hockey
 jamesbond
 journey_escape

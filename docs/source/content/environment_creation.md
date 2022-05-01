@@ -30,7 +30,7 @@ gym-examples/
     envs/
       __init__.py
       grid_world.py
-     wrappers/
+    wrappers/
       __init__.py
       relative_position.py
  ```
@@ -44,7 +44,7 @@ target on the grid that has been placed randomly at the beginning of the episode
 - Observations provide the location of the target and agent. 
 - There are 4 actions in our environment, corresponding to the movements "right", "up", "left", and "down".  
 - A done signal is issued as soon as the agent has navigated to the grid cell where the target is located.
-- Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1
+- Rewards are binary and sparse, meaning that the immediate reward is always zero, unless the agent has reached the target, then it is 1.
 
 An episode in this environment (with `size=5`) might look like this:
 
@@ -91,7 +91,7 @@ class GridWorldEnv(gym.Env):
             }
         )
 
-        # We have 4 actions, corresponding to "right", "up", "left", "down", "right"
+        # We have 4 actions, corresponding to "right", "up", "left", "down"
         self.action_space = spaces.Discrete(4)
 
         """
@@ -181,7 +181,7 @@ accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computi
         self._agent_location = np.clip(
             self._agent_location + direction, 0, self.size - 1
         )
-        # An episode is done iff the agent has reached the target
+        # An episode is done if the agent has reached the target
         done = np.array_equal(self._agent_location, self._target_location)
         reward = 1 if done else 0  # Binary sparse rewards
         observation = self._get_obs()
@@ -270,7 +270,7 @@ been called with `mode="human"` and we might need to close the window that has b
             pygame.quit()
 ```
 
-In other environments `close`might also close files that were opened
+In other environments `close` might also close files that were opened
 or release other resources. You shouldn't interact with the environment after having called `close`.
 
 
@@ -287,6 +287,8 @@ register(
     max_episode_steps=300,
 )
 ```
+The environment ID consists of three components, two of which are optional: an optional namespace (here: `gym_examples`), a mandatory name (here: `GridWorld`) and an optional but recommended version (here: v0). It might have also been registered as `GridWorld-v0` (the recommended approach), `GridWorld` or `gym_examples/GridWorld`, and the appropriate ID should then be used during environment creation.
+
 The keyword argument `max_episode_steps=300` will ensure that GridWorld environments that are instantiated via `gym.make`
 will be wrapped in a `TimeLimit` wrapper (see [the wrapper documentation](https://www.gymlibrary.ml/pages/wrappers/index) 
 for more information). A done signal will then be produced if the agent has reached the target *or* 300 steps have been
@@ -300,6 +302,7 @@ Apart from `id` and `entrypoint`, you may pass the following additional keyword 
 | `nondeterministic`  | `bool`   | `False`  | Whether this environment is non-deterministic even after seeding                                          |
 | `max_episode_steps` | `int`    | `None`   | The maximum number of steps that an episode can consist of. If not `None`, a `TimeLimit` wrapper is added |
 | `order_enforce`     | `bool`   | `True`   | Whether to wrap the environment in an `OrderEnforcing` wrapper                                            |
+| `autoreset`         | `bool`   | `False`  | Whether to wrap the environment in an `AutoResetWrapper`                                                  |
 | `kwargs`            | `dict`   | `{}`     | The default kwargs to pass to the environment class                                                       |
 
 Most of these keywords (except for `max_episode_steps`, `order_enforce` and `kwargs`) do not alter the behavior 
