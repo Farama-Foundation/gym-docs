@@ -82,7 +82,7 @@ if __name__ == "__main__":
 While standard Gym environments take a single action and return a single observation (with a reward, and boolean indicating termination), vectorized environments take a *batch of actions* as input, and return a *batch of observations*, together with an array of rewards and booleans indicating if the episode ended in each environment copy.
 
 
-
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     array([[ 0.00198895, -0.00569421, -0.03170966,  0.00126465],
@@ -104,9 +104,11 @@ While standard Gym environments take a single action and return a single observa
     array([False, False, False])
     >>> infos
     ({}, {}, {})
+```
 
 Vectorized environments are compatible with any environment, regardless of the action and observation spaces (e.g. container spaces like `gym.spaces.Dict`, or any arbitrarily nested spaces). In particular, vectorized environments can automatically batch the observations returned by `VectorEnv.reset` and `VectorEnv.step` for any standard Gym `Space` (e.g. `gym.spaces.Box`, `gym.spaces.Discrete`, `gym.spaces.Dict`, or any nested structure thereof). Similarly, vectorized environments can take batches of actions from any standard Gym `Space`.
 
+```python
     >>> class DictEnv(gym.Env):
     ...     observation_space = gym.spaces.Dict({
     ...         "position": gym.spaces.Box(-1., 1., (3,), np.float32),
@@ -145,10 +147,11 @@ Vectorized environments are compatible with any environment, regardless of the a
     "velocity": array([[ 0.23626241, -0.0616814 ],
                        [-0.4057572 , -0.4875375 ],
                        [ 0.26341468,  0.72282314]], dtype=float32)}
-
+```
 
 The environment copies inside a vectorized environment automatically call `gym.Env.reset` at the end of an episode. In the following example, the episode of the 3rd copy ends after 2 steps (the agent fell in a hole), and the paralle environment gets reset (observation ``0``).
 
+```python
     >>> envs = gym.vector.make("FrozenLake-v1", num_envs=3, is_slippery=False)
     >>> envs.reset()
     array([0, 0, 0])
@@ -159,34 +162,41 @@ The environment copies inside a vectorized environment automatically call `gym.E
     array([False, False,  True])
     >>> observations
     array([8, 2, 0])
+```
 
 ## Observation & Action spaces
 Like any Gym environment, vectorized environments contain the two properties `VectorEnv.observation_space` and `VectorEnv.action_space` to specify the observation and action spaces of the environments. Since vectorized environments operate on multiple environment copies, where the actions taken and observations returned by all of the copies are batched together, the observation and action *spaces* are batched as well so that the input actions are valid elements of `VectorEnv.action_space`, and the observations are valid elements of `VectorEnv.observation_space`.
 
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.observation_space
     Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
     >>> envs.action_space
     MultiDiscrete([2 2 2])
+```
 
 In order to appropriately batch the observations and actions in vectorized environments, the observation and action spaces of all of the copies are required to be identical.
 
+```python
     >>> envs = gym.vector.AsyncVectorEnv([
     ...     lambda: gym.make("CartPole-v1"),
     ...     lambda: gym.make("MountainCar-v0")
     ... ])
     RuntimeError: Some environments have an observation space different from `Box([-4.8 ...], [4.8 ...], (4,), float32)`. In order to batch observations, the observation spaces from all environments must be equal.
+```
 
 However, sometimes it may be handy to have access to the observation and action spaces of a particular copy, and not the batched spaces. You can access those with the properties `VectorEnv.single_observation_space` and `VectorEnv.single_action_space` of the vectorized environment.
 
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.single_observation_space
     Box([-4.8 ...], [4.8 ...], (4,), float32)
     >>> envs.single_action_space
     Discrete(2)
-
+```
 This is convenient, for example, if you instantiate a policy. In the following example, we use `VectorEnv.single_observation_space` and `VectorEnv.single_action_space` to define the weights of a linear policy. Note that, thanks to the vectorized environment, we can apply the policy directly to the whole batch of observations with a single call to `policy`.
 
+```python
     >>> from gym.spaces.utils import flatdim
     >>> from scipy.special import softmax
 
@@ -202,13 +212,14 @@ This is convenient, for example, if you instantiate a policy. In the following e
     >>> observations = envs.reset()
     >>> actions = policy(weights, observations).argmax(axis=1)
     >>> observations, rewards, dones, infos = envs.step(actions)
-
+```
 
 ## Intermediate Usage
 
 ### Shared memory
 `AsyncVectorEnv` runs each environment copy inside an individual process. At each call to `AsyncVectorEnv.reset` or `AsyncVectorEnv.step`, the observations of all of the parallel environments are sent back to the main process. To avoid expensive transfers of data between processes, especially with large observations (e.g. images), `AsyncVectorEnv` uses a shared memory by default (``shared_memory=True``) that processes can write to and read from at minimal cost. This can increase the throughout of the vectorized environment.
 
+```python
     >>> env_fns = [lambda: gym.make("BreakoutNoFrameskip-v4")] * 5
 
     >>> envs = gym.vector.AsyncVectorEnv(env_fns, shared_memory=False)
@@ -220,10 +231,12 @@ This is convenient, for example, if you instantiate a policy. In the following e
     >>> envs.reset()
     >>> %timeit envs.step(envs.action_space.sample())
     1.36 ms ± 15.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+```
 
 ### Exception handling
 Because sometimes things may not go as planned, the exceptions raised in any given environment copy are re-raised in the vectorized environment, even when the copy run in parallel with `AsyncVectorEnv`. This way, you can choose how to handle these exceptions yourself (with ``try ... except``).
 
+```python
     >>> class ErrorEnv(gym.Env):
     ...     observation_space = gym.spaces.Box(-1., 1., (2,), np.float32)
     ...     action_space = gym.spaces.Discrete(2)
@@ -244,7 +257,7 @@ Because sometimes things may not go as planned, the exceptions raised in any giv
     ERROR: Shutting down Worker-2.
     ERROR: Raising the last exception back to the main process.
     ValueError: An error occurred.
-
+```
 
 ## Advanced Usage
 
