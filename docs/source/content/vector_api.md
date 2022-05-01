@@ -349,19 +349,21 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
 .. automethod:: gym.vector.VectorEnv.reset
 ``` 
 
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     array([[-0.04456399,  0.04653909,  0.01326909, -0.02099827],
             [ 0.03073904,  0.00145001, -0.03088818, -0.03131252],
             [ 0.03468829,  0.01500225,  0.01230312,  0.01825218]],
             dtype=float32)
-
+```
 ### Step
 
 ```{eval-rst}
 .. automethod:: gym.vector.VectorEnv.step
 ``` 
 
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.reset()
     >>> actions = np.array([1, 0, 1])
@@ -378,6 +380,7 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
     array([False, False, False])
     >>> infos
     ({}, {}, {})
+```
 
 ### Seed
 
@@ -385,6 +388,7 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
 .. automethod:: gym.vector.VectorEnv.seed
 ``` 
 
+```python
     >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
     >>> envs.seed([1, 3, 5])
     >>> envs.reset()
@@ -392,3 +396,4 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
             [ 0.02281231, -0.02475473,  0.02306162,  0.02072129],
             [-0.03742824, -0.02316945,  0.0148571 ,  0.0296055 ]],
             dtype=float32)
+```
