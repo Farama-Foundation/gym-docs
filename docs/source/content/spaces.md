@@ -1,6 +1,8 @@
 # Spaces
 
-Spaces define the valid format of observation and action spaces for an environment. 
+```{eval-rst}
+.. autoclass:: gym.spaces.Space
+```
 
 ## General Functions
 
