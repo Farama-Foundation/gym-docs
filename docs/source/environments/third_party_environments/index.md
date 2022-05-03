@@ -255,7 +255,7 @@ An environment for online recommendation, where customers are learned from Taoba
 
 Multi-objective RL (MORL) gym environments, where the reward is a numpy array of different (possibly conflicting) objectives.
 
-###[ABIDES-Gym](https://github.com/jpmorganchase/abides-jpmc-public)
+### [ABIDES-Gym](https://github.com/jpmorganchase/abides-jpmc-public)
 
 ABIDES (Agent Based Interactive Discrete Event Simulator) is a message based multi agent discrete event based simulator. It enables simulating complex multi-agent systems for different domains. ABIDES has already supported work in [equity markets simulation](https://arxiv.org/abs/1904.12066) and [federated learning](https://dl.acm.org/doi/abs/10.1145/3383455.3422562).  
  
