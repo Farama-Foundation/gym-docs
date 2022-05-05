@@ -261,4 +261,4 @@ ABIDES (Agent Based Interactive Discrete Event Simulator) is a message based mul
 
 [ABIDES-Gym](https://arxiv.org/abs/2110.14771) (ACM-ICAIF21 publication) is a new wrapper built around ABIDES that enables using ABIDES simulator as an Open AI Gym environment for the training of Reinforcement Learning algorithms.
 
-We apply this work by specifically using the markets extension of ABIDES, ABIDES-Markets, and develop two benchmark financial markets OpenAI Gym environments for training daily investor and execution agents. As a result, these two environments describe classic financial problems with a complex interactive market behavior response to the experimental agent's action.
+We apply this work by specifically using the markets extension of ABIDES/ABIDES-Markets and developing two benchmark financial market Gym environments for training daily investor and execution agents. As a result, these two environments describe classic financial problems with a complex interactive market behavior response to the experimental agent's action.
