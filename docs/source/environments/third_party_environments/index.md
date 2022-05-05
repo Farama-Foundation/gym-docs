@@ -254,3 +254,11 @@ An environment for online recommendation, where customers are learned from Taoba
 ### [ mo-gym](https://github.com/LucasAlegre/mo-gym)
 
 Multi-objective RL (MORL) gym environments, where the reward is a numpy array of different (possibly conflicting) objectives.
+
+### [ABIDES-Gym](https://github.com/jpmorganchase/abides-jpmc-public)
+
+ABIDES (Agent Based Interactive Discrete Event Simulator) is a message based multi agent discrete event based simulator. It enables simulating complex multi-agent systems for different domains. ABIDES has already supported work in [equity markets simulation](https://arxiv.org/abs/1904.12066) and [federated learning](https://dl.acm.org/doi/abs/10.1145/3383455.3422562).  
+
+[ABIDES-Gym](https://arxiv.org/abs/2110.14771) (ACM-ICAIF21 publication) is a new wrapper built around ABIDES that enables using ABIDES simulator as an Open AI Gym environment for the training of Reinforcement Learning algorithms.
+
+We apply this work by specifically using the markets extension of ABIDES/ABIDES-Markets and developing two benchmark financial market Gym environments for training daily investor and execution agents. As a result, these two environments describe classic financial problems with a complex interactive market behavior response to the experimental agent's action.
