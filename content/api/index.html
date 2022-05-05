@@ -333,9 +333,9 @@ we want to reset the environment to a new initial state. The environment issues 
 Not all done signals must be triggered by a “catastrophic failure”: Sometimes we also want to issue a done signal after
 a fixed number of timesteps, or if the agent has succeeded in completing some task in the environment.</p>
 <p>Let’s see what the agent-environment loop looks like in Gym.
-This example will run an instance of <code class="docutils literal notranslate"><span class="pre">LunarLander-v2</span></code> environment for 1000 timesteps, rendering the environment at each step. You should see a window pop up rendering the environment</p>
+This example will run an instance of <code class="docutils literal notranslate"><span class="pre">LunarLander-v2</span></code> environment for 1000 timesteps. Since we pass <code class="docutils literal notranslate"><span class="pre">render_mode="human"</span></code>, you should see a window pop up rendering the environment.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"LunarLander-v2"</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"LunarLander-v2"</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">"human"</span><span class="p">)</span>
 <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">return_info</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
