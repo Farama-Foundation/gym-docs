@@ -38,6 +38,7 @@ content/spaces
 content/vector_api
 content/tutorials
 content/wrappers
+content/handling_time_limits
 Github <https://github.com/openai/gym>
 ```
 
