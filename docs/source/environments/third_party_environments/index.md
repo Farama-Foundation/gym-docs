@@ -265,4 +265,4 @@ We apply this work by specifically using the markets extension of ABIDES/ABIDES-
 
 ### [gym-saturation](https://github.com/inpefess/gym-saturation)
 
-An environment for guiding automated theorem provers based on saturation algorithm (e.g. [Vampire](https://github.com/vprover/vampire)).
+An environment for guiding automated theorem provers based on saturation algorithms (e.g. [Vampire](https://github.com/vprover/vampire)).
