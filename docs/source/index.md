@@ -47,6 +47,7 @@ Github <https://github.com/openai/gym>
 
 environments/atari/index
 environments/mujoco/index
+environments/robotics/index
 environments/toy_text/index
 environments/classic_control/index
 environments/box2d/index
