@@ -1,6 +1,8 @@
 # Spaces
 
-Spaces define the valid format of observation and action spaces for an environment. 
+```{eval-rst}
+.. autoclass:: gym.spaces.Space
+```
 
 ## General Functions
 
@@ -28,7 +30,8 @@ Each space implements the following functions:
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.Box
-
+    
+    .. automethod:: __init__
     .. automethod:: is_bounded
     .. automethod:: sample
 ``` 
@@ -37,6 +40,8 @@ Each space implements the following functions:
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.Discrete
+ 
+    .. autoclass:: __init__
 ``` 
 
 ## MultiBinary
@@ -49,18 +54,24 @@ Each space implements the following functions:
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.MultiDiscrete
+
+    .. automethod:: __init__
 ``` 
 
 ## Dict
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.Dict
+
+    .. automethod:: __init__
 ``` 
 
 ## Tuple
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.Tuple
+
+    .. automethod:: __init__
 ``` 
 
 ## Utility Functions
