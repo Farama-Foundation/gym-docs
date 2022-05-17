@@ -36,6 +36,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.githubpages",
     "myst_parser",
+    "sphinx_reredirects"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -69,3 +70,8 @@ html_static_path = ["_static"]
 html_css_files = [
     "css/custom.css",
 ]
+
+redirects = {
+    "docs/": "",
+    "envs/": ""
+}
