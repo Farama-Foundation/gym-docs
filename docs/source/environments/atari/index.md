@@ -1,6 +1,6 @@
 # Atari
 
-A set of Atari 2600 environment simulated through Stella and the Arcade Learning Environment
+A set of Atari 2600 environment simulated through Stella and the Arcade Learning Environment.
 
 ```{toctree}
 :hidden:
