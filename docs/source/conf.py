@@ -24,7 +24,6 @@ author = ""
 # The full version, including alpha/beta/rc tags
 release = gym_version
 
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
