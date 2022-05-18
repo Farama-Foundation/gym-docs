@@ -1,5 +1,7 @@
 # Atari
 
+A set of Atari 2600 environment simulated through Stella and the Arcade Learning Environment
+
 ```{toctree}
 :hidden:
 adventure
@@ -101,9 +103,9 @@ If you use v0 or v4 and the environment is initialized via `make`, the action sp
 any effect. Thus, the enumeration of the actions will differ. The action space can be expanded to the full 
 legal space by passing the keyword argument `full_action_space=True` to `make`.
 
-The reduced action space of an Atari environment may depend on the "option" of the game. You can specify the option by providing 
+The reduced action space of an Atari environment may depend on the "flavor" of the game. You can specify the flavor by providing 
 the arguments `difficulty` and `mode` when constructing the environment. This documentation only provides details on the
-action spaces of default option choices. 
+action spaces of default flavor choices. 
 
 ### Observation Space
 The observation issued by an Atari environment may be:
@@ -136,7 +138,7 @@ Atari environment. However, legal values for `mode` and `difficulty` depend on t
 - **mode**: `int`. Game mode, see [[2]](#2). Legal values depend on the environment and are listed in the table above.
 
 - **difficulty**: `int`. Difficulty of the game, see [[2]](#2). Legal values depend on the environment and are listed in 
-the table above. Together with `mode`, this determines the "option" of the game.
+the table above. Together with `mode`, this determines the "flavor" of the game.
 
 - **obs_type**: `str`. This argument determines what observations are returned by the environment. Its values are:
 	- ram: The 128 Bytes of RAM are returned
@@ -191,10 +193,10 @@ are in the "ALE" namespace. The suffix "-ram" is still available. Thus, we get t
 |ALE/Amidar-v5                 |`"rgb"`   |`5`        |`0.25`                     |`True`             |
 |ALE/Amidar-ram-v5             |`"ram"`   |`5`        |`0.25`                     |`True`             |
 
-### Options
+### Flavors
 Some games allow the user to set a difficulty level and a game mode. Different modes/difficulties may have different
 game dynamics and (if a reduced action space is used) different action spaces. We follow the convention of [[2]](#2) and
-refer to the combination of difficulty level and game mode as an option of a game. The following table shows
+refer to the combination of difficulty level and game mode as an flavor of a game. The following table shows
 the available modes and difficulty levels for different Atari games:
 
 | Environment      | Valid Modes                                     | Default Mode   |
