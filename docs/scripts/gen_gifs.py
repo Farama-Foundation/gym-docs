@@ -14,10 +14,10 @@ from tqdm import tqdm
 # snake to camel case: https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
 pattern = re.compile(r'(?<!^)(?=[A-Z])')
 # how many steps to record an env for
-LENGTH = 100
+LENGTH = 300
 # iterate through all envspecs
-for env_spec in tqdm(gym.envs.registry.all()):
-    if "Taxi" not in env_spec.id:
+for env_spec in tqdm(gym.envs.registry.values()):
+    if "Cliff" not in env_spec.id:
         continue
 
     if any(x in str(env_spec.id) for x in kill_strs):
@@ -26,11 +26,9 @@ for env_spec in tqdm(gym.envs.registry.all()):
     # try catch in case missing some installs
     try:
         env = gym.make(env_spec.id)
-
         # the gym needs to be rgb renderable
         if not ("rgb_array" in env.metadata["render_modes"]):
             continue
-        
         # extract env name/type from class path
         split = str(type(env.unwrapped)).split(".")
 
@@ -40,7 +38,7 @@ for env_spec in tqdm(gym.envs.registry.all()):
         env_name = pattern.sub('_', env_name).lower()
         # get the env type (e.g. Box2D)
         env_type = split[2]
-
+        
         # if its an atari gym
         # if env_spec.id[0:3] == "ALE":
         #     continue
@@ -53,6 +51,7 @@ for env_spec in tqdm(gym.envs.registry.all()):
         # if not path.isdir(v_path):
         #     mkdir(v_path)
             
+        
         # obtain and save LENGTH frames worth of steps
         frames = []
         while True:
@@ -74,7 +73,7 @@ for env_spec in tqdm(gym.envs.registry.all()):
 
         # make sure video doesnt already exist
         # if not os.path.exists(os.path.join(v_path, env_name + ".gif")):
-        frames[0].save(os.path.join("..", "source", "videos",  env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
+        frames[0].save(os.path.join("..", "source", "_static", "videos", env_type, env_name + ".gif"), save_all=True, append_images=frames[1:], duration=50, loop=0)
         print("Saved: " + env_name)
 
     except BaseException as e:
