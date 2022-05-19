@@ -10,8 +10,12 @@ Initializing environments is very easy in Gym and can be done via:
 
 ```python
 import gym
-env = gym.make('CartPole-v0')
+env = gym.make('CartPole-v1')
 ```
+
+Warning: In v0.24, for all initialised environments, the gym environment checker is run checking the environment 
+implementation matches the API. For more information on the environment checker see [section](#API-checker).
+To disable the feature, use `gym.make('CartPole-v1', disable_env_checker=True)`. 
 
 ## Interacting with the Environment
 Gym implements the classic "agent-environment loop":
@@ -137,6 +141,7 @@ environment to ensure reproducible samples.
 ```  
 
 ## Checking API-Conformity
+<a name="API-checker"></a>
 If you have implemented a custom environment and would like to perform a sanity check to make sure that it conforms to 
 the API, you can run: 
 
