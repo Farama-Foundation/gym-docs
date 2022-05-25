@@ -16,8 +16,8 @@ This environment is part of the <a href='..'>Box2D environments</a>. Please read
 |---|---|
 | Action Space | Discrete(4) |
 | Observation Shape | (8,) |
-| Observation High | [inf inf inf inf inf inf inf inf] |
-| Observation Low | [-inf -inf -inf -inf -inf -inf -inf -inf] |
+| Observation High | [1.5  1.5  5.   5.   3.14 5.   1.   1.  ] |
+| Observation Low | [-1.5  -1.5  -5.   -5.   -3.14 -5.   -0.   -0.  ] |
 | Import | `gym.make("LunarLander-v2")` | 
 
 
@@ -81,11 +81,38 @@ To use to the _continuous_ environment, you need to specify the
 `continuous=True` argument like below:
 ```python
 import gym
-env = gym.make("LunarLander-v2", continuous=True)
+env = gym.make(
+    "LunarLander-v2",
+    continuous: bool = False,
+    gravity: float = -10.0,
+    enable_wind: bool = False,
+    wind_power: float = 15.0,
+    turbulence_power: float = 1.5,
+)
 ```
+If `continuous=True` is passed, continuous actions (corresponding to the throttle of the engines) will be used and the
+action space will be `Box(-1, +1, (2,), dtype=np.float32)`.
+The first coordinate of an action determines the throttle of the main engine, while the second
+coordinate specifies the throttle of the lateral boosters.
+Given an action `np.array([main, lateral])`, the main engine will be turned off completely if
+`main < 0` and the throttle scales affinely from 50% to 100% for `0 <= main <= 1` (in particular, the
+main engine doesn't work  with less than 50% power).
+Similarly, if `-0.5 < lateral < 0.5`, the lateral boosters will not fire at all. If `lateral < -0.5`, the left
+booster will fire, and if `lateral > 0.5`, the right booster will fire. Again, the throttle scales affinely
+from 50% to 100% between -1 and -0.5 (and 0.5 and 1, respectively).
+
+`gravity` dictates the gravitational constant, this is bounded to be within 0 and -12.
+
+If `enable_wind=True` is passed, there will be wind effects applied to the lander.
+The wind is generated using the function `tanh(sin(2 k (t+C)) + sin(pi k (t+C)))`.
+`k` is set to 0.01.
+`C` is sampled randomly between -9999 and 9999.
+
+`wind_power` dictates the maximum magnitude of linear wind applied to the craft. The recommended value for `wind_power` is between 0.0 and 20.0.
+`turbulence_power` dictates the maximum magnitude of rotational wind applied to the craft. The recommended value for `turbulence_power` is between 0.0 and 2.0.
 
 ### Version History
-- v2: Count energy spent
+- v2: Count energy spent and in v0.24, added turbulance with wind power and turbulence_power parameters
 - v1: Legs contact with ground added in state vector; contact with ground
     give +10 reward points, and -10 if then lose contact; reward
     renormalized to 200; harder initial random push.

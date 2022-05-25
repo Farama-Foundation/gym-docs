@@ -16,8 +16,8 @@ This environment is part of the <a href='..'>Box2D environments</a>. Please read
 |---|---|
 | Action Space | Box(-1.0, 1.0, (4,), float32) |
 | Observation Shape | (24,) |
-| Observation High | [inf inf inf inf inf inf inf inf inf inf inf inf inf inf inf inf inf inf  inf inf inf inf inf inf] |
-| Observation Low | [-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf] |
+| Observation High | [3.14 5.   5.   5.   3.14 5.   3.14 5.   5.   3.14 5.   3.14 5.   5.  1.   1.   1.   1.   1.   1.   1.   1.   1.   1.  ] |
+| Observation Low | [-3.14 -5.   -5.   -5.   -3.14 -5.   -3.14 -5.   -0.   -3.14 -5.   -3.14  -5.   -0.   -1.   -1.   -1.   -1.   -1.   -1.   -1.   -1.   -1.   -1.  ] |
 | Import | `gym.make("BipedalWalker-v3")` | 
 
 

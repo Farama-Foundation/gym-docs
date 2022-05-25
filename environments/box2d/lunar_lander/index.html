@@ -327,10 +327,10 @@
 <td><p>(8,)</p></td>
 </tr>
 <tr class="row-even"><td><p>Observation High</p></td>
-<td><p>[inf inf inf inf inf inf inf inf]</p></td>
+<td><p>[1.5  1.5  5.   5.   3.14 5.   1.   1.  ]</p></td>
 </tr>
 <tr class="row-odd"><td><p>Observation Low</p></td>
-<td><p>[-inf -inf -inf -inf -inf -inf -inf -inf]</p></td>
+<td><p>[-1.5  -1.5  -5.   -5.   -3.14 -5.   -0.   -0.  ]</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.make("LunarLander-v2")</span></code></p></td>
@@ -405,14 +405,38 @@ them is destroyed.</p>
 <p>To use to the <em>continuous</em> environment, you need to specify the
 <code class="docutils literal notranslate"><span class="pre">continuous=True</span></code> argument like below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"LunarLander-v2"</span><span class="p">,</span> <span class="n">continuous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span>
+    <span class="s2">"LunarLander-v2"</span><span class="p">,</span>
+    <span class="n">continuous</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">gravity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">,</span>
+    <span class="n">enable_wind</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">wind_power</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">15.0</span><span class="p">,</span>
+    <span class="n">turbulence_power</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
+<p>If <code class="docutils literal notranslate"><span class="pre">continuous=True</span></code> is passed, continuous actions (corresponding to the throttle of the engines) will be used and the
+action space will be <code class="docutils literal notranslate"><span class="pre">Box(-1,</span> <span class="pre">+1,</span> <span class="pre">(2,),</span> <span class="pre">dtype=np.float32)</span></code>.
+The first coordinate of an action determines the throttle of the main engine, while the second
+coordinate specifies the throttle of the lateral boosters.
+Given an action <code class="docutils literal notranslate"><span class="pre">np.array([main,</span> <span class="pre">lateral])</span></code>, the main engine will be turned off completely if
+<code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> and the throttle scales affinely from 50% to 100% for <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">main</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code> (in particular, the
+main engine doesn’t work  with less than 50% power).
+Similarly, if <code class="docutils literal notranslate"><span class="pre">-0.5</span> <span class="pre">&lt;</span> <span class="pre">lateral</span> <span class="pre">&lt;</span> <span class="pre">0.5</span></code>, the lateral boosters will not fire at all. If <code class="docutils literal notranslate"><span class="pre">lateral</span> <span class="pre">&lt;</span> <span class="pre">-0.5</span></code>, the left
+booster will fire, and if <code class="docutils literal notranslate"><span class="pre">lateral</span> <span class="pre">&gt;</span> <span class="pre">0.5</span></code>, the right booster will fire. Again, the throttle scales affinely
+from 50% to 100% between -1 and -0.5 (and 0.5 and 1, respectively).</p>
+<p><code class="docutils literal notranslate"><span class="pre">gravity</span></code> dictates the gravitational constant, this is bounded to be within 0 and -12.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">enable_wind=True</span></code> is passed, there will be wind effects applied to the lander.
+The wind is generated using the function <code class="docutils literal notranslate"><span class="pre">tanh(sin(2</span> <span class="pre">k</span> <span class="pre">(t+C))</span> <span class="pre">+</span> <span class="pre">sin(pi</span> <span class="pre">k</span> <span class="pre">(t+C)))</span></code>.
+<code class="docutils literal notranslate"><span class="pre">k</span></code> is set to 0.01.
+<code class="docutils literal notranslate"><span class="pre">C</span></code> is sampled randomly between -9999 and 9999.</p>
+<p><code class="docutils literal notranslate"><span class="pre">wind_power</span></code> dictates the maximum magnitude of linear wind applied to the craft. The recommended value for <code class="docutils literal notranslate"><span class="pre">wind_power</span></code> is between 0.0 and 20.0.
+<code class="docutils literal notranslate"><span class="pre">turbulence_power</span></code> dictates the maximum magnitude of rotational wind applied to the craft. The recommended value for <code class="docutils literal notranslate"><span class="pre">turbulence_power</span></code> is between 0.0 and 2.0.</p>
 </section>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>v2: Count energy spent</p></li>
+<li><p>v2: Count energy spent and in v0.24, added turbulance with wind power and turbulence_power parameters</p></li>
 <li><p>v1: Legs contact with ground added in state vector; contact with ground
 give +10 reward points, and -10 if then lose contact; reward
 renormalized to 200; harder initial random push.</p></li>

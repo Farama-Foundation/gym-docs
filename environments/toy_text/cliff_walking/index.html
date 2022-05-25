@@ -360,8 +360,10 @@ An episode terminates when the agent reaches the goal.</p>
 </section>
 <section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
-<p>There are 3x12 + 1 possible states. In fact, the agent cannot be at the cliff, nor at the goal (as this results the end of episode). They remain all the positions of the first 3 rows plus the bottom-left cell.
-The observation is simply the current position encoded as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html">flattened index</a>.</p>
+<p>There are 3x12 + 1 possible states. In fact, the agent cannot be at the cliff, nor at the goal
+(as this results the end of episode). They remain all the positions of the first 3 rows plus the bottom-left cell.
+The observation is simply the current position encoded as
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html">flattened index</a>.</p>
 </section>
 <section id="reward">
 <h2>Reward<a class="headerlink" href="#reward" title="Permalink to this headline">#</a></h2>

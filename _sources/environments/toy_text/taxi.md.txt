@@ -62,6 +62,12 @@ end of an episode. Four additional states can be observed right after a
 successful episodes, when both the passenger and the taxi are at the destination.
 This gives a total of 404 reachable discrete states.
 
+Each state space is represented by the tuple:
+(taxi_row, taxi_col, passenger_location, destination)
+
+An observation is an integer that encodes the corresponding state.
+The state tuple can then be decoded with the "decode" method.
+
 Passenger locations:
 - 0: R(ed)
 - 1: G(reen)
@@ -79,15 +85,6 @@ Destinations:
 - -1 per step unless other reward is triggered.
 - +20 delivering passenger.
 - -10  executing "pickup" and "drop-off" actions illegally.
-
-### Rendering
-- blue: passenger
-- magenta: destination
-- yellow: empty taxi
-- green: full taxi
-- other letters (R, G, Y and B): locations for passengers and destinations
-state space is represented by:
-(taxi_row, taxi_col, passenger_location, destination)
 
 ### Arguments
 

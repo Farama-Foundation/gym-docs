@@ -339,11 +339,8 @@
 </table></div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
-<p>The easiest continuous control task to learn from pixels - a top-down
-racing environment. Discrete control is reasonable in this environment as
-well; on/off discretization is fine.</p>
-<p>The game is solved when the agent consistently gets 900+ points.
-The generated track is random every episode.</p>
+<p>The easiest control task to learn from pixels - a top-down
+racing environment. The generated track is random every episode.</p>
 <p>Some indicators are shown at the bottom of the window along with the
 state RGB buffer. From left to right: true speed, four ABS sensors,
 steering wheel position, and gyroscope.
@@ -382,12 +379,18 @@ receive -100 reward and die.</p>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
-<p>There are no arguments supported in constructing the environment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lap_complete_percent</span></code> dictates the percentage of tiles that must be visited by
+the agent before a lap is considered complete.</p>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">domain_randomize=True</span></code> enables the domain randomized variant of the environment.
+In this scenario, the background and track colours are different on every reset.</p>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">continuous=False</span></code> converts the environment to use discrete action space.
+The discrete action space has 5 actions: [do nothing, left, right, gas, brake].</p>
 </section>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>v0: Current version</p></li>
+<li><p>v1: Change track completion logic and add domain randomization (0.24.0)</p></li>
+<li><p>v0: Original version</p></li>
 </ul>
 </section>
 <section id="references">

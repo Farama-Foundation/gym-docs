@@ -376,6 +376,10 @@ is at the same location as their destination, as this typically signals the
 end of an episode. Four additional states can be observed right after a
 successful episodes, when both the passenger and the taxi are at the destination.
 This gives a total of 404 reachable discrete states.</p>
+<p>Each state space is represented by the tuple:
+(taxi_row, taxi_col, passenger_location, destination)</p>
+<p>An observation is an integer that encodes the corresponding state.
+The state tuple can then be decoded with the “decode” method.</p>
 <p>Passenger locations:</p>
 <ul class="simple">
 <li><p>0: R(ed)</p></li>
@@ -398,18 +402,6 @@ This gives a total of 404 reachable discrete states.</p>
 <li><p>-1 per step unless other reward is triggered.</p></li>
 <li><p>+20 delivering passenger.</p></li>
 <li><p>-10  executing “pickup” and “drop-off” actions illegally.</p></li>
-</ul>
-</section>
-<section id="rendering">
-<h2>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>blue: passenger</p></li>
-<li><p>magenta: destination</p></li>
-<li><p>yellow: empty taxi</p></li>
-<li><p>green: full taxi</p></li>
-<li><p>other letters (R, G, Y and B): locations for passengers and destinations
-state space is represented by:
-(taxi_row, taxi_col, passenger_location, destination)</p></li>
 </ul>
 </section>
 <section id="arguments">
@@ -491,7 +483,6 @@ state space is represented by:
 <li><a class="reference internal" href="#actions">Actions</a></li>
 <li><a class="reference internal" href="#observations">Observations</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
-<li><a class="reference internal" href="#rendering">Rendering</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#version-history">Version History</a></li>
 </ul>

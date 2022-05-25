@@ -638,8 +638,15 @@
 <span class="sig-prename descclassname"><span class="pre">VectorEnv.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.vector.VectorEnv.reset" title="Permalink to this definition">#</a></dt>
 <dd><p>Reset all parallel environments and return a batch of initial observations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>observations</strong> (element of <a class="reference internal" href="#gym.vector.VectorEnv.observation_space" title="gym.vector.VectorEnv.observation_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observation_space</span></code></a>) – A batch of observations from the vectorized environment.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> – The environment reset seeds</p></li>
+<li><p><strong>return_info</strong> – If to return the info</p></li>
+<li><p><strong>options</strong> – If to return the options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>A batch of observations from the vectorized environment.</strong></p>
 </dd>
 </dl>
 </dd></dl>
@@ -660,15 +667,10 @@
 <dd><p>Take an action for each parallel environment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>actions</strong> (element of <a class="reference internal" href="#gym.vector.VectorEnv.action_space" title="gym.vector.VectorEnv.action_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">action_space</span></code></a>) – Batch of actions.</p>
+<dd class="field-odd"><p><strong>actions</strong> – element of <a class="reference internal" href="#gym.vector.VectorEnv.action_space" title="gym.vector.VectorEnv.action_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">action_space</span></code></a> Batch of actions.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>observations</strong> (element of <a class="reference internal" href="#gym.vector.VectorEnv.observation_space" title="gym.vector.VectorEnv.observation_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observation_space</span></code></a>) – A batch of observations from the vectorized environment.</p></li>
-<li><p><strong>rewards</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>, dtype <code class="xref py py-obj docutils literal notranslate"><span class="pre">np.float_</span></code>) – A vector of rewards from the vectorized environment.</p></li>
-<li><p><strong>dones</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">np.ndarray</span></code>, dtype <code class="xref py py-obj docutils literal notranslate"><span class="pre">np.bool_</span></code>) – A vector whose entries indicate whether the episode has ended.</p></li>
-<li><p><strong>infos</strong> (<em>list of dict</em>) – A list of auxiliary diagnostic information dicts from each parallel environment.</p></li>
-</ul>
+<dd class="field-even"><p><strong>Batch of observations, rewards, done and infos</strong></p>
 </dd>
 </dl>
 </dd></dl>
@@ -699,7 +701,7 @@
 <dd><p>Set the random seed in all parallel environments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>seed</strong> (<em>list of int</em><em>, or </em><em>int</em><em>, </em><em>optional</em>) – Random seed for each parallel environment. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is a list of
+<dd class="field-odd"><p><strong>seed</strong> – Random seed for each parallel environment. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is a list of
 length <code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, then the items of the list are chosen as random
 seeds. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an int, then each parallel environment uses the random
 seed <code class="docutils literal notranslate"><span class="pre">seed</span> <span class="pre">+</span> <span class="pre">n</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the index of the parallel environment

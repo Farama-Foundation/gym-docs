@@ -427,15 +427,17 @@ two rotational joint angles as well as their angular velocities:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">theta1</span></code> is the angle of the first joint, where an angle of 0 indicates the first link is pointing directly
 downwards.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">theta2</span></code> is <em><strong>relative to the angle of the first link.</strong></em> An angle of 0 corresponds to having the same angle between the
-two links.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theta2</span></code> is <em><strong>relative to the angle of the first link.</strong></em>
+An angle of 0 corresponds to having the same angle between the two links.</p></li>
 </ul>
 <p>The angular velocities of <code class="docutils literal notranslate"><span class="pre">theta1</span></code> and <code class="docutils literal notranslate"><span class="pre">theta2</span></code> are bounded at ±4π, and ±9π rad/s respectively.
 A state of <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">...,</span> <span class="pre">...]</span></code> indicates that both links are pointing downwards.</p>
 </section>
 <section id="rewards">
 <h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
-<p>The goal is to have the free end reach a designated target height in as few steps as possible, and as such all steps that do not reach the goal incur a reward of -1. Achieving the target height results in termination with a reward of 0. The reward threshold is -100.</p>
+<p>The goal is to have the free end reach a designated target height in as few steps as possible,
+and as such all steps that do not reach the goal incur a reward of -1.
+Achieving the target height results in termination with a reward of 0. The reward threshold is -100.</p>
 </section>
 <section id="starting-state">
 <h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this headline">#</a></h2>
@@ -458,7 +460,8 @@ uniformly between -0.1 and 0.1. This means both links are pointing downwards wit
 </pre></div>
 </div>
 <p>By default, the dynamics of the acrobot follow those described in Sutton and Barto’s book
-<a class="reference external" href="http://incompleteideas.net/book/11/node4.html">Reinforcement Learning: An Introduction</a>. However, a <code class="docutils literal notranslate"><span class="pre">book_or_nips</span></code> parameter can be modified to change the pendulum dynamics to those described
+<a class="reference external" href="http://incompleteideas.net/book/11/node4.html">Reinforcement Learning: An Introduction</a>.
+However, a <code class="docutils literal notranslate"><span class="pre">book_or_nips</span></code> parameter can be modified to change the pendulum dynamics to those described
 in the original <a class="reference external" href="https://papers.nips.cc/paper/1995/hash/8f1d43620bc6bb580df6e80b0dc05c48-Abstract.html">NeurIPS paper</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># To change the dynamics as described above</span>
 <span class="n">env</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">book_or_nips</span> <span class="o">=</span> <span class="s1">'nips'</span>
@@ -487,7 +490,9 @@ sine and cosine of each angle instead.</p></li>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Sutton, R. S. (1996). Generalization in Reinforcement Learning: Successful Examples Using Sparse Coarse Coding. In D. Touretzky, M. C. Mozer, &amp; M. Hasselmo (Eds.), Advances in Neural Information Processing Systems (Vol. 8). MIT Press. https://proceedings.neurips.cc/paper/1995/file/8f1d43620bc6bb580df6e80b0dc05c48-Paper.pdf</p></li>
+<li><p>Sutton, R. S. (1996). Generalization in Reinforcement Learning: Successful Examples Using Sparse Coarse Coding.
+In D. Touretzky, M. C. Mozer, &amp; M. Hasselmo (Eds.), Advances in Neural Information Processing Systems (Vol. 8).
+MIT Press. https://proceedings.neurips.cc/paper/1995/file/8f1d43620bc6bb580df6e80b0dc05c48-Paper.pdf</p></li>
 <li><p>Sutton, R. S., Barto, A. G. (2018 ). Reinforcement Learning: An Introduction. The MIT Press.</p></li>
 </ul>
 </section>
