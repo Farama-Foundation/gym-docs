@@ -18,7 +18,7 @@ This environment is part of the <a href='..'>Mujoco environments</a>. Please rea
 | Observation Shape | (11,) |
 | Observation High | [inf inf inf inf inf inf inf inf inf inf inf] |
 | Observation Low | [-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf] |
-| Import | `gym.make("Reacher-v2")` | 
+| Import | `gym.make("Reacher-v4")` | 
 
 
 ### Description
@@ -45,19 +45,19 @@ Observations consist of
 
 The observation is a `ndarray` with shape `(11,)` where the elements correspond to the following:
 
-| Num | Observation           | Min                  | Max                | Name (in corresponding XML file) | Joint| Unit |
-|-----|-----------------------|----------------------|--------------------|----------------------|--------------------|--------------------|
-| 0   | cosine of the angle of the first arm                                                            | -Inf                 | Inf                | cos(joint0) | hinge | unitless |
-| 1   | cosine of the angle of the second arm                                                           | -Inf                 | Inf                | cos(joint1) | hinge | unitless |
-| 2   | sine of the angle of the first arm                                                              | -Inf                 | Inf                | cos(joint0) | hinge | unitless |
-| 3   | sine of the angle of the second arm                                                             | -Inf                 | Inf                | cos(joint1) | hinge | unitless |
-| 4   |  x-coorddinate of the target                                                                    | -Inf                 | Inf                | target_x | slide | position (m) |
-| 5   |  y-coorddinate of the target                                                                    | -Inf                 | Inf                | target_y | slide | position (m) |
-| 6   | angular velocity of the first arm                                                               | -Inf                 | Inf                | joint0 | hinge | angular velocity (rad/s) |
-| 7   | angular velocity of the second arm                                                              | -Inf                 | Inf                | joint1 | hinge | angular velocity (rad/s) |
-| 8   | x-value of position_fingertip - position_target                                                 | -Inf                 | Inf                | NA | slide | position (m) |
-| 9   | y-value of position_fingertip - position_target                                                 | -Inf                 | Inf                | NA | slide | position (m) |
-| 10  | z-value of position_fingertip - position_target (0 since reacher is 2d and z is same for both)  | -Inf                 | Inf                | NA | slide | position (m) |
+| Num | Observation                                                                                    | Min  | Max | Name (in corresponding XML file) | Joint | Unit                     |
+|-----|------------------------------------------------------------------------------------------------|------|-----|----------------------------------|-------|--------------------------|
+| 0   | cosine of the angle of the first arm                                                           | -Inf | Inf | cos(joint0)                      | hinge | unitless                 |
+| 1   | cosine of the angle of the second arm                                                          | -Inf | Inf | cos(joint1)                      | hinge | unitless                 |
+| 2   | sine of the angle of the first arm                                                             | -Inf | Inf | cos(joint0)                      | hinge | unitless                 |
+| 3   | sine of the angle of the second arm                                                            | -Inf | Inf | cos(joint1)                      | hinge | unitless                 |
+| 4   | x-coordinate of the target                                                                     | -Inf | Inf | target_x                         | slide | position (m)             |
+| 5   | y-coordinate of the target                                                                     | -Inf | Inf | target_y                         | slide | position (m)             |
+| 6   | angular velocity of the first arm                                                              | -Inf | Inf | joint0                           | hinge | angular velocity (rad/s) |
+| 7   | angular velocity of the second arm                                                             | -Inf | Inf | joint1                           | hinge | angular velocity (rad/s) |
+| 8   | x-value of position_fingertip - position_target                                                | -Inf | Inf | NA                               | slide | position (m)             |
+| 9   | y-value of position_fingertip - position_target                                                | -Inf | Inf | NA                               | slide | position (m)             |
+| 10  | z-value of position_fingertip - position_target (0 since reacher is 2d and z is same for both) | -Inf | Inf | NA                               | slide | position (m)             |
 
 
 Most Gym environments just return the positions and velocity of the
@@ -66,12 +66,12 @@ reacher the state is created by combining only certain elements of the
 position and velocity, and performing some function transformations on them.
 If one is to read the `.xml` for reacher then they will find 4 joints:
 
-| Num | Observation                 | Min      | Max      | Name (in corresponding XML file) | Joint | Unit               |
-|-----|-----------------------------|----------|----------|----------------------------------|-------|--------------------|
-| 0   | angle of the first arm      | -Inf     | Inf      | joint0                           | hinge | angle (rad)        |
-| 1   | angle of the second arm     | -Inf     | Inf      | joint1                           | hinge | angle (rad)        |
-| 2   | x-coordinate of the target  | -Inf     | Inf      | target_x                         | slide | position (m)       |
-| 3   | y-coordinate of the target  | -Inf     | Inf      | target_y                         | slide | position (m)       |
+| Num | Observation                | Min  | Max | Name (in corresponding XML file) | Joint | Unit         |
+|-----|----------------------------|----- |-----|----------------------------------|-------|--------------|
+| 0   | angle of the first arm     | -Inf | Inf | joint0                           | hinge | angle (rad)  |
+| 1   | angle of the second arm    | -Inf | Inf | joint1                           | hinge | angle (rad)  |
+| 2   | x-coordinate of the target | -Inf | Inf | target_x                         | slide | position (m) |
+| 3   | y-coordinate of the target | -Inf | Inf | target_y                         | slide | position (m) |
 
 
 ### Rewards
@@ -123,9 +123,14 @@ env = gym.make('Reacher-v2')
 There is no v3 for Reacher, unlike the robot environments where a v3 and
 beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.
 
+There is a v4 version that uses the mujoco-bindings
+```
+env = gym.make('Reacher-v4')
+```
 
 ### Version History
 
+* v4: all mujoco environments now use the mujoco bindings in mujoco>=2.1.3
 * v2: All continuous control environments now use mujoco_py >= 1.50
 * v1: max_time_steps raised to 1000 for robot based tasks (not including reacher, which has a max_time_steps of 50). Added reward_threshold to environments.
 * v0: Initial versions release (1.0.0)
