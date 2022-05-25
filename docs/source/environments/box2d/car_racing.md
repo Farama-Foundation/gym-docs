@@ -22,12 +22,8 @@ This environment is part of the <a href='..'>Box2D environments</a>. Please read
 
 
 ### Description
-The easiest continuous control task to learn from pixels - a top-down
-racing environment. Discrete control is reasonable in this environment as
-well; on/off discretization is fine.
-
-The game is solved when the agent consistently gets 900+ points.
-The generated track is random every episode.
+The easiest control task to learn from pixels - a top-down
+racing environment. The generated track is random every episode.
 
 Some indicators are shown at the bottom of the window along with the
 state RGB buffer. From left to right: true speed, four ABS sensors,
@@ -61,10 +57,18 @@ outside of the playfield - that is, far off the track, in which case it will
 receive -100 reward and die.
 
 ### Arguments
-There are no arguments supported in constructing the environment.
+`lap_complete_percent` dictates the percentage of tiles that must be visited by
+the agent before a lap is considered complete.
+
+Passing `domain_randomize=True` enables the domain randomized variant of the environment.
+In this scenario, the background and track colours are different on every reset.
+
+Passing `continuous=False` converts the environment to use discrete action space.
+The discrete action space has 5 actions: [do nothing, left, right, gas, brake].
 
 ### Version History
-- v0: Current version
+- v1: Change track completion logic and add domain randomization (0.24.0)
+- v0: Original version
 
 ### References
 - Chris Campbell (2014), http://www.iforce2d.net/b2dtut/top-down-car.
