@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -301,7 +301,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -333,10 +333,194 @@
 <td><p>[-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf]</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("Pusher-v2")</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("Pusher-v4")</span></code></p></td>
 </tr>
 </tbody>
 </table></div>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<p>“Pusher” is a multi-jointed robot arm which is very similar to that of a human.
+The goal is to move a target cylinder (called <em>object</em>) to a goal position using the robot’s end effector (called <em>fingertip</em>).
+The robot consists of shoulder, elbow, forearm, and wrist joints.</p>
+</section>
+<section id="action-space">
+<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
+<p>The action space is a <code class="docutils literal notranslate"><span class="pre">Box(-2,</span> <span class="pre">2,</span> <span class="pre">(7,),</span> <span class="pre">float32)</span></code>. An action <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code> represents the torques applied at the hinge joints.</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Num</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Control Min</p></th>
+<th class="head"><p>Control Max</p></th>
+<th class="head"><p>Name (in corresponding XML file)</p></th>
+<th class="head"><p>Joint</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Rotation of the panning the shoulder</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_shoulder_pan_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Rotation of the shoulder lifting joint</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_shoulder_lift_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Rotation of the shoulder rolling joint</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_upper_arm_roll_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Rotation of hinge joint that flexed the elbow</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_elbow_flex_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Rotation of hinge that rolls the forearm</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_forearm_roll_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Rotation of flexing the wrist</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_wrist_flex_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Rotation of rolling the wrist</p></td>
+<td><p>-2</p></td>
+<td><p>2</p></td>
+<td><p>r_wrist_roll_joint</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="observation-space">
+<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
+<p>Observations consist of</p>
+<ul class="simple">
+<li><p>Angle of rotational joints on the pusher</p></li>
+<li><p>Anglular velocities of rotational joints on the pusher</p></li>
+<li><p>The coordinates of the fingertip of the pusher</p></li>
+<li><p>The coordinates of the object to be moved</p></li>
+<li><p>The coordinates of the goal position</p></li>
+</ul>
+<p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(23,)</span></code> where the elements correspond to the table below.
+An analogy can be drawn to a human arm in order to help understand the state space, with the words flex and roll meaning the
+same as human joints.</p>
+<p>| Num | Observation                                               | Min  | Max | Name (in corresponding XML file) | Joint    | Unit                     |
+|—–|———————————————————–|——|—–|———————————-|—— —|————————–|
+| 0    | Rotation of the panning the shoulder                     | -Inf | Inf | r_shoulder_pan_joint             | hinge    | angle (rad)              |
+| 1    | Rotation of the shoulder lifting joint                   | -Inf | Inf | r_shoulder_lift_joint            | hinge    | angle (rad)              |
+| 2    | Rotation of the shoulder rolling joint                   | -Inf | Inf | r_upper_arm_roll_joint           | hinge    | angle (rad)              |
+| 3    | Rotation of hinge joint that flexed the elbow            | -Inf | Inf | r_elbow_flex_joint               | hinge    | angle (rad)              |
+| 4    | Rotation of hinge that rolls the forearm                 | -Inf | Inf | r_forearm_roll_joint             | hinge    | angle (rad)              |
+| 5    | Rotation of flexing the wrist                            | -Inf | Inf | r_wrist_flex_joint               | hinge    | angle (rad)              |
+| 6    | Rotation of rolling the wrist                            | -Inf | Inf | r_wrist_roll_joint               | hinge    | angle (rad)              |
+| 7    | Rotational velocity of the panning the shoulder          | -Inf | Inf | r_shoulder_pan_joint             | hinge    | angular velocity (rad/s) |
+| 8    | Rotational velocity of the shoulder lifting joint        | -Inf | Inf | r_shoulder_lift_joint            | hinge    | angular velocity (rad/s) |
+| 9    | Rotational velocity of the shoulder rolling joint        | -Inf | Inf | r_upper_arm_roll_joint           | hinge    | angular velocity (rad/s) |
+| 10   | Rotational velocity of hinge joint that flexed the elbow | -Inf | Inf | r_elbow_flex_joint               | hinge    | angular velocity (rad/s) |
+| 11   | Rotational velocity of hinge that rolls the forearm      | -Inf | Inf | r_forearm_roll_joint             | hinge    | angular velocity (rad/s) |
+| 12   | Rotational velocity of flexing the wrist                 | -Inf | Inf | r_wrist_flex_joint               | hinge    | angular velocity (rad/s) |
+| 13   | Rotational velocity of rolling the wrist                 | -Inf | Inf | r_wrist_roll_joint               | hinge    | angular velocity (rad/s) |
+| 14   | x-coordinate of the fingertip of the pusher              | -Inf | Inf | tips_arm                         | slide    | position (m)             |
+| 15   | y-coordinate of the fingertip of the pusher              | -Inf | Inf | tips_arm                         | slide    | position (m)             |
+| 16   | z-coordinate of the fingertip of the pusher              | -Inf | Inf | tips_arm                         | slide    | position (m)             |
+| 17   | x-coordinate of the object to be moved                   | -Inf | Inf | object (obj_slidex)              | slide    | position (m)             |
+| 18   | y-coordinate of the object to be moved                   | -Inf | Inf | object (obj_slidey)              | slide    | position (m)             |
+| 19   | z-coordinate of the object to be moved                   | -Inf | Inf | object                           | cylinder | position (m)             |
+| 20   | x-coordinate of the goal position of the object          | -Inf | Inf | goal (goal_slidex)               | slide    | position (m)             |
+| 21   | y-coordinate of the goal position of the object          | -Inf | Inf | goal (goal_slidey)               | slide    | position (m)             |
+| 22   | z-coordinate of the goal position of the object          | -Inf | Inf | goal                             | sphere   | position (m)             |</p>
+</section>
+<section id="rewards">
+<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
+<p>The reward consists of two parts:</p>
+<ul class="simple">
+<li><p>*reward_near *: This reward is a measure of how far the <em>fingertip</em>
+of the pusher (the unattached end) is from the object, with a more negative
+value assigned for when the pusher’s <em>fingertip</em> is further away from the
+target. It is calculated as the negative vector norm of (position of
+the fingertip - position of target), or <em>-norm(“fingertip” - “target”)</em>.</p></li>
+<li><p>*reward_dist *: This reward is a measure of how far the object is from
+the target goal position, with a more negative value assigned for object is
+further away from the target. It is calculated as the negative vector norm of
+(position of the object - position of goal), or <em>-norm(“object” - “target”)</em>.</p></li>
+<li><p><em>reward_control</em>: A negative reward for penalising the pusher if
+it takes actions that are too large. It is measured as the negative squared
+Euclidean norm of the action, i.e. as <em>- sum(action<sup>2</sup>)</em>.</p></li>
+</ul>
+<p>The total reward returned is <em><strong>reward</strong></em> <em>=</em> <em>reward_dist + 0.1 * reward_ctrl + 0.5 * reward_near</em></p>
+<p>Unlike other environments, Pusher does not allow you to specify weights for the individual reward terms.
+However, <code class="docutils literal notranslate"><span class="pre">info</span></code> does contain the keys <em>reward_dist</em> and <em>reward_ctrl</em>. Thus, if you’d like to weight the terms,
+you should create a wrapper that computes the weighted reward from <code class="docutils literal notranslate"><span class="pre">info</span></code>.</p>
+</section>
+<section id="starting-state">
+<h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this headline">#</a></h2>
+<p>All pusher (not including object and goal) states start in
+(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0). A uniform noise in the range
+[-0.005, 0.005] is added to the velocity attributes only. The velocities of
+the object and goal are permanently set to 0. The object’s x-position is selected uniformly
+between [-0.3, 0] while the y-position is selected uniformly between [-0.2, 0.2], and this
+process is repeated until the vector norm between the object’s (x,y) position and origin is not greater
+than 0.17. The goal always have the same position of (0.45, -0.05, -0.323).</p>
+<p>The default framerate is 5 with each frame lasting for 0.01, giving rise to a <em>dt = 5 * 0.01 = 0.05</em></p>
+</section>
+<section id="episode-termination">
+<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this headline">#</a></h2>
+<p>The episode terminates when any of the following happens:</p>
+<ol class="arabic simple">
+<li><p>The episode duration reaches a 100 timesteps.</p></li>
+<li><p>Any of the state space values is no longer finite.</p></li>
+</ol>
+</section>
+<section id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
+<p>No additional arguments are currently supported (in v2 and lower),
+but modifications can be made to the XML file in the assets folder
+(or by changing the path to a modified XML file in another folder)..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'Pusher-v2'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is no v3 for Pusher, unlike the robot environments where a v3 and
+beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.</p>
+<p>There is a v4 version that uses the mujoco-bindings</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'Pusher-v4'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="version-history">
+<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>v4: all mujoco environments now use the mujoco bindings in mujoco&gt;=2.1.3</p></li>
+<li><p>v2: All continuous control environments now use mujoco_py &gt;= 1.50</p></li>
+<li><p>v1: max_time_steps raised to 1000 for robot based tasks (not including reacher, which has a max_time_steps of 50). Added reward_threshold to environments.</p></li>
+<li><p>v0: Initial versions release (1.0.0)</p></li>
+</ul>
+</section>
 </section>
 
         </article>
@@ -366,8 +550,34 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Pusher</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#action-space">Action Space</a></li>
+<li><a class="reference internal" href="#observation-space">Observation Space</a></li>
+<li><a class="reference internal" href="#rewards">Rewards</a></li>
+<li><a class="reference internal" href="#starting-state">Starting State</a></li>
+<li><a class="reference internal" href="#episode-termination">Episode Termination</a></li>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+<li><a class="reference internal" href="#version-history">Version History</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
