@@ -14,7 +14,7 @@ env = gym.make('CartPole-v1')
 ```
 
 Warning: In v0.24, for all initialised environments, the gym environment checker is run to check whether the environment 
-implementation matches the API. For more information on the environment checker see [section](#API-checker).
+implementation matches the API. For more information on the environment checker, see [section](#API-checker).
 To disable the feature, use `gym.make('CartPole-v1', disable_env_checker=True)`. 
 
 ## Interacting with the Environment
