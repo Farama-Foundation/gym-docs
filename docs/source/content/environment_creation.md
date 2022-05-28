@@ -114,7 +114,7 @@ class GridWorldEnv(gym.Env):
         to ensure that the environment is rendered at the correct framerate in
         human-mode.
         """
-        if render_mode == "human:
+        if render_mode == "human":
             import pygame  # import here to avoid pygame dependency with no render
 
             pygame.init()

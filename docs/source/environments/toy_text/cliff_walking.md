@@ -45,8 +45,10 @@ There are 4 discrete deterministic actions:
 - 3: move left
 
 ### Observations
-There are 3x12 + 1 possible states. In fact, the agent cannot be at the cliff, nor at the goal (as this results the end of episode). They remain all the positions of the first 3 rows plus the bottom-left cell.
-The observation is simply the current position encoded as [flattened index](https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html).
+There are 3x12 + 1 possible states. In fact, the agent cannot be at the cliff, nor at the goal
+(as this results the end of episode). They remain all the positions of the first 3 rows plus the bottom-left cell.
+The observation is simply the current position encoded as
+[flattened index](https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html).
 
 ### Reward
 Each time step incurs -1 reward, and stepping into the cliff incurs -100 reward.

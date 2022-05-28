@@ -19,8 +19,9 @@ This environment is part of the <a href='..'>Toy Text environments</a>. Please r
 | Import | `gym.make("FrozenLake-v1")` | 
 
 
-Frozen lake involves crossing a frozen lake from Start(S) to Goal(G) without falling into any Holes(H) by walking over
-the Frozen(F) lake. The agent may not always move in the intended direction due to the slippery nature of the frozen lake.
+Frozen lake involves crossing a frozen lake from Start(S) to Goal(G) without falling into any Holes(H)
+by walking over the Frozen(F) lake.
+The agent may not always move in the intended direction due to the slippery nature of the frozen lake.
 
 
 ### Action Space

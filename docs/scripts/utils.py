@@ -27,4 +27,4 @@ def trim(docstring):
 # dont want envs which contain these
 kill_strs = ["eterministic", "ALE", "-ram", 
 "Frameskip", "Hard", "LanderContinu", "8x8", "uessing", "otter", "oinflip", "hain",
-"oulette"]
+"oulette", "DomainRandom", "RacingDiscrete"]
