@@ -13,4 +13,4 @@ fetch_slide.md
    :file: index.html
 ```
 
-These environments use the MuJoCo physics simulator.
+There are four Fetch environments: Pick and Place, Push, Reach, and Slide. These environments use the MuJoCo physics simulator. 

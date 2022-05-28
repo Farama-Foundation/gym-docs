@@ -16,8 +16,30 @@ all_envs = [
             "walker2d",
         ],
     },
-    {"id": "robotics", "list": ["fetch_pick_and_place", "fetch_push", "fetch_reach", "fetch_slide"]},
-    {"id": "box2d", "list": ["bipedal_walker", "car_racing", "lunar_lander"]},
+    {
+        "id": "robotics", 
+        "list": [
+            "fetch_pick_and_place", 
+            "fetch_push", 
+            "fetch_reach", 
+            "fetch_slide"
+        ]
+    },
+        {
+            "id": "toy_text", 
+            "list": [
+                "blackjack", 
+                "frozen_lake"
+            ]
+        },
+        {
+            "id": "box2d", 
+            "list": [
+                "bipedal_walker", 
+                "car_racing", 
+                "lunar_lander"
+                ]
+        },
     {
         "id": "classic_control",
         "list": [
