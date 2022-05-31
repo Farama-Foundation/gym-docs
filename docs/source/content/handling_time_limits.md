@@ -43,7 +43,7 @@ This is incorrect in the case of episode ending due to a truncation, where boots
 Currently, gym supplies truncation information through the TimeLimit wrapper which adds `TimeLimit.truncated` key to `info` which is returned by `env.step`. The correct way to handle terminations and truncations now would be, 
 
 ```python
-terminated = done and 'TimeLimit.truncated' not in info
+terminated = done and not info.get('TimeLimit.truncated', False)
 
 vf_target = rew + gamma*(1-terminated)*vf_next_state
 ```
