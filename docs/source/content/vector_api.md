@@ -34,7 +34,7 @@ array([1., 1., 1.])
 >>> dones
 array([False, False, False])
 >>> infos
-({}, {}, {})
+{}
 ```
 
 The function `gym.vector.make` is meant to be used only in basic cases (e.g. running multiple copies of the same registered environment). For any other use-cases, please use either the `SyncVectorEnv` for sequential execution, or `AsyncVectorEnv` for parallel execution. These use-cases may include:
@@ -103,7 +103,7 @@ array([1., 1., 1.])
 >>> dones
 array([False, False, False])
 >>> infos
-({}, {}, {})
+{}
 ```
 
 Vectorized environments are compatible with any environment, regardless of the action and observation spaces (e.g. container spaces like `gym.spaces.Dict`, or any arbitrarily nested spaces). In particular, vectorized environments can automatically batch the observations returned by `VectorEnv.reset` and `VectorEnv.step` for any standard Gym `Space` (e.g. `gym.spaces.Box`, `gym.spaces.Discrete`, `gym.spaces.Dict`, or any nested structure thereof). Similarly, vectorized environments can take batches of actions from any standard Gym `Space`.
@@ -163,6 +163,31 @@ array([False, False,  True])
 >>> observations
 array([8, 2, 0])
 ```
+
+Vectorized environments will return `infos` in the form of a dictionary where each value is an array of length `num_envs` and the _i-th_ value of the array represents the info of the _i-th_ environment.  
+Each `key` of the info is paired with a boolean mask `_key` representing whether or not the _i-th_ environment has data.  
+If the _dtype_ of the returned info is whether `int`, `float`, `bool` or any _dtype_ inherited from `np.number`, an array of the same _dtype_ will be returned. Otherwise, the array will have _dtype_ `object`.  
+
+
+```python
+>>> envs = gym.vector.make("CartPole-v1", num_envs=3)
+>>> observations = envs.reset()
+
+>>> actions = np.array([1, 0, 1])
+>>> observations, rewards, dones, infos = envs.step(actions)
+
+>>> while not any(dones):
+...    observations, rewards, dones, infos = envs.step(actions)
+
+>>> print(dones)
+[False, True, False]
+    
+>>> print(infos)
+{'terminal_observation': array([None,
+       array([-0.11350546, -1.8090094 ,  0.23710881,  2.8017728 ], dtype=float32),
+       None], dtype=object), '_terminal_observation': array([False,  True, False])}
+```
+
 
 ## Observation & Action spaces
 Like any Gym environment, vectorized environments contain the two properties `VectorEnv.observation_space` and `VectorEnv.action_space` to specify the observation and action spaces of the environments. Since vectorized environments operate on multiple environment copies, where the actions taken and observations returned by all of the copies are batched together, the observation and action *spaces* are batched as well so that the input actions are valid elements of `VectorEnv.action_space`, and the observations are valid elements of `VectorEnv.observation_space`.
@@ -379,7 +404,7 @@ array([1., 1., 1.])
 >>> dones
 array([False, False, False])
 >>> infos
-({}, {}, {})
+{}
 ```
 
 ### Seed
