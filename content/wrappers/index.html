@@ -604,6 +604,11 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">f</span></code></p></td>
 <td><p>This wrapper will apply <code class="docutils literal notranslate"><span class="pre">f</span></code> to rewards</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">VectorListInfo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env</span></code></p></td>
+<td><p>This wrapper will convert the info of a vectorized environment from the <code class="docutils literal notranslate"><span class="pre">dict</span></code> format to a <code class="docutils literal notranslate"><span class="pre">list</span></code> of dictionaries where the <em>i-th</em> dictionary contains info of the <em>i-th</em> environment. If using other wrappers that perform operation on info like <code class="docutils literal notranslate"><span class="pre">RecordEpisodeStatistics</span></code>, this need to be the outermost wrapper.</p></td>
+</tr>
 </tbody>
 </table></div>
 </section>

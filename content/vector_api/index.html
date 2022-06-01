@@ -334,7 +334,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dones</span>
 <span class="go">array([False, False, False])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infos</span>
-<span class="go">({}, {}, {})</span>
+<span class="go">{}</span>
 </pre></div>
 </div>
 <p>The function <code class="docutils literal notranslate"><span class="pre">gym.vector.make</span></code> is meant to be used only in basic cases (e.g. running multiple copies of the same registered environment). For any other use-cases, please use either the <code class="docutils literal notranslate"><span class="pre">SyncVectorEnv</span></code> for sequential execution, or <code class="docutils literal notranslate"><span class="pre">AsyncVectorEnv</span></code> for parallel execution. These use-cases may include:</p>
@@ -394,7 +394,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dones</span>
 <span class="go">array([False, False, False])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infos</span>
-<span class="go">({}, {}, {})</span>
+<span class="go">{}</span>
 </pre></div>
 </div>
 <p>Vectorized environments are compatible with any environment, regardless of the action and observation spaces (e.g. container spaces like <code class="docutils literal notranslate"><span class="pre">gym.spaces.Dict</span></code>, or any arbitrarily nested spaces). In particular, vectorized environments can automatically batch the observations returned by <code class="docutils literal notranslate"><span class="pre">VectorEnv.reset</span></code> and <code class="docutils literal notranslate"><span class="pre">VectorEnv.step</span></code> for any standard Gym <code class="docutils literal notranslate"><span class="pre">Space</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">gym.spaces.Box</span></code>, <code class="docutils literal notranslate"><span class="pre">gym.spaces.Discrete</span></code>, <code class="docutils literal notranslate"><span class="pre">gym.spaces.Dict</span></code>, or any nested structure thereof). Similarly, vectorized environments can take batches of actions from any standard Gym <code class="docutils literal notranslate"><span class="pre">Space</span></code>.</p>
@@ -449,6 +449,27 @@
 <span class="go">array([False, False,  True])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span>
 <span class="go">array([8, 2, 0])</span>
+</pre></div>
+</div>
+<p>Vectorized environments will return <code class="docutils literal notranslate"><span class="pre">infos</span></code> in the form of a dictionary where each value is an array of length <code class="docutils literal notranslate"><span class="pre">num_envs</span></code> and the <em>i-th</em> value of the array represents the info of the <em>i-th</em> environment.<br/>
+Each <code class="docutils literal notranslate"><span class="pre">key</span></code> of the info is paired with a boolean mask <code class="docutils literal notranslate"><span class="pre">_key</span></code> representing whether or not the <em>i-th</em> environment has data.<br/>
+If the <em>dtype</em> of the returned info is whether <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> or any <em>dtype</em> inherited from <code class="docutils literal notranslate"><span class="pre">np.number</span></code>, an array of the same <em>dtype</em> will be returned. Otherwise, the array will have <em>dtype</em> <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">dones</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dones</span><span class="p">)</span>
+<span class="go">[False, True, False]</span>
+<span class="go">    </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">infos</span><span class="p">)</span>
+<span class="go">{'terminal_observation': array([None,</span>
+<span class="go">       array([-0.11350546, -1.8090094 ,  0.23710881,  2.8017728 ], dtype=float32),</span>
+<span class="go">       None], dtype=object), '_terminal_observation': array([False,  True, False])}</span>
 </pre></div>
 </div>
 </section>
@@ -689,7 +710,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dones</span>
 <span class="go">array([False, False, False])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infos</span>
-<span class="go">({}, {}, {})</span>
+<span class="go">{}</span>
 </pre></div>
 </div>
 </section>
