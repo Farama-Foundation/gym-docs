@@ -309,6 +309,7 @@
         <article role="main">
           <section id="atari">
 <h1>Atari<a class="headerlink" href="#atari" title="Permalink to this headline">#</a></h1>
+<p>A set of Atari 2600 environment simulated through Stella and the Arcade Learning Environment.</p>
 <div class="toctree-wrapper compound">
 </div>
 <!DOCTYPE html>
@@ -481,9 +482,9 @@
 <p>If you use v0 or v4 and the environment is initialized via <code class="docutils literal notranslate"><span class="pre">make</span></code>, the action space will usually be much smaller since most legal actions don’t have
 any effect. Thus, the enumeration of the actions will differ. The action space can be expanded to the full
 legal space by passing the keyword argument <code class="docutils literal notranslate"><span class="pre">full_action_space=True</span></code> to <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
-<p>The reduced action space of an Atari environment may depend on the flavor of the game. You can specify the flavor by providing
+<p>The reduced action space of an Atari environment may depend on the “flavor” of the game. You can specify the flavor by providing
 the arguments <code class="docutils literal notranslate"><span class="pre">difficulty</span></code> and <code class="docutils literal notranslate"><span class="pre">mode</span></code> when constructing the environment. This documentation only provides details on the
-action spaces of default flavors.</p>
+action spaces of default flavor choices.</p>
 </section>
 <section id="observation-space">
 <h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
@@ -511,355 +512,31 @@ a tuple of two positive integers. If <code class="docutils literal notranslate">
 repeated <code class="docutils literal notranslate"><span class="pre">frameskip</span></code> many times. Otherwise, if <code class="docutils literal notranslate"><span class="pre">frameskip</span></code> is a tuple, the number of skipped frames is chosen uniformly at
 random between <code class="docutils literal notranslate"><span class="pre">frameskip[0]</span></code> (inclusive) and <code class="docutils literal notranslate"><span class="pre">frameskip[1]</span></code> (exclusive) in each environment step.</p>
 </section>
-<section id="flavors">
-<h2>Flavors<a class="headerlink" href="#flavors" title="Permalink to this headline">#</a></h2>
-<p>Some games allow the user to set a difficulty level and a game mode. Different modes/difficulties may have different
-game dynamics and (if a reduced action space is used) different action spaces. We follow the convention of <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a> and
-refer to the combination of difficulty level and game mode as a flavor of a game. The following table shows
-the available modes and difficulty levels for different Atari games:</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Environment</p></th>
-<th class="head"><p>Valid Modes</p></th>
-<th class="head"><p>Valid Difficulties</p></th>
-<th class="head"><p>Default Mode</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Adventure</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>AirRaid</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">...,</span> <span class="pre">8]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Alien</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Amidar</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Assault</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Asterix</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Asteroids</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">31,</span> <span class="pre">128]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Atlantis</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>BankHeist</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">12,</span> <span class="pre">16,</span> <span class="pre">20,</span> <span class="pre">24,</span> <span class="pre">28]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>BattleZone</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>BeamRider</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Berzerk</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">16,</span> <span class="pre">17,</span> <span class="pre">18]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Bowling</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2,</span> <span class="pre">4]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Boxing</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Breakout</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">12,</span> <span class="pre">16,</span> <span class="pre">20,</span> <span class="pre">24,</span> <span class="pre">28,</span> <span class="pre">32,</span> <span class="pre">36,</span> <span class="pre">40,</span> <span class="pre">44]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Carnival</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Centipede</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[22,</span> <span class="pre">86]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">22</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>ChopperCommand</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>CrazyClimber</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Defender</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">...,</span> <span class="pre">9,</span> <span class="pre">16]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>DemonAttack</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>DoubleDunk</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">15]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>ElevatorAction</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Enduro</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>FishingDerby</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Freeway</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">7]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Frostbite</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Gopher</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Gravitar</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">4]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Hero</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">4]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>IceHockey</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Jamesbond</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>JourneyEscape</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Kangaroo</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Krull</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>KungFuMaster</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>MontezumaRevenge</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>MsPacman</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>NameThisGame</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">24,</span> <span class="pre">40]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Phoenix</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Pitfall</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Pong</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Pooyan</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">30,</span> <span class="pre">50,</span> <span class="pre">70]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>PrivateEye</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">4]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Qbert</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Riverraid</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>RoadRunner</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Robotank</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Seaquest</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Skiing</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Solaris</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>SpaceInvaders</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">15]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>StarGunner</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Tennis</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>TimePilot</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Tutankham</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">12]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>UpNDown</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Venture</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>VideoPinball</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>WizardOfWor</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>YarsRevenge</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">32,</span> <span class="pre">64,</span> <span class="pre">96]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Zaxxon</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">8,</span> <span class="pre">16,</span> <span class="pre">24]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-</tr>
-</tbody>
-</table></div>
-</section>
 <section id="common-arguments">
 <h2>Common Arguments<a class="headerlink" href="#common-arguments" title="Permalink to this headline">#</a></h2>
 <p>When initializing Atari environments via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>, you may pass some additional arguments. These work for any
 Atari environment. However, legal values for <code class="docutils literal notranslate"><span class="pre">mode</span></code> and <code class="docutils literal notranslate"><span class="pre">difficulty</span></code> depend on the environment.</p>
-<p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: <code class="docutils literal notranslate"><span class="pre">int</span></code>. Game mode, see <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a>. Legal values depend on the environment and are listed in the table above.</p>
-<p><code class="docutils literal notranslate"><span class="pre">difficulty</span></code>: <code class="docutils literal notranslate"><span class="pre">int</span></code>. Difficulty of the game, see <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a>. Legal values depend on the environment and are listed in
-the table above. Together with <code class="docutils literal notranslate"><span class="pre">mode</span></code>, this determines the “flavor” of the game.</p>
-<p><code class="docutils literal notranslate"><span class="pre">obs_type</span></code>: <code class="docutils literal notranslate"><span class="pre">str</span></code>. This argument determines what observations are returned by the environment:</p>
 <ul class="simple">
-<li><p>“ram”: The 128 Bytes of RAM are returned</p></li>
-<li><p>“rgb”: An RGB rendering of the game is returned</p></li>
-<li><p>“grayscale”: A grayscale rendering is returned</p></li>
+<li><p><strong>mode</strong>: <code class="docutils literal notranslate"><span class="pre">int</span></code>. Game mode, see <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a>. Legal values depend on the environment and are listed in the table above.</p></li>
+<li><p><strong>difficulty</strong>: <code class="docutils literal notranslate"><span class="pre">int</span></code>. Difficulty of the game, see <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a>. Legal values depend on the environment and are listed in
+the table above. Together with <code class="docutils literal notranslate"><span class="pre">mode</span></code>, this determines the “flavor” of the game.</p></li>
+<li><p><strong>obs_type</strong>: <code class="docutils literal notranslate"><span class="pre">str</span></code>. This argument determines what observations are returned by the environment. Its values are:</p>
+<ul>
+<li><p>ram: The 128 Bytes of RAM are returned</p></li>
+<li><p>rgb: An RGB rendering of the game is returned</p></li>
+<li><p>grayscale: A grayscale rendering is returned</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">frameskip</span></code>: <code class="docutils literal notranslate"><span class="pre">int</span></code> or a tuple of two <code class="docutils literal notranslate"><span class="pre">int</span></code>s. This argument controls stochastic frame skipping, as described in the section on stochasticity.</p>
-<p><code class="docutils literal notranslate"><span class="pre">repeat_action_probability</span></code>: <code class="docutils literal notranslate"><span class="pre">float</span></code>. The probability that an action sticks, as described in the section on stochasticity.</p>
-<p><code class="docutils literal notranslate"><span class="pre">full_action_space</span></code>: <code class="docutils literal notranslate"><span class="pre">bool</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the action space consists of all legal actions on the console. Otherwise, the
-action space will be reduced to a subset.</p>
-<p><code class="docutils literal notranslate"><span class="pre">render_mode</span></code>: <code class="docutils literal notranslate"><span class="pre">str</span></code>. Specifies the rendering mode:</p>
-<ul class="simple">
-<li><p>“human”: We’ll interactively display the screen and enable game sounds. This will lock emulation to the ROMs specified FPS</p></li>
-<li><p>“rgb_array”: we’ll return the <code class="docutils literal notranslate"><span class="pre">rgb</span></code> key in step metadata with the current environment RGB frame.</p></li>
+</li>
+<li><p><strong>frameskip</strong>: <code class="docutils literal notranslate"><span class="pre">int</span></code> or a tuple of two <code class="docutils literal notranslate"><span class="pre">int</span></code>s. This argument controls stochastic frame skipping, as described in the section on stochasticity.</p></li>
+<li><p><strong>repeat_action_probability</strong>: <code class="docutils literal notranslate"><span class="pre">float</span></code>. The probability that an action sticks, as described in the section on stochasticity.</p></li>
+<li><p><strong>full_action_space</strong>: <code class="docutils literal notranslate"><span class="pre">bool</span></code>. If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the action space consists of all legal actions on the console. Otherwise, the
+action space will be reduced to a subset.</p></li>
+<li><p><strong>render_mode</strong>: <code class="docutils literal notranslate"><span class="pre">str</span></code>. Specifies the rendering mode. Its values are:</p>
+<ul>
+<li><p>human: We’ll interactively display the screen and enable game sounds. This will lock emulation to the ROMs specified FPS</p></li>
+<li><p>rgb_array: we’ll return the <code class="docutils literal notranslate"><span class="pre">rgb</span></code> key in step metadata with the current environment RGB frame.</p></li>
+</ul>
+</li>
 </ul>
 <blockquote>
 <div><p>It is highly recommended to specify <code class="docutils literal notranslate"><span class="pre">render_mode</span></code> during construction instead of calling <code class="docutils literal notranslate"><span class="pre">env.render()</span></code>.
@@ -978,6 +655,274 @@ are in the “ALE” namespace. The suffix “-ram” is still available. Thus, 
 </tbody>
 </table></div>
 </section>
+<section id="flavors">
+<h2>Flavors<a class="headerlink" href="#flavors" title="Permalink to this headline">#</a></h2>
+<p>Some games allow the user to set a difficulty level and a game mode. Different modes/difficulties may have different
+game dynamics and (if a reduced action space is used) different action spaces. We follow the convention of <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a> and
+refer to the combination of difficulty level and game mode as an flavor of a game. The following table shows
+the available modes and difficulty levels for different Atari games:</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Environment</p></th>
+<th class="head"><p>Valid Modes</p></th>
+<th class="head"><p>Default Mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Adventure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>AirRaid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">...,</span> <span class="pre">8]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Alien</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Amidar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Assault</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Asterix</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Asteroids</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">31,</span> <span class="pre">128]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Atlantis</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>BankHeist</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">12,</span> <span class="pre">16,</span> <span class="pre">20,</span> <span class="pre">24,</span> <span class="pre">28]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>BattleZone</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>BeamRider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Berzerk</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">16,</span> <span class="pre">17,</span> <span class="pre">18]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Bowling</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2,</span> <span class="pre">4]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Boxing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Breakout</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">12,</span> <span class="pre">16,</span> <span class="pre">20,</span> <span class="pre">24,</span> <span class="pre">28,</span> <span class="pre">32,</span> <span class="pre">36,</span> <span class="pre">40,</span> <span class="pre">44]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Carnival</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Centipede</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[22,</span> <span class="pre">86]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">22</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ChopperCommand</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>CrazyClimber</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Defender</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">...,</span> <span class="pre">9,</span> <span class="pre">16]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DemonAttack</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DoubleDunk</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">15]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ElevatorAction</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Enduro</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FishingDerby</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Freeway</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">7]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Frostbite</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gopher</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Gravitar</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">4]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hero</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">4]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>IceHockey</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Jamesbond</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>JourneyEscape</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Kangaroo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Krull</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>KungFuMaster</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>MontezumaRevenge</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MsPacman</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>NameThisGame</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">24,</span> <span class="pre">40]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Phoenix</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Pitfall</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Pong</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Pooyan</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">30,</span> <span class="pre">50,</span> <span class="pre">70]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>PrivateEye</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">4]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Qbert</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Riverraid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>RoadRunner</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Robotank</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Seaquest</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Skiing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Solaris</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SpaceInvaders</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">15]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StarGunner</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">3]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tennis</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TimePilot</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tutankham</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">12]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>UpNDown</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Venture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>VideoPinball</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>WizardOfWor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>YarsRevenge</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">32,</span> <span class="pre">64,</span> <span class="pre">96]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Zaxxon</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">8,</span> <span class="pre">16,</span> <span class="pre">24]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<div><p>Each game also has a valid difficulty for the opposing AI, which has a different range depending on the game. These values can have a range of 0 - n, where n can be found at <a class="reference external" href="https://github.com/mgbellemare/Arcade-Learning-Environment/blob/master/docs/games.md">the ALE documentation</a></p>
+</div></blockquote>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p id="id1"><a id="1">[1]</a>
@@ -1055,9 +1000,9 @@ URL: https://jair.org/index.php/jair/article/view/11182</p>
 <li><a class="reference internal" href="#observation-space">Observation Space</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#stochasticity">Stochasticity</a></li>
-<li><a class="reference internal" href="#flavors">Flavors</a></li>
 <li><a class="reference internal" href="#common-arguments">Common Arguments</a></li>
 <li><a class="reference internal" href="#version-history-and-naming-schemes">Version History and Naming Schemes</a></li>
+<li><a class="reference internal" href="#flavors">Flavors</a></li>
 <li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
