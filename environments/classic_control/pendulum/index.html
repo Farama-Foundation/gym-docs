@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Box2D" href="../../box2d/" /><link rel="prev" title="Mountain Car" href="../mountain_car/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/classic_control/pendulum.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
         <title>Pendulum - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
     
@@ -293,7 +293,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -310,10 +311,11 @@
           <section id="pendulum">
 <h1>Pendulum<a class="headerlink" href="#pendulum" title="Permalink to this headline">#</a></h1>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../../_images/pendulum.gif"><img alt="../../../_images/pendulum.gif" src="../../../_images/pendulum.gif" style="width: 200px;"/></a>
+<a class="reference internal image-reference" href="../../../_images/pendulum.gif"><img alt="../../../_images/pendulum.gif" src="../../../_images/pendulum.gif" style="width: 200px;" /></a>
 </figure>
-<p>This environment is part of the <a href="..">Classic Control environments</a>. Please read that page first for general information.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<p>This environment is part of the <a href='..'>Classic Control environments</a>. Please read that page first for general information.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -333,10 +335,11 @@
 <td><p>[-1. -1. -8.]</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("Pendulum-v1")</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.make(&quot;Pendulum-v1&quot;)</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>The inverted pendulum swingup problem is based on the classic problem in control theory.
@@ -345,7 +348,7 @@ The pendulum starts in a random position and the goal is to apply torque on the 
 into an upright position, with its center of gravity right above the fixed point.</p>
 <p>The diagram below specifies the coordinate system used for the implementation of the pendulum’s
 dynamic equations.</p>
-<p><img alt="Pendulum Coordinate System" src="environments/classic_control/diagrams/pendulum.png"/></p>
+<p><img alt="Pendulum Coordinate System" src="environments/classic_control/diagrams/pendulum.png" /></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x-y</span></code>: cartesian coordinates of the pendulum’s end in meters.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">theta</span></code> : angle in radians.</p></li>
@@ -355,7 +358,8 @@ dynamic equations.</p>
 <section id="action-space">
 <h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
 <p>The action is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(1,)</span></code> representing the torque applied to free end of the pendulum.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Action</p></th>
@@ -370,13 +374,15 @@ dynamic equations.</p>
 <td><p>2.0</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 <section id="observation-space">
 <h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
 <p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(3,)</span></code> representing the x-y coordinates of the pendulum’s free
 end and its angular velocity.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Observation</p></th>
@@ -401,13 +407,14 @@ end and its angular velocity.</p>
 <td><p>8.0</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 <section id="rewards">
 <h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
 <p>The reward function is defined as:</p>
 <p><em>r = -(theta<sup>2</sup> + 0.1 * theta_dt<sup>2</sup> + 0.001 * torque<sup>2</sup>)</em></p>
-<p>where <code class="docutils literal notranslate"><span class="pre">$</span>    <span class="pre">heta$</span></code> is the pendulum’s angle normalized between <em>[-pi, pi]</em> (with 0 being in the upright position).
+<p>where <code class="docutils literal notranslate"><span class="pre">$</span>&#160;&#160;&#160; <span class="pre">heta$</span></code> is the pendulum’s angle normalized between <em>[-pi, pi]</em> (with 0 being in the upright position).
 Based on the above equation, the minimum reward that can be obtained is
 <em>-(pi<sup>2</sup> + 0.1 * 8<sup>2</sup> + 0.001 * 2<sup>2</sup>) = -16.2736044</em>,
 while the maximum reward is zero (pendulum is upright with zero velocity and no torque applied).</p>
@@ -426,7 +433,7 @@ while the maximum reward is zero (pendulum is upright with zero velocity and no 
 <li><p><code class="docutils literal notranslate"><span class="pre">g</span></code>: acceleration of gravity measured in <em>(m s<sup>-2</sup>)</em> used to calculate the pendulum dynamics.
 The default value is g = 10.0 .</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'Pendulum-v1'</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Pendulum-v1&#39;</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Humanoid" href="../humanoid/" /><link rel="prev" title="Hopper" href="../hopper/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/mujoco/humanoid_standup.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
         <title>Humanoid Standup - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
     
@@ -293,7 +293,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -310,10 +311,11 @@
           <section id="humanoid-standup">
 <h1>Humanoid Standup<a class="headerlink" href="#humanoid-standup" title="Permalink to this headline">#</a></h1>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../../_images/humanoid_standup.gif"><img alt="../../../_images/humanoid_standup.gif" src="../../../_images/humanoid_standup.gif" style="width: 200px;"/></a>
+<a class="reference internal image-reference" href="../../../_images/humanoid_standup.gif"><img alt="../../../_images/humanoid_standup.gif" src="../../../_images/humanoid_standup.gif" style="width: 200px;" /></a>
 </figure>
-<p>This environment is part of the <a href="..">Mujoco environments</a>. Please read that page first for general information.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<p>This environment is part of the <a href='..'>Mujoco environments</a>. Please read that page first for general information.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -333,10 +335,11 @@
 <td><p>[-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf  -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf]</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("HumanoidStandup-v4")</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.make(&quot;HumanoidStandup-v4&quot;)</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>This environment is based on the environment introduced by Tassa, Erez and Todorov
@@ -352,32 +355,166 @@ by applying torques on the various hinges.</p>
 <p>The agent take a 17-element vector for actions.</p>
 <p>The action space is a continuous <code class="docutils literal notranslate"><span class="pre">(action,</span> <span class="pre">...)</span></code> all in <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>, where <code class="docutils literal notranslate"><span class="pre">action</span></code>
 represents the numerical torques applied at the hinge joints.</p>
-<p>| Num | Action                                                                             | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit         |
-|—–|————————————————————————————|————-|————-|——————————– -|——-|————–|
-| 0   | Torque applied on the hinge in the y-coordinate of the abdomen                     | -0.4        | 0.4         | hip_1 (front_left_leg)           | hinge | torque (N m) |
-| 1   | Torque applied on the hinge in the z-coordinate of the abdomen                     | -0.4        | 0.4         | angle_1 (front_left_leg)         | hinge | torque (N m) |
-| 2   | Torque applied on the hinge in the x-coordinate of the abdomen                     | -0.4        | 0.4         | hip_2 (front_right_leg)          | hinge | torque (N m) |
-| 3   | Torque applied on the rotor between torso/abdomen and the right hip (x-coordinate) | -0.4        | 0.4         | right_hip_x (right_thigh)        | hinge | torque (N m) |
-| 4   | Torque applied on the rotor between torso/abdomen and the right hip (z-coordinate) | -0.4        | 0.4         | right_hip_z (right_thigh)        | hinge | torque (N m) |
-| 5   | Torque applied on the rotor between torso/abdomen and the right hip (y-coordinate) | -0.4        | 0.4         | right_hip_y (right_thigh)        | hinge | torque (N m) |
-| 6   | Torque applied on the rotor between the right hip/thigh and the right shin         | -0.4        | 0.4         | right_knee                       | hinge | torque (N m) |
-| 7   | Torque applied on the rotor between torso/abdomen and the left hip (x-coordinate)  | -0.4        | 0.4         | left_hip_x (left_thigh)          | hinge | torque (N m) |
-| 8   | Torque applied on the rotor between torso/abdomen and the left hip (z-coordinate)  | -0.4        | 0.4         | left_hip_z (left_thigh)          | hinge | torque (N m) |
-| 9   | Torque applied on the rotor between torso/abdomen and the left hip (y-coordinate)  | -0.4        | 0.4         | left_hip_y (left_thigh)          | hinge | torque (N m) |
-| 10  | Torque applied on the rotor between the left hip/thigh and the left shin           | -0.4        | 0.4         | left_knee                        | hinge | torque (N m) |
-| 11  | Torque applied on the rotor between the torso and right upper arm (coordinate -1)  | -0.4        | 0.4         | right_shoulder1                  | hinge | torque (N m) |
-| 12  | Torque applied on the rotor between the torso and right upper arm (coordinate -2)  | -0.4        | 0.4         | right_shoulder2                  | hinge | torque (N m) |
-| 13  | Torque applied on the rotor between the right upper arm and right lower arm        | -0.4        | 0.4         | right_elbow                      | hinge | torque (N m) |
-| 14  | Torque applied on the rotor between the torso and left upper arm (coordinate -1)   | -0.4        | 0.4         | left_shoulder1                   | hinge | torque (N m) |
-| 15  | Torque applied on the rotor between the torso and left upper arm (coordinate -2)   | -0.4        | 0.4         | left_shoulder2                   | hinge | torque (N m) |
-| 16  | Torque applied on the rotor between the left upper arm and left lower arm          | -0.4        | 0.4         | left_elbow                       | hinge | torque (N m) |</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Num</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Control Min</p></th>
+<th class="head"><p>Control Max</p></th>
+<th class="head"><p>Name (in corresponding XML file)</p></th>
+<th class="head"><p>Joint</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Torque applied on the hinge in the y-coordinate of the abdomen</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>hip_1 (front_left_leg)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Torque applied on the hinge in the z-coordinate of the abdomen</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>angle_1 (front_left_leg)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Torque applied on the hinge in the x-coordinate of the abdomen</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>hip_2 (front_right_leg)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Torque applied on the rotor between torso/abdomen and the right hip (x-coordinate)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_hip_x (right_thigh)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Torque applied on the rotor between torso/abdomen and the right hip (z-coordinate)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_hip_z (right_thigh)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Torque applied on the rotor between torso/abdomen and the right hip (y-coordinate)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_hip_y (right_thigh)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Torque applied on the rotor between the right hip/thigh and the right shin</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_knee</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Torque applied on the rotor between torso/abdomen and the left hip (x-coordinate)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_hip_x (left_thigh)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Torque applied on the rotor between torso/abdomen and the left hip (z-coordinate)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_hip_z (left_thigh)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>Torque applied on the rotor between torso/abdomen and the left hip (y-coordinate)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_hip_y (left_thigh)</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>Torque applied on the rotor between the left hip/thigh and the left shin</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_knee</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>Torque applied on the rotor between the torso and right upper arm (coordinate -1)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_shoulder1</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>Torque applied on the rotor between the torso and right upper arm (coordinate -2)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_shoulder2</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>Torque applied on the rotor between the right upper arm and right lower arm</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>right_elbow</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>Torque applied on the rotor between the torso and left upper arm (coordinate -1)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_shoulder1</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>Torque applied on the rotor between the torso and left upper arm (coordinate -2)</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_shoulder2</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>Torque applied on the rotor between the left upper arm and left lower arm</p></td>
+<td><p>-0.4</p></td>
+<td><p>0.4</p></td>
+<td><p>left_elbow</p></td>
+<td><p>hinge</p></td>
+<td><p>torque (N m)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="observation-space">
 <h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
 <p>The state space consists of positional values of different body parts of the Humanoid,
 followed by the velocities of those individual parts (their derivatives) with all the positions ordered before all the velocities.</p>
 <p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(376,)</span></code> where the elements correspond to the following:</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Observation</p></th>
@@ -766,7 +903,8 @@ followed by the velocities of those individual parts (their derivatives) with al
 <td><p>angular velocity (rad/s)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>Additionally, after all the positional and velocity based values in the table,
 the state_space consists of (in order):</p>
 <ul class="simple">
@@ -776,7 +914,7 @@ and hence adds to another 140 elements in the state space.</p></li>
 <li><p><em>cvel:</em> Center of mass based velocity. It has shape 14 * 6 (<em>nbody * 6</em>) and hence
 adds another 84 elements in the state space</p></li>
 <li><p><em>qfrc_actuator:</em> Constraint force generated as the actuator force. This has shape
-<code class="docutils literal notranslate"><span class="pre">(23,)</span></code> <em>(nv * 1)</em> and hence adds another 23 elements to the state space.</p></li>
+<code class="docutils literal notranslate"><span class="pre">(23,)</span></code>  <em>(nv * 1)</em> and hence adds another 23 elements to the state space.</p></li>
 <li><p><em>cfrc_ext:</em> This is the center of mass based external force on the body.  It has shape
 14 * 6 (<em>nbody * 6</em>) and hence adds to another 84 elements in the state space.
 where <em>nbody</em> stands for the number of bodies in the robot and <em>nv</em> stands for the number
@@ -839,13 +977,13 @@ designed to make it face forward as well.</p>
 <p>No additional arguments are currently supported (in v2 and lower), but
 modifications can be made to the XML file in the assets folder
 (or by changing the path to a modified XML file in another folder)..</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'HumanoidStandup-v2'</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;HumanoidStandup-v2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There is no v3 for HumanoidStandup, unlike the robot environments where a v3
 take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.</p>
 <p>There is a v4 version that uses the mujoco-bindings</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'HumanoidStandup-v4'</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;HumanoidStandup-v4&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

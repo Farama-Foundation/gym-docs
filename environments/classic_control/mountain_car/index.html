@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Pendulum" href="../pendulum/" /><link rel="prev" title="Mountain Car Continuous" href="../mountain_car_continuous/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/classic_control/mountain_car.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
         <title>Mountain Car - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
     
@@ -293,7 +293,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -310,10 +311,11 @@
           <section id="mountain-car">
 <h1>Mountain Car<a class="headerlink" href="#mountain-car" title="Permalink to this headline">#</a></h1>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../../_images/mountain_car.gif"><img alt="../../../_images/mountain_car.gif" src="../../../_images/mountain_car.gif" style="width: 200px;"/></a>
+<a class="reference internal image-reference" href="../../../_images/mountain_car.gif"><img alt="../../../_images/mountain_car.gif" src="../../../_images/mountain_car.gif" style="width: 200px;" /></a>
 </figure>
-<p>This environment is part of the <a href="..">Classic Control environments</a>. Please read that page first for general information.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<p>This environment is part of the <a href='..'>Classic Control environments</a>. Please read that page first for general information.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -333,10 +335,11 @@
 <td><p>[-1.2  -0.07]</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("MountainCar-v0")</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.make(&quot;MountainCar-v0&quot;)</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>The Mountain Car MDP is a deterministic MDP that consists of a car placed stochastically
@@ -358,7 +361,8 @@ This version is the one with discrete actions.</p>
 <section id="observation-space">
 <h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
 <p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(2,)</span></code> where the elements correspond to the following:</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Observation</p></th>
@@ -381,12 +385,14 @@ This version is the one with discrete actions.</p>
 <td><p>position (m)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 <section id="action-space">
 <h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
 <p>There are 3 discrete deterministic actions:</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Observation</p></th>
@@ -411,7 +417,8 @@ This version is the one with discrete actions.</p>
 <td><p>position (m)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 <section id="transition-dynamics">
 <h2>Transition Dynamics:<a class="headerlink" href="#transition-dynamics" title="Permalink to this headline">#</a></h2>
@@ -425,8 +432,7 @@ velocity is clipped to the range <code class="docutils literal notranslate"><spa
 <section id="reward">
 <h2>Reward:<a class="headerlink" href="#reward" title="Permalink to this headline">#</a></h2>
 <p>The goal is to reach the flag placed on top of the right hill as quickly as possible, as such the agent is
-penalised with a reward of -1 for each timestep it isn’t at the goal and is not penalised (reward = 0) for
-when it reaches the goal.</p>
+penalised with a reward of -1 for each timestep.</p>
 </section>
 <section id="starting-state">
 <h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this headline">#</a></h2>
@@ -443,7 +449,7 @@ The starting velocity of the car is always assigned to 0.</p>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'MountainCar-v0'</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;MountainCar-v0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

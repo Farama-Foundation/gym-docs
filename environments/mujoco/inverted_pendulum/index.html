@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Reacher" href="../reacher/" /><link rel="prev" title="Inverted Double Pendulum" href="../inverted_double_pendulum/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/mujoco/inverted_pendulum.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
         <title>Inverted Pendulum - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
     
@@ -293,7 +293,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -310,10 +311,11 @@
           <section id="inverted-pendulum">
 <h1>Inverted Pendulum<a class="headerlink" href="#inverted-pendulum" title="Permalink to this headline">#</a></h1>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../../_images/inverted_pendulum.gif"><img alt="../../../_images/inverted_pendulum.gif" src="../../../_images/inverted_pendulum.gif" style="width: 200px;"/></a>
+<a class="reference internal image-reference" href="../../../_images/inverted_pendulum.gif"><img alt="../../../_images/inverted_pendulum.gif" src="../../../_images/inverted_pendulum.gif" style="width: 200px;" /></a>
 </figure>
-<p>This environment is part of the <a href="..">Mujoco environments</a>. Please read that page first for general information.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<p>This environment is part of the <a href='..'>Mujoco environments</a>. Please read that page first for general information.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -333,10 +335,11 @@
 <td><p>[-inf -inf -inf -inf]</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("InvertedPendulum-v4")</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.make(&quot;InvertedPendulum-v4&quot;)</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>This environment is the cartpole environment based on the work done by
@@ -354,7 +357,8 @@ goal is to balance the pole on the top of the cart by applying forces on the car
 <p>The action space is a continuous <code class="docutils literal notranslate"><span class="pre">(action)</span></code> in <code class="docutils literal notranslate"><span class="pre">[-3,</span> <span class="pre">3]</span></code>, where <code class="docutils literal notranslate"><span class="pre">action</span></code> represents
 the numerical force applied to the cart (with magnitude representing the amount of
 force and sign representing the direction)</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Action</p></th>
@@ -375,7 +379,8 @@ force and sign representing the direction)</p>
 <td><p>Force (N)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 <section id="observation-space">
 <h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
@@ -383,7 +388,8 @@ force and sign representing the direction)</p>
 the pendulum system, followed by the velocities of those individual parts (their derivatives)
 with all the positions ordered before all the velocities.</p>
 <p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(4,)</span></code> where the elements correspond to the following:</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Observation</p></th>
@@ -428,7 +434,8 @@ with all the positions ordered before all the velocities.</p>
 <td><p>angular velocity (rad/s)</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 <section id="rewards">
 <h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
@@ -456,13 +463,13 @@ of [-0.01, 0.01] added to the values for stochasticity.</p>
 <p>No additional arguments are currently supported (in v2 and lower),
 but modifications can be made to the XML file in the assets folder
 (or by changing the path to a modified XML file in another folder).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'InvertedPendulum-v2'</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;InvertedPendulum-v2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There is no v3 for InvertedPendulum, unlike the robot environments where a
 v3 and beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.</p>
 <p>There is a v4 version that uses the mujoco-bindings</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'InvertedPendulum-v4'</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;InvertedPendulum-v4&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

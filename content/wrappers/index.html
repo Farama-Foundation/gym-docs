@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Atari" href="../../environments/atari/" /><link rel="prev" title="Tutorials" href="../tutorials/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/content/wrappers.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
         <title>Wrappers - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     
@@ -293,7 +293,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -316,7 +317,7 @@ also be chained to combine their effects. Most environments that are generated v
 with (possibly optional) parameters to the wrapper’s constructor:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gym</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gym.wrappers</span> <span class="kn">import</span> <span class="n">RescaleAction</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">base_env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"BipedalWalker-v3"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">base_env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;BipedalWalker-v3&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">base_env</span><span class="o">.</span><span class="n">action_space</span>
 <span class="go">Box([-1. -1. -1. -1.], [1. 1. 1. 1.], (4,), float32)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_env</span> <span class="o">=</span> <span class="n">RescaleAction</span><span class="p">(</span><span class="n">base_env</span><span class="p">,</span> <span class="n">min_action</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_action</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -369,8 +370,8 @@ only like to use a finite subset of actions. Then, you might want to implement t
     <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">act</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">disc_to_cont</span><span class="p">[</span><span class="n">act</span><span class="p">]</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"LunarLanderContinuous-v2"</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLanderContinuous-v2&quot;</span><span class="p">)</span>
     <span class="n">wrapped_env</span> <span class="o">=</span> <span class="n">DiscreteActions</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span>
                                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])])</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">action_space</span><span class="p">)</span>         <span class="c1">#Discrete(4)</span>
@@ -385,9 +386,9 @@ it to learning code, you can simply inherit from <code class="docutils literal n
 implement that transformation. The transformation defined in that method must be defined on the base environment’s
 observation space. However, it may take values in a different space. In that case, you need to specify the new
 observation space of the wrapper by setting <code class="docutils literal notranslate"><span class="pre">self._observation_space</span></code> in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of your wrapper.</p>
-<p>For example, you might have a 2D navigation task where the environment returns dictionaries as observations with keys <code class="docutils literal notranslate"><span class="pre">"agent_position"</span></code>
-and <code class="docutils literal notranslate"><span class="pre">"target_position"</span></code>. A common thing to do might be to throw away some degrees of freedom and only consider
-the position of the target relative to the agent, i.e. <code class="docutils literal notranslate"><span class="pre">observation["target_position"]</span> <span class="pre">-</span> <span class="pre">observation["agent_position"]</span></code>.
+<p>For example, you might have a 2D navigation task where the environment returns dictionaries as observations with keys <code class="docutils literal notranslate"><span class="pre">&quot;agent_position&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;target_position&quot;</span></code>. A common thing to do might be to throw away some degrees of freedom and only consider
+the position of the target relative to the agent, i.e. <code class="docutils literal notranslate"><span class="pre">observation[&quot;target_position&quot;]</span> <span class="pre">-</span> <span class="pre">observation[&quot;agent_position&quot;]</span></code>.
 For this, you could implement an observation wrapper like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RelativePosition</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">ObservationWrapper</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
@@ -395,7 +396,7 @@ For this, you could implement an observation wrapper like this:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_observation_space</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="n">low</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">observation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">obs</span><span class="p">[</span><span class="s2">"target"</span><span class="p">]</span> <span class="o">-</span> <span class="n">obs</span><span class="p">[</span><span class="s2">"agent"</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">obs</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">obs</span><span class="p">[</span><span class="s2">&quot;agent&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Among others, Gym provides the observation wrapper <code class="docutils literal notranslate"><span class="pre">TimeAwareObservation</span></code>, which adds information about the index of the timestep
@@ -445,11 +446,11 @@ to <code class="docutils literal notranslate"><span class="pre">self.env.step()<
 </div>
 <p>as normal.</p>
 <p>The AutoResetWrapper is not applied by default when calling <code class="docutils literal notranslate"><span class="pre">gym.make()</span></code>, but can be applied by setting the optional <code class="docutils literal notranslate"><span class="pre">autoreset</span></code> argument to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">,</span> <span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">autoreset</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The AutoResetWrapper can also be applied using its constructor:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">)</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">AutoResetWrapper</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -489,7 +490,7 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 
     <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
         <span class="n">obs</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward_dist_weight</span><span class="o">*</span><span class="n">info</span><span class="p">[</span><span class="s2">"reward_dist"</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward_ctrl_weight</span><span class="o">*</span><span class="n">info</span><span class="p">[</span><span class="s2">"reward_ctrl"</span><span class="p">]</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward_dist_weight</span><span class="o">*</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;reward_dist&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">reward_ctrl_weight</span><span class="o">*</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;reward_ctrl&quot;</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span>
 </pre></div>
 </div>
@@ -500,7 +501,8 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 </section>
 <section id="available-wrappers">
 <h2>Available Wrappers<a class="headerlink" href="#available-wrappers" title="Permalink to this headline">#</a></h2>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
@@ -561,7 +563,7 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PixelObservationWrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">pixels_only=True</span></code>, <code class="docutils literal notranslate"><span class="pre">render_kwargs=None</span></code>, <code class="docutils literal notranslate"><span class="pre">pixel_keys=("pixels",)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">pixels_only=True</span></code>, <code class="docutils literal notranslate"><span class="pre">render_kwargs=None</span></code>, <code class="docutils literal notranslate"><span class="pre">pixel_keys=(&quot;pixels&quot;,)</span></code></p></td>
 <td><p>Augment observations by pixel values obtained via <code class="docutils literal notranslate"><span class="pre">render</span></code>. You can specify whether the original observations should be discarded entirely or be augmented by setting <code class="docutils literal notranslate"><span class="pre">pixels_only</span></code>. Also, you can provide keyword arguments for <code class="docutils literal notranslate"><span class="pre">render</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RecordEpisodeStatistics</span></code></p></td>
@@ -571,7 +573,7 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RecordVideo</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">video_folder:</span> <span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">episode_trigger:</span> <span class="pre">Callable[[int],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">step_trigger:</span> <span class="pre">Callable[[int],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">video_length:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">name_prefix:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">"rl-video"</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">video_folder:</span> <span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">episode_trigger:</span> <span class="pre">Callable[[int],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">step_trigger:</span> <span class="pre">Callable[[int],</span> <span class="pre">bool]</span> <span class="pre">=</span> <span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">video_length:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">name_prefix:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">&quot;rl-video&quot;</span></code></p></td>
 <td><p>This wrapper will record videos of rollouts. The results will be saved in the folder specified via <code class="docutils literal notranslate"><span class="pre">video_folder</span></code>. You can specify a prefix for the filenames via <code class="docutils literal notranslate"><span class="pre">name_prefix</span></code>. Usually, you only want to record the environment intermittently, say every hundreth episode. To allow this, you can pass <code class="docutils literal notranslate"><span class="pre">episode_trigger</span></code> or <code class="docutils literal notranslate"><span class="pre">step_trigger</span></code>. At most one of these should be passed. These functions will accept an episode index or step index, respectively. They should return a boolean that indicates whether a recording should be started at this point. If neither <code class="docutils literal notranslate"><span class="pre">episode_trigger</span></code>, nor <code class="docutils literal notranslate"><span class="pre">step_trigger</span></code> is passed, a default <code class="docutils literal notranslate"><span class="pre">episode_trigger</span></code> will be used. By default, the recording will be stopped once a done signal has been emitted by the environment. However, you can also create recordings of fixed length (possibly spanning several episodes) by passing a strictly positive value for <code class="docutils literal notranslate"><span class="pre">video_length</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RescaleAction</span></code></p></td>
@@ -592,7 +594,7 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.Wrapper</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">env</span></code>, <code class="docutils literal notranslate"><span class="pre">max_episode_steps=None</span></code></p></td>
-<td><p>Probably the most useful wrapper in Gym. This wrapper will emit a done signal if the speciefied number of steps is exceeded in an episode. In order to be able to distinguish termination and truncation, you need to check <code class="docutils literal notranslate"><span class="pre">info</span></code>. If it does not contain the key <code class="docutils literal notranslate"><span class="pre">"TimeLimit.truncated"</span></code>, the environment did not reach the timelimit. Otherwise, <code class="docutils literal notranslate"><span class="pre">info["TimeLimit.truncated"]</span></code> will be true if the episode was terminated because of the time limit.</p></td>
+<td><p>Probably the most useful wrapper in Gym. This wrapper will emit a done signal if the speciefied number of steps is exceeded in an episode. In order to be able to distinguish termination and truncation, you need to check <code class="docutils literal notranslate"><span class="pre">info</span></code>. If it does not contain the key <code class="docutils literal notranslate"><span class="pre">&quot;TimeLimit.truncated&quot;</span></code>, the environment did not reach the timelimit. Otherwise, <code class="docutils literal notranslate"><span class="pre">info[&quot;TimeLimit.truncated&quot;]</span></code> will be true if the episode was terminated because of the time limit.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TransformObservation</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gym.ObservationWrapper</span></code></p></td>
@@ -610,7 +612,8 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 <td><p>This wrapper will convert the info of a vectorized environment from the <code class="docutils literal notranslate"><span class="pre">dict</span></code> format to a <code class="docutils literal notranslate"><span class="pre">list</span></code> of dictionaries where the <em>i-th</em> dictionary contains info of the <em>i-th</em> environment. If using other wrappers that perform operation on info like <code class="docutils literal notranslate"><span class="pre">RecordEpisodeStatistics</span></code>, this need to be the outermost wrapper.</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 </section>
 </section>
 

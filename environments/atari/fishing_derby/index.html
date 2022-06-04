@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Freeway" href="../freeway/" /><link rel="prev" title="Enduro" href="../enduro/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/atari/fishing_derby.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
         <title>FishingDerby - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
     
@@ -293,7 +293,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -310,10 +311,11 @@
           <section id="fishingderby">
 <h1>FishingDerby<a class="headerlink" href="#fishingderby" title="Permalink to this headline">#</a></h1>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../../../_images/fishing_derby.gif"><img alt="../../../_images/fishing_derby.gif" src="../../../_images/fishing_derby.gif" style="width: 120px;"/></a>
+<a class="reference internal image-reference" href="../../../_images/fishing_derby.gif"><img alt="../../../_images/fishing_derby.gif" src="../../../_images/fishing_derby.gif" style="width: 120px;" /></a>
 </figure>
-<p>This environment is part of the <a href="..">Atari environments</a>. Please read that page first for general information.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<p>This environment is part of the <a href='..'>Atari environments</a>. Please read that page first for general information.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -333,10 +335,11 @@
 <td><p>0</p></td>
 </tr>
 <tr class="row-even"><td><p>Import</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gym.make("ALE/FishingDerby-v5")</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gym.make(&quot;ALE/FishingDerby-v5&quot;)</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>your objective is to catch more sunfish than your opponent. But it’s not just between you and the other fisherman, as a big, black shark is lurking just below the surface, waiting to steal your catch! Detailed documentation can be found on <a class="reference external" href="https://atariage.com/manual_html_page.php?SoftwareID=182">the AtariAge page</a>.</p>
@@ -350,7 +353,8 @@ find these manuals on <a class="reference external" href="https://atariage.com/m
 <section id="action-space">
 <h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
 <p>The action space a subset of the following discrete set of legal actions:</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Action</p></th>
@@ -412,7 +416,8 @@ find these manuals on <a class="reference external" href="https://atariage.com/m
 <td><p>DOWNLEFTFIRE</p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>If you use v0 or v4 and the environment is initialized via <code class="docutils literal notranslate"><span class="pre">make</span></code>, the action space will usually be much smaller since most legal actions don’t have
 any effect. Thus, the enumeration of the actions will differ. The action space can be expanded to the full
 legal space by passing the keyword argument <code class="docutils literal notranslate"><span class="pre">full_action_space=True</span></code> to <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
@@ -431,18 +436,19 @@ possible to observe</p>
 <p>instead. The respective observation spaces are</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Box([0</span> <span class="pre">...</span> <span class="pre">0],</span> <span class="pre">[255</span> <span class="pre">...</span> <span class="pre">255],</span> <span class="pre">(128,),</span> <span class="pre">uint8)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Box([[0</span> <span class="pre">...</span> <span class="pre">0]</span> <span class="pre">...</span> <span class="pre">[0</span>  <span class="pre">...</span> <span class="pre">0]],</span> <span class="pre">[[255</span> <span class="pre">...</span> <span class="pre">255]</span> <span class="pre">...</span> <span class="pre">[255</span>  <span class="pre">...</span> <span class="pre">255]],</span> <span class="pre">(250,</span> <span class="pre">160),</span> <span class="pre">uint8)</span> </code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Box([[0</span> <span class="pre">...</span> <span class="pre">0]</span> <span class="pre">...</span> <span class="pre">[0</span>&#160; <span class="pre">...</span> <span class="pre">0]],</span> <span class="pre">[[255</span> <span class="pre">...</span> <span class="pre">255]</span> <span class="pre">...</span> <span class="pre">[255</span>&#160; <span class="pre">...</span> <span class="pre">255]],</span> <span class="pre">(250,</span> <span class="pre">160),</span> <span class="pre">uint8)</span> </code></p></li>
 </ul>
 <p>respectively. The general article on Atari environments outlines different ways to instantiate corresponding environments
 via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>.</p>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"ALE/FishingDerby-v5"</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;ALE/FishingDerby-v5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The various ways to configure the environment are described in detail in the article on Atari environments.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Environment</p></th>
 <th class="head"><p>Valid Modes</p></th>
@@ -457,17 +463,19 @@ via <code class="docutils literal notranslate"><span class="pre">gym.make</span>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <p>You may use the suffix “-ram” to switch to the RAM observation space. In v0 and v4, the suffixes “Deterministic” and “NoFrameskip”
 are available. These are no longer supported in v5. In order to obtain equivalent behavior, pass keyword arguments to <code class="docutils literal notranslate"><span class="pre">gym.make</span></code> as outlined in
 the general article on Atari environments.
-The versions v0 and v4 are not contained in the “ALE” namespace. I.e. they are instantiated via <code class="docutils literal notranslate"><span class="pre">gym.make("FishingDerby-v0")</span></code>.</p>
+The versions v0 and v4 are not contained in the “ALE” namespace. I.e. they are instantiated via <code class="docutils literal notranslate"><span class="pre">gym.make(&quot;FishingDerby-v0&quot;)</span></code>.</p>
 </section>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
 <p>A thorough discussion of the intricate differences between the versions and configurations can be found in the
 general article on Atari environments.</p>
-<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Version</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">frameskip=</span></code></p></th>
@@ -492,7 +500,8 @@ general article on Atari environments.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+</div>
 <blockquote>
 <div><p>Version v5 follows the best practices outlined in <a class="reference internal" href="../#id2"><span class="std std-ref">[2]</span></a>. Thus, it is recommended to transition to v5 and
 customize the environment using the arguments above, if necessary.</p>

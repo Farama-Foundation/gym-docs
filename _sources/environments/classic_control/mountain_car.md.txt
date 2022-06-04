@@ -55,7 +55,7 @@ The observation is a `ndarray` with shape `(2,)` where the elements correspond t
 There are 3 discrete deterministic actions:
 
 | Num | Observation             | Value | Unit         |
-|-----|-------------------------|------ |--------------|
+|-----|-------------------------|-------|--------------|
 | 0   | Accelerate to the left  | Inf   | position (m) |
 | 1   | Don't accelerate        | Inf   | position (m) |
 | 2   | Accelerate to the right | Inf   | position (m) |
@@ -76,8 +76,7 @@ velocity is clipped to the range `[-0.07, 0.07]`.
 ### Reward:
 
 The goal is to reach the flag placed on top of the right hill as quickly as possible, as such the agent is
-penalised with a reward of -1 for each timestep it isn't at the goal and is not penalised (reward = 0) for
-when it reaches the goal.
+penalised with a reward of -1 for each timestep.
 
 ### Starting State
 
