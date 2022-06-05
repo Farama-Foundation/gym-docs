@@ -54,9 +54,6 @@ napoleon_use_admonition_for_references = True
 napoleon_custom_sections = [("Returns", "params_style")]
 
 # sphinx-notfound-page settings
-notfound_context = {
-    'body': '<h1>This page may have moved.</h1> <p>Please select a page from the side menu or visit <a href="https://www.gymlibrary.ml/">gymlibrary.ml</a>.</p>',
-}
 notfound_urls_prefix = None
 
 # -- Options for HTML output -------------------------------------------------

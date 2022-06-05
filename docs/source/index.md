@@ -1,6 +1,5 @@
 ---
 hide-toc: true
-permalink: /404.html
 ---
 
 # Gym documentation
