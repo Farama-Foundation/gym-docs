@@ -35,6 +35,7 @@ extensions = [
     "sphinx.ext.doctest",
     "sphinx.ext.autodoc",
     "sphinx.ext.githubpages",
+    "notfound.extension",
     "myst_parser",
 ]
 
@@ -51,6 +52,9 @@ napoleon_use_ivar = True
 napoleon_use_admonition_for_references = True
 # See https://github.com/sphinx-doc/sphinx/issues/9119
 napoleon_custom_sections = [("Returns", "params_style")]
+
+# sphinx-notfound-page settings
+notfound_urls_prefix = None
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -69,3 +73,4 @@ html_static_path = ["_static"]
 html_css_files = [
     "css/custom.css",
 ]
+
