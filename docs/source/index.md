@@ -1,6 +1,6 @@
 ---
 hide-toc: true
-permalink: /404/index.html
+permalink: /404.html
 ---
 
 # Gym documentation
