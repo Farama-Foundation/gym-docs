@@ -55,6 +55,9 @@ napoleon_custom_sections = [("Returns", "params_style")]
 
 # sphinx-notfound-page settings
 notfound_urls_prefix = None
+notfound_context = {
+        'body': '<h1>This page may have moved.</h1> <p>Please select a page from the side menu or visit <a href="https://gymlibrary.ml">gymlibrary.ml</a>.</p>',
+}
 
 # -- Options for HTML output -------------------------------------------------
 
