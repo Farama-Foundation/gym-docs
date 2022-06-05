@@ -1,0 +1,7 @@
+---
+layout: default
+permalink: /404.html
+---
+# This page may have been moved
+
+Please select a page from the side menu or visit [gymlibrary.ml](https://gymlibrary.ml).
