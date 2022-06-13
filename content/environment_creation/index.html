@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Spaces" href="../spaces/" /><link rel="prev" title="API" href="../api/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/content/environment_creation.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Environment Creation - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,7 +309,7 @@
         </div>
         <article role="main">
           <section id="environment-creation">
-<h1>Environment Creation<a class="headerlink" href="#environment-creation" title="Permalink to this headline">#</a></h1>
+<h1>Environment Creation<a class="headerlink" href="#environment-creation" title="Permalink to this heading">#</a></h1>
 <p>This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in Gym designed for the creation of new environments.
 You can clone gym-examples to play with the code that are presented here. We recommend that you use a virtual environment:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/Farama-Foundation/gym-examples</span>
@@ -320,7 +320,7 @@ You can clone gym-examples to play with the code that are presented here. We rec
 </pre></div>
 </div>
 <section id="subclassing-gym-env">
-<h2>Subclassing gym.Env<a class="headerlink" href="#subclassing-gym-env" title="Permalink to this headline">#</a></h2>
+<h2>Subclassing gym.Env<a class="headerlink" href="#subclassing-gym-env" title="Permalink to this heading">#</a></h2>
 <p>Before learning how to create your own environment you should check out <a class="reference external" href="https://www.gymlibrary.ml/content/api/">the documentation of Gym’s API</a>.</p>
 <p>We will be concerned with a subset of gym-examples that looks like this:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>gym-examples/
@@ -352,7 +352,7 @@ target on the grid that has been placed randomly at the beginning of the episode
 <p>where the blue dot is the agent and the red square represents the target.</p>
 <p>Let us look at the source code of <code class="docutils literal notranslate"><span class="pre">GridWorldEnv</span></code> piece by piece:</p>
 <section id="declaration-and-initialization">
-<h3>Declaration and Initialization<a class="headerlink" href="#declaration-and-initialization" title="Permalink to this headline">#</a></h3>
+<h3>Declaration and Initialization<a class="headerlink" href="#declaration-and-initialization" title="Permalink to this heading">#</a></h3>
 <p>Our custom environment will inherit from the abstract class <code class="docutils literal notranslate"><span class="pre">gym.Env</span></code>. You shouldn’t forget to add the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> attribute to you class.
 There, you should specify the render-modes that are supported by your environment (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;rgb_array&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ansi&quot;</span></code>)
 and the framerate at which your environment should be rendered. Every environment should support<code class="docutils literal notranslate"><span class="pre">None</span></code> as render-mode; you don’t need to add it in the metadata.
@@ -371,10 +371,11 @@ Here is the declaration of <code class="docutils literal notranslate"><span clas
 <span class="kn">from</span> <span class="nn">gym.utils.renderer</span> <span class="kn">import</span> <span class="n">Renderer</span>
 
 <span class="k">class</span> <span class="nc">GridWorldEnv</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">):</span>
-    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;render_modes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb_array&quot;</span><span class="p">],</span> <span class="s2">&quot;render_fps&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;render_modes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb_array&quot;</span><span class="p">,</span> <span class="s2">&quot;single_rgb_array&quot;</span><span class="p">],</span> <span class="s2">&quot;render_fps&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">render_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">render_mode</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">render_mode</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;render_modes&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="o">=</span> <span class="n">render_mode</span>  <span class="c1"># Define the attribute render_mode in your environment</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>  <span class="c1"># The size of the square grid</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">512</span>  <span class="c1"># The size of the PyGame window</span>
@@ -409,7 +410,7 @@ Here is the declaration of <code class="docutils literal notranslate"><span clas
 <span class="sd">        to ensure that the environment is rendered at the correct framerate in</span>
 <span class="sd">        human-mode.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">render_mode</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">pygame</span>  <span class="c1"># import here to avoid pygame dependency with no render</span>
 
             <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
@@ -419,13 +420,13 @@ Here is the declaration of <code class="docutils literal notranslate"><span clas
                 
         <span class="c1"># The following line uses the util class Renderer to gather a collection of frames </span>
         <span class="c1"># using a method that computes a single frame. We will define _render_frame below.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span> <span class="o">=</span> <span class="n">Renderer</span><span class="p">(</span><span class="n">render_mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_frame</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span> <span class="o">=</span> <span class="n">Renderer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_frame</span><span class="p">)</span>
             
 </pre></div>
 </div>
 </section>
 <section id="constructing-observations-from-environment-states">
-<h3>Constructing Observations From Environment States<a class="headerlink" href="#constructing-observations-from-environment-states" title="Permalink to this headline">#</a></h3>
+<h3>Constructing Observations From Environment States<a class="headerlink" href="#constructing-observations-from-environment-states" title="Permalink to this heading">#</a></h3>
 <p>Since we will need to compute observations both in <code class="docutils literal notranslate"><span class="pre">reset</span></code> and <code class="docutils literal notranslate"><span class="pre">step</span></code>, it is often convenient to have
 a (private) method <code class="docutils literal notranslate"><span class="pre">_get_obs</span></code> that translates the environment’s state into an observation. However, this is not mandatory
 and you may as well compute observations in <code class="docutils literal notranslate"><span class="pre">reset</span></code> and <code class="docutils literal notranslate"><span class="pre">step</span></code> separately:</p>
@@ -443,7 +444,7 @@ we would like to provide the manhattan distance between the agent and the target
 terms). In that case, we would have to update the dictionary that is returned by <code class="docutils literal notranslate"><span class="pre">_get_info</span></code> in <code class="docutils literal notranslate"><span class="pre">step</span></code>.</p>
 </section>
 <section id="reset">
-<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">#</a></h3>
+<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">reset</span></code> method will be called to initiate a new episode. You may assume that the <code class="docutils literal notranslate"><span class="pre">step</span></code> method will not
 be called before <code class="docutils literal notranslate"><span class="pre">reset</span></code> has been called. Moreover, <code class="docutils literal notranslate"><span class="pre">reset</span></code> should be called whenever a done signal has been issued.
 Users may pass the <code class="docutils literal notranslate"><span class="pre">seed</span></code> keyword to <code class="docutils literal notranslate"><span class="pre">reset</span></code> to initialize any random number generator that is used by the environment
@@ -478,7 +479,7 @@ and <code class="docutils literal notranslate"><span class="pre">_get_info</span
 </div>
 </section>
 <section id="step">
-<h3>Step<a class="headerlink" href="#step" title="Permalink to this headline">#</a></h3>
+<h3>Step<a class="headerlink" href="#step" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">step</span></code> method usually contains most of the logic of your environment. It accepts an <code class="docutils literal notranslate"><span class="pre">action</span></code>, computes the state of
 the environment after applying that action and returns the 4-tuple <code class="docutils literal notranslate"><span class="pre">(observation,</span> <span class="pre">reward,</span> <span class="pre">done,</span> <span class="pre">info)</span></code>.
 Once the new state of the environment has been computed, we can check whether it is a terminal state and we set <code class="docutils literal notranslate"><span class="pre">done</span></code>
@@ -505,13 +506,17 @@ accordingly. Since we are using sparse binary rewards in <code class="docutils l
 </div>
 </section>
 <section id="rendering">
-<h3>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">#</a></h3>
+<h3>Rendering<a class="headerlink" href="#rendering" title="Permalink to this heading">#</a></h3>
 <p>Here, we are using PyGame for rendering. A similar approach to rendering is used in many environments that are included
 with Gym and you can use it as a skeleton for your own environments:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Just return the list of render frames collected by the Renderer.</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">get_renders</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_render_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># This will be the function called by the Renderer to collect a single frame.</span>
+        <span class="k">assert</span> <span class="n">mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># The renderer will not call this function with no-rendering.</span>
+    
         <span class="kn">import</span> <span class="nn">pygame</span> <span class="c1"># avoid global pygame dependency. This method is not called with no-render.</span>
     
         <span class="n">canvas</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Surface</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">))</span>
@@ -564,7 +569,7 @@ with Gym and you can use it as a skeleton for your own environments:</p>
             <span class="c1"># We need to ensure that human-rendering occurs at the predefined framerate.</span>
             <span class="c1"># The following line will automatically add a delay to keep the framerate stable.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;render_fps&quot;</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># rgb_array</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># rgb_array or single_rgb_array</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">surfarray</span><span class="o">.</span><span class="n">pixels3d</span><span class="p">(</span><span class="n">canvas</span><span class="p">)),</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
             <span class="p">)</span>
@@ -572,7 +577,7 @@ with Gym and you can use it as a skeleton for your own environments:</p>
 </div>
 </section>
 <section id="close">
-<h3>Close<a class="headerlink" href="#close" title="Permalink to this headline">#</a></h3>
+<h3>Close<a class="headerlink" href="#close" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">close</span></code> method should close any open resources that were used by the environment. In many cases,
 you don’t actually have to bother to implement this method. However, in our example <code class="docutils literal notranslate"><span class="pre">render_mode</span></code> may
 be <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code> and we might need to close the window that has been opened:</p>
@@ -589,7 +594,7 @@ or release other resources. You shouldn’t interact with the environment after 
 </section>
 </section>
 <section id="registering-envs">
-<h2>Registering Envs<a class="headerlink" href="#registering-envs" title="Permalink to this headline">#</a></h2>
+<h2>Registering Envs<a class="headerlink" href="#registering-envs" title="Permalink to this heading">#</a></h2>
 <p>In order for the custom environments to be detected by Gym, they must be registered as follows. We will choose to put this code in <code class="docutils literal notranslate"><span class="pre">gym-examples/gym_examples/__init__.py</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gym.envs.registration</span> <span class="kn">import</span> <span class="n">register</span>
 
@@ -607,7 +612,7 @@ for more information). A done signal will then be produced if the agent has reac
 executed in the current episode. To distinguish truncation and termination, you can check <code class="docutils literal notranslate"><span class="pre">info[&quot;TimeLimit.truncated&quot;]</span></code>.</p>
 <p>Apart from <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code>, you may pass the following additional keyword arguments to <code class="docutils literal notranslate"><span class="pre">register</span></code>:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
@@ -658,7 +663,7 @@ After registration, our custom <code class="docutils literal notranslate"><span 
 </div>
 </section>
 <section id="creating-a-package">
-<h2>Creating a Package<a class="headerlink" href="#creating-a-package" title="Permalink to this headline">#</a></h2>
+<h2>Creating a Package<a class="headerlink" href="#creating-a-package" title="Permalink to this heading">#</a></h2>
 <p>The last step is to structure our code as a Python package. This involves configuring <code class="docutils literal notranslate"><span class="pre">gym-examples/setup.py</span></code>. A minimal example of how to do so is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
@@ -670,7 +675,7 @@ After registration, our custom <code class="docutils literal notranslate"><span 
 </div>
 </section>
 <section id="creating-environment-instances">
-<h2>Creating Environment Instances<a class="headerlink" href="#creating-environment-instances" title="Permalink to this headline">#</a></h2>
+<h2>Creating Environment Instances<a class="headerlink" href="#creating-environment-instances" title="Permalink to this heading">#</a></h2>
 <p>After you have installed your package locally with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">gym-examples</span></code>, you can create an instance of the environment via:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym_examples</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;gym_examples/GridWorld-v0&#39;</span><span class="p">)</span>
@@ -686,7 +691,7 @@ constructor yourself. Some may find this approach more pythonic and environments
 also perfectly fine (but remember to add  wrappers as well!).</p>
 </section>
 <section id="using-wrappers">
-<h2>Using Wrappers<a class="headerlink" href="#using-wrappers" title="Permalink to this headline">#</a></h2>
+<h2>Using Wrappers<a class="headerlink" href="#using-wrappers" title="Permalink to this heading">#</a></h2>
 <p>Oftentimes, we want to use different variants of a custom environment, or we want to
 modify the behavior of an environment that is provided by Gym or some other party.
 Wrappers allow us to do this without changing the environment implementation or adding any boilerplate code.
@@ -803,6 +808,7 @@ a wrapper that does this job. This wrapper is also available in gym-examples:</p
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>

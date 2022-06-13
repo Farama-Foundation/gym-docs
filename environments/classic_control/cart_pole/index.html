@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Mountain Car Continuous" href="../mountain_car_continuous/" /><link rel="prev" title="Acrobot" href="../acrobot/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/classic_control/cart_pole.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Cart Pole - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,13 +309,13 @@
         </div>
         <article role="main">
           <section id="cart-pole">
-<h1>Cart Pole<a class="headerlink" href="#cart-pole" title="Permalink to this headline">#</a></h1>
+<h1>Cart Pole<a class="headerlink" href="#cart-pole" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../../../_images/cart_pole.gif"><img alt="../../../_images/cart_pole.gif" src="../../../_images/cart_pole.gif" style="width: 200px;" /></a>
 </figure>
 <p>This environment is part of the <a href='..'>Classic Control environments</a>. Please read that page first for general information.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -341,7 +341,7 @@
 </table>
 </div>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
 <p>This environment corresponds to the version of the cart-pole problem described by Barto, Sutton, and Anderson in
 <a class="reference external" href="https://ieeexplore.ieee.org/document/6313077">“Neuronlike Adaptive Elements That Can Solve Difficult Learning Control Problem”</a>.
 A pole is attached by an un-actuated joint to a cart, which moves along a frictionless track.
@@ -349,11 +349,11 @@ The pendulum is placed upright on the cart and the goal is to balance the pole b
 in the left and right direction on the cart.</p>
 </section>
 <section id="action-space">
-<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
+<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this heading">#</a></h2>
 <p>The action is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(1,)</span></code> which can take values <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">1}</span></code> indicating the direction
 of the fixed force the cart is pushed with.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Action</p></th>
@@ -373,10 +373,10 @@ of the fixed force the cart is pushed with.</p>
 the pole is pointing. The center of gravity of the pole varies the amount of energy needed to move the cart underneath it</p>
 </section>
 <section id="observation-space">
-<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
+<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this heading">#</a></h2>
 <p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(4,)</span></code> with the values corresponding to the following positions and velocities:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Observation</p></th>
@@ -418,16 +418,16 @@ if the pole angle is not in the range <code class="docutils literal notranslate"
 </ul>
 </section>
 <section id="rewards">
-<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
+<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h2>
 <p>Since the goal is to keep the pole upright for as long as possible, a reward of <code class="docutils literal notranslate"><span class="pre">+1</span></code> for every step taken,
 including the termination step, is allotted. The threshold for rewards is 475 for v1.</p>
 </section>
 <section id="starting-state">
-<h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this headline">#</a></h2>
+<h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this heading">#</a></h2>
 <p>All observations are assigned a uniformly random value in <code class="docutils literal notranslate"><span class="pre">(-0.05,</span> <span class="pre">0.05)</span></code></p>
 </section>
 <section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this headline">#</a></h2>
+<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
 <p>The episode terminates if any one of the following occurs:</p>
 <ol class="arabic simple">
 <li><p>Pole Angle is greater than ±12°</p></li>
@@ -436,7 +436,7 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
 </ol>
 </section>
 <section id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;CartPole-v1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -523,6 +523,7 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     </body>

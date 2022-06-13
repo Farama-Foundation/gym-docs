@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Frozen Lake" href="../frozen_lake/" /><link rel="prev" title="Taxi" href="../taxi/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/toy_text/cliff_walking.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Cliff Walking - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,13 +309,13 @@
         </div>
         <article role="main">
           <section id="cliff-walking">
-<h1>Cliff Walking<a class="headerlink" href="#cliff-walking" title="Permalink to this headline">#</a></h1>
+<h1>Cliff Walking<a class="headerlink" href="#cliff-walking" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_static/videos/toy_text/cliff_walking.gif"><img alt="_static/videos/toy_text/cliff_walking.gif" src="_static/videos/toy_text/cliff_walking.gif" style="width: 200px;" /></a>
 </figure>
 <p>This environment is part of the <a href='..'>Toy Text environments</a>. Please read that page first for general information.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -341,7 +341,7 @@ by Sutton and Barto</a>.</p>
 <p>With inspiration from:
 https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/cliff_walking.py</p>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
 <p>The board is a 4x12 matrix, with (using NumPy matrix indexing):</p>
 <ul class="simple">
 <li><p>[3, 0] as the start at bottom-left</p></li>
@@ -352,7 +352,7 @@ https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/cliff_
 An episode terminates when the agent reaches the goal.</p>
 </section>
 <section id="actions">
-<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">#</a></h2>
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this heading">#</a></h2>
 <p>There are 4 discrete deterministic actions:</p>
 <ul class="simple">
 <li><p>0: move up</p></li>
@@ -362,24 +362,24 @@ An episode terminates when the agent reaches the goal.</p>
 </ul>
 </section>
 <section id="observations">
-<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this heading">#</a></h2>
 <p>There are 3x12 + 1 possible states. In fact, the agent cannot be at the cliff, nor at the goal
 (as this results the end of episode). They remain all the positions of the first 3 rows plus the bottom-left cell.
 The observation is simply the current position encoded as
 <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html">flattened index</a>.</p>
 </section>
 <section id="reward">
-<h2>Reward<a class="headerlink" href="#reward" title="Permalink to this headline">#</a></h2>
+<h2>Reward<a class="headerlink" href="#reward" title="Permalink to this heading">#</a></h2>
 <p>Each time step incurs -1 reward, and stepping into the cliff incurs -100 reward.</p>
 </section>
 <section id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;CliffWalking-v0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="version-history">
-<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
+<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>v0: Initial version release</p></li>
 </ul>
@@ -464,6 +464,7 @@ The observation is simply the current position encoded as
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     </body>

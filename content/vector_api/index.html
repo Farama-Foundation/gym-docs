@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Tutorials" href="../tutorials/" /><link rel="prev" title="Spaces" href="../spaces/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/content/vector_api.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Vector API - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,9 +309,9 @@
         </div>
         <article role="main">
           <section id="vector-api">
-<h1>Vector API<a class="headerlink" href="#vector-api" title="Permalink to this headline">#</a></h1>
+<h1>Vector API<a class="headerlink" href="#vector-api" title="Permalink to this heading">#</a></h1>
 <section id="vectorized-environments">
-<h2>Vectorized Environments<a class="headerlink" href="#vectorized-environments" title="Permalink to this headline">#</a></h2>
+<h2>Vectorized Environments<a class="headerlink" href="#vectorized-environments" title="Permalink to this heading">#</a></h2>
 <p><em>Vectorized environments</em> are environments that run multiple independent copies of the same environment in parallel using <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html">multiprocessing</a>. Vectorized environments take as input a batch of actions, and return a batch of observations. This is particularly useful, for example, when the policy is defined as a neural network that operates over a batch of observations.</p>
 <p>Gym provides two types of vectorized environments:</p>
 <ul class="simple">
@@ -345,7 +345,7 @@
 <li><p>Using a wrapper on some (but not all) environment copies.</p></li>
 </ul>
 <section id="creating-a-vectorized-environment">
-<h3>Creating a vectorized environment<a class="headerlink" href="#creating-a-vectorized-environment" title="Permalink to this headline">#</a></h3>
+<h3>Creating a vectorized environment<a class="headerlink" href="#creating-a-vectorized-environment" title="Permalink to this heading">#</a></h3>
 <p>To create a vectorized environment that runs multiple environment copies, you can wrap your parallel environments inside <code class="docutils literal notranslate"><span class="pre">gym.vector.SyncVectorEnv</span></code> (for sequential execution), or <code class="docutils literal notranslate"><span class="pre">gym.vector.AsyncVectorEnv</span></code> (for parallel execution, with <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html">multiprocessing</a>). These vectorized environments take as input a list of callables specifying how the copies are created.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">AsyncVectorEnv</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="k">lambda</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">),</span>
@@ -373,7 +373,7 @@
 </div>
 </section>
 <section id="working-with-vectorized-environments">
-<h3>Working with vectorized environments<a class="headerlink" href="#working-with-vectorized-environments" title="Permalink to this headline">#</a></h3>
+<h3>Working with vectorized environments<a class="headerlink" href="#working-with-vectorized-environments" title="Permalink to this heading">#</a></h3>
 <p>While standard Gym environments take a single action and return a single observation (with a reward, and boolean indicating termination), vectorized environments take a <em>batch of actions</em> as input, and return a <em>batch of observations</em>, together with an array of rewards and booleans indicating if the episode ended in each environment copy.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
@@ -476,7 +476,7 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </section>
 </section>
 <section id="observation-action-spaces">
-<h2>Observation &amp; Action spaces<a class="headerlink" href="#observation-action-spaces" title="Permalink to this headline">#</a></h2>
+<h2>Observation &amp; Action spaces<a class="headerlink" href="#observation-action-spaces" title="Permalink to this heading">#</a></h2>
 <p>Like any Gym environment, vectorized environments contain the two properties <code class="docutils literal notranslate"><span class="pre">VectorEnv.observation_space</span></code> and <code class="docutils literal notranslate"><span class="pre">VectorEnv.action_space</span></code> to specify the observation and action spaces of the environments. Since vectorized environments operate on multiple environment copies, where the actions taken and observations returned by all of the copies are batched together, the observation and action <em>spaces</em> are batched as well so that the input actions are valid elements of <code class="docutils literal notranslate"><span class="pre">VectorEnv.action_space</span></code>, and the observations are valid elements of <code class="docutils literal notranslate"><span class="pre">VectorEnv.observation_space</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">observation_space</span>
@@ -522,9 +522,9 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </div>
 </section>
 <section id="intermediate-usage">
-<h2>Intermediate Usage<a class="headerlink" href="#intermediate-usage" title="Permalink to this headline">#</a></h2>
+<h2>Intermediate Usage<a class="headerlink" href="#intermediate-usage" title="Permalink to this heading">#</a></h2>
 <section id="shared-memory">
-<h3>Shared memory<a class="headerlink" href="#shared-memory" title="Permalink to this headline">#</a></h3>
+<h3>Shared memory<a class="headerlink" href="#shared-memory" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">AsyncVectorEnv</span></code> runs each environment copy inside an individual process. At each call to <code class="docutils literal notranslate"><span class="pre">AsyncVectorEnv.reset</span></code> or <code class="docutils literal notranslate"><span class="pre">AsyncVectorEnv.step</span></code>, the observations of all of the parallel environments are sent back to the main process. To avoid expensive transfers of data between processes, especially with large observations (e.g. images), <code class="docutils literal notranslate"><span class="pre">AsyncVectorEnv</span></code> uses a shared memory by default (<code class="docutils literal notranslate"><span class="pre">shared_memory=True</span></code>) that processes can write to and read from at minimal cost. This can increase the throughout of the vectorized environment.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">env_fns</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span><span class="p">:</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;BreakoutNoFrameskip-v4&quot;</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">5</span>
 
@@ -541,7 +541,7 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </div>
 </section>
 <section id="exception-handling">
-<h3>Exception handling<a class="headerlink" href="#exception-handling" title="Permalink to this headline">#</a></h3>
+<h3>Exception handling<a class="headerlink" href="#exception-handling" title="Permalink to this heading">#</a></h3>
 <p>Because sometimes things may not go as planned, the exceptions raised in any given environment copy are re-raised in the vectorized environment, even when the copy run in parallel with <code class="docutils literal notranslate"><span class="pre">AsyncVectorEnv</span></code>. This way, you can choose how to handle these exceptions yourself (with <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">except</span></code>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">ErrorEnv</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">observation_space</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -568,9 +568,9 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </section>
 </section>
 <section id="advanced-usage">
-<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline">#</a></h2>
+<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permalink to this heading">#</a></h2>
 <section id="custom-spaces">
-<h3>Custom spaces<a class="headerlink" href="#custom-spaces" title="Permalink to this headline">#</a></h3>
+<h3>Custom spaces<a class="headerlink" href="#custom-spaces" title="Permalink to this heading">#</a></h3>
 <p>Vectorized environments will batch actions and observations if they are elements from standard Gym spaces, such as <code class="docutils literal notranslate"><span class="pre">gym.spaces.Box</span></code>, <code class="docutils literal notranslate"><span class="pre">gym.spaces.Discrete</span></code>, or <code class="docutils literal notranslate"><span class="pre">gym.spaces.Dict</span></code>. However, if you create your own environment with a custom action and/or observation space (inheriting from <code class="docutils literal notranslate"><span class="pre">gym.Space</span></code>), the vectorized environment will not attempt to automatically batch the actions/observations, and instead it will return the raw tuple of elements from all parallel environments.</p>
 <p>In the following example, we create a new environment <code class="docutils literal notranslate"><span class="pre">SMILESEnv</span></code>, whose observations are strings representing the <a class="reference external" href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> notation of a molecular structure, with a custom observation space <code class="docutils literal notranslate"><span class="pre">SMILES</span></code>. The observations returned by the vectorized environment are contained in a tuple of strings.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SMILES</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Space</span><span class="p">):</span>
@@ -609,9 +609,9 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </section>
 </section>
 <section id="api-reference">
-<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">#</a></h2>
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">#</a></h2>
 <section id="vectorenv">
-<h3>VectorEnv<a class="headerlink" href="#vectorenv" title="Permalink to this headline">#</a></h3>
+<h3>VectorEnv<a class="headerlink" href="#vectorenv" title="Permalink to this heading">#</a></h3>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gym.vector.VectorEnv.action_space">
 <span class="sig-prename descclassname"><span class="pre">gym.vector.VectorEnv.</span></span><span class="sig-name descname"><span class="pre">action_space</span></span><a class="headerlink" href="#gym.vector.VectorEnv.action_space" title="Permalink to this definition">#</a></dt>
@@ -658,20 +658,20 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 
 </section>
 <section id="reset">
-<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this headline">#</a></h3>
+<h3>Reset<a class="headerlink" href="#reset" title="Permalink to this heading">#</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="gym.vector.VectorEnv.reset">
 <span class="sig-prename descclassname"><span class="pre">VectorEnv.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.vector.VectorEnv.reset" title="Permalink to this definition">#</a></dt>
 <dd><p>Reset all parallel environments and return a batch of initial observations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>seed</strong> – The environment reset seeds</p></li>
 <li><p><strong>return_info</strong> – If to return the info</p></li>
 <li><p><strong>options</strong> – If to return the options</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>A batch of observations from the vectorized environment.</strong></p>
 </dd>
 </dl>
@@ -687,16 +687,16 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </div>
 </section>
 <section id="step">
-<h3>Step<a class="headerlink" href="#step" title="Permalink to this headline">#</a></h3>
+<h3>Step<a class="headerlink" href="#step" title="Permalink to this heading">#</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="gym.vector.VectorEnv.step">
 <span class="sig-prename descclassname"><span class="pre">VectorEnv.</span></span><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.vector.VectorEnv.step" title="Permalink to this definition">#</a></dt>
 <dd><p>Take an action for each parallel environment.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>actions</strong> – element of <a class="reference internal" href="#gym.vector.VectorEnv.action_space" title="gym.vector.VectorEnv.action_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">action_space</span></code></a> Batch of actions.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>Batch of observations, rewards, done and infos</strong></p>
 </dd>
 </dl>
@@ -722,13 +722,13 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 </div>
 </section>
 <section id="seed">
-<h3>Seed<a class="headerlink" href="#seed" title="Permalink to this headline">#</a></h3>
+<h3>Seed<a class="headerlink" href="#seed" title="Permalink to this heading">#</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="gym.vector.VectorEnv.seed">
 <span class="sig-prename descclassname"><span class="pre">VectorEnv.</span></span><span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.vector.VectorEnv.seed" title="Permalink to this definition">#</a></dt>
 <dd><p>Set the random seed in all parallel environments.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>seed</strong> – Random seed for each parallel environment. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is a list of
 length <code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, then the items of the list are chosen as random
 seeds. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an int, then each parallel environment uses the random
@@ -845,6 +845,7 @@ seed <code class="docutils literal notranslate"><span class="pre">seed</span> <s
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>

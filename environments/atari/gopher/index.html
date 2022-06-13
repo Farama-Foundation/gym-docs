@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Gravitar" href="../gravitar/" /><link rel="prev" title="Frostbite" href="../frostbite/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/atari/gopher.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Gopher - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,13 +309,13 @@
         </div>
         <article role="main">
           <section id="gopher">
-<h1>Gopher<a class="headerlink" href="#gopher" title="Permalink to this headline">#</a></h1>
+<h1>Gopher<a class="headerlink" href="#gopher" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../../../_images/gopher.gif"><img alt="../../../_images/gopher.gif" src="../../../_images/gopher.gif" style="width: 120px;" /></a>
 </figure>
 <p>This environment is part of the <a href='..'>Atari environments</a>. Please read that page first for general information.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -341,20 +341,20 @@
 </table>
 </div>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
 <p>The player controls a shovel-wielding farmer who protects a crop of three carrots from a gopher. <a class="reference external" href="https://atariage.com/manual_html_page.php?SoftwareID=218">the AtariAge page</a>.</p>
 </section>
 <section id="rewards">
-<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
+<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h2>
 <p>The exact reward dynamics depend on the environment and are usually documented in the game’s manual. You can
 find these manuals on <a class="reference external" href="https://atariage.com/manual_html_page.php?SoftwareID=218">AtariAge</a>.</p>
 <p>Atari environments are simulated via the Arcade Learning Environment (ALE) <a class="reference internal" href="../#id1"><span class="std std-ref">[1]</span></a>.</p>
 </section>
 <section id="action-space">
-<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
+<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this heading">#</a></h2>
 <p>The action space a subset of the following discrete set of legal actions:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Action</p></th>
@@ -426,7 +426,7 @@ the arguments <code class="docutils literal notranslate"><span class="pre">diffi
 action spaces of default flavors.</p>
 </section>
 <section id="observations">
-<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this heading">#</a></h2>
 <p>By default, the environment returns the RGB image that is displayed to human players as an observation. However, it is
 possible to observe</p>
 <ul class="simple">
@@ -442,13 +442,13 @@ possible to observe</p>
 via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>.</p>
 </section>
 <section id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;ALE/Gopher-v5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The various ways to configure the environment are described in detail in the article on Atari environments.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Environment</p></th>
 <th class="head"><p>Valid Modes</p></th>
@@ -471,11 +471,11 @@ the general article on Atari environments.
 The versions v0 and v4 are not contained in the “ALE” namespace. I.e. they are instantiated via <code class="docutils literal notranslate"><span class="pre">gym.make(&quot;Gopher-v0&quot;)</span></code>.</p>
 </section>
 <section id="version-history">
-<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
+<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">#</a></h2>
 <p>A thorough discussion of the intricate differences between the versions and configurations can be found in the
 general article on Atari environments.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Version</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">frameskip=</span></code></p></th>
@@ -587,6 +587,7 @@ customize the environment using the arguments above, if necessary.</p>
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     </body>

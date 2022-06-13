@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Adventure" href="adventure/" /><link rel="prev" title="Wrappers" href="../../content/wrappers/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/atari/index.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Atari - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,7 +309,7 @@
         </div>
         <article role="main">
           <section id="atari">
-<h1>Atari<a class="headerlink" href="#atari" title="Permalink to this headline">#</a></h1>
+<h1>Atari<a class="headerlink" href="#atari" title="Permalink to this heading">#</a></h1>
 <p>A set of Atari 2600 environment simulated through Stella and the Arcade Learning Environment.</p>
 <div class="toctree-wrapper compound">
 </div>
@@ -434,10 +434,10 @@
 </html>
     <p>Atari environments are simulated via the Arcade Learning Environment (ALE) <a class="reference internal" href="#id1"><span class="std std-ref">[1]</span></a>.</p>
 <section id="action-space">
-<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
+<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this heading">#</a></h2>
 <p>The action space a subset of the following discrete set of legal actions:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
 <th class="head"><p>Action</p></th>
@@ -509,7 +509,7 @@ the arguments <code class="docutils literal notranslate"><span class="pre">diffi
 action spaces of default flavor choices.</p>
 </section>
 <section id="observation-space">
-<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
+<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this heading">#</a></h2>
 <p>The observation issued by an Atari environment may be:</p>
 <ul class="simple">
 <li><p>the RGB image that is displayed to a human player,</p></li>
@@ -518,12 +518,12 @@ action spaces of default flavor choices.</p>
 </ul>
 </section>
 <section id="rewards">
-<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
+<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h2>
 <p>The exact reward dynamics depend on the environment and are usually documented in the game’s manual. You can
 find these manuals on <a class="reference external" href="https://atariage.com/">AtariAge</a>.</p>
 </section>
 <section id="stochasticity">
-<h2>Stochasticity<a class="headerlink" href="#stochasticity" title="Permalink to this headline">#</a></h2>
+<h2>Stochasticity<a class="headerlink" href="#stochasticity" title="Permalink to this heading">#</a></h2>
 <p>It was pointed out in <a class="reference internal" href="#id1"><span class="std std-ref">[1]</span></a> that Atari games are entirely deterministic. Thus, agents could achieve
 state of the art performance by simply memorizing an optimal sequence of actions while completely ignoring observations from the environment.
 To avoid this, ALE implements sticky actions: Instead of always simulating the action passed to the environment, there is a small
@@ -535,7 +535,7 @@ repeated <code class="docutils literal notranslate"><span class="pre">frameskip<
 random between <code class="docutils literal notranslate"><span class="pre">frameskip[0]</span></code> (inclusive) and <code class="docutils literal notranslate"><span class="pre">frameskip[1]</span></code> (exclusive) in each environment step.</p>
 </section>
 <section id="common-arguments">
-<h2>Common Arguments<a class="headerlink" href="#common-arguments" title="Permalink to this headline">#</a></h2>
+<h2>Common Arguments<a class="headerlink" href="#common-arguments" title="Permalink to this heading">#</a></h2>
 <p>When initializing Atari environments via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>, you may pass some additional arguments. These work for any
 Atari environment. However, legal values for <code class="docutils literal notranslate"><span class="pre">mode</span></code> and <code class="docutils literal notranslate"><span class="pre">difficulty</span></code> depend on the environment.</p>
 <ul class="simple">
@@ -566,11 +566,11 @@ This will guarantee proper scaling, audio support, and proper framerates</p>
 </div></blockquote>
 </section>
 <section id="version-history-and-naming-schemes">
-<h2>Version History and Naming Schemes<a class="headerlink" href="#version-history-and-naming-schemes" title="Permalink to this headline">#</a></h2>
+<h2>Version History and Naming Schemes<a class="headerlink" href="#version-history-and-naming-schemes" title="Permalink to this heading">#</a></h2>
 <p>All Atari games are available in three versions. They differ in the default settings of the arguments above.
 The differences are listed in the following table:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Version</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">frameskip=</span></code></p></th>
@@ -604,7 +604,7 @@ customize the environment using the arguments above, if necessary.</p>
 <p>For each Atari game, several different configurations are registered in OpenAI Gym. The naming schemes are analgous for
 v0 and v4. Let us take a look at all variations of Amidar-v0 that are registered with OpenAI gym:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">obs_type=</span></code></p></th>
@@ -657,7 +657,7 @@ v0 and v4. Let us take a look at all variations of Amidar-v0 that are registered
 environment configuration via arguments passed to <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>. Moreover, the v5 environments
 are in the “ALE” namespace. The suffix “-ram” is still available. Thus, we get the following table:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">obs_type=</span></code></p></th>
@@ -684,13 +684,13 @@ are in the “ALE” namespace. The suffix “-ram” is still available. Thus, 
 </div>
 </section>
 <section id="flavors">
-<h2>Flavors<a class="headerlink" href="#flavors" title="Permalink to this headline">#</a></h2>
+<h2>Flavors<a class="headerlink" href="#flavors" title="Permalink to this heading">#</a></h2>
 <p>Some games allow the user to set a difficulty level and a game mode. Different modes/difficulties may have different
 game dynamics and (if a reduced action space is used) different action spaces. We follow the convention of <a class="reference internal" href="#id2"><span class="std std-ref">[2]</span></a> and
 refer to the combination of difficulty level and game mode as an flavor of a game. The following table shows
 the available modes and difficulty levels for different Atari games:</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Environment</p></th>
 <th class="head"><p>Valid Modes</p></th>
@@ -954,7 +954,7 @@ the available modes and difficulty levels for different Atari games:</p>
 </div></blockquote>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p id="id1"><a id="1">[1]</a>
 MG Bellemare, Y Naddaf, J Veness, and M Bowling.<br />
 “The arcade learning environment: An evaluation platform for general agents.”<br />
@@ -1048,6 +1048,7 @@ URL: https://jair.org/index.php/jair/article/view/11182</p>
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>

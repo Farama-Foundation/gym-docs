@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Atari" href="../../environments/atari/" /><link rel="prev" title="Tutorials" href="../tutorials/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/content/wrappers.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Wrappers - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,7 +309,7 @@
         </div>
         <article role="main">
           <section id="wrappers">
-<h1>Wrappers<a class="headerlink" href="#wrappers" title="Permalink to this headline">#</a></h1>
+<h1>Wrappers<a class="headerlink" href="#wrappers" title="Permalink to this heading">#</a></h1>
 <p>Wrappers are a convenient way to modify an existing environment without having to alter the underlying code directly.
 Using wrappers will allow you to avoid a lot of boilerplate code and make your environment more modular. Wrappers can
 also be chained to combine their effects. Most environments that are generated via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code> will already be wrapped by default.</p>
@@ -353,7 +353,7 @@ respective transformation. If you need a wrapper to do more complicated tasks, y
 The code that is presented in the following sections can also be found in
 the <a class="reference external" href="https://github.com/Farama-Foundation/gym-examples">gym-examples</a> repository</p>
 <section id="actionwrapper">
-<h2>ActionWrapper<a class="headerlink" href="#actionwrapper" title="Permalink to this headline">#</a></h2>
+<h2>ActionWrapper<a class="headerlink" href="#actionwrapper" title="Permalink to this heading">#</a></h2>
 <p>If you would like to apply a function to the action before passing it to the base environment,
 you can simply inherit from <code class="docutils literal notranslate"><span class="pre">ActionWrapper</span></code> and overwrite the method <code class="docutils literal notranslate"><span class="pre">action</span></code> to implement that transformation.
 The transformation defined in that method must take values in the base environment’s action space.
@@ -380,7 +380,7 @@ only like to use a finite subset of actions. Then, you might want to implement t
 <p>Among others, Gym provides the action wrappers <code class="docutils literal notranslate"><span class="pre">ClipAction</span></code> and <code class="docutils literal notranslate"><span class="pre">RescaleAction</span></code>.</p>
 </section>
 <section id="observationwrapper">
-<h2>ObservationWrapper<a class="headerlink" href="#observationwrapper" title="Permalink to this headline">#</a></h2>
+<h2>ObservationWrapper<a class="headerlink" href="#observationwrapper" title="Permalink to this heading">#</a></h2>
 <p>If you would like to apply a function to the observation that is returned by the base environment before passing
 it to learning code, you can simply inherit from <code class="docutils literal notranslate"><span class="pre">ObservationWrapper</span></code> and overwrite the method <code class="docutils literal notranslate"><span class="pre">observation</span></code> to
 implement that transformation. The transformation defined in that method must be defined on the base environment’s
@@ -403,7 +403,7 @@ For this, you could implement an observation wrapper like this:</p>
 to the observation.</p>
 </section>
 <section id="rewardwrapper">
-<h2>RewardWrapper<a class="headerlink" href="#rewardwrapper" title="Permalink to this headline">#</a></h2>
+<h2>RewardWrapper<a class="headerlink" href="#rewardwrapper" title="Permalink to this heading">#</a></h2>
 <p>If you would like to apply a function to the reward that is returned by the base environment before passing
 it to learning code, you can simply inherit from <code class="docutils literal notranslate"><span class="pre">RewardWrapper</span></code> and overwrite the method <code class="docutils literal notranslate"><span class="pre">reward</span></code> to
 implement that transformation. This transformation might change the reward range; to specify the reward range of
@@ -423,7 +423,7 @@ to a range to gain some numerical stability. To do that, we could, for instance,
 </div>
 </section>
 <section id="autoresetwrapper">
-<h2>AutoResetWrapper<a class="headerlink" href="#autoresetwrapper" title="Permalink to this headline">#</a></h2>
+<h2>AutoResetWrapper<a class="headerlink" href="#autoresetwrapper" title="Permalink to this heading">#</a></h2>
 <p>Some users may want a wrapper which will automatically reset its wrapped environment when its wrapped environment reaches the done state. An advantage of this environment is that it will never produce undefined behavior as standard gym environments do when stepping beyond the done state.</p>
 <p>When calling step causes <code class="docutils literal notranslate"><span class="pre">self.env.step()</span></code> to return <code class="docutils literal notranslate"><span class="pre">done=True</span></code>,
 <code class="docutils literal notranslate"><span class="pre">self.env.reset()</span></code> is called,
@@ -467,7 +467,7 @@ use this wrapper!</p>
 </div>
 </section>
 <section id="general-wrappers">
-<h2>General Wrappers<a class="headerlink" href="#general-wrappers" title="Permalink to this headline">#</a></h2>
+<h2>General Wrappers<a class="headerlink" href="#general-wrappers" title="Permalink to this heading">#</a></h2>
 <p>Sometimes you might need to implement a wrapper that does some more complicated modifications (e.g. modify the
 reward based on data in <code class="docutils literal notranslate"><span class="pre">info</span></code> or change the rendering behavior).
 Such wrappers can be implemented by inheriting from <code class="docutils literal notranslate"><span class="pre">Wrapper</span></code>.</p>
@@ -500,9 +500,9 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 </div>
 </section>
 <section id="available-wrappers">
-<h2>Available Wrappers<a class="headerlink" href="#available-wrappers" title="Permalink to this headline">#</a></h2>
+<h2>Available Wrappers<a class="headerlink" href="#available-wrappers" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Type</p></th>
@@ -695,6 +695,7 @@ of the reward are returned in <code class="docutils literal notranslate"><span c
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>

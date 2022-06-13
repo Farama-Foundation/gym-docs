@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Lunar Lander" href="../lunar_lander/" /><link rel="prev" title="Bipedal Walker" href="../bipedal_walker/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/box2d/car_racing.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-4.5.0, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Car Racing - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -309,13 +309,13 @@
         </div>
         <article role="main">
           <section id="car-racing">
-<h1>Car Racing<a class="headerlink" href="#car-racing" title="Permalink to this headline">#</a></h1>
+<h1>Car Racing<a class="headerlink" href="#car-racing" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../../../_images/car_racing.gif"><img alt="../../../_images/car_racing.gif" src="../../../_images/car_racing.gif" style="width: 200px;" /></a>
 </figure>
 <p>This environment is part of the <a href='..'>Box2D environments</a>. Please read that page first for general information.</p>
 <div class="table-wrapper colwidths-auto docutils container">
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -341,7 +341,7 @@
 </table>
 </div>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
 <p>The easiest control task to learn from pixels - a top-down
 racing environment. The generated track is random every episode.</p>
 <p>Some indicators are shown at the bottom of the window along with the
@@ -355,33 +355,33 @@ To play yourself (it’s rather fast for humans), type:</p>
 and turn at the same time.</p>
 </section>
 <section id="action-space">
-<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this headline">#</a></h2>
+<h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this heading">#</a></h2>
 <p>There are 3 actions: steering (-1 is full left, +1 is full right), gas,
 and breaking.</p>
 </section>
 <section id="observation-space">
-<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this headline">#</a></h2>
+<h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this heading">#</a></h2>
 <p>State consists of 96x96 pixels.</p>
 </section>
 <section id="rewards">
-<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this headline">#</a></h2>
+<h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h2>
 <p>The reward is -0.1 every frame and +1000/N for every track tile visited,
 where N is the total number of tiles visited in the track. For example,
 if you have finished in 732 frames, your reward is
 1000 - 0.1*732 = 926.8 points.</p>
 </section>
 <section id="starting-state">
-<h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this headline">#</a></h2>
+<h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this heading">#</a></h2>
 <p>The car starts at rest in the center of the road.</p>
 </section>
 <section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this headline">#</a></h2>
+<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
 <p>The episode finishes when all of the tiles are visited. The car can also go
 outside of the playfield - that is, far off the track, in which case it will
 receive -100 reward and die.</p>
 </section>
 <section id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">#</a></h2>
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">lap_complete_percent</span></code> dictates the percentage of tiles that must be visited by
 the agent before a lap is considered complete.</p>
 <p>Passing <code class="docutils literal notranslate"><span class="pre">domain_randomize=True</span></code> enables the domain randomized variant of the environment.
@@ -390,20 +390,20 @@ In this scenario, the background and track colours are different on every reset.
 The discrete action space has 5 actions: [do nothing, left, right, gas, brake].</p>
 </section>
 <section id="version-history">
-<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this headline">#</a></h2>
+<h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>v1: Change track completion logic and add domain randomization (0.24.0)</p></li>
 <li><p>v0: Original version</p></li>
 </ul>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Chris Campbell (2014), http://www.iforce2d.net/b2dtut/top-down-car.</p></li>
 </ul>
 </section>
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>Created by Oleg Klimov</p>
 </section>
 </section>
@@ -490,6 +490,7 @@ The discrete action space has 5 actions: [do nothing, left, right, gas, brake].<
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     </body>
