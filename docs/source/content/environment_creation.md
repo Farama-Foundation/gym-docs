@@ -76,10 +76,11 @@ from typing import Optional
 from gym.utils.renderer import Renderer
 
 class GridWorldEnv(gym.Env):
-    metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
+    metadata = {"render_modes": ["human", "rgb_array", "single_rgb_array"], "render_fps": 4}
 
     def __init__(self, render_mode: Optional[str] = None, size: int = 5):
         assert render_mode is None or render_mode in self.metadata["render_modes"]
+        self.render_mode = render_mode  # Define the attribute render_mode in your environment
 
         self.size = size  # The size of the square grid
         self.window_size = 512  # The size of the PyGame window
@@ -114,7 +115,7 @@ class GridWorldEnv(gym.Env):
         to ensure that the environment is rendered at the correct framerate in
         human-mode.
         """
-        if render_mode == "human":
+        if self.render_mode == "human":
             import pygame  # import here to avoid pygame dependency with no render
 
             pygame.init()
@@ -124,7 +125,7 @@ class GridWorldEnv(gym.Env):
                 
         # The following line uses the util class Renderer to gather a collection of frames 
         # using a method that computes a single frame. We will define _render_frame below.
-        self.renderer = Renderer(render_mode, self._render_frame)
+        self.renderer = Renderer(self.render_mode, self._render_frame)
             
 ```
 
@@ -214,9 +215,13 @@ with Gym and you can use it as a skeleton for your own environments:
 
 ```python
     def render(self):
+        # Just return the list of render frames collected by the Renderer.
         return self.renderer.get_renders()
 
     def _render_frame(self, mode: str):
+        # This will be the function called by the Renderer to collect a single frame.
+        assert mode is not None  # The renderer will not call this function with no-rendering.
+    
         import pygame # avoid global pygame dependency. This method is not called with no-render.
     
         canvas = pygame.Surface((self.window_size, self.window_size))
@@ -269,7 +274,7 @@ with Gym and you can use it as a skeleton for your own environments:
             # We need to ensure that human-rendering occurs at the predefined framerate.
             # The following line will automatically add a delay to keep the framerate stable.
             self.clock.tick(self.metadata["render_fps"])
-        else:  # rgb_array
+        else:  # rgb_array or single_rgb_array
             return np.transpose(
                 np.array(pygame.surfarray.pixels3d(canvas)), axes=(1, 0, 2)
             )
