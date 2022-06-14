@@ -42,11 +42,11 @@ Not all done signals must be triggered by a "catastrophic failure": Sometimes we
 a fixed number of timesteps, or if the agent has succeeded in completing some task in the environment.
 
 Let's see what the agent-environment loop looks like in Gym.
-This example will run an instance of `LunarLander-v2` environment for 1000 timesteps. Since we pass `render_mode="human"`, you should see a window pop up rendering the environment.
+This example will run an instance of `LunarLander-v2` environment for 1000 timesteps, rendering the environment at each step. You should see a window pop up rendering the environment
 
 ```python
 import gym
-env = gym.make("LunarLander-v2", render_mode="human")
+env = gym.make("LunarLander-v2")
 env.action_space.seed(42)
 
 observation, info = env.reset(seed=42, return_info=True)
