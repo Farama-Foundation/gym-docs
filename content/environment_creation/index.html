@@ -355,7 +355,7 @@ target on the grid that has been placed randomly at the beginning of the episode
 <h3>Declaration and Initialization<a class="headerlink" href="#declaration-and-initialization" title="Permalink to this heading">#</a></h3>
 <p>Our custom environment will inherit from the abstract class <code class="docutils literal notranslate"><span class="pre">gym.Env</span></code>. You shouldn’t forget to add the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> attribute to you class.
 There, you should specify the render-modes that are supported by your environment (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;rgb_array&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;ansi&quot;</span></code>)
-and the framerate at which your environment should be rendered. Every environment should support<code class="docutils literal notranslate"><span class="pre">None</span></code> as render-mode; you don’t need to add it in the metadata.
+and the framerate at which your environment should be rendered.
 In <code class="docutils literal notranslate"><span class="pre">GridWorldEnv</span></code>, we will support the modes “rgb_array” and “human” and render at 4 FPS.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of our environment will accept the integer <code class="docutils literal notranslate"><span class="pre">size</span></code>, that determines the size of the square grid.
 We will set up some variables for rendering and define <code class="docutils literal notranslate"><span class="pre">self.observation_space</span></code> and <code class="docutils literal notranslate"><span class="pre">self.action_space</span></code>.
@@ -366,17 +366,14 @@ Since we have 4 actions in our environment (“right”, “up”, “left”, �
 Here is the declaration of <code class="docutils literal notranslate"><span class="pre">GridWorldEnv</span></code> and the implementation of <code class="docutils literal notranslate"><span class="pre">__init__</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
 <span class="kn">from</span> <span class="nn">gym</span> <span class="kn">import</span> <span class="n">spaces</span>
+<span class="kn">import</span> <span class="nn">pygame</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-<span class="kn">from</span> <span class="nn">gym.utils.renderer</span> <span class="kn">import</span> <span class="n">Renderer</span>
+
 
 <span class="k">class</span> <span class="nc">GridWorldEnv</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">Env</span><span class="p">):</span>
-    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;render_modes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb_array&quot;</span><span class="p">,</span> <span class="s2">&quot;single_rgb_array&quot;</span><span class="p">],</span> <span class="s2">&quot;render_fps&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;render_modes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="s2">&quot;rgb_array&quot;</span><span class="p">],</span> <span class="s2">&quot;render_fps&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">render_mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="n">render_mode</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">render_mode</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;render_modes&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="o">=</span> <span class="n">render_mode</span>  <span class="c1"># Define the attribute render_mode in your environment</span>
-
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>  <span class="c1"># The size of the square grid</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">512</span>  <span class="c1"># The size of the PyGame window</span>
 
@@ -408,20 +405,11 @@ Here is the declaration of <code class="docutils literal notranslate"><span clas
 <span class="sd">        If human-rendering is used, `self.window` will be a reference</span>
 <span class="sd">        to the window that we draw to. `self.clock` will be a clock that is used</span>
 <span class="sd">        to ensure that the environment is rendered at the correct framerate in</span>
-<span class="sd">        human-mode.</span>
+<span class="sd">        human-mode. They will remain `None` until human-mode is used for the</span>
+<span class="sd">        first time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">pygame</span>  <span class="c1"># import here to avoid pygame dependency with no render</span>
-
-            <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
-                
-        <span class="c1"># The following line uses the util class Renderer to gather a collection of frames </span>
-        <span class="c1"># using a method that computes a single frame. We will define _render_frame below.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span> <span class="o">=</span> <span class="n">Renderer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">render_mode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_render_frame</span><span class="p">)</span>
-            
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clock</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </section>
@@ -468,10 +456,6 @@ and <code class="docutils literal notranslate"><span class="pre">_get_info</span
         <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_target_location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_agent_location</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_target_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_random</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-        <span class="c1"># clean the render collection and add the initial frame</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">render_step</span><span class="p">()</span>
-
         <span class="n">observation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_obs</span><span class="p">()</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">observation</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span> <span class="k">if</span> <span class="n">return_info</span> <span class="k">else</span> <span class="n">observation</span>
@@ -498,9 +482,6 @@ accordingly. Since we are using sparse binary rewards in <code class="docutils l
         <span class="n">observation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_obs</span><span class="p">()</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
 
-        <span class="c1"># add a frame to the render collection</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">render_step</span><span class="p">()</span>
-
         <span class="k">return</span> <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span>
 </pre></div>
 </div>
@@ -509,16 +490,14 @@ accordingly. Since we are using sparse binary rewards in <code class="docutils l
 <h3>Rendering<a class="headerlink" href="#rendering" title="Permalink to this heading">#</a></h3>
 <p>Here, we are using PyGame for rendering. A similar approach to rendering is used in many environments that are included
 with Gym and you can use it as a skeleton for your own environments:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Just return the list of render frames collected by the Renderer.</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">get_renders</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+            <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">clock</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_render_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="c1"># This will be the function called by the Renderer to collect a single frame.</span>
-        <span class="k">assert</span> <span class="n">mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># The renderer will not call this function with no-rendering.</span>
-    
-        <span class="kn">import</span> <span class="nn">pygame</span> <span class="c1"># avoid global pygame dependency. This method is not called with no-render.</span>
-    
         <span class="n">canvas</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">Surface</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">))</span>
         <span class="n">canvas</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
         <span class="n">pix_square_size</span> <span class="o">=</span> <span class="p">(</span>
@@ -560,7 +539,6 @@ with Gym and you can use it as a skeleton for your own environments:</p>
             <span class="p">)</span>
 
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="c1"># The following line copies our drawings from `canvas` to the visible window</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="n">canvas</span><span class="o">.</span><span class="n">get_rect</span><span class="p">())</span>
             <span class="n">pygame</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">pump</span><span class="p">()</span>
@@ -569,7 +547,7 @@ with Gym and you can use it as a skeleton for your own environments:</p>
             <span class="c1"># We need to ensure that human-rendering occurs at the predefined framerate.</span>
             <span class="c1"># The following line will automatically add a delay to keep the framerate stable.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;render_fps&quot;</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># rgb_array or single_rgb_array</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># rgb_array</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">surfarray</span><span class="o">.</span><span class="n">pixels3d</span><span class="p">(</span><span class="n">canvas</span><span class="p">)),</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
             <span class="p">)</span>
@@ -579,12 +557,10 @@ with Gym and you can use it as a skeleton for your own environments:</p>
 <section id="close">
 <h3>Close<a class="headerlink" href="#close" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">close</span></code> method should close any open resources that were used by the environment. In many cases,
-you don’t actually have to bother to implement this method. However, in our example <code class="docutils literal notranslate"><span class="pre">render_mode</span></code> may
-be <code class="docutils literal notranslate"><span class="pre">&quot;human&quot;</span></code> and we might need to close the window that has been opened:</p>
+you don’t actually have to bother to implement this method. However, in our example <code class="docutils literal notranslate"><span class="pre">render</span></code> may have
+been called with <code class="docutils literal notranslate"><span class="pre">mode=&quot;human&quot;</span></code> and we might need to close the window that has been opened:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">pygame</span> 
-            
             <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
             <span class="n">pygame</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
