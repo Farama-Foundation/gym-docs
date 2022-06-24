@@ -52,7 +52,7 @@ The action space is a continuous `(action, action, action, action, action, actio
 The state space consists of positional values of different body parts of the
 cheetah, followed by the velocities of those individual parts (their derivatives) with all the positions ordered before all the velocities.
 
-The observation is a `ndarray` with shape `(17,)` where the elements correspond to the following:
+The observation is a `ndarray` with shape `(18,)` where the elements correspond to the following:
 
 | Num | Observation                          | Min  | Max | Name (in corresponding XML file) | Joint | Unit                     |
 |-----|--------------------------------------|------|-----|----------------------------------|-------|--------------------------|
@@ -81,7 +81,7 @@ In practice (and Gym implementation), the first positional element is
 omitted from the state space since the reward function is calculated based
 on that value. This value is hidden from the algorithm, which in turn has
 to develop an abstract understanding of it from the observed rewards.
-Therefore, observation space has shape `(8,)` and looks like:
+Therefore, observation space has shape `(17,)` and looks like:
 
 | Num | Observation                          | Min  | Max | Name (in corresponding XML file) | Joint | Unit                     |
 |-----|--------------------------------------|------|-----|----------------------------------|-------|--------------------------|
