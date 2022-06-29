@@ -36,3 +36,6 @@ Good Algorithmic Introduction to Reinforcement Learning showcasing how to use Gy
 ## Ray and RLlib for Fast and Parallel Reinforcement Learning
 
 [https://towardsdatascience.com/ray-and-rllib-for-fast-and-parallel-reinforcement-learning-6d31ee21c96c](https://towardsdatascience.com/ray-and-rllib-for-fast-and-parallel-reinforcement-learning-6d31ee21c96c)
+
+## How to make a Custom Gym Environment
+[https://www.youtube.com/watch?v=ZM1KgWOVlQE&t=4s&ab_channel=GraverAI](https://www.youtube.com/watch?v=ZM1KgWOVlQE&t=4s&ab_channel=GraverAI)
