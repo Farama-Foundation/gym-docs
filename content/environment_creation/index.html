@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Spaces" href="../spaces/" /><link rel="prev" title="API" href="../api/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/content/environment_creation.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
         <title>Environment Creation - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -637,6 +637,8 @@ After registration, our custom <code class="docutils literal notranslate"><span 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gym_examples.envs.grid_world</span> <span class="kn">import</span> <span class="n">GridWorldEnv</span>
 </pre></div>
 </div>
+<p>If your environment is not registered, you may optionally pass a module to import, that would register your environment before creating it like this -
+<code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">=</span> <span class="pre">gym.make('module:Env-v0')</span></code>, where <code class="docutils literal notranslate"><span class="pre">module</span></code> contains the registration code. For the GridWorld env, the registration code is run by importing <code class="docutils literal notranslate"><span class="pre">gym_examples</span></code> so if it were not possible to import gym_examples explicitly, you could register while making by <code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">=</span> <span class="pre">gym.make('gym_examples:gym_examples/GridWorld-v0)</span></code>. This is especially useful when you’re allowed to pass only the environment ID into a third-party codebase (eg. learning library). This lets you register your environment without needing to edit the library’s source code.</p>
 </section>
 <section id="creating-a-package">
 <h2>Creating a Package<a class="headerlink" href="#creating-a-package" title="Permalink to this heading">#</a></h2>
