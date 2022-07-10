@@ -133,6 +133,13 @@ Gym wrapper for various environments in the Sumo traffic simulator
 
 A Gym for solving motion planning problems for various traffic scenarios compatible with [CommonRoad benchmarks](https://commonroad.in.tum.de/scenarios), which provides configurable rewards, action spaces, and observation spaces.
 
+
+## Multi Agents
+
+### [PettingZoo](https://github.com/Farama-Foundation/PettingZoo)
+PettingZoo is a Python library for conducting research in multi-agent reinforcement learning, akin to a multi-agent version of Gym.
+
+
 ## Other Environments
 
 ### [ anomalous_rl_envs](https://github.com/modanesh/anomalous_rl_envs)
@@ -266,3 +273,119 @@ We apply this work by specifically using the markets extension of ABIDES/ABIDES-
 ### [gym-saturation](https://github.com/inpefess/gym-saturation)
 
 An environment for guiding automated theorem provers based on saturation algorithms (e.g. [Vampire](https://github.com/vprover/vampire)).
+
+### [ShinRL](https://github.com/omron-sinicx/ShinRL/)
+
+ShinRL: A Library for Evaluating RL Algorithms from Theoretical and Practical Perspectives (Deep RL Workshop 2021)
+
+### [racing-rl](https://github.com/luigiberducci/racing-rl/)
+
+reinforcement learning for f1tenth racing
+
+### [go-explore](https://github.com/qgallouedec/go-explore/)
+
+Unofficial implementation of the Go-Explore algorithm presented in [First return then explore](https://arxiv.org/abs/2004.12919) based on [stable-baselines3](https://github.com/DLR-RM/stable-baselines3).
+
+### [tmrl](https://github.com/trackmania-rl/tmrl/)
+
+TrackMania 2020 through RL
+
+### [racing_dreamer](https://github.com/CPS-TUWien/racing_dreamer/)
+
+Latent Imagination Facilitates Zero-Shot Transfer in Autonomous Racing
+
+### [racecar_gym](https://github.com/axelbr/racecar_gym/)
+
+A gym environment for a miniature racecar using the pybullet physics engine.
+
+### [jiminy](https://github.com/duburcqa/jiminy/)
+
+Jiminy: a fast and portable Python/C++ simulator of poly-articulated systems with OpenAI Gym interface for reinforcement learning
+
+### [evogym-design-tool](https://github.com/EvolutionGym/evogym-design-tool/)
+
+Design tool for creating Evolution Gym environments.
+
+### [l2r](https://github.com/learn-to-race/l2r/)
+
+Open-source reinforcement learning environment for autonomous racing.
+
+### [gym_torcs](https://github.com/ugo-nama-kun/gym_torcs/)
+
+Gym-TORCS is the reinforcement learning (RL) environment in TORCS domain with OpenAI-gym-like interface. TORCS is the open-rource realistic car racing simulator recently used as RL benchmark task in several AI studies.
+
+### [mobile-env](https://github.com/stefanbschneider/mobile-env/)
+
+An open, minimalist Gym environment for autonomous coordination in wireless mobile networks.
+
+### [gym-softrobot](https://github.com/skim0119/gym-softrobot/)
+
+Softrobotics environment package for OpenAI Gym
+
+### [PyElastica](https://github.com/GazzolaLab/PyElastica/)
+
+Python implementation of Elastica, an open-source software for the simulation of assemblies of slender, one-dimensional structures using Cosserat Rod theory.
+
+### [tuxkart-ai](https://github.com/notjedi/tuxkart-ai/)
+
+RL agent for the SuperTuxKart game.
+
+### [ostrichrl](https://github.com/vittorione94/ostrichrl/)
+
+This is the repository accompanying the paper [OstrichRL: A Musculoskeletal Ostrich Simulation to Study Bio-mechanical Locomotion](https://arxiv.org/abs/2112.06061).
+
+### [quadruped-gym](https://github.com/dtch1997/quadruped-gym/)
+
+An OpenAI gym environment for the training of legged robots
+
+### [Pogo-Stick-Jumping](https://github.com/asalbright/Pogo-Stick-Jumping/)
+
+OpenAI gym environment, testing and evaluation.
+
+### [evogym](https://github.com/EvolutionGym/evogym/)
+
+A large-scale benchmark for co-optimizing the design and control of soft robots, as seen in NeurIPS 2021.
+
+### [iGibson](https://github.com/StanfordVL/iGibson/)
+
+A Simulation Environment to train Robots in Large Realistic Interactive Scenes
+
+### [SnakeRL](https://github.com/tboulet/SnakeRL/)
+
+Repo for Snake RL
+
+### [starship-landing-gym](https://github.com/Armandpl/starship-landing-gym/)
+
+A Gym env for propulsive rocket landing.
+
+### [CompilerGym](https://github.com/facebookresearch/CompilerGym/)
+
+Reinforcement learning environments for compiler and program optimization tasks
+
+### [RaveForce](https://github.com/chaosprint/RaveForce/)
+
+RaveForce - An OpenAI Gym style toolkit for music generation experiments.
+
+### [gym-line-follower](https://github.com/nplan/gym-line-follower/)
+
+Line follower robot simulator environment for Open AI Gym.
+
+### [DexterousHands](https://github.com/PKU-MARL/DexterousHands/)
+
+This is a library that provides dual dexterous hand manipulation tasks through Isaac Gym
+
+### [OmniIsaacGymEnvs](https://github.com/NVIDIA-Omniverse/OmniIsaacGymEnvs/)
+
+Reinforcement Learning Environments for Omniverse Isaac Gym
+
+### [border](https://github.com/taku-y/border/)
+
+A reinforcement learning library in Rust
+
+### [SpaceRobotEnv](https://github.com/Tsinghua-Space-Robot-Learning-Group/SpaceRobotEnv/)
+
+A gym environment designed for free-floating space robot control based on the MuJoCo platform.
+
+### [gymnax](https://github.com/RobertTLange/gymnax/)
+
+RL Environments in JAX 🌍
