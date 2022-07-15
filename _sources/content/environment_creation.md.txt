@@ -58,7 +58,7 @@ Let us look at the source code of `GridWorldEnv` piece by piece:
 ### Declaration and Initialization
 Our custom environment will inherit from the abstract class `gym.Env`. You shouldn't forget to add the `metadata` attribute to you class. 
 There, you should specify the render-modes that are supported by your environment (e.g. `"human"`, `"rgb_array"`, `"ansi"`)
-and the framerate at which your environment should be rendered.
+and the framerate at which your environment should be rendered. Every environment should support`None` as render-mode; you don't need to add it in the metadata.
 In `GridWorldEnv`, we will support the modes "rgb_array" and "human" and render at 4 FPS.
 
 The `__init__` method of our environment will accept the integer `size`, that determines the size of the square grid.
@@ -71,14 +71,17 @@ Here is the declaration of `GridWorldEnv` and the implementation of `__init__`:
 ```python
 import gym
 from gym import spaces
-import pygame
 import numpy as np
-
+from typing import Optional
+from gym.utils.renderer import Renderer
 
 class GridWorldEnv(gym.Env):
-    metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
+    metadata = {"render_modes": ["human", "rgb_array", "single_rgb_array"], "render_fps": 4}
 
-    def __init__(self, size=5):
+    def __init__(self, render_mode: Optional[str] = None, size: int = 5):
+        assert render_mode is None or render_mode in self.metadata["render_modes"]
+        self.render_mode = render_mode  # Define the attribute render_mode in your environment
+
         self.size = size  # The size of the square grid
         self.window_size = 512  # The size of the PyGame window
 
@@ -110,11 +113,20 @@ class GridWorldEnv(gym.Env):
         If human-rendering is used, `self.window` will be a reference
         to the window that we draw to. `self.clock` will be a clock that is used
         to ensure that the environment is rendered at the correct framerate in
-        human-mode. They will remain `None` until human-mode is used for the
-        first time.
+        human-mode.
         """
-        self.window = None
-        self.clock = None
+        if self.render_mode == "human":
+            import pygame  # import here to avoid pygame dependency with no render
+
+            pygame.init()
+            pygame.display.init()
+            self.window = pygame.display.set_mode((self.window_size, self.window_size))
+            self.clock = pygame.time.Clock()
+                
+        # The following line uses the util class Renderer to gather a collection of frames 
+        # using a method that computes a single frame. We will define _render_frame below.
+        self.renderer = Renderer(self.render_mode, self._render_frame)
+            
 ```
 
 ### Constructing Observations From Environment States
@@ -161,6 +173,10 @@ and `_get_info` that we implemented earlier for that:
         while np.array_equal(self._target_location, self._agent_location):
             self._target_location = self.np_random.integers(0, self.size, size=2)
 
+        # clean the render collection and add the initial frame
+        self.renderer.reset()
+        self.renderer.render_step()
+
         observation = self._get_obs()
         info = self._get_info()
         return (observation, info) if return_info else observation
@@ -187,6 +203,9 @@ accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computi
         observation = self._get_obs()
         info = self._get_info()
 
+        # add a frame to the render collection
+        self.renderer.render_step()
+
         return observation, reward, done, info
 ```
 
@@ -195,14 +214,16 @@ Here, we are using PyGame for rendering. A similar approach to rendering is used
 with Gym and you can use it as a skeleton for your own environments:
 
 ```python
-    def render(self, mode="human"):
-        if self.window is None and mode == "human":
-            pygame.init()
-            pygame.display.init()
-            self.window = pygame.display.set_mode((self.window_size, self.window_size))
-        if self.clock is None and mode == "human":
-            self.clock = pygame.time.Clock()
+    def render(self):
+        # Just return the list of render frames collected by the Renderer.
+        return self.renderer.get_renders()
 
+    def _render_frame(self, mode: str):
+        # This will be the function called by the Renderer to collect a single frame.
+        assert mode is not None  # The renderer will not call this function with no-rendering.
+    
+        import pygame # avoid global pygame dependency. This method is not called with no-render.
+    
         canvas = pygame.Surface((self.window_size, self.window_size))
         canvas.fill((255, 255, 255))
         pix_square_size = (
@@ -244,6 +265,7 @@ with Gym and you can use it as a skeleton for your own environments:
             )
 
         if mode == "human":
+            assert self.window is not None
             # The following line copies our drawings from `canvas` to the visible window
             self.window.blit(canvas, canvas.get_rect())
             pygame.event.pump()
@@ -252,7 +274,7 @@ with Gym and you can use it as a skeleton for your own environments:
             # We need to ensure that human-rendering occurs at the predefined framerate.
             # The following line will automatically add a delay to keep the framerate stable.
             self.clock.tick(self.metadata["render_fps"])
-        else:  # rgb_array
+        else:  # rgb_array or single_rgb_array
             return np.transpose(
                 np.array(pygame.surfarray.pixels3d(canvas)), axes=(1, 0, 2)
             )
@@ -260,12 +282,14 @@ with Gym and you can use it as a skeleton for your own environments:
 
 ### Close
 The `close` method should close any open resources that were used by the environment. In many cases,
-you don't actually have to bother to implement this method. However, in our example `render` may have
-been called with `mode="human"` and we might need to close the window that has been opened:
+you don't actually have to bother to implement this method. However, in our example `render_mode` may
+be `"human"` and we might need to close the window that has been opened:
 
 ```python
     def close(self):
         if self.window is not None:
+            import pygame 
+            
             pygame.display.quit()
             pygame.quit()
 ```
