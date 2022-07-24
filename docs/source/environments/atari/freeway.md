@@ -3,7 +3,7 @@ title: Freeway
 ---
 # Freeway
 
-```{figure} ../../_static/videos/atari/fishing_derby.gif 
+```{figure} ../../_static/videos/atari/freeway.gif 
 :width: 120px
 :name: Freeway
 ```
