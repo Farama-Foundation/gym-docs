@@ -55,7 +55,7 @@ for env_spec in tqdm(gym.envs.registry.values()):
         # obtain and save LENGTH frames worth of steps
         frames = []
         while True:
-            state = env.reset()
+            state, info = env.reset()
             done = False
             while not done and len(frames) <= LENGTH:
                 
