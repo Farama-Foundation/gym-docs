@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Walker2D" href="../walker2d/" /><link rel="prev" title="Reacher" href="../reacher/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/mujoco/swimmer.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Swimmer - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -364,14 +364,12 @@ Problem parameters:</p>
 <li><p><em>k</em>: viscous-friction coefficient</p></li>
 </ul>
 <p>While the default environment has <em>n</em> = 3, <em>l<sub>i</sub></em> = 0.1,
-and <em>k</em> = 0.1. It is possible to tweak the MuJoCo XML files to increase the
+and <em>k</em> = 0.1. It is possible to pass a custom MuJoCo XML file during construction to increase the
 number of links, or to tweak any of the parameters.</p>
 </section>
 <section id="action-space">
 <h2>Action Space<a class="headerlink" href="#action-space" title="Permalink to this heading">#</a></h2>
-<p>The agent take a 2-element vector for actions.
-The action space is a continuous <code class="docutils literal notranslate"><span class="pre">(action,</span> <span class="pre">action)</span></code> in <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>, where
-<code class="docutils literal notranslate"><span class="pre">action</span></code> represents the numerical torques applied between <em>links</em></p>
+<p>The action space is a <code class="docutils literal notranslate"><span class="pre">Box(-1,</span> <span class="pre">1,</span> <span class="pre">(2,),</span> <span class="pre">float32)</span></code>. An action represents the torques applied between <em>links</em></p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -407,113 +405,18 @@ The action space is a continuous <code class="docutils literal notranslate"><spa
 </section>
 <section id="observation-space">
 <h2>Observation Space<a class="headerlink" href="#observation-space" title="Permalink to this heading">#</a></h2>
-<p>The state space consists of:</p>
+<p>By default, observations consists of:</p>
 <ul class="simple">
-<li><p>A<sub>0</sub>: position of first point</p></li>
 <li><p>θ<sub>i</sub>: angle of part <em>i</em> with respect to the <em>x</em> axis</p></li>
-<li><p>A<sub>0</sub>, θ<sub>i</sub>: their derivatives with respect to time (velocity and angular velocity)</p></li>
+<li><p>θ<sub>i</sub>’: its derivative with respect to time (angular velocity)</p></li>
 </ul>
-<p>The observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(8,)</span></code> where the elements correspond to the following:</p>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Num</p></th>
-<th class="head"><p>Observation</p></th>
-<th class="head"><p>Min</p></th>
-<th class="head"><p>Max</p></th>
-<th class="head"><p>Name (in corresponding XML file)</p></th>
-<th class="head"><p>Joint</p></th>
-<th class="head"><p>Unit</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0</p></td>
-<td><p>x-coordinate of the front tip</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>slider1</p></td>
-<td><p>slide</p></td>
-<td><p>position (m)</p></td>
-</tr>
-<tr class="row-odd"><td><p>1</p></td>
-<td><p>y-coordinate of the front tip</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>slider2</p></td>
-<td><p>slide</p></td>
-<td><p>position (m)</p></td>
-</tr>
-<tr class="row-even"><td><p>2</p></td>
-<td><p>angle of the front tip</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>rot</p></td>
-<td><p>hinge</p></td>
-<td><p>angle (rad)</p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
-<td><p>angle of the second rotor</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>rot2</p></td>
-<td><p>hinge</p></td>
-<td><p>angle (rad)</p></td>
-</tr>
-<tr class="row-even"><td><p>4</p></td>
-<td><p>angle of the second rotor</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>rot3</p></td>
-<td><p>hinge</p></td>
-<td><p>angle (rad)</p></td>
-</tr>
-<tr class="row-odd"><td><p>5</p></td>
-<td><p>velocity of the tip along the x-axis</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>slider1</p></td>
-<td><p>slide</p></td>
-<td><p>velocity (m/s)</p></td>
-</tr>
-<tr class="row-even"><td><p>6</p></td>
-<td><p>velocity of the tip along the y-axis</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>slider2</p></td>
-<td><p>slide</p></td>
-<td><p>velocity (m/s)</p></td>
-</tr>
-<tr class="row-odd"><td><p>7</p></td>
-<td><p>angular velocity of front tip</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>rot</p></td>
-<td><p>hinge</p></td>
-<td><p>angular velocity (rad/s)</p></td>
-</tr>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>angular velocity of second rotor</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>rot2</p></td>
-<td><p>hinge</p></td>
-<td><p>angular velocity (rad/s)</p></td>
-</tr>
-<tr class="row-odd"><td><p>9</p></td>
-<td><p>angular velocity of third rotor</p></td>
-<td><p>-Inf</p></td>
-<td><p>Inf</p></td>
-<td><p>rot3</p></td>
-<td><p>hinge</p></td>
-<td><p>angular velocity (rad/s)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Note:</strong>
-In practice (and Gym implementation), the first two positional elements are
-omitted from the state space since the reward function is calculated based
-on those values. Therefore, observation space has shape <code class="docutils literal notranslate"><span class="pre">(8,)</span></code> and looks like:</p>
+<p>In the default case, observations do not include the x- and y-coordinates of the front tip. These may
+be included by passing <code class="docutils literal notranslate"><span class="pre">exclude_current_positions_from_observation=False</span></code> during construction.
+Then, the observation space will have 10 dimensions where the first two dimensions
+represent the x- and y-coordinates of the front tip.
+Regardless of whether <code class="docutils literal notranslate"><span class="pre">exclude_current_positions_from_observation</span></code> was set to true or false, the x- and y-coordinates
+will be returned in <code class="docutils literal notranslate"><span class="pre">info</span></code> with keys <code class="docutils literal notranslate"><span class="pre">&quot;x_position&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;y_position&quot;</span></code>, respectively.</p>
+<p>By default, the observation is a <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> with shape <code class="docutils literal notranslate"><span class="pre">(8,)</span></code> where the elements correspond to the following:</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -536,7 +439,7 @@ on those values. Therefore, observation space has shape <code class="docutils li
 <td><p>angle (rad)</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p>angle of the second rotor</p></td>
+<td><p>angle of the first rotor</p></td>
 <td><p>-Inf</p></td>
 <td><p>Inf</p></td>
 <td><p>rot2</p></td>
@@ -576,7 +479,7 @@ on those values. Therefore, observation space has shape <code class="docutils li
 <td><p>angular velocity (rad/s)</p></td>
 </tr>
 <tr class="row-even"><td><p>6</p></td>
-<td><p>angular velocity of second rotor</p></td>
+<td><p>angular velocity of first rotor</p></td>
 <td><p>-Inf</p></td>
 <td><p>Inf</p></td>
 <td><p>rot2</p></td>
@@ -584,7 +487,7 @@ on those values. Therefore, observation space has shape <code class="docutils li
 <td><p>angular velocity (rad/s)</p></td>
 </tr>
 <tr class="row-odd"><td><p>7</p></td>
-<td><p>angular velocity of third rotor</p></td>
+<td><p>angular velocity of second rotor</p></td>
 <td><p>-Inf</p></td>
 <td><p>Inf</p></td>
 <td><p>rot3</p></td>
@@ -599,38 +502,74 @@ on those values. Therefore, observation space has shape <code class="docutils li
 <h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h2>
 <p>The reward consists of two parts:</p>
 <ul class="simple">
-<li><p><em>reward_front</em>: A reward of moving forward which is measured
-as <em>(x-coordinate before action - x-coordinate after action)/dt</em>. <em>dt</em> is
+<li><p><em>forward_reward</em>: A reward of moving forward which is measured
+as <em><code class="docutils literal notranslate"><span class="pre">forward_reward_weight</span></code> * (x-coordinate before action - x-coordinate after action)/dt</em>. <em>dt</em> is
 the time between actions and is dependent on the frame_skip parameter
-(default is 4), where the <em>dt</em> for one frame is 0.01 - making the
+(default is 4), where the frametime is 0.01 - making the
 default <em>dt = 4 * 0.01 = 0.04</em>. This reward would be positive if the swimmer
 swims right as desired.</p></li>
-<li><p><em>reward_control</em>: A negative reward for penalising the swimmer if it takes
-actions that are too large. It is measured as <em>-coefficient x
-sum(action<sup>2</sup>)</em> where <em>coefficient</em> is a parameter set for the
-control and has a default value of 0.0001</p></li>
+<li><p><em>ctrl_cost</em>: A cost for penalising the swimmer if it takes
+actions that are too large. It is measured as <em><code class="docutils literal notranslate"><span class="pre">ctrl_cost_weight</span></code> *
+sum(action<sup>2</sup>)</em> where <em><code class="docutils literal notranslate"><span class="pre">ctrl_cost_weight</span></code></em> is a parameter set for the
+control and has a default value of 1e-4</p></li>
 </ul>
-<p>The total reward returned is <em><strong>reward</strong></em> <em>=</em> <em>reward_front + reward_control</em></p>
+<p>The total reward returned is <em><strong>reward</strong></em> <em>=</em> <em>forward_reward - ctrl_cost</em> and <code class="docutils literal notranslate"><span class="pre">info</span></code> will also contain the individual reward terms</p>
 </section>
 <section id="starting-state">
 <h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this heading">#</a></h2>
-<p>All observations start in state (0,0,0,0,0,0,0,0) with a Uniform noise in the range of [-0.1, 0.1] is added to the initial state for stochasticity.</p>
+<p>All observations start in state (0,0,0,0,0,0,0,0) with a Uniform noise in the range of [-<code class="docutils literal notranslate"><span class="pre">reset_noise_scale</span></code>, <code class="docutils literal notranslate"><span class="pre">reset_noise_scale</span></code>] is added to the initial state for stochasticity.</p>
 </section>
-<section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
-<p>The episode terminates when the episode length is greater than 1000.</p>
+<section id="episode-end">
+<h2>Episode End<a class="headerlink" href="#episode-end" title="Permalink to this heading">#</a></h2>
+<p>The episode truncates when the episode length is greater than 1000.</p>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h2>
-<p>No additional arguments are currently supported (in v2 and lower), but
-modifications can be made to the XML file in the assets folder
-(or by changing the path to a modified XML file in another folder).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Swimmer-v2&#39;</span><span class="p">)</span>
+<p>No additional arguments are currently supported in v2 and lower.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Swimmer-v4&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>v3 and v4 take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Swimmer-v4&#39;</span><span class="p">,</span> <span class="n">ctrl_cost_weight</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">....</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xml_file</span></code></p></td>
+<td><p><strong>str</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;swimmer.xml&quot;</span></code></p></td>
+<td><p>Path to a MuJoCo model</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">forward_reward_weight</span></code></p></td>
+<td><p><strong>float</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+<td><p>Weight for <em>forward_reward</em> term (see section on reward)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ctrl_cost_weight</span></code></p></td>
+<td><p><strong>float</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1e-4</span></code></p></td>
+<td><p>Weight for <em>ctrl_cost</em> term (see section on reward)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reset_noise_scale</span></code></p></td>
+<td><p><strong>float</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
+<td><p>Scale of random perturbations of initial position and velocity (see section on Starting State)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exclude_current_positions_from_observation</span></code></p></td>
+<td><p><strong>bool</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Whether or not to omit the x- and y-coordinates from observations. Excluding the position can serve as an inductive bias to induce position-agnostic behavior in policies</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="version-history">
@@ -709,7 +648,7 @@ modifications can be made to the XML file in the assets folder
 <li><a class="reference internal" href="#observation-space">Observation Space</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#starting-state">Starting State</a></li>
-<li><a class="reference internal" href="#episode-termination">Episode Termination</a></li>
+<li><a class="reference internal" href="#episode-end">Episode End</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#version-history">Version History</a></li>
 </ul>

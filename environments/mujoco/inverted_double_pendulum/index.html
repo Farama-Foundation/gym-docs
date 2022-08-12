@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Inverted Pendulum" href="../inverted_pendulum/" /><link rel="prev" title="Humanoid" href="../humanoid/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/mujoco/inverted_double_pendulum.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Inverted Double Pendulum - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -494,7 +494,7 @@ positions ordered before all the velocities.</p>
 </table>
 </div>
 <p>There is physical contact between the robots and their environment - and Mujoco
-attempts at getting realistic physics simulations for the possible physical contact
+attempts at getting realisitic physics simulations for the possible physical contact
 dynamics by aiming for physical accuracy and computational efficiency.</p>
 <p>There is one constraint force for contacts for each degree of freedom (3).
 The approach and handling of constraints by Mujoco is unique to the simulator
@@ -526,29 +526,21 @@ fast <em>0.001 *  v<sub>1</sub><sup>2</sup> + 0.005 * v<sub>2</sub> <sup>2</sup>
 of [-0.1, 0.1] added to the positional values (cart position and pole angles) and standard
 normal force with a standard deviation of 0.1 added to the velocity values for stochasticity.</p>
 </section>
-<section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
-<p>The episode terminates when any of the following happens:</p>
-<ol class="arabic simple">
-<li><p>The episode duration reaches 1000 timesteps.</p></li>
-<li><p>Any of the state space values is no longer finite.</p></li>
-<li><p>The y_coordinate of the tip of the second pole <em>is less than or equal</em> to 1. The maximum standing height of the system is 1.196 m when all the parts are perpendicularly vertical on top of each other).</p></li>
-</ol>
+<section id="episode-end">
+<h2>Episode End<a class="headerlink" href="#episode-end" title="Permalink to this heading">#</a></h2>
+<p>The episode ends when any of the following happens:</p>
+<p>1.Truncation:  The episode duration reaches 1000 timesteps.
+2.Termination: Any of the state space values is no longer finite.
+3.Termination: The y_coordinate of the tip of the second pole <em>is less than or equal</em> to 1. The maximum standing height of the system is 1.196 m when all the parts are perpendicularly vertical on top of each other).</p>
 </section>
 <section id="arguments">
 <h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h2>
-<p>No additional arguments are currently supported (in v2 and lower), but modifications can
-be made to the XML file in the assets folder (or by changing the path to a modified XML
-file in another folder)..</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;InvertedDoublePendulum-v2&#39;</span><span class="p">)</span>
+<p>No additional arguments are currently supported.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;InvertedDoublePendulum-v4&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There is no v3 for InvertedPendulum, unlike the robot environments where a v3 and
 beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.</p>
-<p>There is a v4 version that uses the mujoco-bindings</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;InvertedDoublePendulum-v4&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">#</a></h2>
@@ -625,7 +617,7 @@ beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scal
 <li><a class="reference internal" href="#observation-space">Observation Space</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#starting-state">Starting State</a></li>
-<li><a class="reference internal" href="#episode-termination">Episode Termination</a></li>
+<li><a class="reference internal" href="#episode-end">Episode End</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#version-history">Version History</a></li>
 </ul>

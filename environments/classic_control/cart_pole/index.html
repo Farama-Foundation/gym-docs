@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Mountain Car Continuous" href="../mountain_car_continuous/" /><link rel="prev" title="Acrobot" href="../acrobot/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/classic_control/cart_pole.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Cart Pole - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -426,13 +426,13 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
 <h2>Starting State<a class="headerlink" href="#starting-state" title="Permalink to this heading">#</a></h2>
 <p>All observations are assigned a uniformly random value in <code class="docutils literal notranslate"><span class="pre">(-0.05,</span> <span class="pre">0.05)</span></code></p>
 </section>
-<section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
-<p>The episode terminates if any one of the following occurs:</p>
+<section id="episode-end">
+<h2>Episode End<a class="headerlink" href="#episode-end" title="Permalink to this heading">#</a></h2>
+<p>The episode ends if any one of the following occurs:</p>
 <ol class="arabic simple">
-<li><p>Pole Angle is greater than ±12°</p></li>
-<li><p>Cart Position is greater than ±2.4 (center of the cart reaches the edge of the display)</p></li>
-<li><p>Episode length is greater than 500 (200 for v0)</p></li>
+<li><p>Termination: Pole Angle is greater than ±12°</p></li>
+<li><p>Termination: Cart Position is greater than ±2.4 (center of the cart reaches the edge of the display)</p></li>
+<li><p>Truncation: Episode length is greater than 500 (200 for v0)</p></li>
 </ol>
 </section>
 <section id="arguments">
@@ -507,7 +507,7 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
 <li><a class="reference internal" href="#observation-space">Observation Space</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#starting-state">Starting State</a></li>
-<li><a class="reference internal" href="#episode-termination">Episode Termination</a></li>
+<li><a class="reference internal" href="#episode-end">Episode End</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 </ul>
 </li>

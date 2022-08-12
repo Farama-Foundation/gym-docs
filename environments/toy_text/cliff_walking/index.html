@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Frozen Lake" href="../frozen_lake/" /><link rel="prev" title="Taxi" href="../taxi/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/toy_text/cliff_walking.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Cliff Walking - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -339,7 +339,8 @@ reinforcement learning task.</p>
 <p>Adapted from Example 6.6 (page 106) from <a class="reference external" href="http://incompleteideas.net/book/bookdraft2018jan1.pdf">Reinforcement Learning: An Introduction
 by Sutton and Barto</a>.</p>
 <p>With inspiration from:
-https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/cliff_walking.py</p>
+[https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/cliff_walking.py]
+(https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/cliff_walking.py)</p>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
 <p>The board is a 4x12 matrix, with (using NumPy matrix indexing):</p>
@@ -348,7 +349,7 @@ https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/cliff_
 <li><p>[3, 11] as the goal at bottom-right</p></li>
 <li><p>[3, 1..10] as the cliff at bottom-center</p></li>
 </ul>
-<p>If the agent steps on the cliff it returns to the start.
+<p>If the agent steps on the cliff, it returns to the start.
 An episode terminates when the agent reaches the goal.</p>
 </section>
 <section id="actions">
@@ -364,9 +365,9 @@ An episode terminates when the agent reaches the goal.</p>
 <section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this heading">#</a></h2>
 <p>There are 3x12 + 1 possible states. In fact, the agent cannot be at the cliff, nor at the goal
-(as this results the end of episode). They remain all the positions of the first 3 rows plus the bottom-left cell.
-The observation is simply the current position encoded as
-<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html">flattened index</a>.</p>
+(as this results in the end of the episode).
+It remains all the positions of the first 3 rows plus the bottom-left cell.
+The observation is simply the current position encoded as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.unravel_index.html">flattened index</a>.</p>
 </section>
 <section id="reward">
 <h2>Reward<a class="headerlink" href="#reward" title="Permalink to this heading">#</a></h2>

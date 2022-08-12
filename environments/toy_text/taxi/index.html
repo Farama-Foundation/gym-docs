@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Cliff Walking" href="../cliff_walking/" /><link rel="prev" title="Blackjack" href="../blackjack/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/toy_text/taxi.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Taxi - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -399,6 +399,19 @@ The state tuple can then be decoded with the “decode” method.</p>
 <li><p>3: B(lue)</p></li>
 </ul>
 </section>
+<section id="info">
+<h2>Info<a class="headerlink" href="#info" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">step</span></code> and <code class="docutils literal notranslate"><span class="pre">reset(return_info=True)</span></code> will return an info dictionary that contains “p” and “action_mask” containing
+the probability that the state is taken and a mask of what actions will result in a change of state to speed up training.</p>
+<p>As Taxi’s initial state is a stochastic, the “p” key represents the probability of the
+transition however this value is currently bugged being 1.0, this will be fixed soon.
+As the steps are deterministic, “p” represents the probability of the transition which is always 1.0</p>
+<p>For some cases, taking an action will have no effect on the state of the agent.
+In v0.25.0, <code class="docutils literal notranslate"><span class="pre">info[&quot;action_mask&quot;]</span></code> contains a np.ndarray for each of the action specifying
+if the action will change the state.</p>
+<p>To sample a modifying action, use <code class="docutils literal notranslate"><span class="pre">action</span> <span class="pre">=</span> <span class="pre">env.action_space.sample(info[&quot;action_mask&quot;])</span></code>
+Or with a Q-value based algorithm <code class="docutils literal notranslate"><span class="pre">action</span> <span class="pre">=</span> <span class="pre">np.argmax(q_values[obs,</span> <span class="pre">np.where(info[&quot;action_mask&quot;]</span> <span class="pre">==</span> <span class="pre">1)[0]])</span></code>.</p>
+</section>
 <section id="rewards">
 <h2>Rewards<a class="headerlink" href="#rewards" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -416,7 +429,7 @@ The state tuple can then be decoded with the “decode” method.</p>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>v3: Map Correction + Cleaner Domain Description</p></li>
+<li><p>v3: Map Correction + Cleaner Domain Description, v0.25.0 action masking added to the reset and step information</p></li>
 <li><p>v2: Disallow Taxi start location = goal location, Update Taxi observations in the rollout, Update Taxi reward threshold.</p></li>
 <li><p>v1: Remove (3,2) from locs, add passidx&lt;4 check</p></li>
 <li><p>v0: Initial versions release</p></li>
@@ -485,6 +498,7 @@ The state tuple can then be decoded with the “decode” method.</p>
 <li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#actions">Actions</a></li>
 <li><a class="reference internal" href="#observations">Observations</a></li>
+<li><a class="reference internal" href="#info">Info</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#version-history">Version History</a></li>

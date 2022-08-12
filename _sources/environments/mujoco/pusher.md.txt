@@ -23,21 +23,21 @@ This environment is part of the <a href='..'>Mujoco environments</a>. Please rea
 
 ### Description
 "Pusher" is a multi-jointed robot arm which is very similar to that of a human.
-The goal is to move a target cylinder (called *object*) to a goal position using the robot's end effector (called *fingertip*).
-The robot consists of shoulder, elbow, forearm, and wrist joints.
+ The goal is to move a target cylinder (called *object*) to a goal position using the robot's end effector (called *fingertip*).
+  The robot consists of shoulder, elbow, forearm, and wrist joints.
 
 ### Action Space
 The action space is a `Box(-2, 2, (7,), float32)`. An action `(a, b)` represents the torques applied at the hinge joints.
 
-| Num | Action                                         | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit         |
-|-----|------------------------------------------------|-------------|-------------|----------------------------------|-------|--------------|
-| 0   | Rotation of the panning the shoulder          | -2          | 2           | r_shoulder_pan_joint             | hinge | torque (N m) |
-| 1   | Rotation of the shoulder lifting joint        | -2          | 2           | r_shoulder_lift_joint            | hinge | torque (N m) |
-| 2   | Rotation of the shoulder rolling joint        | -2          | 2           | r_upper_arm_roll_joint           | hinge | torque (N m) |
-| 3   | Rotation of hinge joint that flexed the elbow | -2          | 2           | r_elbow_flex_joint               | hinge | torque (N m) |
-| 4   | Rotation of hinge that rolls the forearm      | -2          | 2           | r_forearm_roll_joint             | hinge | torque (N m) |
-| 5   | Rotation of flexing the wrist                 | -2          | 2           | r_wrist_flex_joint               | hinge | torque (N m) |
-| 6   | Rotation of rolling the wrist                 | -2          | 2           | r_wrist_roll_joint               | hinge | torque (N m) |
+| Num | Action                                                             | Control Min | Control Max | Name (in corresponding XML file) | Joint | Unit         |
+|-----|--------------------------------------------------------------------|-------------|-------------|----------------------------------|-------|--------------|
+| 0    | Rotation of the panning the shoulder                              | -2          | 2           | r_shoulder_pan_joint             | hinge | torque (N m) |
+| 1    | Rotation of the shoulder lifting joint                            | -2          | 2           | r_shoulder_lift_joint            | hinge | torque (N m) |
+| 2    | Rotation of the shoulder rolling joint                            | -2          | 2           | r_upper_arm_roll_joint           | hinge | torque (N m) |
+| 3    | Rotation of hinge joint that flexed the elbow                     | -2          | 2           | r_elbow_flex_joint               | hinge | torque (N m) |
+| 4    | Rotation of hinge that rolls the forearm                          | -2          | 2           | r_forearm_roll_joint             | hinge | torque (N m) |
+| 5    | Rotation of flexing the wrist                                     | -2          | 2           | r_wrist_flex_joint               | hinge | torque (N m) |
+| 6    | Rotation of rolling the wrist                                     | -2          | 2           | r_wrist_roll_joint               | hinge | torque (N m) |
 
 ### Observation Space
 
@@ -54,7 +54,7 @@ An analogy can be drawn to a human arm in order to help understand the state spa
 same as human joints.
 
 | Num | Observation                                              | Min  | Max | Name (in corresponding XML file) | Joint    | Unit                     |
-|-----|----------------------------------------------------------|------|-----|----------------------------------|----------|--------------------------|
+| --- | -------------------------------------------------------- | ---- | --- | -------------------------------- | -------- | ------------------------ |
 | 0   | Rotation of the panning the shoulder                     | -Inf | Inf | r_shoulder_pan_joint             | hinge    | angle (rad)              |
 | 1   | Rotation of the shoulder lifting joint                   | -Inf | Inf | r_shoulder_lift_joint            | hinge    | angle (rad)              |
 | 2   | Rotation of the shoulder rolling joint                   | -Inf | Inf | r_upper_arm_roll_joint           | hinge    | angle (rad)              |
@@ -113,12 +113,12 @@ than 0.17. The goal always have the same position of (0.45, -0.05, -0.323).
 
 The default framerate is 5 with each frame lasting for 0.01, giving rise to a *dt = 5 * 0.01 = 0.05*
 
-### Episode Termination
+### Episode End
 
-The episode terminates when any of the following happens:
+The episode ends when any of the following happens:
 
-1. The episode duration reaches a 100 timesteps.
-2. Any of the state space values is no longer finite.
+1. Truncation: The episode duration reaches a 100 timesteps.
+2. Termination: Any of the state space values is no longer finite.
 
 ### Arguments
 
@@ -127,16 +127,12 @@ but modifications can be made to the XML file in the assets folder
 (or by changing the path to a modified XML file in another folder)..
 
 ```
-env = gym.make('Pusher-v2')
+env = gym.make('Pusher-v4')
 ```
 
 There is no v3 for Pusher, unlike the robot environments where a v3 and
 beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.
 
-There is a v4 version that uses the mujoco-bindings
-```
-env = gym.make('Pusher-v4')
-```
 
 ### Version History
 

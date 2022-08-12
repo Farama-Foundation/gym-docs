@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Swimmer" href="../swimmer/" /><link rel="prev" title="Inverted Pendulum" href="../inverted_pendulum/" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/mujoco/reacher.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Reacher - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -580,12 +580,12 @@ range of [-0.005, 0.005] is added to the velocities, and the last
 element (“fingertip” - “target”) is calculated at the end once everything
 is set. The default setting has a framerate of 2 and a <em>dt = 2 * 0.01 = 0.02</em></p>
 </section>
-<section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
-<p>The episode terminates when any of the following happens:</p>
+<section id="episode-end">
+<h2>Episode End<a class="headerlink" href="#episode-end" title="Permalink to this heading">#</a></h2>
+<p>The episode ends when any of the following happens:</p>
 <ol class="arabic simple">
-<li><p>The episode duration reaches a 50 timesteps (with a new random target popping up if the reacher’s fingertip reaches it before 50 timesteps)</p></li>
-<li><p>Any of the state space values is no longer finite.</p></li>
+<li><p>Truncation: The episode duration reaches a 50 timesteps (with a new random target popping up if the reacher’s fingertip reaches it before 50 timesteps)</p></li>
+<li><p>Termination: Any of the state space values is no longer finite.</p></li>
 </ol>
 </section>
 <section id="arguments">
@@ -593,15 +593,11 @@ is set. The default setting has a framerate of 2 and a <em>dt = 2 * 0.01 = 0.02<
 <p>No additional arguments are currently supported (in v2 and lower),
 but modifications can be made to the XML file in the assets folder
 (or by changing the path to a modified XML file in another folder)..</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Reacher-v2&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Reacher-v4&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>There is no v3 for Reacher, unlike the robot environments where a v3 and
 beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.</p>
-<p>There is a v4 version that uses the mujoco-bindings</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Reacher-v4&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 <section id="version-history">
 <h2>Version History<a class="headerlink" href="#version-history" title="Permalink to this heading">#</a></h2>
@@ -677,7 +673,7 @@ beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scal
 <li><a class="reference internal" href="#observation-space">Observation Space</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#starting-state">Starting State</a></li>
-<li><a class="reference internal" href="#episode-termination">Episode Termination</a></li>
+<li><a class="reference internal" href="#episode-end">Episode End</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#version-history">Version History</a></li>
 </ul>

@@ -72,9 +72,9 @@ while the maximum reward is zero (pendulum is upright with zero velocity and no 
 
 The starting state is a random angle in *[-pi, pi]* and a random angular velocity in *[-1,1]*.
 
-### Episode Termination
+### Episode Truncation
 
-The episode terminates at 200 time steps.
+The episode truncates at 200 time steps.
 
 ### Arguments
 

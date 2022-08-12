@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Cart Pole" href="../cart_pole/" /><link rel="prev" title="Classic Control" href="../" />
         <link rel="canonical" href="https://www.gymlibrary.ml/environments/classic_control/acrobot.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.0.2, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Acrobot - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
@@ -451,13 +451,13 @@ Achieving the target height results in termination with a reward of 0. The rewar
 <p>Each parameter in the underlying state (<code class="docutils literal notranslate"><span class="pre">theta1</span></code>, <code class="docutils literal notranslate"><span class="pre">theta2</span></code>, and the two angular velocities) is initialized
 uniformly between -0.1 and 0.1. This means both links are pointing downwards with some initial stochasticity.</p>
 </section>
-<section id="episode-termination">
-<h2>Episode Termination<a class="headerlink" href="#episode-termination" title="Permalink to this heading">#</a></h2>
-<p>The episode terminates if one of the following occurs:</p>
+<section id="episode-end">
+<h2>Episode End<a class="headerlink" href="#episode-end" title="Permalink to this heading">#</a></h2>
+<p>The episode ends if one of the following occurs:</p>
 <ol class="arabic simple">
-<li><p>The free end reaches the target height, which is constructed as:
+<li><p>Termination: The free end reaches the target height, which is constructed as:
 <code class="docutils literal notranslate"><span class="pre">-cos(theta1)</span> <span class="pre">-</span> <span class="pre">cos(theta2</span> <span class="pre">+</span> <span class="pre">theta1)</span> <span class="pre">&gt;</span> <span class="pre">1.0</span></code></p></li>
-<li><p>Episode length is greater than 500 (200 for v0)</p></li>
+<li><p>Truncation: Episode length is greater than 500 (200 for v0)</p></li>
 </ol>
 </section>
 <section id="arguments">
@@ -568,7 +568,7 @@ MIT Press. https://proceedings.neurips.cc/paper/1995/file/8f1d43620bc6bb580df6e8
 <li><a class="reference internal" href="#observation-space">Observation Space</a></li>
 <li><a class="reference internal" href="#rewards">Rewards</a></li>
 <li><a class="reference internal" href="#starting-state">Starting State</a></li>
-<li><a class="reference internal" href="#episode-termination">Episode Termination</a></li>
+<li><a class="reference internal" href="#episode-end">Episode End</a></li>
 <li><a class="reference internal" href="#arguments">Arguments</a></li>
 <li><a class="reference internal" href="#version-history">Version History</a></li>
 <li><a class="reference internal" href="#references">References</a></li>

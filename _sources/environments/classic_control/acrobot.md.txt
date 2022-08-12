@@ -81,12 +81,12 @@ Achieving the target height results in termination with a reward of 0. The rewar
 Each parameter in the underlying state (`theta1`, `theta2`, and the two angular velocities) is initialized
 uniformly between -0.1 and 0.1. This means both links are pointing downwards with some initial stochasticity.
 
-### Episode Termination
+### Episode End
 
-The episode terminates if one of the following occurs:
-1. The free end reaches the target height, which is constructed as:
+The episode ends if one of the following occurs:
+1. Termination: The free end reaches the target height, which is constructed as:
 `-cos(theta1) - cos(theta2 + theta1) > 1.0`
-2. Episode length is greater than 500 (200 for v0)
+2. Truncation: Episode length is greater than 500 (200 for v0)
 
 ### Arguments
 
