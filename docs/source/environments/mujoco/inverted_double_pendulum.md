@@ -52,7 +52,7 @@ positions ordered before all the velocities.
 The observation is a `ndarray` with shape `(11,)` where the elements correspond to the following:
 
 | Num | Observation                                                       | Min  | Max | Name (in corresponding XML file) | Joint | Unit                     |
-|-----|-------------------------------------------------------------------|------|-----|----------------------------------|-------|--------------------------|
+| --- | ----------------------------------------------------------------- | ---- | --- | -------------------------------- | ----- | ------------------------ |
 | 0   | position of the cart along the linear surface                     | -Inf | Inf | slider                           | slide | position (m)             |
 | 1   | sine of the angle between the cart and the first pole             | -Inf | Inf | sin(hinge)                       | hinge | unitless                 |
 | 2   | sine of the angle between the two poles                           | -Inf | Inf | sin(hinge2)                      | hinge | unitless                 |
@@ -67,7 +67,7 @@ The observation is a `ndarray` with shape `(11,)` where the elements correspond 
 
 
 There is physical contact between the robots and their environment - and Mujoco
-attempts at getting realistic physics simulations for the possible physical contact
+attempts at getting realisitic physics simulations for the possible physical contact
 dynamics by aiming for physical accuracy and computational efficiency.
 
 There is one constraint force for contacts for each degree of freedom (3).
@@ -99,29 +99,23 @@ All observations start in state
 of [-0.1, 0.1] added to the positional values (cart position and pole angles) and standard
 normal force with a standard deviation of 0.1 added to the velocity values for stochasticity.
 
-### Episode Termination
-The episode terminates when any of the following happens:
+### Episode End
+The episode ends when any of the following happens:
 
-1. The episode duration reaches 1000 timesteps.
-2. Any of the state space values is no longer finite.
-3. The y_coordinate of the tip of the second pole *is less than or equal* to 1. The maximum standing height of the system is 1.196 m when all the parts are perpendicularly vertical on top of each other).
+1.Truncation:  The episode duration reaches 1000 timesteps.
+2.Termination: Any of the state space values is no longer finite.
+3.Termination: The y_coordinate of the tip of the second pole *is less than or equal* to 1. The maximum standing height of the system is 1.196 m when all the parts are perpendicularly vertical on top of each other).
 
 ### Arguments
 
-No additional arguments are currently supported (in v2 and lower), but modifications can
-be made to the XML file in the assets folder (or by changing the path to a modified XML
-file in another folder)..
+No additional arguments are currently supported.
 
 ```
-env = gym.make('InvertedDoublePendulum-v2')
+env = gym.make('InvertedDoublePendulum-v4')
 ```
 There is no v3 for InvertedPendulum, unlike the robot environments where a v3 and
 beyond take gym.make kwargs such as xml_file, ctrl_cost_weight, reset_noise_scale etc.
 
-There is a v4 version that uses the mujoco-bindings
-```
-env = gym.make('InvertedDoublePendulum-v4')
-```
 
 ### Version History
 
