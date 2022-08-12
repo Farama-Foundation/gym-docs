@@ -81,6 +81,22 @@ Destinations:
 - 2: Y(ellow)
 - 3: B(lue)
 
+### Info
+
+``step`` and ``reset(return_info=True)`` will return an info dictionary that contains "p" and "action_mask" containing
+    the probability that the state is taken and a mask of what actions will result in a change of state to speed up training.
+
+As Taxi's initial state is a stochastic, the "p" key represents the probability of the
+transition however this value is currently bugged being 1.0, this will be fixed soon.
+As the steps are deterministic, "p" represents the probability of the transition which is always 1.0
+
+For some cases, taking an action will have no effect on the state of the agent.
+In v0.25.0, ``info["action_mask"]`` contains a np.ndarray for each of the action specifying
+if the action will change the state.
+
+To sample a modifying action, use ``action = env.action_space.sample(info["action_mask"])``
+Or with a Q-value based algorithm ``action = np.argmax(q_values[obs, np.where(info["action_mask"] == 1)[0]])``.
+
 ### Rewards
 - -1 per step unless other reward is triggered.
 - +20 delivering passenger.
@@ -93,7 +109,7 @@ gym.make('Taxi-v3')
 ```
 
 ### Version History
-* v3: Map Correction + Cleaner Domain Description
+* v3: Map Correction + Cleaner Domain Description, v0.25.0 action masking added to the reset and step information
 * v2: Disallow Taxi start location = goal location, Update Taxi observations in the rollout, Update Taxi reward threshold.
 * v1: Remove (3,2) from locs, add passidx<4 check
 * v0: Initial versions release

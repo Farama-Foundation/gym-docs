@@ -83,11 +83,11 @@ penalised with a reward of -1 for each timestep.
 The position of the car is assigned a uniform random value in *[-0.6 , -0.4]*.
 The starting velocity of the car is always assigned to 0.
 
-### Episode Termination
+### Episode End
 
-The episode terminates if either of the following happens:
-1. The position of the car is greater than or equal to 0.5 (the goal position on top of the right hill)
-2. The length of the episode is 200.
+The episode ends if either of the following happens:
+1. Termination: The position of the car is greater than or equal to 0.5 (the goal position on top of the right hill)
+2. Truncation: The length of the episode is 200.
 
 
 ### Arguments

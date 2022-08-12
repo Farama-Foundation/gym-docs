@@ -69,12 +69,13 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
 
 All observations are assigned a uniformly random value in `(-0.05, 0.05)`
 
-### Episode Termination
+### Episode End
 
-The episode terminates if any one of the following occurs:
-1. Pole Angle is greater than ±12°
-2. Cart Position is greater than ±2.4 (center of the cart reaches the edge of the display)
-3. Episode length is greater than 500 (200 for v0)
+The episode ends if any one of the following occurs:
+
+1. Termination: Pole Angle is greater than ±12°
+2. Termination: Cart Position is greater than ±2.4 (center of the cart reaches the edge of the display)
+3. Truncation: Episode length is greater than 500 (200 for v0)
 
 ### Arguments
 

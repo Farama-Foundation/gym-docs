@@ -18,7 +18,7 @@ This environment is part of the <a href='..'>Box2D environments</a>. Please read
 | Observation Shape | (96, 96, 3) |
 | Observation High | 255 |
 | Observation Low | 0 |
-| Import | `gym.make("CarRacing-v1")` | 
+| Import | `gym.make("CarRacing-v2")` | 
 
 
 ### Description
@@ -36,8 +36,10 @@ Remember: it's a powerful rear-wheel drive car - don't press the accelerator
 and turn at the same time.
 
 ### Action Space
-There are 3 actions: steering (-1 is full left, +1 is full right), gas,
-and breaking.
+If continuous:
+    There are 3 actions: steering (-1 is full left, +1 is full right), gas, and breaking.
+If discrete:
+    There are 5 actions: do nothing, steer left, steer right, gas, brake.
 
 ### Observation Space
 State consists of 96x96 pixels.
@@ -65,6 +67,24 @@ In this scenario, the background and track colours are different on every reset.
 
 Passing `continuous=False` converts the environment to use discrete action space.
 The discrete action space has 5 actions: [do nothing, left, right, gas, brake].
+
+### Reset Arguments
+Passing the option `options["randomize"] = True` will change the current colour of the environment on demand.
+Correspondingly, passing the option `options["randomize"] = False` will not change the current colour of the environment.
+`domain_randomize` must be `True` on init for this argument to work.
+Example usage:
+```py
+    env = gym.make("CarRacing-v1", domain_randomize=True)
+
+    # normal reset, this changes the colour scheme by default
+    env.reset()
+
+    # reset with colour scheme change
+    env.reset(options={"randomize": True})
+
+    # reset with no colour scheme change
+    env.reset(options={"randomize": False})
+```
 
 ### Version History
 - v1: Change track completion logic and add domain randomization (0.24.0)
