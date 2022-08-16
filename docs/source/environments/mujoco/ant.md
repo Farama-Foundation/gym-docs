@@ -143,8 +143,8 @@ The ant is said to be unhealthy if any of the following happens:
 If `terminate_when_unhealthy=True` is passed during construction (which is the default),
 the episode ends when any of the following happens:
 
-1. Termination: The episode duration reaches a 1000 timesteps
-2. Truncation: The ant is unhealthy
+1. Truncation: The episode duration reaches a 1000 timesteps
+2. Termination: The ant is unhealthy
 
 If `terminate_when_unhealthy=False` is passed, the episode is ended only when 1000 timesteps are exceeded.
 
