@@ -1,14 +1,15 @@
 ---
 hide-toc: true
+firstpage:
+lastpage:
 ---
 
-# Gym documentation
-
-## Gym is a standard API for reinforcement learning, and a diverse collection of reference environments.
+## Gym is a standard API for reinforcement learning, and a diverse collection of reference environments
 
 
-```{figure} https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif
+```{figure} _static/videos/box2d/lunar_lander_continuous.gif
    :alt: Lunar Lander
+   :width: 500
 ```
 
 **The Gym interface is simple, pythonic, and capable of representing general RL problems:**
