@@ -1,3 +1,8 @@
+---
+firstpage:
+lastpage:
+---
+
 ## Classic Control
 
 ```{toctree}

@@ -14,11 +14,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt && git clone https://github.com/openai/gym.git && pip install ./gym
       
-      - name: Build
+       - name: Build
         run: sphinx-build -b dirhtml -v docs/source build
+
+      - name: Move 404
+        run: mv ./build/404/index.html ./build/404.html
+
+      - name: Update 404 links
+        run: python ./docs/scripts/move404.py ./build/404.html
+
+      - name: Remove .doctrees
+        run: rm -r ./build/.doctrees
 
       - name: Upload to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/
+          publish_dir: ./build

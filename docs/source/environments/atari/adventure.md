@@ -1,5 +1,6 @@
 ---
 title: Adventure
+firstpage:
 ---
 
 # Adventure
