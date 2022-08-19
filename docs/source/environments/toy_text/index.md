@@ -1,3 +1,8 @@
+---
+firstpage:
+lastpage:
+---
+
 ## Toy Text
 
 ```{toctree}

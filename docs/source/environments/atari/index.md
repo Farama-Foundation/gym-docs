@@ -1,3 +1,8 @@
+---
+firstpage:
+lastpage:
+---
+
 # Atari
 
 A set of Atari 2600 environment simulated through Stella and the Arcade Learning Environment.

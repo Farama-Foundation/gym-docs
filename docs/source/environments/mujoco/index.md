@@ -1,5 +1,9 @@
-## MuJoCo
+---
+firstpage:
+lastpage:
+---
 
+## MuJoCo
 
 ```{toctree}
 :hidden:

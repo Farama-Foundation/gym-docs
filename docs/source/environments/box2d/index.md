@@ -1,3 +1,8 @@
+---
+firstpage:
+lastpage:
+---
+
 ## Box2D
 
 ```{toctree}
