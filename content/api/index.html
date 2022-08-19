@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Environment Creation" href="../environment_creation/" /><link rel="prev" title="Gym documentation" href="../../" />
+<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Environment Creation" href="../environment_creation/" /><link rel="prev" title="Gym is a standard API for reinforcement learning, and a diverse collection of reference environments" href="../../" />
         <link rel="canonical" href="https://www.gymlibrary.ml/content/api.html" />
 
     <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
@@ -36,7 +36,14 @@
       }
     }
   }
-</style></head>
+</style>
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'G-JGXSLW7N06']);
+    _gaq.push(['_trackPageview']);
+</script>
+</head>
   <body>
     
     <script>
@@ -443,8 +450,36 @@ the <code class="docutils literal notranslate"><span class="pre">info</span></co
 <h3>Rendering<a class="headerlink" href="#rendering" title="Permalink to this heading">#</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.render">
-<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.render" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'human'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.render" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the render frames as specified by render_mode attribute during initialization of the environment.</p>
+<p>The set of supported modes varies per environment. (And some
+third-party environments may not support rendering at all.)
+By convention, if render_mode is:</p>
+<ul class="simple">
+<li><p>None (default): no render is computed.</p></li>
+<li><p>human: render return None.
+The environment is continuously rendered in the current display or terminal. Usually for human consumption.</p></li>
+<li><p>single_rgb_array: return a single frame representing the current state of the environment.
+A frame is a numpy.ndarray with shape (x, y, 3) representing RGB values for an x-by-y pixel image.</p></li>
+<li><p>rgb_array: return a list of frames representing the states of the environment since the last reset.
+Each frame is a numpy.ndarray with shape (x, y, 3), as with single_rgb_array.</p></li>
+<li><p>ansi: Return a list of strings (str) or StringIO.StringIO containing a
+terminal-style text representation for each time step.
+The text can include newlines and ANSI escape sequences (e.g. for colors).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Rendering computations is performed internally even if you don’t call render().
+To avoid this, you can set render_mode = None and, if the environment supports it,
+call render() specifying the argument ‘mode’.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that your class’s metadata ‘render_modes’ key includes
+the list of supported modes. It’s recommended to call super()
+in implementations to use the functionality of this method.</p>
+</div>
+</dd></dl>
 
 </section>
 </section>
@@ -679,19 +714,9 @@ For example, if pressing the keys <code class="docutils literal notranslate"><sp
                 </div>
                 <div class="title">Environment Creation</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../../">
-              <svg><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Home</div>
-                
-              </div>
-            </a>
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -718,7 +743,7 @@ For example, if pressing the keys <code class="docutils literal notranslate"><sp
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -759,5 +784,41 @@ For example, if pressing the keys <code class="docutils literal notranslate"><sp
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
-    </body>
+    
+
+<script>
+    (() => {
+        if (!localStorage.getItem("shownCookieAlert")) {
+            const boxElem = document.createElement("div");
+            boxElem.classList.add("cookie_alert");
+            const containerElem = document.createElement("div");
+            containerElem.classList.add("cookie_container");
+            const textElem = document.createElement("p");
+            textElem.innerHTML = `This page uses <a href="https://analytics.google.com/">
+                                Google Analytics</a> to collect statistics. You can disable it by blocking
+                                the JavaScript coming from www.google-analytics.com.`;
+                                containerElem.appendChild(textElem);
+            const closeBtn = document.createElement("button");
+            closeBtn.innerHTML = `<?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="25" y2="7"/></g></svg>`
+            closeBtn.onclick = () => {
+                localStorage.setItem("shownCookieAlert", "true");
+                boxElem.style.display = "none";
+            }
+            containerElem.appendChild(closeBtn);
+            boxElem.appendChild(containerElem);
+            document.body.appendChild(boxElem);
+        }
+    })()
+
+</script>
+
+<script>
+    (function () {
+        var ga = document.createElement('script');
+        ga.src = ('https:' == document.location.protocol ?
+            'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        ga.setAttribute('async', 'true');
+        document.documentElement.firstChild.appendChild(ga);
+    })();
+</script></body>
 </html>
