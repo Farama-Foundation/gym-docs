@@ -460,10 +460,10 @@ base class, <code class="docutils literal notranslate"><span class="pre">gym.Env
 call <code class="docutils literal notranslate"><span class="pre">super().reset(seed=seed)</span></code></em> to  make sure that <code class="docutils literal notranslate"><span class="pre">gym.Env</span></code> correctly seeds the RNG.
 Once this is done, we can randomly set the state of our environment.
 In our case, we randomly choose the agent’s location and the randomly sample target positions, until it does not coincide with the agent’s position.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">reset</span></code> method should either return an observation of the initial state, or a tuple of the initial observation
-and some auxiliary information, depending on whether <code class="docutils literal notranslate"><span class="pre">return_info</span></code> was <code class="docutils literal notranslate"><span class="pre">True</span></code>. We can use the methods <code class="docutils literal notranslate"><span class="pre">_get_obs</span></code>
+<p>The <code class="docutils literal notranslate"><span class="pre">reset</span></code> method should return a tuple of the initial observation
+and some auxiliary information. We can use the methods <code class="docutils literal notranslate"><span class="pre">_get_obs</span></code>
 and <code class="docutils literal notranslate"><span class="pre">_get_info</span></code> that we implemented earlier for that:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_info</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># We need the following line to seed self.np_random</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
@@ -481,7 +481,7 @@ and <code class="docutils literal notranslate"><span class="pre">_get_info</span
 
         <span class="n">observation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_obs</span><span class="p">()</span>
         <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">observation</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span> <span class="k">if</span> <span class="n">return_info</span> <span class="k">else</span> <span class="n">observation</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">observation</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span> 
 </pre></div>
 </div>
 </section>
@@ -714,7 +714,7 @@ a wrapper on top of environment instances to flatten observations into a single 
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;gym_examples/GridWorld-v0&#39;</span><span class="p">)</span>
 <span class="n">wrapped_env</span> <span class="o">=</span> <span class="n">FlattenObservation</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span>     <span class="c1"># E.g.  [3 0 3 3]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span>     <span class="c1"># E.g.  [3 0 3 3], {}</span>
 </pre></div>
 </div>
 <p>Wrappers have the big advantage that they make environments highly modular. For instance, instead of flattening the
@@ -726,7 +726,7 @@ a wrapper that does this job. This wrapper is also available in gym-examples:</p
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;gym_examples/GridWorld-v0&#39;</span><span class="p">)</span>
 <span class="n">wrapped_env</span> <span class="o">=</span> <span class="n">RelativePosition</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span>     <span class="c1"># E.g.  [-3  3]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">reset</span><span class="p">())</span>     <span class="c1"># E.g.  [-3  3], {}</span>
 </pre></div>
 </div>
 </section>

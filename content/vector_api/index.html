@@ -384,10 +384,10 @@
 <p>While standard Gym environments take a single action and return a single observation (with a reward, and boolean indicating termination), vectorized environments take a <em>batch of actions</em> as input, and return a <em>batch of observations</em>, together with an array of rewards and booleans indicating if the episode ended in each environment copy.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="go">array([[ 0.00198895, -0.00569421, -0.03170966,  0.00126465],</span>
-<span class="go">       [-0.02658334,  0.00755256,  0.04376719, -0.00266695],</span>
-<span class="go">       [-0.02898625,  0.04779156,  0.02686412, -0.01298284]],</span>
-<span class="go">      dtype=float32)</span>
+<span class="go">(array([[-0.02792548, -0.04423395,  0.00026012,  0.04486719],</span>
+<span class="go">       [-0.04906582,  0.02779809,  0.02881928, -0.04467649],</span>
+<span class="go">       [ 0.0036706 , -0.00324916,  0.047668  , -0.02039891]],</span>
+<span class="go">      dtype=float32), {})</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
@@ -449,7 +449,7 @@
 <p>The environment copies inside a vectorized environment automatically call <code class="docutils literal notranslate"><span class="pre">gym.Env.reset</span></code> at the end of an episode. In the following example, the episode of the 3rd copy ends after 2 steps (the agent fell in a hole), and the paralle environment gets reset (observation <code class="docutils literal notranslate"><span class="pre">0</span></code>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;FrozenLake-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">is_slippery</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="go">array([0, 0, 0])</span>
+<span class="go">(array([0, 0, 0]), {&#39;prob&#39;: array([1, 1, 1]), &#39;_prob&#39;: array([ True,  True,  True])})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
 
@@ -463,7 +463,7 @@
 Each <code class="docutils literal notranslate"><span class="pre">key</span></code> of the info is paired with a boolean mask <code class="docutils literal notranslate"><span class="pre">_key</span></code> representing whether or not the <em>i-th</em> environment has data.<br />
 If the <em>dtype</em> of the returned info is whether <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> or any <em>dtype</em> inherited from <code class="docutils literal notranslate"><span class="pre">np.number</span></code>, an array of the same <em>dtype</em> will be returned. Otherwise, the array will have <em>dtype</em> <code class="docutils literal notranslate"><span class="pre">object</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
@@ -522,7 +522,7 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 <span class="gp">... </span>    <span class="n">flatdim</span><span class="p">(</span><span class="n">envs</span><span class="o">.</span><span class="n">single_observation_space</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">envs</span><span class="o">.</span><span class="n">single_action_space</span><span class="o">.</span><span class="n">n</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">actions</span> <span class="o">=</span> <span class="n">policy</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">observations</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
 </pre></div>
@@ -555,7 +555,7 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 <span class="gp">... </span>    <span class="n">action_space</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="p">{}</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -564,7 +564,7 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 <span class="gp">... </span>        <span class="k">return</span> <span class="p">(</span><span class="n">observation</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="p">{})</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">AsyncVectorEnv</span><span class="p">([</span><span class="k">lambda</span><span class="p">:</span> <span class="n">ErrorEnv</span><span class="p">()]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">dones</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">envs</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
 <span class="go">ERROR: Received the following error from Worker-2: ValueError: An error occurred.</span>
 <span class="go">ERROR: Shutting down Worker-2.</span>
@@ -686,10 +686,10 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="go">array([[-0.04456399,  0.04653909,  0.01326909, -0.02099827],</span>
-<span class="go">        [ 0.03073904,  0.00145001, -0.03088818, -0.03131252],</span>
-<span class="go">        [ 0.03468829,  0.01500225,  0.01230312,  0.01825218]],</span>
-<span class="go">        dtype=float32)</span>
+<span class="go">(array([[-0.02240574, -0.03439831, -0.03904812,  0.02810693],</span>
+<span class="go">       [ 0.01586068,  0.01929009,  0.02394426,  0.04016077],</span>
+<span class="go">       [-0.01314174,  0.03893502, -0.02400815,  0.0038326 ]],</span>
+<span class="go">      dtype=float32), {})</span>
 </pre></div>
 </div>
 </section>
@@ -725,33 +725,6 @@ If the <em>dtype</em> of the returned info is whether <code class="docutils lite
 <span class="go">array([False, False, False])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infos</span>
 <span class="go">{}</span>
-</pre></div>
-</div>
-</section>
-<section id="seed">
-<h3>Seed<a class="headerlink" href="#seed" title="Permalink to this heading">#</a></h3>
-<dl class="py method">
-<dt class="sig sig-object py" id="gym.vector.VectorEnv.seed">
-<span class="sig-prename descclassname"><span class="pre">VectorEnv.</span></span><span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.vector.VectorEnv.seed" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the random seed in all parallel environments.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>seed</strong> – Random seed for each parallel environment. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is a list of
-length <code class="docutils literal notranslate"><span class="pre">num_envs</span></code>, then the items of the list are chosen as random
-seeds. If <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an int, then each parallel environment uses the random
-seed <code class="docutils literal notranslate"><span class="pre">seed</span> <span class="pre">+</span> <span class="pre">n</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the index of the parallel environment
-(between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">num_envs</span> <span class="pre">-</span> <span class="pre">1</span></code>).</p>
-</dd>
-</dl>
-</dd></dl>
-
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">seed</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">envs</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="go">array([[ 0.03073904,  0.00145001, -0.03088818, -0.03131252],</span>
-<span class="go">        [ 0.02281231, -0.02475473,  0.02306162,  0.02072129],</span>
-<span class="go">        [-0.03742824, -0.02316945,  0.0148571 ,  0.0296055 ]],</span>
-<span class="go">        dtype=float32)</span>
 </pre></div>
 </div>
 </section>
@@ -835,7 +808,6 @@ seed <code class="docutils literal notranslate"><span class="pre">seed</span> <s
 <li><a class="reference internal" href="#vectorenv">VectorEnv</a></li>
 <li><a class="reference internal" href="#reset">Reset</a></li>
 <li><a class="reference internal" href="#step">Step</a></li>
-<li><a class="reference internal" href="#seed">Seed</a></li>
 </ul>
 </li>
 </ul>
