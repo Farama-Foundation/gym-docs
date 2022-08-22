@@ -1,6 +1,6 @@
 # Gym-docs
 
-This repo contains the [NEW website](http://www.gymlibrary.ml) for [Gym](https://github.com/openai/gym). This site is currently in Beta and we are in the process of adding/editing information. 
+This repo contains the [NEW website](http://www.gymlibrary.dev) for [Gym](https://github.com/openai/gym). This site is currently in Beta and we are in the process of adding/editing information. 
 
 
 The documentation uses Sphinx. However, the documentation is written in regular md, NOT rst.
