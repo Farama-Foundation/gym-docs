@@ -59,7 +59,7 @@ napoleon_custom_sections = [("Returns", "params_style")]
 #
 html_theme = "furo"
 html_title = "Gym Documentation"
-html_baseurl = "https://www.gymlibrary.ml"
+html_baseurl = "https://www.gymlibrary.dev"
 html_copy_source = False
 html_favicon = "_static/img/favicon.png"
 html_theme_options = {
