@@ -85,10 +85,10 @@ While standard Gym environments take a single action and return a single observa
 ```python
 >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
 >>> envs.reset()
-array([[ 0.00198895, -0.00569421, -0.03170966,  0.00126465],
-       [-0.02658334,  0.00755256,  0.04376719, -0.00266695],
-       [-0.02898625,  0.04779156,  0.02686412, -0.01298284]],
-      dtype=float32)
+(array([[-0.02792548, -0.04423395,  0.00026012,  0.04486719],
+       [-0.04906582,  0.02779809,  0.02881928, -0.04467649],
+       [ 0.0036706 , -0.00324916,  0.047668  , -0.02039891]],
+      dtype=float32), {})
 
 >>> actions = np.array([1, 0, 1])
 >>> observations, rewards, dones, infos = envs.step(actions)
@@ -154,7 +154,7 @@ The environment copies inside a vectorized environment automatically call `gym.E
 ```python
 >>> envs = gym.vector.make("FrozenLake-v1", num_envs=3, is_slippery=False)
 >>> envs.reset()
-array([0, 0, 0])
+(array([0, 0, 0]), {'prob': array([1, 1, 1]), '_prob': array([ True,  True,  True])})
 >>> observations, rewards, dones, infos = envs.step(np.array([1, 2, 2]))
 >>> observations, rewards, dones, infos = envs.step(np.array([1, 2, 1]))
 
@@ -171,7 +171,7 @@ If the _dtype_ of the returned info is whether `int`, `float`, `bool` or any _dt
 
 ```python
 >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
->>> observations = envs.reset()
+>>> observations, infos = envs.reset()
 
 >>> actions = np.array([1, 0, 1])
 >>> observations, rewards, dones, infos = envs.step(actions)
@@ -234,7 +234,7 @@ This is convenient, for example, if you instantiate a policy. In the following e
 ...     flatdim(envs.single_observation_space),
 ...     envs.single_action_space.n
 ... )
->>> observations = envs.reset()
+>>> observations, infos = envs.reset()
 >>> actions = policy(weights, observations).argmax(axis=1)
 >>> observations, rewards, dones, infos = envs.step(actions)
 ```
@@ -267,7 +267,7 @@ Because sometimes things may not go as planned, the exceptions raised in any giv
 ...     action_space = gym.spaces.Discrete(2)
 ...
 ...     def reset(self):
-...         return np.zeros((2,), dtype=np.float32)
+...         return np.zeros((2,), dtype=np.float32), {}
 ...
 ...     def step(self, action):
 ...         if action == 1:
@@ -276,7 +276,7 @@ Because sometimes things may not go as planned, the exceptions raised in any giv
 ...         return (observation, 0., False, {})
 
 >>> envs = gym.vector.AsyncVectorEnv([lambda: ErrorEnv()] * 3)
->>> observations = envs.reset()
+>>> observations, infos = envs.reset()
 >>> observations, rewards, dones, infos = envs.step(np.array([0, 0, 1]))
 ERROR: Received the following error from Worker-2: ValueError: An error occurred.
 ERROR: Shutting down Worker-2.
@@ -377,10 +377,10 @@ If you use `AsyncVectorEnv` with a custom observation space, you must set ``shar
 ```python
 >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
 >>> envs.reset()
-array([[-0.04456399,  0.04653909,  0.01326909, -0.02099827],
-        [ 0.03073904,  0.00145001, -0.03088818, -0.03131252],
-        [ 0.03468829,  0.01500225,  0.01230312,  0.01825218]],
-        dtype=float32)
+(array([[-0.02240574, -0.03439831, -0.03904812,  0.02810693],
+       [ 0.01586068,  0.01929009,  0.02394426,  0.04016077],
+       [-0.01314174,  0.03893502, -0.02400815,  0.0038326 ]],
+      dtype=float32), {})
 ```
 ### Step
 
@@ -405,20 +405,4 @@ array([1., 1., 1.])
 array([False, False, False])
 >>> infos
 {}
-```
-
-### Seed
-
-```{eval-rst}
-.. automethod:: gym.vector.VectorEnv.seed
-``` 
-
-```python
->>> envs = gym.vector.make("CartPole-v1", num_envs=3)
->>> envs.seed([1, 3, 5])
->>> envs.reset()
-array([[ 0.03073904,  0.00145001, -0.03088818, -0.03131252],
-        [ 0.02281231, -0.02475473,  0.02306162,  0.02072129],
-        [-0.03742824, -0.02316945,  0.0148571 ,  0.0296055 ]],
-        dtype=float32)
 ```

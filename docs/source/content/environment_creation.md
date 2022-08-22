@@ -156,12 +156,12 @@ call `super().reset(seed=seed)`* to  make sure that `gym.Env` correctly seeds th
 Once this is done, we can randomly set the state of our environment. 
 In our case, we randomly choose the agent's location and the randomly sample target positions, until it does not coincide with the agent's position.
 
-The `reset` method should either return an observation of the initial state, or a tuple of the initial observation
-and some auxiliary information, depending on whether `return_info` was `True`. We can use the methods `_get_obs`
+The `reset` method should return a tuple of the initial observation
+and some auxiliary information. We can use the methods `_get_obs`
 and `_get_info` that we implemented earlier for that:
 
 ```python
-    def reset(self, seed=None, return_info=False, options=None):
+    def reset(self, seed=None, options=None):
         # We need the following line to seed self.np_random
         super().reset(seed=seed)
 
@@ -179,7 +179,7 @@ and `_get_info` that we implemented earlier for that:
 
         observation = self._get_obs()
         info = self._get_info()
-        return (observation, info) if return_info else observation
+        return (observation, info) 
 ```
 
 ### Step
@@ -390,7 +390,7 @@ from gym.wrappers import FlattenObservation
 
 env = gym.make('gym_examples/GridWorld-v0')
 wrapped_env = FlattenObservation(env)
-print(wrapped_env.reset())     # E.g.  [3 0 3 3]
+print(wrapped_env.reset())     # E.g.  [3 0 3 3], {}
 ```
 
 Wrappers have the big advantage that they make environments highly modular. For instance, instead of flattening the 
@@ -404,6 +404,6 @@ from gym_examples.wrappers import RelativePosition
 
 env = gym.make('gym_examples/GridWorld-v0')
 wrapped_env = RelativePosition(env)
-print(wrapped_env.reset())     # E.g.  [-3  3]
+print(wrapped_env.reset())     # E.g.  [-3  3], {}
 ```
 
