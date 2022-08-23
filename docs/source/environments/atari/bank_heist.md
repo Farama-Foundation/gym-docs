@@ -24,7 +24,7 @@ navigate maze-like cities. The police chases you and will appear whenever you ro
 by dropping sticks of dynamite. You can fill up your gas tank by entering a new city.
 At the beginning of the game you have four lives. Lives are lost if you run out of gas, are caught by the police, 
 or run over the dynamite you have previously dropped.
-Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=835).
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=1008).
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -53,7 +53,7 @@ via `gym.make`.
 ### Rewards
 You score points for robbing banks and destroying police cars. If you rob nine or more banks, and then leave the city,
 you will score extra points.
-For a more detailed documentation, see [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=835).
+For a more detailed documentation, see [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=1008).
 
 ### Arguments
 

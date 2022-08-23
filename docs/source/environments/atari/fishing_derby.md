@@ -19,11 +19,11 @@ This environment is part of the <a href='..'>Atari environments</a>. Please read
 | Import | `gym.make("ALE/FishingDerby-v5")` | 
 
 ### Description
-your objective is to catch more sunfish than your opponent. But it's not just between you and the other fisherman, as a big, black shark is lurking just below the surface, waiting to steal your catch! Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=182).
+your objective is to catch more sunfish than your opponent. But it's not just between you and the other fisherman, as a big, black shark is lurking just below the surface, waiting to steal your catch! Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=182).
 
 ### Rewards
 The exact reward dynamics depend on the environment and are usually documented in the game's manual. You can
-find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareID=182).
+find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareLabelID=182).
 
 
 Atari environments are simulated via the Arcade Learning Environment (ALE) [[1]](#1). 
