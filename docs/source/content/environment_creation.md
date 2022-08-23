@@ -2,7 +2,7 @@
 layout: "contents"
 title: Environment Creation
 ---
-# Environment Creation
+# Make your own custom environment
 
 This documentation overviews creating new environments and relevant useful wrappers, utilities and tests included in Gym designed for the creation of new environments.
 You can clone gym-examples to play with the code that are presented here. We recommend that you use a virtual environment:
