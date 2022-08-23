@@ -31,11 +31,20 @@ env.close()
 
 ```{toctree}
 :hidden:
-:caption: API
+:caption: Introduction
 
-content/api
-content/spaces
-content/wrappers
+content/basic_usage
+```
+
+```{toctree}
+:hidden:
+:caption: API Reference
+
+api/core
+api/spaces
+api/wrappers
+api/vector
+api/utils
 ```
 
 ```{toctree}
@@ -54,9 +63,8 @@ environments/third_party_environments/index
 :hidden:
 :caption: Tutorials
 
-content/tutorials
 content/environment_creation
-content/vector_api
+content/vectorising
 ```
 
 ```{toctree}
