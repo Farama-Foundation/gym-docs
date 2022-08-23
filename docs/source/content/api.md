@@ -4,7 +4,7 @@ title: API
 firstpage:
 ---
 
-# API
+# Basic Usage
 
 ## Initializing Environments
 Initializing environments is very easy in Gym and can be done via: 

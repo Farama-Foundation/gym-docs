@@ -31,15 +31,11 @@ env.close()
 
 ```{toctree}
 :hidden:
-:caption: User Guide
+:caption: API
 
 content/api
-content/environment_creation
 content/spaces
-content/vector_api
-content/tutorials
 content/wrappers
-Github <https://github.com/openai/gym>
 ```
 
 ```{toctree}
@@ -56,8 +52,18 @@ environments/third_party_environments/index
 
 ```{toctree}
 :hidden:
+:caption: Tutorials
+
+content/tutorials
+content/environment_creation
+content/vector_api
+```
+
+```{toctree}
+:hidden:
 :caption: Development
 
+Github <https://github.com/openai/gym>
 Contribute to the Docs <https://github.com/Farama-Foundation/gym-docs>
 
 ```
