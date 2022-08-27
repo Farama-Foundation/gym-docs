@@ -403,7 +403,7 @@ a certain timelimit was exceeded, or the physics simulation has entered an inval
 <h3>Resetting<a class="headerlink" href="#resetting" title="Permalink to this heading">#</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.reset">
-<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.reset" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.reset" title="Permalink to this definition">#</a></dt>
 <dd><p>Resets the environment to an initial state and returns the initial observation.</p>
 <p>This method can reset the environment’s random number generator(s) if <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an integer or
 if the environment has not yet initialized a random number generator.
@@ -420,8 +420,6 @@ However, if the environment already has a PRNG and <code class="docutils literal
 If you pass an integer, the PRNG will be reset even if it already exists.
 Usually, you want to pass an integer <em>right after the environment has been initialized and then never again</em>.
 Please refer to the minimal example above to see this paradigm in action.</p></li>
-<li><p><strong>return_info</strong> (<em>bool</em>) – If true, return additional information along with initial observation.
-This info should be analogous to the info returned in <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a></p></li>
 <li><p><strong>options</strong> (<em>optional dict</em>) – Additional information to specify how the environment is reset (optional,
 depending on the specific environment)</p></li>
 </ul>
@@ -430,8 +428,7 @@ depending on the specific environment)</p></li>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>observation</strong> (<em>object</em>) – Observation of the initial state. This will be an element of <a class="reference internal" href="#gym.Env.observation_space" title="gym.Env.observation_space"><code class="xref py py-attr docutils literal notranslate"><span class="pre">observation_space</span></code></a>
 (typically a numpy array) and is analogous to the observation returned by <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p></li>
-<li><p><strong>info</strong> (<em>optional dictionary</em>) – This will <em>only</em> be returned if <code class="docutils literal notranslate"><span class="pre">return_info=True</span></code> is passed.
-It contains auxiliary information complementing <code class="docutils literal notranslate"><span class="pre">observation</span></code>. This dictionary should be analogous to
+<li><p><strong>info</strong> (<em>dictionary</em>) – This dictionary contains auxiliary information complementing <code class="docutils literal notranslate"><span class="pre">observation</span></code>. It should be analogous to
 the <code class="docutils literal notranslate"><span class="pre">info</span></code> returned by <a class="reference internal" href="#gym.Env.step" title="gym.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>.</p></li>
 </ul>
 </dd>
@@ -513,35 +510,6 @@ in implementations to use the functionality of this method.</p>
 <dd><p>Override close in your subclass to perform any necessary cleanup.</p>
 <p>Environments will automatically <a class="reference internal" href="#gym.Env.close" title="gym.Env.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> themselves when
 garbage collected or when the program exits.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="gym.Env.seed">
-<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.Env.seed" title="Permalink to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Deprecated<span class="colon">:</span></dt>
-<dd class="field-odd"><p>function that sets the seed for the environment’s random number generator(s).</p>
-</dd>
-</dl>
-<p>Use <cite>env.reset(seed=seed)</cite> as the new API for setting the seed of the environment.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some environments use multiple pseudorandom number generators.
-We want to capture all such seeds used in order to ensure that
-there aren’t accidental correlations between multiple generators.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>seed</strong> (<em>Optional int</em>) – The seed value for the random number generator</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>seeds</strong> (<em>List[int]</em>) – Returns the list of seeds used in this environment’s random
-number generators. The first value in the list should be the
-“main” seed, or the value which a reproducer should pass to
-‘seed’. Often, the main seed equals the provided ‘seed’, but
-this won’t be true <cite>if seed=None</cite>, for example.</p>
-</dd>
-</dl>
 </dd></dl>
 
 </section>
