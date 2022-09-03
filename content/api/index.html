@@ -365,11 +365,10 @@ environment to ensure reproducible samples.</p>
 <h3>Stepping<a class="headerlink" href="#stepping" title="Permalink to this heading">#</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.step">
-<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ActType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.step" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ActType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.step" title="Permalink to this definition">#</a></dt>
 <dd><p>Run one timestep of the environment’s dynamics.</p>
 <p>When end of episode is reached, you are responsible for calling <a class="reference internal" href="#gym.Env.reset" title="gym.Env.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code></a> to reset this environment’s state.
-Accepts an action and returns either a tuple <cite>(observation, reward, terminated, truncated, info)</cite>, or a tuple
-(observation, reward, done, info). The latter is deprecated and will be removed in future versions.</p>
+Accepts an action and returns either a tuple <cite>(observation, reward, terminated, truncated, info)</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>action</strong> (<em>ActType</em>) – an action provided by the agent</p>
@@ -449,11 +448,11 @@ By convention, if render_mode is:</p>
 <li><p>None (default): no render is computed.</p></li>
 <li><p>human: render return None.
 The environment is continuously rendered in the current display or terminal. Usually for human consumption.</p></li>
-<li><p>single_rgb_array: return a single frame representing the current state of the environment.
+<li><p>rgb_array: return a single frame representing the current state of the environment.
 A frame is a numpy.ndarray with shape (x, y, 3) representing RGB values for an x-by-y pixel image.</p></li>
-<li><p>rgb_array: return a list of frames representing the states of the environment since the last reset.
-Each frame is a numpy.ndarray with shape (x, y, 3), as with single_rgb_array.</p></li>
-<li><p>ansi: Return a list of strings (str) or StringIO.StringIO containing a
+<li><p>rgb_array_list: return a list of frames representing the states of the environment since the last reset.
+Each frame is a numpy.ndarray with shape (x, y, 3), as with <cite>rgb_array</cite>.</p></li>
+<li><p>ansi: Return a strings (str) or StringIO.StringIO containing a
 terminal-style text representation for each time step.
 The text can include newlines and ANSI escape sequences (e.g. for colors).</p></li>
 </ul>
