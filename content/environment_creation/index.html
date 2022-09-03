@@ -607,7 +607,7 @@ or release other resources. You shouldn’t interact with the environment after 
 </div>
 <p>The environment ID consists of three components, two of which are optional: an optional namespace (here: <code class="docutils literal notranslate"><span class="pre">gym_examples</span></code>), a mandatory name (here: <code class="docutils literal notranslate"><span class="pre">GridWorld</span></code>) and an optional but recommended version (here: v0). It might have also been registered as <code class="docutils literal notranslate"><span class="pre">GridWorld-v0</span></code> (the recommended approach), <code class="docutils literal notranslate"><span class="pre">GridWorld</span></code> or <code class="docutils literal notranslate"><span class="pre">gym_examples/GridWorld</span></code>, and the appropriate ID should then be used during environment creation.</p>
 <p>The keyword argument <code class="docutils literal notranslate"><span class="pre">max_episode_steps=300</span></code> will ensure that GridWorld environments that are instantiated via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code>
-will be wrapped in a <code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code> wrapper (see <a class="reference external" href="https://www.gymlibrary.ml/pages/wrappers/index">the wrapper documentation</a>
+will be wrapped in a <code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code> wrapper (see <a class="reference external" href="https://www.gymlibrary.dev/pages/wrappers/index">the wrapper documentation</a>
 for more information). A done signal will then be produced if the agent has reached the target <em>or</em> 300 steps have been
 executed in the current episode. To distinguish truncation and termination, you can check <code class="docutils literal notranslate"><span class="pre">info[&quot;TimeLimit.truncated&quot;]</span></code>.</p>
 <p>Apart from <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code>, you may pass the following additional keyword arguments to <code class="docutils literal notranslate"><span class="pre">register</span></code>:</p>
@@ -697,7 +697,7 @@ also perfectly fine (but remember to add  wrappers as well!).</p>
 <p>Oftentimes, we want to use different variants of a custom environment, or we want to
 modify the behavior of an environment that is provided by Gym or some other party.
 Wrappers allow us to do this without changing the environment implementation or adding any boilerplate code.
-Check out the <a class="reference external" href="https://www.gymlibrary.ml/content/wrappers/">wrapper documentation</a> for details on how to
+Check out the <a class="reference external" href="https://www.gymlibrary.dev/content/wrappers/">wrapper documentation</a> for details on how to
 use wrappers and instructions for implementing your own.
 In our example, observations cannot be used directly in learning code because they are dictionaries.
 However, we don’t actually need to touch our environment implementation to fix this! We can simply add
@@ -712,7 +712,7 @@ a wrapper on top of environment instances to flatten observations into a single 
 </div>
 <p>Wrappers have the big advantage that they make environments highly modular. For instance, instead of flattening the
 observations from GridWorld, you might only want to look at the relative position of the target and the agent.
-In the section on <a class="reference external" href="https://www.gymlibrary.ml/content/wrappers/#observationwrapper">ObservationWrappers</a> we have implemented
+In the section on <a class="reference external" href="https://www.gymlibrary.dev/content/wrappers/#observationwrapper">ObservationWrappers</a> we have implemented
 a wrapper that does this job. This wrapper is also available in gym-examples:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym_examples</span>
 <span class="kn">from</span> <span class="nn">gym_examples.wrappers</span> <span class="kn">import</span> <span class="n">RelativePosition</span>
