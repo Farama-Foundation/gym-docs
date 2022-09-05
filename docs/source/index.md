@@ -38,7 +38,7 @@ content/basic_usage
 
 ```{toctree}
 :hidden:
-:caption: API Reference
+:caption: API
 
 api/core
 api/spaces
