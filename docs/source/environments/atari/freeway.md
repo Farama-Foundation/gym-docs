@@ -19,11 +19,11 @@ This environment is part of the <a href='..'>Atari environments</a>. Please read
 | Import | `gym.make("ALE/Freeway-v5")` | 
 
 ### Description
-your objective is to guide your chicken across lane after lane of busy rush hour traffic. You receive a point for every chicken that makes it to the top fo the screen after crossing all the lanes of traffic. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=192).
+your objective is to guide your chicken across lane after lane of busy rush hour traffic. You receive a point for every chicken that makes it to the top fo the screen after crossing all the lanes of traffic. Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_thumbs.php?SoftwareLabelID=192).
 
 ### Rewards
 The exact reward dynamics depend on the environment and are usually documented in the game's manual. You can
-find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareID=192).
+find these manuals on [AtariAge](https://atariage.com/manual_thumbs.php?SoftwareLabelID=192).
 
 
 Atari environments are simulated via the Arcade Learning Environment (ALE) [[1]](#1). 

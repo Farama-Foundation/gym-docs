@@ -23,7 +23,7 @@ Your mission is to control Mr. Bond's specially designed multipurpose craft to c
 The craft moves forward with a right motion and slightly back with a left motion.
 An up or down motion causes the craft to jump or dive.
 You can also fire by either lobbing a bomb to the bottom of the screen or firing a fixed angle shot to the top of the screen.
-Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=241)
+Detailed documentation can be found on [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=250)
 
 ### Actions
 By default, all actions that can be performed on an Atari 2600 are available in this environment.
@@ -53,7 +53,7 @@ via `gym.make`.
 ### Rewards
 The game ends when you complete the last mission or when you lose the last craft. In either case, you'll receive your final score.
 There will be a rating based on your score. The highest rating in NOVICE is 006. The highest rating in AGENT is 007.
-For a more detailed documentation, consult [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=241).
+For a more detailed documentation, consult [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=250).
 
 ### Arguments
 

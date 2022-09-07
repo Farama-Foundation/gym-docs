@@ -19,11 +19,11 @@ This environment is part of the <a href='..'>Atari environments</a>. Please read
 | Import | `gym.make("ALE/Frostbite-v5")` | 
 
 ### Description
- In Frostbite, the player controls "Frostbite Bailey" who hops back and forth across across an Arctic river, changing the color of the ice blocks from white to blue. Each time he does so, a block is added to his igloo. [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=199).
+ In Frostbite, the player controls "Frostbite Bailey" who hops back and forth across across an Arctic river, changing the color of the ice blocks from white to blue. Each time he does so, a block is added to his igloo. [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=199).
 
 ### Rewards
 The exact reward dynamics depend on the environment and are usually documented in the game's manual. You can
-find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareID=199).
+find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareLabelID=199).
 
 
 Atari environments are simulated via the Arcade Learning Environment (ALE) [[1]](#1). 

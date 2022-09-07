@@ -19,11 +19,11 @@ This environment is part of the <a href='..'>Atari environments</a>. Please read
 | Import | `gym.make("ALE/Gravitar-v5")` | 
 
 ### Description
-The player controls a small blue spacecraft. The game starts in a fictional solar system with several planets to explore. If the player moves his ship into a planet, he will be taken to a side-view landscape. Player has to destroy red bunkers [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareID=223).
+The player controls a small blue spacecraft. The game starts in a fictional solar system with several planets to explore. If the player moves his ship into a planet, he will be taken to a side-view landscape. Player has to destroy red bunkers [the AtariAge page](https://atariage.com/manual_html_page.php?SoftwareLabelID=223).
 
 ### Rewards
 The exact reward dynamics depend on the environment and are usually documented in the game's manual. You can
-find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareID=223).
+find these manuals on [AtariAge](https://atariage.com/manual_html_page.php?SoftwareLabelID=223).
 
 
 Atari environments are simulated via the Arcade Learning Environment (ALE) [[1]](#1). 

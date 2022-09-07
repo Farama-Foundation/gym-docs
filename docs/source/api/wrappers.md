@@ -58,7 +58,7 @@ If you would like to apply a function to the action before passing it to the bas
 you can simply inherit from `ActionWrapper` and overwrite the method `action` to implement that transformation.
 The transformation defined in that method must take values in the base environment's action space.
 However, its domain might differ from the original action space. In that case, you need to specify the new
-action space of the wrapper by setting `self._action_space` in the `__init__` method of your wrapper.
+action space of the wrapper by setting `self.action_space` in the `__init__` method of your wrapper.
 
 Let's say you have an environment with action space of type `Box`, but you would
 only like to use a finite subset of actions. Then, you might want to implement the following wrapper
@@ -68,7 +68,7 @@ class DiscreteActions(gym.ActionWrapper):
     def __init__(self, env, disc_to_cont):
         super().__init__(env)
         self.disc_to_cont = disc_to_cont
-        self._action_space = Discrete(len(disc_to_cont))
+        self.action_space = Discrete(len(disc_to_cont))
     
     def action(self, act):
         return self.disc_to_cont[act]
@@ -87,7 +87,7 @@ If you would like to apply a function to the observation that is returned by the
 it to learning code, you can simply inherit from `ObservationWrapper` and overwrite the method `observation` to 
 implement that transformation. The transformation defined in that method must be defined on the base environment's
 observation space. However, it may take values in a different space. In that case, you need to specify the new
-observation space of the wrapper by setting `self._observation_space` in the `__init__` method of your wrapper.
+observation space of the wrapper by setting `self.observation_space` in the `__init__` method of your wrapper.
 
 For example, you might have a 2D navigation task where the environment returns dictionaries as observations with keys `"agent_position"`
 and `"target_position"`. A common thing to do might be to throw away some degrees of freedom and only consider
@@ -98,7 +98,7 @@ For this, you could implement an observation wrapper like this:
 class RelativePosition(gym.ObservationWrapper):
     def __init__(self, env):
         super().__init__(env)
-        self._observation_space = Box(shape=(2,), low=-np.inf, high=np.inf)
+        self.observation_space = Box(shape=(2,), low=-np.inf, high=np.inf)
 
     def observation(self, obs):
         return obs["target"] - obs["agent"]
@@ -111,7 +111,7 @@ to the observation.
 If you would like to apply a function to the reward that is returned by the base environment before passing
 it to learning code, you can simply inherit from `RewardWrapper` and overwrite the method `reward` to 
 implement that transformation. This transformation might change the reward range; to specify the reward range of 
-your wrapper, you can simply define `self._reward_range` in `__init__`.
+your wrapper, you can simply define `self.reward_range` in `__init__`.
 
 Let us look at an example: Sometimes (especially when we do not have control over the reward because it is intrinsic), we want to clip the reward
 to a range to gain some numerical stability. To do that, we could, for instance, implement the following wrapper:
@@ -122,7 +122,7 @@ class ClipReward(gym.RewardWrapper):
         super().__init__(env)
         self.min_reward = min_reward
         self.max_reward = max_reward
-        self._reward_range = (min_reward, max_reward)
+        self.reward_range = (min_reward, max_reward)
     
     def reward(self, reward):
         return np.clip(reward, self.min_reward, self.max_reward)
@@ -192,8 +192,8 @@ Sometimes you might need to implement a wrapper that does some more complicated 
 reward based on data in `info` or change the rendering behavior). 
 Such wrappers can be implemented by inheriting from `Wrapper`. 
 
-- You can set a new action or observation space by defining `self._action_space` or `self._observation_space` in `__init__`, respectively
-- You can set new metadata and reward range by defining `self._metadata` and `self._reward_range` in `__init__`, respectively
+- You can set a new action or observation space by defining `self.action_space` or `self.observation_space` in `__init__`, respectively
+- You can set new metadata and reward range by defining `self.metadata` and `self.reward_range` in `__init__`, respectively
 - You can override `step`, `render`, `close` etc. If you do this, you can access the environment that was passed
 to your wrapper (which *still* might be wrapped in some other wrapper) by accessing the attribute `self.env`.
 
