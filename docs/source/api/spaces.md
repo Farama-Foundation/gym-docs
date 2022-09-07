@@ -36,18 +36,40 @@ Each space implements the following functions:
     .. automethod:: sample
 ``` 
 
+## Dict
+
+```{eval-rst}
+.. autoclass:: gym.spaces.Dict
+
+    .. automethod:: __init__
+    .. automethod:: sample
+``` 
+
 ## Discrete
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.Discrete
  
     .. autoclass:: __init__
+    .. automethod:: sample
 ``` 
+
+## Graph
+
+```{eval-rst}
+.. autoclass:: gym.spaces.Graph
+
+    .. automethod:: __init__
+    .. automethod:: sample
+```
 
 ## MultiBinary
 
 ```{eval-rst}
 .. autoclass:: gym.spaces.MultiBinary
+
+    .. automethod:: __init__
+    .. automethod:: sample
 ``` 
 
 ## MultiDiscrete
@@ -56,14 +78,25 @@ Each space implements the following functions:
 .. autoclass:: gym.spaces.MultiDiscrete
 
     .. automethod:: __init__
+    .. automethod:: sample
 ``` 
 
-## Dict
+## Sequence
 
 ```{eval-rst}
-.. autoclass:: gym.spaces.Dict
+.. autoclass:: gym.spaces.Sequence
 
     .. automethod:: __init__
+    .. automethod:: sample
+``` 
+
+## Text
+
+```{eval-rst}
+.. autoclass:: gym.spaces.Text
+
+    .. automethod:: __init__
+    .. automethod:: sample
 ``` 
 
 ## Tuple
@@ -72,6 +105,7 @@ Each space implements the following functions:
 .. autoclass:: gym.spaces.Tuple
 
     .. automethod:: __init__
+    .. automethod:: sample
 ``` 
 
 ## Utility Functions

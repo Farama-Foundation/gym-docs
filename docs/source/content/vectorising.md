@@ -1,9 +1,9 @@
 ---
 layout: "contents"
-title: Vector API
+title: Vectorising your environments
 ---
 
-# Vector API
+# Vectorising your environments
 
 ## Vectorized Environments
 *Vectorized environments* are environments that run multiple independent copies of the same environment in parallel using [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). Vectorized environments take as input a batch of actions, and return a batch of observations. This is particularly useful, for example, when the policy is defined as a neural network that operates over a batch of observations.
@@ -327,82 +327,3 @@ Custom observation and action spaces may inherit from the `gym.Space` class. How
 
 If you use `AsyncVectorEnv` with a custom observation space, you must set ``shared_memory=False``, since shared memory and automatic batching is not compatible with custom spaces. In general if you use custom spaces with `AsyncVectorEnv`, the elements of those spaces must be `pickleable`.
 
-
-## API Reference
-
-### VectorEnv
-
-```{eval-rst}
-.. attribute:: gym.vector.VectorEnv.action_space
-
-    The (batched) action space. The input actions of `step` must be valid elements of `action_space`.::
-
-        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-        >>> envs.action_space
-        MultiDiscrete([2 2 2])
-
-.. attribute:: gym.vector.VectorEnv.observation_space
-
-    The (batched) observation space. The observations returned by `reset` and `step` are valid elements of `observation_space`.::
-
-        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-        >>> envs.observation_space
-        Box([[-4.8 ...]], [[4.8 ...]], (3, 4), float32)
-
-.. attribute:: gym.vector.VectorEnv.single_action_space
-
-    The action space of an environment copy.::
-
-        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-        >>> envs.single_action_space
-        Discrete(2)
-
-.. attribute:: gym.vector.VectorEnv.single_observation_space
-
-    The observation space of an environment copy.::
-
-        >>> envs = gym.vector.make("CartPole-v1", num_envs=3)
-        >>> envs.single_action_space
-        Box([-4.8 ...], [4.8 ...], (4,), float32)
-``` 
-
-
-
-### Reset
-
-```{eval-rst}
-.. automethod:: gym.vector.VectorEnv.reset
-``` 
-
-```python
->>> envs = gym.vector.make("CartPole-v1", num_envs=3)
->>> envs.reset()
-(array([[-0.02240574, -0.03439831, -0.03904812,  0.02810693],
-       [ 0.01586068,  0.01929009,  0.02394426,  0.04016077],
-       [-0.01314174,  0.03893502, -0.02400815,  0.0038326 ]],
-      dtype=float32), {})
-```
-### Step
-
-```{eval-rst}
-.. automethod:: gym.vector.VectorEnv.step
-``` 
-
-```python
->>> envs = gym.vector.make("CartPole-v1", num_envs=3)
->>> envs.reset()
->>> actions = np.array([1, 0, 1])
->>> observations, rewards, dones, infos = envs.step(actions)
-
->>> observations
-array([[ 0.00122802,  0.16228443,  0.02521779, -0.23700266],
-        [ 0.00788269, -0.17490888,  0.03393489,  0.31735462],
-        [ 0.04918966,  0.19421194,  0.02938497, -0.29495203]],
-        dtype=float32)
->>> rewards
-array([1., 1., 1.])
->>> dones
-array([False, False, False])
->>> infos
-{}
-```
