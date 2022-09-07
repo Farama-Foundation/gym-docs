@@ -320,6 +320,214 @@
 <h1>Utils<a class="headerlink" href="#utils" title="Permalink to this heading">#</a></h1>
 <section id="visualization">
 <h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.utils.play.PlayableGame">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.utils.play.</span></span><span class="sig-name descname"><span class="pre">PlayableGame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys_to_action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.PlayableGame" title="Permalink to this definition">#</a></dt>
+<dd><p>Wraps an environment allowing keyboard inputs to interact with the environment.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.utils.play.PlayableGame.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys_to_action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.PlayableGame.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Wraps an environment with a dictionary of keyboard buttons to action and if to zoom in on the environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> – The environment to play</p></li>
+<li><p><strong>keys_to_action</strong> – The dictionary of keyboard tuples and action value</p></li>
+<li><p><strong>zoom</strong> – If to zoom in on the environment render</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.utils.play.PlayableGame.process_event">
+<span class="sig-name descname"><span class="pre">process_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.PlayableGame.process_event" title="Permalink to this definition">#</a></dt>
+<dd><p>Processes a PyGame event.</p>
+<p>In particular, this function is used to keep track of which buttons are currently pressed
+and to exit the <a class="reference internal" href="#gym.utils.play.play" title="gym.utils.play.play"><code class="xref py py-func docutils literal notranslate"><span class="pre">play()</span></code></a> function when the PyGame window is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> – The event to process</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.utils.play.PlayPlot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.utils.play.</span></span><span class="sig-name descname"><span class="pre">PlayPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.PlayPlot" title="Permalink to this definition">#</a></dt>
+<dd><p>Provides a callback to create live plots of arbitrary metrics when using <a class="reference internal" href="#gym.utils.play.play" title="gym.utils.play.play"><code class="xref py py-func docutils literal notranslate"><span class="pre">play()</span></code></a>.</p>
+<dl class="simple">
+<dt>This class is instantiated with a function that accepts information about a single environment transition:</dt><dd><ul class="simple">
+<li><p>obs_t: observation before performing action</p></li>
+<li><p>obs_tp1: observation after performing action</p></li>
+<li><p>action: action that was executed</p></li>
+<li><p>rew: reward that was received</p></li>
+<li><p>terminated: whether the environment is terminated or not</p></li>
+<li><p>truncated: whether the environment is truncated or not</p></li>
+<li><p>info: debug info</p></li>
+</ul>
+</dd>
+</dl>
+<p>It should return a list of metrics that are computed from this data.
+For instance, the function may look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">compute_metrics</span><span class="p">(</span><span class="n">obs_t</span><span class="p">,</span> <span class="n">obs_tp</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">[</span><span class="n">reward</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;cumulative_reward&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">action</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#gym.utils.play.PlayPlot" title="gym.utils.play.PlayPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlayPlot</span></code></a> provides the method <a class="reference internal" href="#gym.utils.play.PlayPlot.callback" title="gym.utils.play.PlayPlot.callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">callback()</span></code></a> which will pass its arguments along to that function
+and uses the returned values to update live plots of the metrics.</p>
+<p>Typically, this <a class="reference internal" href="#gym.utils.play.PlayPlot.callback" title="gym.utils.play.PlayPlot.callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">callback()</span></code></a> will be used in conjunction with <a class="reference internal" href="#gym.utils.play.play" title="gym.utils.play.play"><code class="xref py py-func docutils literal notranslate"><span class="pre">play()</span></code></a> to see how the metrics evolve as you play:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plotter</span> <span class="o">=</span> <span class="n">PlayPlot</span><span class="p">(</span><span class="n">compute_metrics</span><span class="p">,</span> <span class="n">horizon_timesteps</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="gp">... </span>                   <span class="n">plot_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Immediate Rew.&quot;</span><span class="p">,</span> <span class="s2">&quot;Cumulative Rew.&quot;</span><span class="p">,</span> <span class="s2">&quot;Action Magnitude&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">play</span><span class="p">(</span><span class="n">your_env</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">plotter</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.utils.play.PlayPlot.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">horizon_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.PlayPlot.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor of <a class="reference internal" href="#gym.utils.play.PlayPlot" title="gym.utils.play.PlayPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlayPlot</span></code></a>.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">callback</span></code> that is passed to this constructor should return
+a list of metrics that is of length <code class="docutils literal notranslate"><span class="pre">len(plot_names)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> – Function that computes metrics from environment transitions</p></li>
+<li><p><strong>horizon_timesteps</strong> – The time horizon used for the live plots</p></li>
+<li><p><strong>plot_names</strong> – List of plot titles</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>DependencyNotInstalled</strong> – If matplotlib is not installed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.utils.play.PlayPlot.callback">
+<span class="sig-name descname"><span class="pre">callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObsType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_tp1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObsType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ActType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rew</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">terminated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">truncated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.PlayPlot.callback" title="Permalink to this definition">#</a></dt>
+<dd><p>The callback that calls the provided data callback and adds the data to the plots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obs_t</strong> – The observation at time step t</p></li>
+<li><p><strong>obs_tp1</strong> – The observation at time step t+1</p></li>
+<li><p><strong>action</strong> – The action</p></li>
+<li><p><strong>rew</strong> – The reward</p></li>
+<li><p><strong>terminated</strong> – If the environment is terminated</p></li>
+<li><p><strong>truncated</strong> – If the environment is truncated</p></li>
+<li><p><strong>info</strong> – The information from the environment</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gym.utils.play.display_arr">
+<span class="sig-prename descclassname"><span class="pre">gym.utils.play.</span></span><span class="sig-name descname"><span class="pre">display_arr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.display_arr" title="Permalink to this definition">#</a></dt>
+<dd><p>Displays a numpy array on screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> – The screen to show the array on</p></li>
+<li><p><strong>arr</strong> – The array to show</p></li>
+<li><p><strong>video_size</strong> – The video size of the screen</p></li>
+<li><p><strong>transpose</strong> – If to transpose the array on the screen</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gym.utils.play.play">
+<span class="sig-prename descclassname"><span class="pre">gym.utils.play.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transpose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zoom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys_to_action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ActType</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ActType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.utils.play.play" title="Permalink to this definition">#</a></dt>
+<dd><p>Allows one to play the game using keyboard.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gym</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gym.utils.play</span> <span class="kn">import</span> <span class="n">play</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">play</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CarRacing-v1&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;rgb_array&quot;</span><span class="p">),</span> <span class="n">keys_to_action</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;wa&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;dw&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;ds&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+<span class="gp">... </span>                                               <span class="s2">&quot;as&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+<span class="gp">... </span>                                              <span class="p">},</span> <span class="n">noop</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Above code works also if the environment is wrapped, so it’s particularly useful in
+verifying that the frame-level preprocessing does not render the game
+unplayable.</p>
+<p>If you wish to plot real time statistics as you play, you can use
+<a class="reference internal" href="#gym.utils.play.PlayPlot" title="gym.utils.play.PlayPlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">gym.utils.play.PlayPlot</span></code></a>. Here’s a sample code for plotting the reward
+for last 150 steps.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">obs_t</span><span class="p">,</span> <span class="n">obs_tp1</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">rew</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
+<span class="gp">... </span>       <span class="k">return</span> <span class="p">[</span><span class="n">rew</span><span class="p">,]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plotter</span> <span class="o">=</span> <span class="n">PlayPlot</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;reward&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">play</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;ALE/AirRaid-v5&quot;</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="n">plotter</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> – Environment to use for playing.</p></li>
+<li><p><strong>transpose</strong> – If this is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the output of observation is transposed. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>fps</strong> – Maximum number of steps of the environment executed every second. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default),
+<code class="docutils literal notranslate"><span class="pre">env.metadata[&quot;render_fps&quot;&quot;]</span></code> (or 30, if the environment does not specify “render_fps”) is used.</p></li>
+<li><p><strong>zoom</strong> – Zoom the observation in, <code class="docutils literal notranslate"><span class="pre">zoom</span></code> amount, should be positive float</p></li>
+<li><p><strong>callback</strong> – If a callback is provided, it will be executed after every step. It takes the following input:
+obs_t: observation before performing action
+obs_tp1: observation after performing action
+action: action that was executed
+rew: reward that was received
+terminated: whether the environment is terminated or not
+truncated: whether the environment is truncated or not
+info: debug info</p></li>
+<li><p><strong>keys_to_action</strong> – <p>Mapping from keys pressed to action performed.
+Different formats are supported: Key combinations can either be expressed as a tuple of unicode code
+points of the keys, as a tuple of characters, or as a string where each character of the string represents
+one key.
+For example if pressing ‘w’ and space at the same time is supposed
+to trigger action number 2 then <code class="docutils literal notranslate"><span class="pre">key_to_action</span></code> dict could look like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">... </span>   <span class="c1"># ...</span>
+<span class="gp">... </span>   <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)):</span> <span class="mi">2</span>
+<span class="gp">... </span>   <span class="c1"># ...</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<dl>
+<dt>or like this:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">... </span>   <span class="c1"># ...</span>
+<span class="gp">... </span>   <span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">):</span> <span class="mi">2</span>
+<span class="gp">... </span>   <span class="c1"># ...</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+<dt>or like this:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="gp">... </span>   <span class="c1"># ...</span>
+<span class="gp">... </span>   <span class="s2">&quot;w &quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="gp">... </span>   <span class="c1"># ...</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>If <code class="docutils literal notranslate"><span class="pre">None</span></code>, default <code class="docutils literal notranslate"><span class="pre">key_to_action</span></code> mapping for that environment is used, if provided.</p>
+</p></li>
+<li><p><strong>seed</strong> – Random seed used when resetting the environment. If None, no seed is used.</p></li>
+<li><p><strong>noop</strong> – The action used when no key input has been entered, or the entered key combination is unknown.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="save-rendering-videos">
 <h2>Save Rendering Videos<a class="headerlink" href="#save-rendering-videos" title="Permalink to this heading">#</a></h2>
