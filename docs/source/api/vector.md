@@ -4,6 +4,11 @@ title: Vector
 
 # Vector
 
+```{eval-rst}
+.. autofunction:: gym.vector.make
+```  
+
+
 ## VectorEnv
 
 ```{eval-rst}
