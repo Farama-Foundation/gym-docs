@@ -211,9 +211,12 @@ class ReacherRewardWrapper(gym.Wrapper):
         self.reward_ctrl_weight = reward_ctrl_weight
 
     def step(self, action):
-        obs, _, done, info = self.env.step(action)
-        reward = self.reward_dist_weight*info["reward_dist"] + self.reward_ctrl_weight*info["reward_ctrl"]
-        return obs, reward, done, info
+        obs, _, terminated, truncated, info = self.env.step(action)
+        reward = (
+            self.reward_dist_weight * info["reward_dist"]
+            + self.reward_ctrl_weight * info["reward_ctrl"]
+        )
+        return obs, reward, terminated, truncated, info
 ```
 
 ```{note}

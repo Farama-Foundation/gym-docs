@@ -71,17 +71,14 @@ Here is the declaration of `GridWorldEnv` and the implementation of `__init__`:
 ```python
 import gym
 from gym import spaces
+import pygame
 import numpy as np
-from typing import Optional
-from gym.utils.renderer import Renderer
+
 
 class GridWorldEnv(gym.Env):
-    metadata = {"render_modes": ["human", "rgb_array", "single_rgb_array"], "render_fps": 4}
+    metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
-    def __init__(self, render_mode: Optional[str] = None, size: int = 5):
-        assert render_mode is None or render_mode in self.metadata["render_modes"]
-        self.render_mode = render_mode  # Define the attribute render_mode in your environment
-
+    def __init__(self, render_mode=None, size=5):
         self.size = size  # The size of the square grid
         self.window_size = 512  # The size of the PyGame window
 
@@ -109,24 +106,19 @@ class GridWorldEnv(gym.Env):
             3: np.array([0, -1]),
         }
 
+        assert render_mode is None or render_mode in self.metadata["render_modes"]
+        self.render_mode = render_mode
+
         """
         If human-rendering is used, `self.window` will be a reference
         to the window that we draw to. `self.clock` will be a clock that is used
         to ensure that the environment is rendered at the correct framerate in
-        human-mode.
+        human-mode. They will remain `None` until human-mode is used for the
+        first time.
         """
-        if self.render_mode == "human":
-            import pygame  # import here to avoid pygame dependency with no render
+        self.window = None
+        self.clock = None
 
-            pygame.init()
-            pygame.display.init()
-            self.window = pygame.display.set_mode((self.window_size, self.window_size))
-            self.clock = pygame.time.Clock()
-                
-        # The following line uses the util class Renderer to gather a collection of frames 
-        # using a method that computes a single frame. We will define _render_frame below.
-        self.renderer = Renderer(self.render_mode, self._render_frame)
-            
 ```
 
 ### Constructing Observations From Environment States
@@ -166,20 +158,22 @@ and `_get_info` that we implemented earlier for that:
         super().reset(seed=seed)
 
         # Choose the agent's location uniformly at random
-        self._agent_location = self.np_random.integers(0, self.size, size=2)
+        self._agent_location = self.np_random.integers(0, self.size, size=2, dtype=int)
 
         # We will sample the target's location randomly until it does not coincide with the agent's location
         self._target_location = self._agent_location
         while np.array_equal(self._target_location, self._agent_location):
-            self._target_location = self.np_random.integers(0, self.size, size=2)
-
-        # clean the render collection and add the initial frame
-        self.renderer.reset()
-        self.renderer.render_step()
+            self._target_location = self.np_random.integers(
+                0, self.size, size=2, dtype=int
+            )
 
         observation = self._get_obs()
         info = self._get_info()
-        return (observation, info) 
+
+        if self.render_mode == "human":
+            self._render_frame()
+
+        return observation, info
 ```
 
 ### Step
@@ -197,16 +191,16 @@ accordingly. Since we are using sparse binary rewards in `GridWorldEnv`, computi
         self._agent_location = np.clip(
             self._agent_location + direction, 0, self.size - 1
         )
-        # An episode is done if the agent has reached the target
-        done = np.array_equal(self._agent_location, self._target_location)
-        reward = 1 if done else 0  # Binary sparse rewards
+        # An episode is done iff the agent has reached the target
+        terminated = np.array_equal(self._agent_location, self._target_location)
+        reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()
         info = self._get_info()
 
-        # add a frame to the render collection
-        self.renderer.render_step()
+        if self.render_mode == "human":
+            self._render_frame()
 
-        return observation, reward, done, info
+        return observation, reward, terminated, False, info
 ```
 
 ### Rendering
@@ -215,15 +209,17 @@ with Gym and you can use it as a skeleton for your own environments:
 
 ```python
     def render(self):
-        # Just return the list of render frames collected by the Renderer.
-        return self.renderer.get_renders()
+        if self.render_mode == "rgb_array":
+            return self._render_frame()
 
-    def _render_frame(self, mode: str):
-        # This will be the function called by the Renderer to collect a single frame.
-        assert mode is not None  # The renderer will not call this function with no-rendering.
-    
-        import pygame # avoid global pygame dependency. This method is not called with no-render.
-    
+    def _render_frame(self):
+        if self.window is None and self.render_mode == "human":
+            pygame.init()
+            pygame.display.init()
+            self.window = pygame.display.set_mode((self.window_size, self.window_size))
+        if self.clock is None and self.render_mode == "human":
+            self.clock = pygame.time.Clock()
+
         canvas = pygame.Surface((self.window_size, self.window_size))
         canvas.fill((255, 255, 255))
         pix_square_size = (
@@ -264,8 +260,7 @@ with Gym and you can use it as a skeleton for your own environments:
                 width=3,
             )
 
-        if mode == "human":
-            assert self.window is not None
+        if self.render_mode == "human":
             # The following line copies our drawings from `canvas` to the visible window
             self.window.blit(canvas, canvas.get_rect())
             pygame.event.pump()
@@ -274,7 +269,7 @@ with Gym and you can use it as a skeleton for your own environments:
             # We need to ensure that human-rendering occurs at the predefined framerate.
             # The following line will automatically add a delay to keep the framerate stable.
             self.clock.tick(self.metadata["render_fps"])
-        else:  # rgb_array or single_rgb_array
+        else:  # rgb_array
             return np.transpose(
                 np.array(pygame.surfarray.pixels3d(canvas)), axes=(1, 0, 2)
             )
@@ -288,8 +283,6 @@ be `"human"` and we might need to close the window that has been opened:
 ```python
     def close(self):
         if self.window is not None:
-            import pygame 
-            
             pygame.display.quit()
             pygame.quit()
 ```
@@ -349,9 +342,10 @@ The last step is to structure our code as a Python package. This involves config
 ```python
 from setuptools import setup
 
-setup(name='gym_examples',
-    version='0.0.1',
-    install_requires=['gym==0.23.1', 'pygame==2.1.0']
+setup(
+    name="gym_examples",
+    version="0.0.1",
+    install_requires=["gym==0.26.0", "pygame==2.1.0"],
 )
 ```
 
