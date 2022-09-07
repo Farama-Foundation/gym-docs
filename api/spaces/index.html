@@ -3,8 +3,8 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Vector API" href="../vector_api/" /><link rel="prev" title="Environment Creation" href="../environment_creation/" />
-        <link rel="canonical" href="https://www.gymlibrary.dev/content/spaces.html" />
+<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Wrappers" href="../wrappers/" /><link rel="prev" title="Core" href="../core/" />
+        <link rel="canonical" href="https://www.gymlibrary.dev/api/spaces.html" />
 
     <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>Spaces - Gym Documentation</title>
@@ -160,15 +160,17 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../content/basic_usage/">Basic Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../api/">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../environment_creation/">Environment Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/">Core</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vector_api/">Vector API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/">Wrappers</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openai/gym">Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/">Vector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Environments</span></p>
 <ul>
@@ -272,8 +274,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../environments/third_party_environments/">Third Party Environments</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../content/environment_creation/">Make your own custom environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/vectorising/">Vectorising your environments</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openai/gym">Github</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/gym-docs">Contribute to the Docs</a></li>
 </ul>
 
@@ -430,7 +438,7 @@ this value across all dimensions.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>low</strong> (<em>Union</em><em>[</em><em>SupportsFloat</em><em>, </em><em>np.ndarray</em><em>]</em>) – Lower bounds of the intervals.</p></li>
 <li><p><strong>high</strong> (<em>Union</em><em>[</em><em>SupportsFloat</em><em>, </em><em>np.ndarray</em><em>]</em>) – Upper bounds of the intervals.</p></li>
-<li><p><strong>shape</strong> (<em>Optional</em><em>[</em><em>Sequence</em><em>[</em><em>int</em><em>]</em><em>]</em>) – The shape is inferred from the shape of <cite>low</cite> or <cite>high</cite> <cite>np.ndarray`s with
+<li><p><strong>shape</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.Sequence"><em>Sequence</em></a><em>[</em><em>int</em><em>]</em><em>]</em>) – The shape is inferred from the shape of <cite>low</cite> or <cite>high</cite> <cite>np.ndarray`s with
 `low</cite> and <cite>high</cite> scalars defaulting to a shape of (1,)</p></li>
 <li><p><strong>dtype</strong> – The dtype of the elements of the space. If this is an integer type, the <a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.Box"><code class="xref py py-class docutils literal notranslate"><span class="pre">Box</span></code></a> is essentially a discrete space.</p></li>
 <li><p><strong>seed</strong> – Optionally, you can use this argument to seed the RNG that is used to sample from the space.</p></li>
@@ -478,95 +486,6 @@ that is chosen according to the form of the interval:</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>A sampled value from the Box</strong></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="discrete">
-<h2>Discrete<a class="headerlink" href="#discrete" title="Permalink to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="gym.spaces.Discrete">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Discrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Discrete" title="Permalink to this definition">#</a></dt>
-<dd><p>A space consisting of finitely many elements.</p>
-<p>This class represents a finite subset of integers, more specifically a set of the form <span class="math notranslate nohighlight">\(\{ a, a+1, \dots, a+n-1 \}\)</span>.</p>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># {0, 1}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">start</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># {-1, 0, 1}</span>
-</pre></div>
-</div>
-<dl class="py class">
-<dt class="sig sig-object py" id="gym.spaces.Discrete.__init__">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Discrete.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="multibinary">
-<h2>MultiBinary<a class="headerlink" href="#multibinary" title="Permalink to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="gym.spaces.MultiBinary">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">MultiBinary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiBinary" title="Permalink to this definition">#</a></dt>
-<dd><p>An n-shape binary space.</p>
-<p>Elements of this space are binary arrays of a shape that is fixed during construction.</p>
-<p>Example Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">MultiBinary</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">    array([0, 1, 0, 1, 0], dtype=int8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">MultiBinary</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">    array([[0, 0],</span>
-<span class="go">        [0, 1],</span>
-<span class="go">        [1, 1]], dtype=int8)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</section>
-<section id="multidiscrete">
-<h2>MultiDiscrete<a class="headerlink" href="#multidiscrete" title="Permalink to this heading">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="gym.spaces.MultiDiscrete">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">MultiDiscrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nvec:</span> <span class="pre">~typing.Union[~numpy.ndarray,</span> <span class="pre">list],</span> <span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.int64'&gt;,</span> <span class="pre">seed:</span> <span class="pre">~typing.Optional[~typing.Union[int,</span> <span class="pre">~numpy.random._generator.Generator]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiDiscrete" title="Permalink to this definition">#</a></dt>
-<dd><p>This represents the cartesian product of arbitrary <a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.Discrete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Discrete</span></code></a> spaces.</p>
-<p>It is useful to represent game controllers or keyboards where each key can be represented as a discrete action space.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some environment wrappers assume a value of 0 always represents the NOOP action.</p>
-</div>
-<p>e.g. Nintendo Game Controller - Can be conceptualized as 3 discrete action spaces:</p>
-<ol class="arabic simple">
-<li><p>Arrow Keys: Discrete 5  - NOOP[0], UP[1], RIGHT[2], DOWN[3], LEFT[4]  - params: min: 0, max: 4</p></li>
-<li><p>Button A:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</p></li>
-<li><p>Button B:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</p></li>
-</ol>
-<p>It can be initialized as <code class="docutils literal notranslate"><span class="pre">MultiDiscrete([</span> <span class="pre">5,</span> <span class="pre">2,</span> <span class="pre">2</span> <span class="pre">])</span></code> such that a sample might be <code class="docutils literal notranslate"><span class="pre">array([3,</span> <span class="pre">1,</span> <span class="pre">0])</span></code>.</p>
-<p>Although this feature is rarely used, <a class="reference internal" href="#gym.spaces.MultiDiscrete" title="gym.spaces.MultiDiscrete"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiDiscrete</span></code></a> spaces may also have several axes
-if <code class="docutils literal notranslate"><span class="pre">nvec</span></code> has several axes:</p>
-<p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">MultiDiscrete</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]))</span>
-<span class="o">&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
-</pre></div>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="gym.spaces.MultiDiscrete.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nvec:</span> <span class="pre">~typing.Union[~numpy.ndarray,</span> <span class="pre">list],</span> <span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.int64'&gt;,</span> <span class="pre">seed:</span> <span class="pre">~typing.Optional[~typing.Union[int,</span> <span class="pre">~numpy.random._generator.Generator]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiDiscrete.__init__" title="Permalink to this definition">#</a></dt>
-<dd><p>Constructor of <a class="reference internal" href="#gym.spaces.MultiDiscrete" title="gym.spaces.MultiDiscrete"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiDiscrete</span></code></a> space.</p>
-<p>The argument <code class="docutils literal notranslate"><span class="pre">nvec</span></code> will determine the number of values each categorical variable can take.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>nvec</strong> – vector of counts of each categorical variable. This will usually be a list of integers. However,
-you may also pass a more complicated numpy array if you’d like the space to have several axes.</p></li>
-<li><p><strong>dtype</strong> – This should be some kind of integer type.</p></li>
-<li><p><strong>seed</strong> – Optionally, you can use this argument to seed the RNG that is used to sample from the space.</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -639,6 +558,338 @@ keyword arguments (where you will need to avoid the keys <code class="docutils l
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Dict.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#gym.spaces.Dict.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample from this space.</p>
+<p>The sample is an ordered dictionary of independent samples from the constituent spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional mask for each of the subspaces, expects the same keys as the space</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>A dictionary with the same key and sampled values from :attr:`self.spaces`</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="discrete">
+<h2>Discrete<a class="headerlink" href="#discrete" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.Discrete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Discrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Discrete" title="Permalink to this definition">#</a></dt>
+<dd><p>A space consisting of finitely many elements.</p>
+<p>This class represents a finite subset of integers, more specifically a set of the form <span class="math notranslate nohighlight">\(\{ a, a+1, \dots, a+n-1 \}\)</span>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>            <span class="c1"># {0, 1}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">start</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># {-1, 0, 1}</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.Discrete.__init__">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Discrete.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Discrete.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#gym.spaces.Discrete.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample from this space.</p>
+<p>A sample will be chosen uniformly at random with the mask if provided</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional mask for if an action can be selected.
+Expected <cite>np.ndarray</cite> of shape <cite>(n,)</cite> and dtype <cite>np.int8</cite> where <cite>1</cite> represents valid actions and <cite>0</cite> invalid / infeasible actions.
+If there are no possible actions (i.e. <cite>np.all(mask == 0)</cite>) then <cite>space.start</cite> will be returned.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>A sampled integer from the space</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="graph">
+<h2>Graph<a class="headerlink" href="#graph" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.discrete.Discrete"><span class="pre">Discrete</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.discrete.Discrete"><span class="pre">Discrete</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Graph" title="Permalink to this definition">#</a></dt>
+<dd><p>A space representing graph information as a series of <cite>nodes</cite> connected with <cite>edges</cite> according to an adjacency matrix represented as a series of <cite>edge_links</cite>.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">node_space</span><span class="o">=</span><span class="n">space</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">100</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,)),</span> <span class="n">edge_space</span><span class="o">=</span><span class="n">spaces</span><span class="o">.</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Graph.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.discrete.Discrete"><span class="pre">Discrete</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.discrete.Discrete"><span class="pre">Discrete</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Graph.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor of <a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.Graph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code></a>.</p>
+<p>The argument <code class="docutils literal notranslate"><span class="pre">node_space</span></code> specifies the base space that each node feature will use.
+This argument must be either a Box or Discrete instance.</p>
+<p>The argument <code class="docutils literal notranslate"><span class="pre">edge_space</span></code> specifies the base space that each edge feature will use.
+This argument must be either a None, Box or Discrete instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_space</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.Box"><em>Box</em></a><em>, </em><a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.Discrete"><em>Discrete</em></a><em>]</em>) – space of the node features.</p></li>
+<li><p><strong>edge_space</strong> (<em>Union</em><em>[</em><em>None</em><em>, </em><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.Box"><em>Box</em></a><em>, </em><a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.Discrete"><em>Discrete</em></a><em>]</em>) – space of the node features.</p></li>
+<li><p><strong>seed</strong> – Optionally, you can use this argument to seed the RNG that is used to sample from the space.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Graph.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GraphInstance</span></span></span><a class="headerlink" href="#gym.spaces.Graph.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single sample graph with num_nodes between 1 and 10 sampled from the Graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask</strong> – An optional tuple of optional node and edge mask that is only possible with Discrete spaces
+(Box spaces don’t support sample masks).
+If no <cite>num_edges</cite> is provided then the <cite>edge_mask</cite> is multiplied by the number of edges</p></li>
+<li><p><strong>num_nodes</strong> – The number of nodes that will be sampled, the default is 10 nodes</p></li>
+<li><p><strong>num_edges</strong> – An optional number of edges, otherwise, a random number between 0 and <a href="#id1"><span class="problematic" id="id2">`</span></a>num_nodes`^2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>A NamedTuple representing a graph with attributes .nodes, .edges, and .edge_links.</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="multibinary">
+<h2>MultiBinary<a class="headerlink" href="#multibinary" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.MultiBinary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">MultiBinary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiBinary" title="Permalink to this definition">#</a></dt>
+<dd><p>An n-shape binary space.</p>
+<p>Elements of this space are binary arrays of a shape that is fixed during construction.</p>
+<p>Example Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">MultiBinary</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">    array([0, 1, 0, 1, 0], dtype=int8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">MultiBinary</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">    array([[0, 0],</span>
+<span class="go">        [0, 1],</span>
+<span class="go">        [1, 1]], dtype=int8)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.MultiBinary.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiBinary.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor of <a class="reference internal" href="#gym.spaces.MultiBinary" title="gym.spaces.MultiBinary"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiBinary</span></code></a> space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> – This will fix the shape of elements of the space. It can either be an integer (if the space is flat)
+or some sort of sequence (tuple, list or np.ndarray) if there are multiple axes.</p></li>
+<li><p><strong>seed</strong> – Optionally, you can use this argument to seed the RNG that is used to sample from the space.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.MultiBinary.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#gym.spaces.MultiBinary.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample from this space.</p>
+<p>A sample is drawn by independent, fair coin tosses (one toss per binary variable of the space).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional np.ndarray to mask samples with expected shape of <code class="docutils literal notranslate"><span class="pre">space.shape</span></code>.
+For mask == 0 then the samples will be 0 and mask == 1 then random samples will be generated.
+The expected mask shape is the space shape and mask dtype is <cite>np.int8</cite>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Sampled values from space</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="multidiscrete">
+<h2>MultiDiscrete<a class="headerlink" href="#multidiscrete" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.MultiDiscrete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">MultiDiscrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nvec:</span> <span class="pre">~typing.Union[~numpy.ndarray,</span> <span class="pre">list],</span> <span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.int64'&gt;,</span> <span class="pre">seed:</span> <span class="pre">~typing.Optional[~typing.Union[int,</span> <span class="pre">~numpy.random._generator.Generator]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiDiscrete" title="Permalink to this definition">#</a></dt>
+<dd><p>This represents the cartesian product of arbitrary <a class="reference internal" href="#gym.spaces.Discrete" title="gym.spaces.Discrete"><code class="xref py py-class docutils literal notranslate"><span class="pre">Discrete</span></code></a> spaces.</p>
+<p>It is useful to represent game controllers or keyboards where each key can be represented as a discrete action space.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some environment wrappers assume a value of 0 always represents the NOOP action.</p>
+</div>
+<p>e.g. Nintendo Game Controller - Can be conceptualized as 3 discrete action spaces:</p>
+<ol class="arabic simple">
+<li><p>Arrow Keys: Discrete 5  - NOOP[0], UP[1], RIGHT[2], DOWN[3], LEFT[4]  - params: min: 0, max: 4</p></li>
+<li><p>Button A:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</p></li>
+<li><p>Button B:   Discrete 2  - NOOP[0], Pressed[1] - params: min: 0, max: 1</p></li>
+</ol>
+<p>It can be initialized as <code class="docutils literal notranslate"><span class="pre">MultiDiscrete([</span> <span class="pre">5,</span> <span class="pre">2,</span> <span class="pre">2</span> <span class="pre">])</span></code> such that a sample might be <code class="docutils literal notranslate"><span class="pre">array([3,</span> <span class="pre">1,</span> <span class="pre">0])</span></code>.</p>
+<p>Although this feature is rarely used, <a class="reference internal" href="#gym.spaces.MultiDiscrete" title="gym.spaces.MultiDiscrete"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiDiscrete</span></code></a> spaces may also have several axes
+if <code class="docutils literal notranslate"><span class="pre">nvec</span></code> has several axes:</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">MultiDiscrete</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]))</span>
+<span class="o">&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.MultiDiscrete.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nvec:</span> <span class="pre">~typing.Union[~numpy.ndarray,</span> <span class="pre">list],</span> <span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.int64'&gt;,</span> <span class="pre">seed:</span> <span class="pre">~typing.Optional[~typing.Union[int,</span> <span class="pre">~numpy.random._generator.Generator]]</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.MultiDiscrete.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor of <a class="reference internal" href="#gym.spaces.MultiDiscrete" title="gym.spaces.MultiDiscrete"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiDiscrete</span></code></a> space.</p>
+<p>The argument <code class="docutils literal notranslate"><span class="pre">nvec</span></code> will determine the number of values each categorical variable can take.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nvec</strong> – vector of counts of each categorical variable. This will usually be a list of integers. However,
+you may also pass a more complicated numpy array if you’d like the space to have several axes.</p></li>
+<li><p><strong>dtype</strong> – This should be some kind of integer type.</p></li>
+<li><p><strong>seed</strong> – Optionally, you can use this argument to seed the RNG that is used to sample from the space.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.MultiDiscrete.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#gym.spaces.MultiDiscrete.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample this space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional mask for multi-discrete, expects tuples with a <cite>np.ndarray</cite> mask in the position of each
+action with shape <cite>(n,)</cite> where <cite>n</cite> is the number of actions and <cite>dtype=np.int8</cite>.
+Only mask values == 1 are possible to sample unless all mask values for an action are 0 then the default action 0 is sampled.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>An `np.ndarray` of shape `space.shape`</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="sequence">
+<h2>Sequence<a class="headerlink" href="#sequence" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.Sequence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Space" title="gym.spaces.space.Space"><span class="pre">Space</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Sequence" title="Permalink to this definition">#</a></dt>
+<dd><p>This space represent sets of finite-length sequences.</p>
+<p>This space represents the set of tuples of the form <span class="math notranslate nohighlight">\((a_0, \dots, a_n)\)</span> where the <span class="math notranslate nohighlight">\(a_i\)</span> belong
+to some space that is specified during initialization and the integer <span class="math notranslate nohighlight">\(n\)</span> is not fixed</p>
+<dl>
+<dt>Example::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">space</span> <span class="o">=</span> <span class="n">Sequence</span><span class="p">(</span><span class="n">Box</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">(array([0.0259352], dtype=float32),)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<span class="go">(array([0.80977976], dtype=float32), array([0.80066574], dtype=float32), array([0.77165383], dtype=float32))</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Sequence.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Space" title="gym.spaces.space.Space"><span class="pre">Space</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Sequence.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor of the <a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>space</strong> – Elements in the sequences this space represent must belong to this space.</p></li>
+<li><p><strong>seed</strong> – Optionally, you can use this argument to seed the RNG that is used to sample from the space.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Sequence.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.spaces.Sequence.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample from this space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional mask for (optionally) the length of the sequence and (optionally) the values in the sequence.
+If you specify <cite>mask</cite>, it is expected to be a tuple of the form <cite>(length_mask, sample_mask)</cite> where <cite>length_mask</cite>
+is
+- <cite>None</cite> The length will be randomly drawn from a geometric distribution
+- <cite>np.ndarray</cite> of integers, in which case the length of the sampled sequence is randomly drawn from this array.
+- <cite>int</cite> for a fixed length sample
+The second element of the mask tuple <cite>sample</cite> mask specifies a mask that is applied when
+sampling elements from the base space. The mask is applied for each feature space sample.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>A tuple of random length with random samples of elements from the :attr:`feature_space`.</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="text">
+<h2>Text<a class="headerlink" href="#text" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.spaces.Text">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.spaces.</span></span><span class="sig-name descname"><span class="pre">Text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">frozenset({'0',</span> <span class="pre">'1',</span> <span class="pre">'2',</span> <span class="pre">'3',</span> <span class="pre">'4',</span> <span class="pre">'5',</span> <span class="pre">'6',</span> <span class="pre">'7',</span> <span class="pre">'8',</span> <span class="pre">'9',</span> <span class="pre">'A',</span> <span class="pre">'B',</span> <span class="pre">'C',</span> <span class="pre">'D',</span> <span class="pre">'E',</span> <span class="pre">'F',</span> <span class="pre">'G',</span> <span class="pre">'H',</span> <span class="pre">'I',</span> <span class="pre">'J',</span> <span class="pre">'K',</span> <span class="pre">'L',</span> <span class="pre">'M',</span> <span class="pre">'N',</span> <span class="pre">'O',</span> <span class="pre">'P',</span> <span class="pre">'Q',</span> <span class="pre">'R',</span> <span class="pre">'S',</span> <span class="pre">'T',</span> <span class="pre">'U',</span> <span class="pre">'V',</span> <span class="pre">'W',</span> <span class="pre">'X',</span> <span class="pre">'Y',</span> <span class="pre">'Z',</span> <span class="pre">'a',</span> <span class="pre">'b',</span> <span class="pre">'c',</span> <span class="pre">'d',</span> <span class="pre">'e',</span> <span class="pre">'f',</span> <span class="pre">'g',</span> <span class="pre">'h',</span> <span class="pre">'i',</span> <span class="pre">'j',</span> <span class="pre">'k',</span> <span class="pre">'l',</span> <span class="pre">'m',</span> <span class="pre">'n',</span> <span class="pre">'o',</span> <span class="pre">'p',</span> <span class="pre">'q',</span> <span class="pre">'r',</span> <span class="pre">'s',</span> <span class="pre">'t',</span> <span class="pre">'u',</span> <span class="pre">'v',</span> <span class="pre">'w',</span> <span class="pre">'x',</span> <span class="pre">'y',</span> <span class="pre">'z'})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Text" title="Permalink to this definition">#</a></dt>
+<dd><p>A space representing a string comprised of characters from a given charset.</p>
+<dl>
+<dt>Example::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># {&quot;&quot;, &quot;B5&quot;, &quot;hello&quot;, ...}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Text</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># {&quot;0&quot;, &quot;42&quot;, &quot;0123456789&quot;, ...}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Text</span><span class="p">(</span><span class="n">min_length</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>     <span class="n">max_length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>     <span class="n">charset</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Text.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">frozenset({'0',</span> <span class="pre">'1',</span> <span class="pre">'2',</span> <span class="pre">'3',</span> <span class="pre">'4',</span> <span class="pre">'5',</span> <span class="pre">'6',</span> <span class="pre">'7',</span> <span class="pre">'8',</span> <span class="pre">'9',</span> <span class="pre">'A',</span> <span class="pre">'B',</span> <span class="pre">'C',</span> <span class="pre">'D',</span> <span class="pre">'E',</span> <span class="pre">'F',</span> <span class="pre">'G',</span> <span class="pre">'H',</span> <span class="pre">'I',</span> <span class="pre">'J',</span> <span class="pre">'K',</span> <span class="pre">'L',</span> <span class="pre">'M',</span> <span class="pre">'N',</span> <span class="pre">'O',</span> <span class="pre">'P',</span> <span class="pre">'Q',</span> <span class="pre">'R',</span> <span class="pre">'S',</span> <span class="pre">'T',</span> <span class="pre">'U',</span> <span class="pre">'V',</span> <span class="pre">'W',</span> <span class="pre">'X',</span> <span class="pre">'Y',</span> <span class="pre">'Z',</span> <span class="pre">'a',</span> <span class="pre">'b',</span> <span class="pre">'c',</span> <span class="pre">'d',</span> <span class="pre">'e',</span> <span class="pre">'f',</span> <span class="pre">'g',</span> <span class="pre">'h',</span> <span class="pre">'i',</span> <span class="pre">'j',</span> <span class="pre">'k',</span> <span class="pre">'l',</span> <span class="pre">'m',</span> <span class="pre">'n',</span> <span class="pre">'o',</span> <span class="pre">'p',</span> <span class="pre">'q',</span> <span class="pre">'r',</span> <span class="pre">'s',</span> <span class="pre">'t',</span> <span class="pre">'u',</span> <span class="pre">'v',</span> <span class="pre">'w',</span> <span class="pre">'x',</span> <span class="pre">'y',</span> <span class="pre">'z'})</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.spaces.Text.__init__" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor of <a class="reference internal" href="#gym.spaces.Text" title="gym.spaces.Text"><code class="xref py py-class docutils literal notranslate"><span class="pre">Text</span></code></a> space.</p>
+<p>Both bounds for text length are inclusive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_length</strong> (<em>int</em>) – Minimum text length (in characters). Defaults to 1 to prevent empty strings.</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – Maximum text length (in characters).</p></li>
+<li><p><strong>charset</strong> (<em>Union</em><em>[</em><em>set</em><em>]</em><em>, </em><em>str</em>) – Character set, defaults to the lower and upper english alphabet plus latin digits.</p></li>
+<li><p><strong>seed</strong> – The seed for sampling from the space.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Text.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#gym.spaces.Text.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample from this space with by default a random length between <cite>min_length</cite> and <cite>max_length</cite> and sampled from the <cite>charset</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional tuples of length and mask for the text.
+The length is expected to be between the <cite>min_length</cite> and <cite>max_length</cite> otherwise a random integer between <cite>min_length</cite> and <cite>max_length</cite> is selected.
+For the mask, we expect a numpy array of length of the charset passed with <cite>dtype == np.int8</cite>.
+If the charlist mask is all zero then an empty string is returned no matter the <cite>min_length</cite></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>A sampled string from the space</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -671,6 +922,22 @@ keyword arguments (where you will need to avoid the keys <code class="docutils l
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="gym.spaces.Tuple.sample">
+<span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#gym.spaces.Tuple.sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a single random sample inside this space.</p>
+<p>This method draws independent samples from the subspaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> – An optional tuple of optional masks for each of the subspace’s samples,
+expects the same number of masks as spaces</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Tuple of the subspace’s samples</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -692,9 +959,9 @@ keyword arguments (where you will need to avoid the keys <code class="docutils l
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Graph</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.graph.Graph"><span class="pre">Graph</span></a></span></em><span class="sig-paren">)</span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatdim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Text" title="gym.spaces.text.Text"><span class="pre">Text</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span></dt>
 <dd><p>Return the number of dimensions a flattened equivalent of this space would have.</p>
 <p>Example usage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gym.spaces</span> <span class="kn">import</span> <span class="n">Discrete</span>
@@ -721,7 +988,7 @@ keyword arguments (where you will need to avoid the keys <code class="docutils l
 
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.spaces.utils.flatten_space">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Space" title="gym.spaces.space.Space"><span class="pre">Space</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Tuple" title="gym.spaces.tuple.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Graph</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.spaces.utils.flatten_space" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Space" title="gym.spaces.space.Space"><span class="pre">Space</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.sequence.Sequence"><span class="pre">Sequence</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Tuple" title="gym.spaces.tuple.Tuple"><span class="pre">Tuple</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.graph.Graph"><span class="pre">Graph</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.spaces.utils.flatten_space" title="Permalink to this definition">#</a></dt>
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a></span></span></dt>
 <dt class="sig sig-object py">
@@ -735,11 +1002,11 @@ keyword arguments (where you will need to avoid the keys <code class="docutils l
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Graph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Graph</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.graph.Graph"><span class="pre">Graph</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.graph.Graph"><span class="pre">Graph</span></a></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Text</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Text" title="gym.spaces.text.Text"><span class="pre">Text</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gym.spaces.Box" title="gym.spaces.box.Box"><span class="pre">Box</span></a></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.sequence.Sequence"><span class="pre">Sequence</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.sequence.Sequence"><span class="pre">Sequence</span></a></span></span></dt>
 <dd><p>Flatten a space into a space that is as flat as possible.</p>
 <p>This function will attempt to flatten <cite>space</cite> into a single <code class="xref py py-class docutils literal notranslate"><span class="pre">Box</span></code> space.
 However, this might not be possible when <cite>space</cite> is an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code>,
@@ -814,11 +1081,11 @@ space.</p>
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GraphInstance</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.graph.Graph"><span class="pre">Graph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GraphInstance</span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Text" title="gym.spaces.text.Text"><span class="pre">Text</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.sequence.Sequence"><span class="pre">Sequence</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span></dt>
 <dd><p>Flatten a data point from a space.</p>
 <p>This is useful when e.g. points from spaces must be passed to a neural
 network, which only understands flat arrays of floats.</p>
@@ -879,11 +1146,11 @@ network, which only understands flat arrays of floats.</p>
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Dict" title="gym.spaces.dict.Dict"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GraphInstance</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GraphInstance</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Graph" title="gym.spaces.graph.Graph"><span class="pre">Graph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GraphInstance</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GraphInstance</span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Text" title="gym.spaces.text.Text"><span class="pre">Text</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span></dt>
+<span class="sig-prename descclassname"><span class="pre">gym.spaces.utils.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gym.spaces.Sequence" title="gym.spaces.sequence.Sequence"><span class="pre">Sequence</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span></dt>
 <dd><p>Unflatten a data point from a space.</p>
 <p>This reverses the transformation applied by <a class="reference internal" href="#gym.spaces.utils.flatten" title="gym.spaces.utils.flatten"><code class="xref py py-func docutils literal notranslate"><span class="pre">flatten()</span></code></a>. You must ensure
 that the <code class="docutils literal notranslate"><span class="pre">space</span></code> argument is the same as for the <a class="reference internal" href="#gym.spaces.utils.flatten" title="gym.spaces.utils.flatten"><code class="xref py py-func docutils literal notranslate"><span class="pre">flatten()</span></code></a> call.</p>
@@ -911,23 +1178,23 @@ that the <code class="docutils literal notranslate"><span class="pre">space</spa
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../vector_api/">
+          <a class="next-page" href="../wrappers/">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Vector API</div>
+                <div class="title">Wrappers</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../environment_creation/">
+          <a class="prev-page" href="../core/">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Environment Creation</div>
+                <div class="title">Core</div>
                 
               </div>
             </a>
@@ -966,10 +1233,13 @@ that the <code class="docutils literal notranslate"><span class="pre">space</spa
 <li><a class="reference internal" href="#">Spaces</a><ul>
 <li><a class="reference internal" href="#general-functions">General Functions</a></li>
 <li><a class="reference internal" href="#box">Box</a></li>
+<li><a class="reference internal" href="#dict">Dict</a></li>
 <li><a class="reference internal" href="#discrete">Discrete</a></li>
+<li><a class="reference internal" href="#graph">Graph</a></li>
 <li><a class="reference internal" href="#multibinary">MultiBinary</a></li>
 <li><a class="reference internal" href="#multidiscrete">MultiDiscrete</a></li>
-<li><a class="reference internal" href="#dict">Dict</a></li>
+<li><a class="reference internal" href="#sequence">Sequence</a></li>
+<li><a class="reference internal" href="#text">Text</a></li>
 <li><a class="reference internal" href="#tuple">Tuple</a></li>
 <li><a class="reference internal" href="#utility-functions">Utility Functions</a></li>
 </ul>

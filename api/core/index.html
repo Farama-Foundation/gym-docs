@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Environment Creation" href="../environment_creation/" /><link rel="prev" title="Gym is a standard API for reinforcement learning, and a diverse collection of reference environments" href="../../" />
-        <link rel="canonical" href="https://www.gymlibrary.dev/content/api.html" />
+<link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Spaces" href="../spaces/" /><link rel="prev" title="Basic Usage" href="../../content/basic_usage/" />
+        <link rel="canonical" href="https://www.gymlibrary.dev/api/core.html" />
 
     <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
-        <title>API - Gym Documentation</title>
+        <title>Core - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -160,15 +160,17 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../content/basic_usage/">Basic Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../environment_creation/">Environment Creation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Core</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../spaces/">Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../vector_api/">Vector API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/">Wrappers</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openai/gym">Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vector/">Vector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Environments</span></p>
 <ul>
@@ -272,8 +274,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../environments/third_party_environments/">Third Party Environments</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../content/environment_creation/">Make your own custom environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/vectorising/">Vectorising your environments</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openai/gym">Github</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/gym-docs">Contribute to the Docs</a></li>
 </ul>
 
@@ -308,61 +316,10 @@
           </label>
         </div>
         <article role="main">
-          <section id="api">
-<h1>API<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h1>
-<section id="initializing-environments">
-<h2>Initializing Environments<a class="headerlink" href="#initializing-environments" title="Permalink to this heading">#</a></h2>
-<p>Initializing environments is very easy in Gym and can be done via:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;CartPole-v0&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="interacting-with-the-environment">
-<h2>Interacting with the Environment<a class="headerlink" href="#interacting-with-the-environment" title="Permalink to this heading">#</a></h2>
-<p>Gym implements the classic “agent-environment loop”:</p>
-<a class="only-light reference internal image-reference" href="../../_images/AE_loop.png"><img alt="../../_images/AE_loop.png" class="only-light align-center" src="../../_images/AE_loop.png" style="width: 50%;" /></a>
-<a class="only-dark reference internal image-reference" href="../../_images/AE_loop_dark.png"><img alt="../../_images/AE_loop_dark.png" class="only-dark align-center" src="../../_images/AE_loop_dark.png" style="width: 50%;" /></a>
-<p>The agent performs some actions in the environment (usually by passing some control inputs to the environment, e.g. torque inputs of motors) and observes
-how the environment’s state changes. One such action-observation exchange is referred to as a <em>timestep</em>.</p>
-<p>The goal in RL is to manipulate the environment in some specific way. For instance, we want the agent to navigate a robot
-to a specific point in space. If it succeeds in doing this (or makes some progress towards that goal), it will receive a positive reward
-alongside the observation for this timestep. The reward may also be negative or 0, if the agent did not yet succeed (or did not make any progress).
-The agent will then be trained to maximize the reward it accumulates over many timesteps.</p>
-<p>After some timesteps, the environment may enter a terminal state. For instance, the robot may have crashed! In that case,
-we want to reset the environment to a new initial state. The environment issues a done signal to the agent if it enters such a terminal state.
-Not all done signals must be triggered by a “catastrophic failure”: Sometimes we also want to issue a done signal after
-a fixed number of timesteps, or if the agent has succeeded in completing some task in the environment.</p>
-<p>Let’s see what the agent-environment loop looks like in Gym.
-This example will run an instance of <code class="docutils literal notranslate"><span class="pre">LunarLander-v2</span></code> environment for 1000 timesteps. Since we pass <code class="docutils literal notranslate"><span class="pre">render_mode=&quot;human&quot;</span></code>, you should see a window pop up rendering the environment.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLander-v2&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
-<span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">())</span>
-
-    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
-        <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
-<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The output should look something like this</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif"><img alt="https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif" src="https://user-images.githubusercontent.com/15806078/153222406-af5ce6f0-4696-4a24-a683-46ad4939170c.gif" style="width: 50%;" /></a>
-</figure>
-<p>Every environment specifies the format of valid actions by providing an <code class="docutils literal notranslate"><span class="pre">env.action_space</span></code> attribute. Similarly,
-the format of valid observations is specified by <code class="docutils literal notranslate"><span class="pre">env.observation_space</span></code>.
-In the example above we sampled random actions via <code class="docutils literal notranslate"><span class="pre">env.action_space.sample()</span></code>. Note that we need to seed the action space separately from the
-environment to ensure reproducible samples.</p>
-</section>
-<section id="standard-methods">
-<h2>Standard methods<a class="headerlink" href="#standard-methods" title="Permalink to this heading">#</a></h2>
-<section id="stepping">
-<h3>Stepping<a class="headerlink" href="#stepping" title="Permalink to this heading">#</a></h3>
+          <section id="core">
+<h1>Core<a class="headerlink" href="#core" title="Permalink to this heading">#</a></h1>
+<section id="gym-env">
+<h2>gym.Env<a class="headerlink" href="#gym-env" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.step">
 <span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ActType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.step" title="Permalink to this definition">#</a></dt>
@@ -397,9 +354,6 @@ a certain timelimit was exceeded, or the physics simulation has entered an inval
 </dl>
 </dd></dl>
 
-</section>
-<section id="resetting">
-<h3>Resetting<a class="headerlink" href="#resetting" title="Permalink to this heading">#</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.reset">
 <span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ObsType</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.reset" title="Permalink to this definition">#</a></dt>
@@ -434,9 +388,6 @@ the <code class="docutils literal notranslate"><span class="pre">info</span></co
 </dl>
 </dd></dl>
 
-</section>
-<section id="rendering">
-<h3>Rendering<a class="headerlink" href="#rendering" title="Permalink to this heading">#</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.render">
 <span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#gym.Env.render" title="Permalink to this definition">#</a></dt>
@@ -464,10 +415,6 @@ in implementations to use the functionality of this method.</p>
 </div>
 </dd></dl>
 
-</section>
-</section>
-<section id="additional-environment-api">
-<h2>Additional Environment API<a class="headerlink" href="#additional-environment-api" title="Permalink to this heading">#</a></h2>
 <section id="attributes">
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
 <dl class="py attribute">
@@ -501,8 +448,8 @@ in implementations to use the functionality of this method.</p>
 </dd></dl>
 
 </section>
-<section id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
+<section id="additional-methods">
+<h3>Additional Methods<a class="headerlink" href="#additional-methods" title="Permalink to this heading">#</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="gym.Env.close">
 <span class="sig-prename descclassname"><span class="pre">gym.Env.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.Env.close" title="Permalink to this definition">#</a></dt>
@@ -513,146 +460,114 @@ garbage collected or when the program exits.</p>
 
 </section>
 </section>
-<section id="checking-api-conformity">
-<h2>Checking API-Conformity<a class="headerlink" href="#checking-api-conformity" title="Permalink to this heading">#</a></h2>
-<p>If you have implemented a custom environment and would like to perform a sanity check to make sure that it conforms to
-the API, you can run:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gym.utils.env_checker</span> <span class="kn">import</span> <span class="n">check_env</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">check_env</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
-</pre></div>
+<section id="gym-wrapper">
+<h2>gym.Wrapper<a class="headerlink" href="#gym-wrapper" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.Wrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.</span></span><span class="sig-name descname"><span class="pre">Wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.Wrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Wraps an environment to allow a modular transformation of the <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code> methods.</p>
+<p>This class is the base class for all wrappers. The subclass could override
+some methods to change the behavior of the original environment without touching the
+original code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t forget to call <code class="docutils literal notranslate"><span class="pre">super().__init__(env)</span></code> if the subclass overrides <code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
 </div>
-<p>This function will throw an exception if it seems like your environment does not follow the Gym API. It will also produce
-warnings if it looks like you made a mistake or do not follow a best practice (e.g. if <code class="docutils literal notranslate"><span class="pre">observation_space</span></code> looks like
-an image but does not have the right dtype). Warnings can be turned off by passing <code class="docutils literal notranslate"><span class="pre">warn=False</span></code>. By default, <code class="docutils literal notranslate"><span class="pre">check_env</span></code> will
-not check the <code class="docutils literal notranslate"><span class="pre">render</span></code> method. To change this behavior, you can pass <code class="docutils literal notranslate"><span class="pre">skip_render_check=False</span></code>.</p>
-<blockquote>
-<div><p>After running <code class="docutils literal notranslate"><span class="pre">check_env</span></code> on an environment, you should not reuse the instance that was checked, as it may have already
-been closed!</p>
-</div></blockquote>
+</dd></dl>
+
 </section>
-<section id="spaces">
-<h2>Spaces<a class="headerlink" href="#spaces" title="Permalink to this heading">#</a></h2>
-<p>Spaces are usually used to specify the format of valid actions and observations.
-Every environment should have the attributes <code class="docutils literal notranslate"><span class="pre">action_space</span></code> and <code class="docutils literal notranslate"><span class="pre">observation_space</span></code>, both of which should be instances
-of classes that inherit from <code class="docutils literal notranslate"><span class="pre">Space</span></code>.
-There are multiple <code class="docutils literal notranslate"><span class="pre">Space</span></code> types available in Gym:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Box</span></code>: describes an n-dimensional continuous space. It’s a bounded space where we can define the upper and lower limits which describe the valid values our observations can take.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Discrete</span></code>: describes a discrete space where {0, 1, …, n-1} are the possible values our observation or action can take. Values can be shifted to {a, a+1, …, a+n-1} using an optional argument.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Dict</span></code>: represents a dictionary of simple spaces.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Tuple</span></code>: represents a tuple of simple spaces.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MultiBinary</span></code>: creates a n-shape binary space. Argument n can be a number or a <code class="docutils literal notranslate"><span class="pre">list</span></code> of numbers.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MultiDiscrete</span></code>: consists of a series of <code class="docutils literal notranslate"><span class="pre">Discrete</span></code> action spaces with a different number of actions in each element.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gym.spaces</span> <span class="kn">import</span> <span class="n">Box</span><span class="p">,</span> <span class="n">Discrete</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">MultiBinary</span><span class="p">,</span> <span class="n">MultiDiscrete</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">[ 1.6952509 -0.4399011 -0.7981693]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">1</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">start</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">-2</span>
-<span class="gp">&gt;&gt;&gt; </span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">({</span><span class="s2">&quot;position&quot;</span><span class="p">:</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;velocity&quot;</span><span class="p">:</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)})</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">OrderedDict([(&#39;position&#39;, 0), (&#39;velocity&#39;, 1)])</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">((</span><span class="n">Discrete</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">Discrete</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">(1, 2)</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">MultiBinary</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">[1 1 1 0 1]</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">MultiDiscrete</span><span class="p">([</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-<span class="go">[3 0 0]</span>
+<section id="gym-observationwrapper">
+<h2>gym.ObservationWrapper<a class="headerlink" href="#gym-observationwrapper" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.ObservationWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.</span></span><span class="sig-name descname"><span class="pre">ObservationWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.ObservationWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Superclass of wrappers that can modify observations using <code class="xref py py-meth docutils literal notranslate"><span class="pre">observation()</span></code> for <code class="xref py py-meth docutils literal notranslate"><span class="pre">reset()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code>.</p>
+<p>If you would like to apply a function to the observation that is returned by the base environment before
+passing it to learning code, you can simply inherit from <a class="reference internal" href="#gym.ObservationWrapper" title="gym.ObservationWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationWrapper</span></code></a> and overwrite the method
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">observation()</span></code> to implement that transformation. The transformation defined in that method must be
+defined on the base environment’s observation space. However, it may take values in a different space.
+In that case, you need to specify the new observation space of the wrapper by setting <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.observation_space</span></code>
+in the <code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code> method of your wrapper.</p>
+<p>For example, you might have a 2D navigation task where the environment returns dictionaries as observations with
+keys <code class="docutils literal notranslate"><span class="pre">&quot;agent_position&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;target_position&quot;</span></code>. A common thing to do might be to throw away some degrees of
+freedom and only consider the position of the target relative to the agent, i.e.
+<code class="docutils literal notranslate"><span class="pre">observation[&quot;target_position&quot;]</span> <span class="pre">-</span> <span class="pre">observation[&quot;agent_position&quot;]</span></code>. For this, you could implement an
+observation wrapper like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RelativePosition</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">ObservationWrapper</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observation_space</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="n">low</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">observation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obs</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">obs</span><span class="p">[</span><span class="s2">&quot;agent&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Among others, Gym provides the observation wrapper <code class="xref py py-class docutils literal notranslate"><span class="pre">TimeAwareObservation</span></code>, which adds information about the
+index of the timestep to the observation.</p>
+</dd></dl>
+
 </section>
-<section id="wrappers">
-<h2>Wrappers<a class="headerlink" href="#wrappers" title="Permalink to this heading">#</a></h2>
-<p>Wrappers are a convenient way to modify an existing environment without having to alter the underlying code directly.
-Using wrappers will allow you to avoid a lot of boilerplate code and make your environment more modular. Wrappers can
-also be chained to combine their effects. Most environments that are generated via <code class="docutils literal notranslate"><span class="pre">gym.make</span></code> will already be wrapped by default.</p>
-<p>In order to wrap an environment, you must first initialize a base environment. Then you can pass this environment along
-with (possibly optional) parameters to the wrapper’s constructor:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">gym</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">gym.wrappers</span> <span class="kn">import</span> <span class="n">RescaleAction</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">base_env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;BipedalWalker-v3&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">base_env</span><span class="o">.</span><span class="n">action_space</span>
-<span class="go">Box([-1. -1. -1. -1.], [1. 1. 1. 1.], (4,), float32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_env</span> <span class="o">=</span> <span class="n">RescaleAction</span><span class="p">(</span><span class="n">base_env</span><span class="p">,</span> <span class="n">min_action</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_action</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">action_space</span>
-<span class="go">Box([0. 0. 0. 0.], [1. 1. 1. 1.], (4,), float32)</span>
+<section id="gym-rewardwrapper">
+<h2>gym.RewardWrapper<a class="headerlink" href="#gym-rewardwrapper" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.RewardWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.</span></span><span class="sig-name descname"><span class="pre">RewardWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.RewardWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Superclass of wrappers that can modify the returning reward from a step.</p>
+<p>If you would like to apply a function to the reward that is returned by the base environment before
+passing it to learning code, you can simply inherit from <a class="reference internal" href="#gym.RewardWrapper" title="gym.RewardWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">RewardWrapper</span></code></a> and overwrite the method
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">reward()</span></code> to implement that transformation.
+This transformation might change the reward range; to specify the reward range of your wrapper,
+you can simply define <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.reward_range</span></code> in <code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code>.</p>
+<p>Let us look at an example: Sometimes (especially when we do not have control over the reward
+because it is intrinsic), we want to clip the reward to a range to gain some numerical stability.
+To do that, we could, for instance, implement the following wrapper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClipReward</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">RewardWrapper</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">min_reward</span><span class="p">,</span> <span class="n">max_reward</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_reward</span> <span class="o">=</span> <span class="n">min_reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_reward</span> <span class="o">=</span> <span class="n">max_reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reward_range</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_reward</span><span class="p">,</span> <span class="n">max_reward</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reward</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_reward</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_reward</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>There are three very common things you might want a wrapper to do:</p>
-<ul class="simple">
-<li><p>Transform actions before applying them to the base environment</p></li>
-<li><p>Transform observations that are returned by the base environment</p></li>
-<li><p>Transform rewards that are returned by the base environment</p></li>
-</ul>
-<p>Such wrappers can be easily implemented by inheriting from <code class="docutils literal notranslate"><span class="pre">ActionWrapper</span></code>, <code class="docutils literal notranslate"><span class="pre">ObservationWrapper</span></code>, or <code class="docutils literal notranslate"><span class="pre">RewardWrapper</span></code> and implementing the
-respective transformation.</p>
-<p>However, sometimes you might need to implement a wrapper that does some more complicated modifications (e.g. modify the
-reward based on data in <code class="docutils literal notranslate"><span class="pre">info</span></code>). Such wrappers
-can be implemented by inheriting from <code class="docutils literal notranslate"><span class="pre">Wrapper</span></code>.
-Gym already provides many commonly used wrappers for you. Some examples:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">TimeLimit</span></code>: Issue a done signal if a maximum number of timesteps has been exceeded (or the base environment has issued a done signal).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ClipAction</span></code>: Clip the action such that it lies in the action space (of type <code class="docutils literal notranslate"><span class="pre">Box</span></code>).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RescaleAction</span></code>: Rescale actions to lie in a specified interval</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TimeAwareObservation</span></code>: Add information about the index of timestep to observation. In some cases helpful to ensure that transitions are Markov.</p></li>
-</ul>
-<p>If you have a wrapped environment, and you want to get the unwrapped environment underneath all of the layers of wrappers (so that you can manually call a function or change some underlying aspect of the environment), you can use the <code class="docutils literal notranslate"><span class="pre">.unwrapped</span></code> attribute. If the environment is already a base environment, the <code class="docutils literal notranslate"><span class="pre">.unwrapped</span></code> attribute will just return itself.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_env</span>
-<span class="go">&lt;RescaleAction&lt;TimeLimit&lt;BipedalWalker&lt;BipedalWalker-v3&gt;&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">unwrapped</span>
-<span class="go">&lt;gym.envs.box2d.bipedal_walker.BipedalWalker object at 0x7f87d70712d0&gt;</span>
-</pre></div>
-</div>
+</dd></dl>
+
 </section>
-<section id="playing-within-an-environment">
-<h2>Playing within an environment<a class="headerlink" href="#playing-within-an-environment" title="Permalink to this heading">#</a></h2>
-<p>You can also play the environment using your keyboard using the <code class="docutils literal notranslate"><span class="pre">play</span></code> function in <code class="docutils literal notranslate"><span class="pre">gym.utils.play</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gym.utils.play</span> <span class="kn">import</span> <span class="n">play</span>
-<span class="n">play</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;Pong-v0&#39;</span><span class="p">))</span>
+<section id="gym-actionwrapper">
+<h2>gym.ActionWrapper<a class="headerlink" href="#gym-actionwrapper" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gym.ActionWrapper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gym.</span></span><span class="sig-name descname"><span class="pre">ActionWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Env</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gym.ActionWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>Superclass of wrappers that can modify the action before <code class="xref py py-meth docutils literal notranslate"><span class="pre">env.step()</span></code>.</p>
+<p>If you would like to apply a function to the action before passing it to the base environment,
+you can simply inherit from <a class="reference internal" href="#gym.ActionWrapper" title="gym.ActionWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ActionWrapper</span></code></a> and overwrite the method <code class="xref py py-meth docutils literal notranslate"><span class="pre">action()</span></code> to implement
+that transformation. The transformation defined in that method must take values in the base environment’s
+action space. However, its domain might differ from the original action space.
+In that case, you need to specify the new action space of the wrapper by setting <code class="xref py py-attr docutils literal notranslate"><span class="pre">self.action_space</span></code> in
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">__init__()</span></code> method of your wrapper.</p>
+<p>Let’s say you have an environment with action space of type <a class="reference internal" href="../spaces/#gym.spaces.Box" title="gym.spaces.Box"><code class="xref py py-class docutils literal notranslate"><span class="pre">gym.spaces.Box</span></code></a>, but you would only like
+to use a finite subset of actions. Then, you might want to implement the following wrapper:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DiscreteActions</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">ActionWrapper</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">disc_to_cont</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">disc_to_cont</span> <span class="o">=</span> <span class="n">disc_to_cont</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_space</span> <span class="o">=</span> <span class="n">Discrete</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">disc_to_cont</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">act</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">disc_to_cont</span><span class="p">[</span><span class="n">act</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;LunarLanderContinuous-v2&quot;</span><span class="p">)</span>
+    <span class="n">wrapped_env</span> <span class="o">=</span> <span class="n">DiscreteActions</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span>
+                                        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">])])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">wrapped_env</span><span class="o">.</span><span class="n">action_space</span><span class="p">)</span>         <span class="c1">#Discrete(4)</span>
 </pre></div>
 </div>
-<p>This opens a window of the environment and allows you to control the agent using your keyboard.</p>
-<p>Playing using the keyboard requires a key-action map. This map should have type <code class="docutils literal notranslate"><span class="pre">dict[tuple[int],</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None]</span></code>, which maps the keys pressed to action performed.
-For example, if pressing the keys <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">space</span></code> at the same time is supposed to perform action <code class="docutils literal notranslate"><span class="pre">2</span></code>, then the <code class="docutils literal notranslate"><span class="pre">key_to_action</span></code> dict should look like:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1"># ...</span>
-    <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)):</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="c1"># ...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>As a more complete example, let’s say we wish to play with <code class="docutils literal notranslate"><span class="pre">CartPole-v0</span></code> using our left and right arrow keys. The code would be as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gym</span>
-<span class="kn">import</span> <span class="nn">pygame</span>
-<span class="kn">from</span> <span class="nn">gym.utils.play</span> <span class="kn">import</span> <span class="n">play</span>
-<span class="n">mapping</span> <span class="o">=</span> <span class="p">{(</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_LEFT</span><span class="p">,):</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">pygame</span><span class="o">.</span><span class="n">K_RIGHT</span><span class="p">,):</span> <span class="mi">1</span><span class="p">}</span>
-<span class="n">play</span><span class="p">(</span><span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v0&quot;</span><span class="p">),</span> <span class="n">keys_to_action</span><span class="o">=</span><span class="n">mapping</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>where we obtain the corresponding key ID constants from pygame. If the <code class="docutils literal notranslate"><span class="pre">key_to_action</span></code> argument is not specified, then the default <code class="docutils literal notranslate"><span class="pre">key_to_action</span></code> mapping for that env is used, if provided.</p>
-<p>Furthermore, if you wish to plot real time statistics as you play, you can use <code class="docutils literal notranslate"><span class="pre">gym.utils.play.PlayPlot</span></code>. Here’s some sample code for plotting the reward for last 5 second of gameplay:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">obs_t</span><span class="p">,</span> <span class="n">obs_tp1</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">rew</span><span class="p">,</span> <span class="n">done</span><span class="p">,</span> <span class="n">info</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">rew</span><span class="p">,]</span>
-<span class="n">plotter</span> <span class="o">=</span> <span class="n">PlayPlot</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;reward&quot;</span><span class="p">])</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;Pong-v0&quot;</span><span class="p">)</span>
-<span class="n">play</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">plotter</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Among others, Gym provides the action wrappers <code class="xref py py-class docutils literal notranslate"><span class="pre">ClipAction</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">RescaleAction</span></code>.</p>
+</dd></dl>
+
 </section>
 </section>
 
@@ -661,16 +576,26 @@ For example, if pressing the keys <code class="docutils literal notranslate"><sp
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../environment_creation/">
+          <a class="next-page" href="../spaces/">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Environment Creation</div>
+                <div class="title">Spaces</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          
+          <a class="prev-page" href="../../content/basic_usage/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Basic Usage</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -703,24 +628,16 @@ For example, if pressing the keys <code class="docutils literal notranslate"><sp
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">API</a><ul>
-<li><a class="reference internal" href="#initializing-environments">Initializing Environments</a></li>
-<li><a class="reference internal" href="#interacting-with-the-environment">Interacting with the Environment</a></li>
-<li><a class="reference internal" href="#standard-methods">Standard methods</a><ul>
-<li><a class="reference internal" href="#stepping">Stepping</a></li>
-<li><a class="reference internal" href="#resetting">Resetting</a></li>
-<li><a class="reference internal" href="#rendering">Rendering</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#additional-environment-api">Additional Environment API</a><ul>
+<li><a class="reference internal" href="#">Core</a><ul>
+<li><a class="reference internal" href="#gym-env">gym.Env</a><ul>
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
-<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#additional-methods">Additional Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#checking-api-conformity">Checking API-Conformity</a></li>
-<li><a class="reference internal" href="#spaces">Spaces</a></li>
-<li><a class="reference internal" href="#wrappers">Wrappers</a></li>
-<li><a class="reference internal" href="#playing-within-an-environment">Playing within an environment</a></li>
+<li><a class="reference internal" href="#gym-wrapper">gym.Wrapper</a></li>
+<li><a class="reference internal" href="#gym-observationwrapper">gym.ObservationWrapper</a></li>
+<li><a class="reference internal" href="#gym-rewardwrapper">gym.RewardWrapper</a></li>
+<li><a class="reference internal" href="#gym-actionwrapper">gym.ActionWrapper</a></li>
 </ul>
 </li>
 </ul>

@@ -158,15 +158,17 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../content/api/">API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../content/environment_creation/">Environment Creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../content/spaces/">Spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../content/vector_api/">Vector API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../content/tutorials/">Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../content/wrappers/">Wrappers</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/openai/gym">Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/basic_usage/">Basic Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/core/">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/spaces/">Spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/wrappers/">Wrappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/vector/">Vector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utils/">Utils</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Environments</span></p>
 <ul>
@@ -270,8 +272,14 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../environments/third_party_environments/">Third Party Environments</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../content/environment_creation/">Make your own custom environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/vectorising/">Vectorising your environments</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/openai/gym">Github</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/gym-docs">Contribute to the Docs</a></li>
 </ul>
 
@@ -309,20 +317,28 @@
           
 <section class="genindex-section">
   <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"><a href="#_"><strong>_</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a></div>
+  <div class="genindex-jumpbox"><a href="#_"><strong>_</strong></a> | <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#W"><strong>W</strong></a></div>
 </section>
 <section id="_" class="genindex-section">
   <h2>_</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Box.__init__">__init__() (gym.spaces.Box method)</a>
+        <li><a href="../api/spaces/#gym.spaces.Box.__init__">__init__() (gym.spaces.Box method)</a>
 
         <ul>
-          <li><a href="../content/spaces/#gym.spaces.Dict.__init__">(gym.spaces.Dict method)</a>
+          <li><a href="../api/spaces/#gym.spaces.Dict.__init__">(gym.spaces.Dict method)</a>
 </li>
-          <li><a href="../content/spaces/#gym.spaces.MultiDiscrete.__init__">(gym.spaces.MultiDiscrete method)</a>
+          <li><a href="../api/spaces/#gym.spaces.Graph.__init__">(gym.spaces.Graph method)</a>
 </li>
-          <li><a href="../content/spaces/#gym.spaces.Tuple.__init__">(gym.spaces.Tuple method)</a>
+          <li><a href="../api/spaces/#gym.spaces.MultiBinary.__init__">(gym.spaces.MultiBinary method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.MultiDiscrete.__init__">(gym.spaces.MultiDiscrete method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Sequence.__init__">(gym.spaces.Sequence method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Text.__init__">(gym.spaces.Text method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Tuple.__init__">(gym.spaces.Tuple method)</a>
 </li>
         </ul></li>
     </ul></td>
@@ -333,12 +349,16 @@
   <h2>A</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/api/#gym.Env.action_space">action_space (gym.Env attribute)</a>
+        <li><a href="../api/core/#gym.Env.action_space">action_space (gym.Env attribute)</a>
 
         <ul>
-          <li><a href="../content/vector_api/#gym.vector.VectorEnv.action_space">(gym.vector.VectorEnv attribute)</a>
+          <li><a href="../api/vector/#gym.vector.VectorEnv.action_space">(gym.vector.VectorEnv attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/core/#gym.ActionWrapper">ActionWrapper (class in gym)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -347,7 +367,7 @@
   <h2>B</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Box">Box (class in gym.spaces)</a>
+        <li><a href="../api/spaces/#gym.spaces.Box">Box (class in gym.spaces)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -357,11 +377,35 @@
   <h2>C</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/api/#gym.Env.close">close() (in module gym.Env)</a>
+        <li><a href="../api/utils/#gym.utils.save_video.capped_cubic_video_schedule">capped_cubic_video_schedule() (in module gym.utils.save_video)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_env">check_env() (in module gym.utils.env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.passive_env_checker.check_obs">check_obs() (in module gym.utils.passive_env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_reset_options">check_reset_options() (in module gym.utils.env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_reset_return_info_deprecation">check_reset_return_info_deprecation() (in module gym.utils.env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_reset_return_type">check_reset_return_type() (in module gym.utils.env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_reset_seed">check_reset_seed() (in module gym.utils.env_checker)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Space.contains">contains() (in module gym.spaces.Space)</a>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_seed_deprecation">check_seed_deprecation() (in module gym.utils.env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.passive_env_checker.check_space">check_space() (in module gym.utils.passive_env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.env_checker.check_space_limit">check_space_limit() (in module gym.utils.env_checker)</a>
+</li>
+        <li><a href="../api/core/#gym.Env.close">close() (in module gym.Env)</a>
+</li>
+        <li><a href="../api/spaces/#gym.spaces.Space.contains">contains() (in module gym.spaces.Space)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.step_api_compatibility.convert_to_done_step_api">convert_to_done_step_api() (in module gym.utils.step_api_compatibility)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.step_api_compatibility.convert_to_terminated_truncated_step_api">convert_to_terminated_truncated_step_api() (in module gym.utils.step_api_compatibility)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -371,15 +415,33 @@
   <h2>D</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Dict">Dict (class in gym.spaces)</a>
+        <li><a href="../api/utils/#gym.utils.env_checker.data_equivalence">data_equivalence() (in module gym.utils.env_checker)</a>
 </li>
-        <li><a href="../content/spaces/#gym.spaces.Discrete">Discrete (class in gym.spaces)</a>
+        <li><a href="../api/spaces/#gym.spaces.Dict">Dict (class in gym.spaces)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Discrete.__init__">Discrete.__init__ (class in gym.spaces)</a>
+        <li><a href="../api/spaces/#gym.spaces.Discrete">Discrete (class in gym.spaces)</a>
 </li>
-        <li><a href="../content/spaces/#gym.spaces.Space.dtype">dtype (gym.spaces.Space property)</a>
+        <li><a href="../api/spaces/#gym.spaces.Discrete.__init__">Discrete.__init__ (class in gym.spaces)</a>
+</li>
+        <li><a href="../api/spaces/#gym.spaces.Space.dtype">dtype (gym.spaces.Space property)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/utils/#gym.utils.passive_env_checker.env_render_passive_checker">env_render_passive_checker() (in module gym.utils.passive_env_checker)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/utils/#gym.utils.passive_env_checker.env_reset_passive_checker">env_reset_passive_checker() (in module gym.utils.passive_env_checker)</a>
+</li>
+        <li><a href="../api/utils/#gym.utils.passive_env_checker.env_step_passive_checker">env_step_passive_checker() (in module gym.utils.passive_env_checker)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -389,15 +451,25 @@
   <h2>F</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.utils.flatdim">flatdim() (in module gym.spaces.utils)</a>
+        <li><a href="../api/spaces/#gym.spaces.utils.flatdim">flatdim() (in module gym.spaces.utils)</a>
 </li>
-        <li><a href="../content/spaces/#gym.spaces.utils.flatten">flatten() (in module gym.spaces.utils)</a>
+        <li><a href="../api/spaces/#gym.spaces.utils.flatten">flatten() (in module gym.spaces.utils)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.utils.flatten_space">flatten_space() (in module gym.spaces.utils)</a>
+        <li><a href="../api/spaces/#gym.spaces.utils.flatten_space">flatten_space() (in module gym.spaces.utils)</a>
 </li>
-        <li><a href="../content/spaces/#gym.spaces.Space.from_jsonable">from_jsonable() (in module gym.spaces.Space)</a>
+        <li><a href="../api/spaces/#gym.spaces.Space.from_jsonable">from_jsonable() (in module gym.spaces.Space)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/spaces/#gym.spaces.Graph">Graph (class in gym.spaces)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -407,7 +479,7 @@
   <h2>I</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Box.is_bounded">is_bounded() (gym.spaces.Box method)</a>
+        <li><a href="../api/spaces/#gym.spaces.Box.is_bounded">is_bounded() (gym.spaces.Box method)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -417,11 +489,23 @@
   <h2>M</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.MultiBinary">MultiBinary (class in gym.spaces)</a>
+        <li><a href="../api/vector/#gym.vector.make">make() (in module gym.vector)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.MultiDiscrete">MultiDiscrete (class in gym.spaces)</a>
+        <li><a href="../api/spaces/#gym.spaces.MultiBinary">MultiBinary (class in gym.spaces)</a>
+</li>
+        <li><a href="../api/spaces/#gym.spaces.MultiDiscrete">MultiDiscrete (class in gym.spaces)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="N" class="genindex-section">
+  <h2>N</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/utils/#gym.utils.seeding.np_random">np_random() (in module gym.utils.seeding)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -431,12 +515,16 @@
   <h2>O</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/api/#gym.Env.observation_space">observation_space (gym.Env attribute)</a>
+        <li><a href="../api/core/#gym.Env.observation_space">observation_space (gym.Env attribute)</a>
 
         <ul>
-          <li><a href="../content/vector_api/#gym.vector.VectorEnv.observation_space">(gym.vector.VectorEnv attribute)</a>
+          <li><a href="../api/vector/#gym.vector.VectorEnv.observation_space">(gym.vector.VectorEnv attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/core/#gym.ObservationWrapper">ObservationWrapper (class in gym)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -445,17 +533,19 @@
   <h2>R</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/api/#gym.Env.render">render() (in module gym.Env)</a>
+        <li><a href="../api/core/#gym.Env.render">render() (in module gym.Env)</a>
 </li>
-        <li><a href="../content/vector_api/#gym.vector.VectorEnv.reset">reset() (gym.vector.VectorEnv method)</a>
+        <li><a href="../api/vector/#gym.vector.VectorEnv.reset">reset() (gym.vector.VectorEnv method)</a>
 
         <ul>
-          <li><a href="../content/api/#gym.Env.reset">(in module gym.Env)</a>
+          <li><a href="../api/core/#gym.Env.reset">(in module gym.Env)</a>
 </li>
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/api/#gym.Env.reward_range">reward_range (gym.Env attribute)</a>
+        <li><a href="../api/core/#gym.Env.reward_range">reward_range (gym.Env attribute)</a>
+</li>
+        <li><a href="../api/core/#gym.RewardWrapper">RewardWrapper (class in gym)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -465,30 +555,52 @@
   <h2>S</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Box.sample">sample() (gym.spaces.Box method)</a>
+        <li><a href="../api/spaces/#gym.spaces.Box.sample">sample() (gym.spaces.Box method)</a>
 
         <ul>
-          <li><a href="../content/spaces/#gym.spaces.Space.sample">(in module gym.spaces.Space)</a>
+          <li><a href="../api/spaces/#gym.spaces.Dict.sample">(gym.spaces.Dict method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Discrete.sample">(gym.spaces.Discrete method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Graph.sample">(gym.spaces.Graph method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.MultiBinary.sample">(gym.spaces.MultiBinary method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.MultiDiscrete.sample">(gym.spaces.MultiDiscrete method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Sequence.sample">(gym.spaces.Sequence method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Text.sample">(gym.spaces.Text method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Tuple.sample">(gym.spaces.Tuple method)</a>
+</li>
+          <li><a href="../api/spaces/#gym.spaces.Space.sample">(in module gym.spaces.Space)</a>
 </li>
         </ul></li>
-        <li><a href="../content/spaces/#gym.spaces.Space.seed">seed() (in module gym.spaces.Space)</a>
-</li>
-        <li><a href="../content/spaces/#gym.spaces.Space.shape">shape (gym.spaces.Space property)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/vector_api/#gym.vector.VectorEnv.single_action_space">single_action_space (gym.vector.VectorEnv attribute)</a>
+        <li><a href="../api/utils/#gym.utils.save_video.save_video">save_video() (in module gym.utils.save_video)</a>
 </li>
-        <li><a href="../content/vector_api/#gym.vector.VectorEnv.single_observation_space">single_observation_space (gym.vector.VectorEnv attribute)</a>
+        <li><a href="../api/spaces/#gym.spaces.Space.seed">seed() (in module gym.spaces.Space)</a>
 </li>
-        <li><a href="../content/spaces/#gym.spaces.Space">Space (class in gym.spaces)</a>
+        <li><a href="../api/spaces/#gym.spaces.Sequence">Sequence (class in gym.spaces)</a>
 </li>
-        <li><a href="../content/vector_api/#gym.vector.VectorEnv.step">step() (gym.vector.VectorEnv method)</a>
+        <li><a href="../api/spaces/#gym.spaces.Space.shape">shape (gym.spaces.Space property)</a>
+</li>
+        <li><a href="../api/vector/#gym.vector.VectorEnv.single_action_space">single_action_space (gym.vector.VectorEnv attribute)</a>
+</li>
+        <li><a href="../api/vector/#gym.vector.VectorEnv.single_observation_space">single_observation_space (gym.vector.VectorEnv attribute)</a>
+</li>
+        <li><a href="../api/spaces/#gym.spaces.Space">Space (class in gym.spaces)</a>
+</li>
+        <li><a href="../api/vector/#gym.vector.VectorEnv.step">step() (gym.vector.VectorEnv method)</a>
 
         <ul>
-          <li><a href="../content/api/#gym.Env.step">(in module gym.Env)</a>
+          <li><a href="../api/core/#gym.Env.step">(in module gym.Env)</a>
 </li>
         </ul></li>
+        <li><a href="../api/utils/#gym.utils.step_api_compatibility.step_api_compatibility">step_api_compatibility() (in module gym.utils.step_api_compatibility)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -497,11 +609,13 @@
   <h2>T</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Space.to_jsonable">to_jsonable() (in module gym.spaces.Space)</a>
+        <li><a href="../api/spaces/#gym.spaces.Text">Text (class in gym.spaces)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.Tuple">Tuple (class in gym.spaces)</a>
+        <li><a href="../api/spaces/#gym.spaces.Space.to_jsonable">to_jsonable() (in module gym.spaces.Space)</a>
+</li>
+        <li><a href="../api/spaces/#gym.spaces.Tuple">Tuple (class in gym.spaces)</a>
 </li>
     </ul></td>
   </tr></table>
@@ -511,7 +625,17 @@
   <h2>U</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="../content/spaces/#gym.spaces.utils.unflatten">unflatten() (in module gym.spaces.utils)</a>
+        <li><a href="../api/spaces/#gym.spaces.utils.unflatten">unflatten() (in module gym.spaces.utils)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="../api/core/#gym.Wrapper">Wrapper (class in gym)</a>
 </li>
     </ul></td>
   </tr></table>
