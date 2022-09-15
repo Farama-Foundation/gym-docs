@@ -56,7 +56,7 @@ where the blue dot is the agent and the red square represents the target.
 Let us look at the source code of `GridWorldEnv` piece by piece: 
 
 ### Declaration and Initialization
-Our custom environment will inherit from the abstract class `gym.Env`. You shouldn't forget to add the `metadata` attribute to you class. 
+Our custom environment will inherit from the abstract class `gym.Env`. You shouldn't forget to add the `metadata` attribute to your class. 
 There, you should specify the render-modes that are supported by your environment (e.g. `"human"`, `"rgb_array"`, `"ansi"`)
 and the framerate at which your environment should be rendered. Every environment should support`None` as render-mode; you don't need to add it in the metadata.
 In `GridWorldEnv`, we will support the modes "rgb_array" and "human" and render at 4 FPS.
