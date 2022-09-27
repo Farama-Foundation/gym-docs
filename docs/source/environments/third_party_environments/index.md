@@ -56,6 +56,10 @@ The RubiksCubeGym package provides environments for twisty puzzles with  multipl
 
 The board game Go, also known as Weiqi. The game that was famously conquered by AlphaGo.
 
+### [MindMaker Unreal Engine Plugin](https://github.com/krumiaa/MindMaker)
+
+An open-source plugin that enables games and simulations within UE4 and UE5 to function as OpenAI Gym environments for training autonomous machine learning agents. The plugin facilitates a network connection between an Unreal Engine Project containing the learning environment, and a python ML library that receives data from Unreal Engine and parses into a custom OpenAI Gym environment for training the agent. The standalone machine learning library can either be a custom python script in the event you are creating your own ML tool using MindMaker’s Remote ML Server, or it could be a precompiled learning engine such as [MindMaker’s DRL Engine(Stable Baselines Algorithms)](https://unrealengine.com/marketplace/en-US/product/neurostudio-self-learning-ai).
+
 ## Robotics Environments
 
 ### [ GymFC: A flight control tuning and training framework](https://github.com/wil3/gymfc/)
