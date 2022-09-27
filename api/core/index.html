@@ -2,14 +2,14 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Spaces" href="../spaces/" /><link rel="prev" title="Basic Usage" href="../../content/basic_usage/" />
         <link rel="canonical" href="https://www.gymlibrary.dev/api/core.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><meta name="generator" content="sphinx-5.2.2, furo 2022.09.15"/>
         <title>Core - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
     
@@ -630,14 +630,37 @@ to use a finite subset of actions. Then, you might want to implement the followi
             <ul>
 <li><a class="reference internal" href="#">Core</a><ul>
 <li><a class="reference internal" href="#gym-env">gym.Env</a><ul>
-<li><a class="reference internal" href="#attributes">Attributes</a></li>
-<li><a class="reference internal" href="#additional-methods">Additional Methods</a></li>
+<li><a class="reference internal" href="#gym.Env.step"><code class="docutils literal notranslate"><span class="pre">step()</span></code></a></li>
+<li><a class="reference internal" href="#gym.Env.reset"><code class="docutils literal notranslate"><span class="pre">reset()</span></code></a></li>
+<li><a class="reference internal" href="#gym.Env.render"><code class="docutils literal notranslate"><span class="pre">render()</span></code></a></li>
+<li><a class="reference internal" href="#attributes">Attributes</a><ul>
+<li><a class="reference internal" href="#gym.Env.action_space"><code class="docutils literal notranslate"><span class="pre">Env.action_space</span></code></a></li>
+<li><a class="reference internal" href="#gym.Env.observation_space"><code class="docutils literal notranslate"><span class="pre">Env.observation_space</span></code></a></li>
+<li><a class="reference internal" href="#gym.Env.reward_range"><code class="docutils literal notranslate"><span class="pre">Env.reward_range</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#gym-wrapper">gym.Wrapper</a></li>
-<li><a class="reference internal" href="#gym-observationwrapper">gym.ObservationWrapper</a></li>
-<li><a class="reference internal" href="#gym-rewardwrapper">gym.RewardWrapper</a></li>
-<li><a class="reference internal" href="#gym-actionwrapper">gym.ActionWrapper</a></li>
+<li><a class="reference internal" href="#additional-methods">Additional Methods</a><ul>
+<li><a class="reference internal" href="#gym.Env.close"><code class="docutils literal notranslate"><span class="pre">close()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gym-wrapper">gym.Wrapper</a><ul>
+<li><a class="reference internal" href="#gym.Wrapper"><code class="docutils literal notranslate"><span class="pre">Wrapper</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gym-observationwrapper">gym.ObservationWrapper</a><ul>
+<li><a class="reference internal" href="#gym.ObservationWrapper"><code class="docutils literal notranslate"><span class="pre">ObservationWrapper</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gym-rewardwrapper">gym.RewardWrapper</a><ul>
+<li><a class="reference internal" href="#gym.RewardWrapper"><code class="docutils literal notranslate"><span class="pre">RewardWrapper</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gym-actionwrapper">gym.ActionWrapper</a><ul>
+<li><a class="reference internal" href="#gym.ActionWrapper"><code class="docutils literal notranslate"><span class="pre">ActionWrapper</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -654,6 +677,7 @@ to use a finite subset of actions. Then, you might want to implement the followi
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     
 
