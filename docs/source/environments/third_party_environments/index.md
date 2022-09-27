@@ -2,10 +2,6 @@
 
 ## Video Game Environments
 
-### [MindMaker Unreal Engine Plugin](https://github.com/krumiaa/MindMaker)
-
-An open-source plugin that enables games and simulations within UE4 and UE5 to function as OpenAI Gym environments for training autonomous machine learning agents. The plugin facilitates a network connection between an Unreal Engine Project containing the learning environment, and a python ML library that receives data from Unreal Engine and parses into a custom OpenAI Gym environment for training the agent. The standalone machine learning library can either be a custom python script in the event you are creating your own ML tool using MindMaker’s Remote ML Server, or it could be a precompiled learning engine such as [MindMaker’s DRL Engine(Stable Baselines Algorithms)](https://unrealengine.com/marketplace/en-US/product/neurostudio-self-learning-ai).
-
 ### [ViZDoom](https://github.com/mwydmuch/ViZDoom)
 
 An environment centered around the original [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) game, focusing on visual control (from image to actions) at thousands of frames per second. ViZDoom supports depth and automatic annotation/labels buffers, as well as accessing the sound. The Gym wrappers provide easy-to-use access to the example scenarios that come with ViZDoom. Since 2016, the [ViZDoom paper](https://arxiv.org/abs/1605.02097) has been cited more than 600 times.
@@ -59,6 +55,10 @@ The RubiksCubeGym package provides environments for twisty puzzles with  multipl
 ### [ GymGo](https://github.com/aigagror/GymGo)
 
 The board game Go, also known as Weiqi. The game that was famously conquered by AlphaGo.
+
+### [MindMaker Unreal Engine Plugin](https://github.com/krumiaa/MindMaker)
+
+An open-source plugin that enables games and simulations within UE4 and UE5 to function as OpenAI Gym environments for training autonomous machine learning agents. The plugin facilitates a network connection between an Unreal Engine Project containing the learning environment, and a python ML library that receives data from Unreal Engine and parses into a custom OpenAI Gym environment for training the agent. The standalone machine learning library can either be a custom python script in the event you are creating your own ML tool using MindMaker’s Remote ML Server, or it could be a precompiled learning engine such as [MindMaker’s DRL Engine(Stable Baselines Algorithms)](https://unrealengine.com/marketplace/en-US/product/neurostudio-self-learning-ai).
 
 ## Robotics Environments
 
