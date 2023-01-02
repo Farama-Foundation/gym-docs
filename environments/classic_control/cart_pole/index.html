@@ -6,10 +6,10 @@
 <link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Mountain Car Continuous" href="../mountain_car_continuous/" /><link rel="prev" title="Acrobot" href="../acrobot/" />
         <link rel="canonical" href="https://www.gymlibrary.dev/environments/classic_control/cart_pole.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.png"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Cart Pole - Gym Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
     
@@ -155,7 +155,7 @@
   <span class="sidebar-brand-text">Gym Documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../../../search/" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -538,6 +538,51 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
     <script src="../../../_static/scripts/furo.js"></script>
     
 
+<div id="gymnasium-modal" style="position: absolute; top:0; left: 0; width: 100vw; height: 100vh; background-color: #131416; display:none; z-index: 99999;">
+  <div style="position:relative; display:flex; flex-direction: column; width: 500px; padding: 24px; max-width: 95%; background: #2b2c2e; border-radius: 24px; margin: auto; box-sizing: border-box;">
+    <div style="display:flex; align-items: center;margin-bottom: 14px;">
+        <img style="width: 48px" src="../../../_static/img/gym_logo_white.svg" alt="Gym icon">
+        <h2 style="margin: 0; padding-left: 12px">Gym documentation</h2>
+    </div>
+
+    <p style="font-size: 1.1rem;font-weight: 200;">All development of Gym has been moved to Gymnasium, a new package in the Farama Foundation that's maintained by the same team of developers who have maintained Gym for the past 18 months. If you're already using the latest release of Gym (v0.26.2), then you can switch to v0.26.2 of Gymnasium by simply replacing <code style="font-size: 1.05rem; background-color: rgba(0,0,0,0.2); padding: 0 4px; border-radius: 6px;">import gym</code> with <code style="font-size: 1.05rem; background-color: rgba(0,0,0,0.2); padding: 0 4px; border-radius: 6px;">import gymnasium as gym</code> with no additional steps. Gym will not be receiving any future updates or bug fixes, and no further changes will be made to the core API in Gymnasium.</p>
+
+    <a style="text-align:center; margin: 0 0 18px" href="https://farama.org/Announcing-The-Farama-Foundation">Read more about the Farama Foundation and the backstory of the transition from Gym to Gymnasium</a>
+
+    <button id="modal-stay" style="font-size:1.15rem; padding: 6px 12px; align-self: center; margin-top: 14px;text-transform: capitalize; border-radius: 4px;border:none">Stay in Gym</button>
+    <button id="modal-accept" style="font-size:1.15rem; padding: 6px 12px; align-self: center; margin-top: 14px;text-transform: capitalize; border-radius: 4px;border:none"><a href="https://gymnasium.farama.org" style="text-align: center;color:white;text-decoration: none;">Go to Gymnasium website</a></button>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const moreThanOneDay = (date) => {
+      const oneDayAgo = new Date();
+      oneDayAgo.setDate(oneDayAgo.getDate() - 3);
+      return new Date(date) < oneDayAgo;
+    }
+    const time = new Date();
+    const modal = document.getElementById("gymnasium-modal");
+    if (!localStorage.getItem("shownGymnasiumAlert") ||
+        moreThanOneDay(localStorage.getItem("shownGymnasiumAlert"))) {
+      document.documentElement.style.overflowY = "hidden";
+      modal.style.display = "flex";
+      const stayBtn = document.getElementById("modal-stay");
+      const acceptBtn = document.getElementById("modal-accept");
+
+      stayBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        document.documentElement.style.overflowY = "";
+        localStorage.setItem("shownGymnasiumAlert", time);
+      })
+      acceptBtn.addEventListener("click", () => {
+        document.documentElement.style.overflowY = "";
+        localStorage.setItem("shownGymnasiumAlert", time);
+      })
+    }
+  })()
+</script>
+
 <script>
     (() => {
         if (!localStorage.getItem("shownCookieAlert")) {
@@ -562,15 +607,5 @@ including the termination step, is allotted. The threshold for rewards is 475 fo
         }
     })()
 
-</script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JGXSLW7N06"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JGXSLW7N06');
 </script></body>
 </html>
