@@ -419,11 +419,12 @@
     <script src="../../_static/scripts/furo.js"></script>
     
 
-<div id="gymnasium-modal" style="position: absolute; top:0; left: 0; width: 100vw; height: 100vh; background-color: #131416; display:none; z-index: 99999;">
-  <div style="position:relative; display:flex; flex-direction: column; width: 500px; padding: 24px; max-width: 95%; background: #2b2c2e; border-radius: 24px; margin: auto; box-sizing: border-box;">
+<div id="gymnasium-modal" style="position: absolute; top:0; left: 0; width: 100vw; height: 100vh; background-color: var(--color-background-primary); display:none; z-index: 99999;">
+  <div style="position:relative; display:flex; flex-direction: column; width: 500px; padding: 24px; max-width: 95%; background: var(--color-background-border); border-radius: 24px; margin: auto; box-sizing: border-box;">
     <div style="display:flex; align-items: center;margin-bottom: 14px;">
-        <img style="width: 48px" src="../../_static/img/gym_logo_white.svg" alt="Gym icon">
-        <h2 style="margin: 0; padding-left: 12px">Gym documentation</h2>
+        <img style="width: 48px" class="only-dark" src="../../_static/img/gym_logo_white.svg" alt="Gym icon">
+        <img style="width: 48px" class="only-light" src="../../_static/img/gym_logo_black.svg" alt="Gym icon">
+        <h2 style="margin: 0; padding-left: 12px">Gym Documentation</h2>
     </div>
 
     <p style="font-size: 1.1rem;font-weight: 200;">All development of Gym has been moved to Gymnasium, a new package in the Farama Foundation that's maintained by the same team of developers who have maintained Gym for the past 18 months. If you're already using the latest release of Gym (v0.26.2), then you can switch to v0.26.2 of Gymnasium by simply replacing <code style="font-size: 1.05rem; background-color: rgba(0,0,0,0.2); padding: 0 4px; border-radius: 6px;">import gym</code> with <code style="font-size: 1.05rem; background-color: rgba(0,0,0,0.2); padding: 0 4px; border-radius: 6px;">import gymnasium as gym</code> with no additional steps. Gym will not be receiving any future updates or bug fixes, and no further changes will be made to the core API in Gymnasium.</p>
