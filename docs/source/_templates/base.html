@@ -3,6 +3,50 @@
 {%- block regular_scripts -%}
 {{ super() }}
 
+<style>
+@media (prefers-color-scheme: light) {
+  body:not(body[data-theme="dark"]) {
+    #modal-stay {
+      background-color: #d9d9d9;
+      color: #000;
+    }
+    #modal-accept {
+      background-color: #babfff;
+    }
+  }
+  body[data-theme="dark"] {
+    #modal-stay {
+      background-color: #454545;
+      color: #fff;
+    }
+    #modal-accept {
+      background-color: #4b55d1;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(body[data-theme="light"]) {
+    #modal-stay {
+      background-color: #454545;
+      color: #fff;
+    }
+    #modal-accept {
+      background-color: #4b55d1;
+    }
+  }
+  body[data-theme="light"] {
+    #modal-stay {
+      background-color: #d9d9d9;
+      color: #000;
+    }
+    #modal-accept {
+      background-color: #babfff;
+    }
+  }
+}
+</style>
+
 <div id="gymnasium-modal" style="position: absolute; top:0; left: 0; width: 100vw; height: 100vh; background-color: var(--color-background-primary); display:none; z-index: 99999;">
   <div style="position:relative; display:flex; flex-direction: column; width: 500px; padding: 24px; max-width: 95%; background: var(--color-background-border); border-radius: 24px; margin: auto; box-sizing: border-box;">
     <div style="display:flex; align-items: center;margin-bottom: 14px;">
@@ -16,7 +60,7 @@
     <a style="text-align:center; margin: 0 0 18px" href="https://farama.org/Announcing-The-Farama-Foundation">Read more about the Farama Foundation and the backstory of the transition from Gym to Gymnasium</a>
 
     <button id="modal-stay" style="font-size:1.15rem; padding: 6px 12px; align-self: center; margin-top: 14px;text-transform: capitalize; border-radius: 4px;border:none">Stay in Gym</button>
-    <button id="modal-accept" style="font-size:1.15rem; padding: 6px 12px; align-self: center; margin-top: 14px;text-transform: capitalize; border-radius: 4px;border:none"><a href="https://gymnasium.farama.org" style="text-align: center;color:white;text-decoration: none;">Go to Gymnasium website</a></button>
+    <button id="modal-accept" style="font-size:1.15rem; padding: 6px 12px; align-self: center; margin-top: 14px;text-transform: capitalize; border-radius: 4px;border:none"><a href="https://gymnasium.farama.org" style="text-align: center;color:var(--color-foreground-primary);text-decoration: none;">Go to Gymnasium website</a></button>
   </div>
 </div>
 
