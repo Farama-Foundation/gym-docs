@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gym Documentation</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="description" content="Gym is unmaintained. Please use Gymnasium, the maintained drop-in replacement from the original Gym team.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f0f0f0;
+      --fg: #000000;
+      --fg-muted: #333333;
+      --accent: #babfff;
+      --accent-fg: #000000;
+      --link: #4b55d1;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #131416;
+        --card: #202020;
+        --fg: #ffffff;
+        --fg-muted: #cccccc;
+        --accent: #4b55d1;
+        --accent-fg: #ffffff;
+        --link: #babfff;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      max-width: 95%;
+      padding: 24px;
+      background: var(--card);
+      border-radius: 24px;
+      box-sizing: border-box;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .card-header img {
+      width: 48px;
+    }
+
+    .card-header img.logo-light { display: block; }
+    .card-header img.logo-dark  { display: none; }
+
+    @media (prefers-color-scheme: dark) {
+      .card-header img.logo-light { display: none; }
+      .card-header img.logo-dark  { display: block; }
+    }
+
+    .card-header h2 {
+      margin: 0;
+      padding-left: 12px;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      font-weight: 200;
+      line-height: 1.5;
+      margin: 0 0 1rem;
+      color: var(--fg-muted);
+    }
+
+    .card p a { color: var(--link); }
+
+    .accept-btn {
+      font-size: 1.15rem;
+      padding: 8px 16px;
+      align-self: center;
+      margin-top: 14px;
+      text-transform: capitalize;
+      border-radius: 4px;
+      border: none;
+      background-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .accept-btn a {
+      text-align: center;
+      color: var(--accent-fg);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="card-header">
+      <img class="logo-light" src="assets/gym_logo_black.svg" alt="Gym icon">
+      <img class="logo-dark" src="assets/gym_logo_white.svg" alt="Gym icon">
+      <h2>Gym Documentation</h2>
+    </div>
+
+    <p>Gym has been unmaintained since 2022, and amongst other critical missing functionality does not support Numpy 2.0, and the documentation website has been taken offline.</p>
+    <p>Gymnasium is the maintained drop in replacement for Gym from the original Gym team if you're on the latest version of Gym.</p>
+    <p>Please upgrade your software to use Gymnasium, or contact the authors of your software and request that they upgrade.</p>
+    <p>You can read a migration guide for upgrading older version of Gym to Gymnasium <a href="https://gymnasium.farama.org/introduction/migration_guide/">here</a>.</p>
+    <p>Click the button to continue to the Gymnasium documentation website.</p>
+
+    <button class="accept-btn">
+      <a href="https://gymnasium.farama.org">Go to Gymnasium website</a>
+    </button>
+  </main>
+</body>
+</html>
